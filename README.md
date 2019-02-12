@@ -16,6 +16,6 @@ To use:
 from osuAPI import OsuAPI
 
 api = OsuAPI("API_KEY")
-api.get_replay({m: "0", b: "1776628", u: "3256299"})
+api.get_replay({"m": "0", "b": "1776628", "u": "3256299"})
 # either strings or ints will work. Returns something like `{"content":"XQAAIA....3fISw=","encoding":"base64"}`
 ```
