@@ -568,6 +568,7 @@ class OssapiV2:
         mode: GameModeT,
         type_: RankingTypeT,
         country: Optional[str] = None,
+        page: Optional[int] = None,
         cursor: Optional[Cursor] = None,
         filter_: RankingFilterT = RankingFilter.ALL,
         spotlight: Optional[int] = None,
@@ -576,7 +577,7 @@ class OssapiV2:
         """
         https://osu.ppy.sh/docs/index.html#get-ranking
         """
-        params = {"country": country, "cursor": cursor, "filter": filter_,
+        params = {"country": country, "page": page, "cursor": cursor, "filter": filter_,
             "spotlight": spotlight, "variant": variant}
         return self._get(Rankings, f"/rankings/{mode.value}/{type_.value}",
             params=params)
