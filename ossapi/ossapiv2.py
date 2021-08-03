@@ -774,7 +774,7 @@ class OssapiV2:
         https://osu.ppy.sh/docs/index.html#get-user
         """
         params = {"key": key}
-        return self._get(User, f"/users/{user}/{mode or ''}", params)
+        return self._get(User, f"/users/{user}/{mode.value or ''}", params)
 
     # /wiki
     # -----
