@@ -1,4 +1,4 @@
-from typing import Optional, List, Any
+from typing import Optional, List, Any, Union
 
 from ossapi.utils import (EnumModel, Datetime, Model, Field, IntFlagModel)
 
@@ -376,7 +376,7 @@ class Statistics(Model):
     count_miss: int
 
 class Availability(Model):
-    download_disabled: bool
+    download_disabled: Union[bool, int]
     more_information: Optional[str]
 
 class Hype(Model):
