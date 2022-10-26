@@ -285,7 +285,7 @@ class OssapiV2:
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(self.grant,
             self.client_id, self.client_secret, self.scopes)
-        self.token_directory = (
+        self.token_directory: Path = (
             Path(token_directory) if token_directory else Path(__file__).parent
         )
         self.token_file = self.token_directory / f"{self.token_key}.pickle"
@@ -435,6 +435,7 @@ class OssapiV2:
         """
         Saves the token to this OssapiV2's associated token file.
         """
+        self.token_directory.mkdir(parents=True, exist_ok=True)
         self.log.info(f"saving token to {self.token_file}")
         with open(self.token_file, "wb+") as f:
             pickle.dump(token, f)
