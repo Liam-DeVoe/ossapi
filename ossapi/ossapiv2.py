@@ -2008,6 +2008,8 @@ class OssapiV2:
         """
         Download the replay data of a score.
 
+        Parameters
+        ----------
         mode
             The mode of the score to download.
         score_id
@@ -2015,6 +2017,12 @@ class OssapiV2:
         raw
             If ``True``, will return the raw string response from the api
             instead of a :class:`~ossapi.replay.Replay` object.
+
+        Notes
+        -----
+        Implements the `Download Score
+        <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
+        endpoint.
         """
         url = f"{self.BASE_URL}/scores/{mode.value}/{score_id}/download"
         r = self.session.get(url)
