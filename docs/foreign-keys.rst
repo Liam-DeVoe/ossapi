@@ -17,7 +17,7 @@ You can do the same for ``user()`` and ``beatmap()``, in applicable models:
     disc = api.beatmapset_discussion_posts(2641058).posts[0]
     user = disc.user()
 
-    bm_playcount = api.user_beatmaps(user_id=12092800, type_="most_played")[0]
+    bm_playcount = api.user_beatmaps(user_id=12092800, type="most_played")[0]
     beatmap = bm_playcount.beatmap()
 
 .. note::

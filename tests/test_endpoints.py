@@ -110,7 +110,7 @@ class TestUser(TestCase):
 
 class TestMe(TestCase):
     def test_insufficient_scope(self):
-        # client credentials api can't request `Scope.IDENTIFY` and so can't
+        # client credentials grant can't request `Scope.IDENTIFY` and so can't
         # access /me
         self.assertRaises(InsufficientScopeError, api.get_me)
 

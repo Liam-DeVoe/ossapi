@@ -49,9 +49,9 @@ You can get your api v1 key at <https://osu.ppy.sh/p/api/>. Note that due to a [
 Basic usage:
 
 ```python
-from ossapi import Ossapi
+from ossapi import OssapiV1
 
-api = Ossapi("key")
+api = OssapiV1("key")
 print(api.get_beatmaps(user=53378)[0].submit_date)
 print(api.get_match(69063884).games[0].game_id)
 print(api.get_scores(221777)[0].username)

@@ -1679,7 +1679,7 @@ class Ossapi:
     @request(Scope.FRIENDS_READ, category="friends")
     def friends(self) -> List[UserCompact]:
         """
-        Get friends of the authenticated user.
+        Get the friends of the authenticated user.
 
         Notes
         -----
