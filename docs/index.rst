@@ -21,6 +21,11 @@ Links
 | Documentation: https://circleguard.github.io/ossapi/
 | Discord: https://discord.gg/VNnkTjm
 
+Pages
+-----
+
+Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc:`Endpoints <endpoints>` for documentation of all endpoints, if you already know how to authenticate.
+
 .. toctree::
     :hidden:
 

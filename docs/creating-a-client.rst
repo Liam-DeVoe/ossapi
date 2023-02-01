@@ -20,17 +20,25 @@ With this information in hand, we're ready to instantiate an :class:`~ossapi.oss
 Using ``api``
 -------------
 
-Let's make a simple api call to make sure things are working:
+Let's make a few simple api calls to make sure things are working:
 
 .. code-block:: python
 
-    from ossapi import Ossapi, UserLookupKey
+    from ossapi import Ossapi, UserLookupKey, GameMode, RankingType
 
     client_id = None
     client_secret = None
     api = Ossapi(client_id, client_secret)
+
     user = api.user("tybug2", key=UserLookupKey.USERNAME)
     print(user.id)
+
+    top50 = api.ranking(GameMode.OSU, RankingType.PERFORMANCE)
+    # can also use string version of enums
+    top50 = api.ranking("osu", "performance")
+
+    print(top50.ranking[0].user.username) # mrekk as of 2022
+
 
 With that, you're ready to go! Take a look at :doc:`Endpoints <endpoints>` to see documentation for all endpoints, grouped by category (or look at the left sidebar).
 
