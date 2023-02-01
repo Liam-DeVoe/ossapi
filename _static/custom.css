@@ -1,0 +1,5 @@
+/* disable fancy scrolling behavior, which takes too long and is too jarring for large pages (eg appendix)
+   https://github.com/pradyunsg/furo/discussions/384#discussioncomment-2249243 */
+html {
+    scroll-behavior: auto;
+}

@@ -1,0 +1,583 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>ossapi.mod - ossapi v2.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">ossapi v2.6.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">ossapi v2.6.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">ossapi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Beatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#beatmapsets">Beatmapsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#forums">Forums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#friends">Friends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#home">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#matches">Matches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#me">Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#news">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#oauth">Oauth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#rankings">Rankings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#rooms">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#scores">Scores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#seasonal-backgrounds">Seasonal Backgrounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#spotlights">Spotlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#wiki">Wiki</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.replay">Replay</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for ossapi.mod</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="n">int_to_mod</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span>          <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NM&quot;</span><span class="p">,</span>       <span class="s2">&quot;NoMod&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NF&quot;</span><span class="p">,</span>      <span class="s2">&quot;NoFail&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;EZ&quot;</span><span class="p">,</span>        <span class="s2">&quot;Easy&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;TD&quot;</span><span class="p">,</span> <span class="s2">&quot;TouchDevice&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;HD&quot;</span><span class="p">,</span>      <span class="s2">&quot;Hidden&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;HR&quot;</span><span class="p">,</span>    <span class="s2">&quot;HardRock&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;SD&quot;</span><span class="p">,</span> <span class="s2">&quot;SuddenDeath&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;DT&quot;</span><span class="p">,</span>  <span class="s2">&quot;DoubleTime&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RX&quot;</span><span class="p">,</span>       <span class="s2">&quot;Relax&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;HT&quot;</span><span class="p">,</span>    <span class="s2">&quot;HalfTime&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span>     <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NC&quot;</span><span class="p">,</span>   <span class="s2">&quot;Nightcore&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FL&quot;</span><span class="p">,</span>  <span class="s2">&quot;Flashlight&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AT&quot;</span><span class="p">,</span>    <span class="s2">&quot;Autoplay&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;SO&quot;</span><span class="p">,</span>     <span class="s2">&quot;SpunOut&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;AP&quot;</span><span class="p">,</span>   <span class="s2">&quot;Autopilot&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PF&quot;</span><span class="p">,</span>     <span class="s2">&quot;Perfect&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K4&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key4&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K5&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key5&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">17</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K6&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key6&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">18</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K7&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key7&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">19</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K8&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key8&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;FI&quot;</span><span class="p">,</span>      <span class="s2">&quot;FadeIn&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RD&quot;</span><span class="p">,</span>      <span class="s2">&quot;Random&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CN&quot;</span><span class="p">,</span>      <span class="s2">&quot;Cinema&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;TP&quot;</span><span class="p">,</span>      <span class="s2">&quot;Target&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K9&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key9&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CO&quot;</span><span class="p">,</span>     <span class="s2">&quot;KeyCoop&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">26</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K1&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key1&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">27</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K3&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key3&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">28</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K2&quot;</span><span class="p">,</span>        <span class="s2">&quot;Key2&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">29</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;V2&quot;</span><span class="p">,</span>     <span class="s2">&quot;ScoreV2&quot;</span><span class="p">],</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span>    <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;MR&quot;</span><span class="p">,</span>      <span class="s2">&quot;Mirror&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">ModCombination</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An osu! mod combination.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class only exists to allow ``Mod`` to have ``ModCombination`` objects</span>
+<span class="sd">    as class attributes, as you can&#39;t instantiate instances of your own class in</span>
+<span class="sd">    a class definition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_parse_mod_string</span><span class="p">(</span><span class="n">mod_string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an integer representation of a mod string made up of two letter</span>
+<span class="sd">        mod names (&quot;HDHR&quot;, for example).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mod_string: str</span>
+<span class="sd">            The mod string to represent as an int.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            The integer representation of the mod string.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If mod_string is empty, not of even length, or any of its 2-length</span>
+<span class="sd">            substrings do not correspond to a Mod in Mod.ORDER.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mod_string</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mod string (cannot be empty)&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mod_string</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid mod string </span><span class="si">{</span><span class="n">mod_string</span><span class="si">}</span><span class="s2"> (not of even &quot;</span>
+                <span class="s2">&quot;length)&quot;</span><span class="p">)</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">Mod</span><span class="o">.</span><span class="n">NM</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mod_string</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">single_mod</span> <span class="o">=</span> <span class="n">mod_string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+            <span class="c1"># there better only be one Mod that has an acronym matching ours,</span>
+            <span class="c1"># but a comp + 0 index works too</span>
+            <span class="n">matching_mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">mod</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">Mod</span><span class="o">.</span><span class="n">ORDER</span> <span class="k">if</span> \
+                <span class="n">mod</span><span class="o">.</span><span class="n">short_name</span><span class="p">()</span> <span class="o">==</span> <span class="n">single_mod</span><span class="p">]</span>
+            <span class="c1"># `mod.ORDER` uses `_NC` and `_PF`, and we want to parse</span>
+            <span class="c1"># eg &quot;NC&quot; as &quot;DTNC&quot;</span>
+            <span class="k">if</span> <span class="n">Mod</span><span class="o">.</span><span class="n">_NC</span> <span class="ow">in</span> <span class="n">matching_mods</span><span class="p">:</span>
+                <span class="n">matching_mods</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">_NC</span><span class="p">)</span>
+                <span class="n">matching_mods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">NC</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">Mod</span><span class="o">.</span><span class="n">_PF</span> <span class="ow">in</span> <span class="n">matching_mods</span><span class="p">:</span>
+                <span class="n">matching_mods</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">_PF</span><span class="p">)</span>
+                <span class="n">matching_mods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">PF</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">matching_mods</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mod string (no matching mod found &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;for </span><span class="si">{</span><span class="n">single_mod</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">mod</span> <span class="o">+=</span> <span class="n">matching_mods</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">mod</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">short_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The acronym-ized names of the component mods.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The short name of this ModCombination.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; ModCombination(576).short_name()</span>
+<span class="sd">        &quot;NC&quot;</span>
+<span class="sd">        &gt;&gt;&gt; ModCombination(24).short_name()</span>
+<span class="sd">        &quot;HDHR&quot;</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This is a function instead of an attribute set at initialization time</span>
+<span class="sd">        because otherwise we couldn&#39;t refer to a :class:`~.Mod`\s as its class</span>
+<span class="sd">        body isn&#39;t loaded while it&#39;s instantiating :class:`~.Mod`\s.</span>
+
+<span class="sd">        Although technically mods such as NC are represented with two bits -</span>
+<span class="sd">        DT and NC - being set, short_name removes DT and so returns &quot;NC&quot;</span>
+<span class="sd">        rather than &quot;DTNC&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">int_to_mod</span><span class="p">:</span>
+            <span class="c1"># avoid infinite recursion with every mod decomposing into itself</span>
+            <span class="c1"># ad infinitum</span>
+            <span class="k">return</span> <span class="n">int_to_mod</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">component_mods</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">short_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">component_mods</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">long_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The spelled out names of the component mods.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The long name of this ModCombination.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; ModCombination(576).long_name()</span>
+<span class="sd">        &quot;Nightcore&quot;</span>
+<span class="sd">        &gt;&gt;&gt; ModCombination(24).long_name()</span>
+<span class="sd">        &quot;Hidden HardRock&quot;</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This is a function instead of an attribute set at initialization time</span>
+<span class="sd">        because otherwise we couldn&#39;t refer to  :class:`~.Mod`\s as its class</span>
+<span class="sd">        body isn&#39;t loaded while it&#39;s instantiating :class:`~.Mod`\s.</span>
+
+<span class="sd">        Although technically mods such as NC are represented with two bits -</span>
+<span class="sd">        DT and NC - being set, long_name removes DT and so returns &quot;Nightcore&quot;</span>
+<span class="sd">        rather than &quot;DoubleTime Nightcore&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">int_to_mod</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">int_to_mod</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">component_mods</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">long_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">component_mods</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compares the ``value`` of each object&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ModCombination</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a Mod representing the bitwise OR of the two Mods&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ModCombination</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">|</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ModCombination</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;ModCombination(value=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">short_name</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&amp;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decompose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decomposes this mod into its base component mods, which are</span>
+<span class="sd">        :class:`~.ModCombination`\s with a ``value`` of a power of two.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        clean: bool</span>
+<span class="sd">            If true, removes mods that we would think of as duplicate - if both</span>
+<span class="sd">            NC and DT are component mods, remove DT. If both PF and SD are</span>
+<span class="sd">            component mods, remove SD.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[:class:`~.ModCombination`]</span>
+<span class="sd">            A list of the component :class:`~.ModCombination`\s of this mod,</span>
+<span class="sd">            ordered according to :const:`~circleguard.mod.ModCombination.ORDER`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">ModCombination</span><span class="p">(</span><span class="n">mod_int</span><span class="p">)</span> <span class="k">for</span> <span class="n">mod_int</span> <span class="ow">in</span> <span class="n">int_to_mod</span> <span class="k">if</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&amp;</span> <span class="n">mod_int</span><span class="p">]</span>
+        <span class="c1"># order the mods by Mod.ORDER</span>
+        <span class="n">mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">mod</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">Mod</span><span class="o">.</span><span class="n">ORDER</span> <span class="k">if</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">mods</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">clean</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mods</span>
+
+        <span class="k">if</span> <span class="n">Mod</span><span class="o">.</span><span class="n">_NC</span> <span class="ow">in</span> <span class="n">mods</span> <span class="ow">and</span> <span class="n">Mod</span><span class="o">.</span><span class="n">DT</span> <span class="ow">in</span> <span class="n">mods</span><span class="p">:</span>
+            <span class="n">mods</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">DT</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Mod</span><span class="o">.</span><span class="n">_PF</span> <span class="ow">in</span> <span class="n">mods</span> <span class="ow">and</span> <span class="n">Mod</span><span class="o">.</span><span class="n">SD</span> <span class="ow">in</span> <span class="n">mods</span><span class="p">:</span>
+            <span class="n">mods</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Mod</span><span class="o">.</span><span class="n">SD</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mods</span>
+
+
+<div class="viewcode-block" id="Mod"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Mod">[docs]</a><span class="k">class</span> <span class="nc">Mod</span><span class="p">(</span><span class="n">ModCombination</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An ingame osu! mod.</span>
+
+<span class="sd">    Common combinations are available as ``HDDT``, ``HDHR``, and ``HDDTHR``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value: int or str or list</span>
+<span class="sd">        A representation of the desired mod. This can either be its integer</span>
+<span class="sd">        representation such as ``64`` for ``DT`` and ``72`` (``64`` + ``8``) for</span>
+<span class="sd">        ``HDDT``, or a string such as ``&quot;DT&quot;`` for ``DT`` and ``&quot;HDDT&quot;`` (or</span>
+<span class="sd">        ``DTHD``) for ``HDDT``, or a list of strings such as ``[&quot;HD&quot;, &quot;DT&quot;]``</span>
+<span class="sd">        for ``HDDT``.</span>
+<span class="sd">        |br|</span>
+<span class="sd">        If used, the string must be composed of two-letter acronyms for mods,</span>
+<span class="sd">        in any order.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The nightcore mod is never set by itself. When we see plays set with ``NC``,</span>
+<span class="sd">    we are really seeing a ``DT + NC`` play. ``NC`` by itself is ``512``, but</span>
+<span class="sd">    what we expect to see is ``576`` (``512 + 64``; ``DT`` is ``64``). As such</span>
+<span class="sd">    ``Mod.NC`` is defined to be the more intuitive version—``DT + NC``. We</span>
+<span class="sd">    provide the true, technical version of the ``NC`` mod (``512``) as</span>
+<span class="sd">    ``Mod._NC``.</span>
+
+<span class="sd">    This same treatment and reasoning applies to ``Mod.PF``, which we define</span>
+<span class="sd">    as ``PF + SD``. The technical version of PF is available as ``Mod._PF``.</span>
+
+<span class="sd">    A full list of mods and their specification can be found at</span>
+<span class="sd">    https://osu.ppy.sh/help/wiki/Game_Modifiers, or a more technical list at</span>
+<span class="sd">    https://github.com/ppy/osu-api/wiki#mods.</span>
+
+<span class="sd">    Warnings</span>
+<span class="sd">    --------</span>
+<span class="sd">    The fact that this class subclasses ModCombination is slightly misleading.</span>
+<span class="sd">    This is only done so that this class can be instantiated directly, backed</span>
+<span class="sd">    by an internal ModCombination, instead of exposing ModCombination to users.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NM</span>  <span class="o">=</span> <span class="n">NoMod</span>        <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">NF</span>  <span class="o">=</span> <span class="n">NoFail</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">EZ</span>  <span class="o">=</span> <span class="n">Easy</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">TD</span>  <span class="o">=</span> <span class="n">TouchDevice</span>  <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">HD</span>  <span class="o">=</span> <span class="n">Hidden</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">HR</span>  <span class="o">=</span> <span class="n">HardRock</span>     <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">SD</span>  <span class="o">=</span> <span class="n">SuddenDeath</span>  <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">DT</span>  <span class="o">=</span> <span class="n">DoubleTime</span>   <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">RX</span>  <span class="o">=</span> <span class="n">Relax</span>        <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">HT</span>  <span class="o">=</span> <span class="n">HalfTime</span>     <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">_NC</span> <span class="o">=</span> <span class="n">_Nightcore</span>   <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="c1"># most people will find it more useful for NC to be defined as it is ingame</span>
+    <span class="n">NC</span>  <span class="o">=</span> <span class="n">Nightcore</span>    <span class="o">=</span> <span class="n">_NC</span> <span class="o">+</span> <span class="n">DT</span>
+    <span class="n">FL</span>  <span class="o">=</span> <span class="n">Flashlight</span>   <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">AT</span>  <span class="o">=</span> <span class="n">Autoplay</span>     <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span><span class="p">)</span>
+    <span class="n">SO</span>  <span class="o">=</span> <span class="n">SpunOut</span>      <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">AP</span>  <span class="o">=</span> <span class="n">Autopilot</span>    <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span><span class="p">)</span>
+    <span class="n">_PF</span> <span class="o">=</span> <span class="n">_Perfect</span>     <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span><span class="p">)</span>
+    <span class="n">PF</span>  <span class="o">=</span> <span class="n">Perfect</span>      <span class="o">=</span> <span class="n">_PF</span> <span class="o">+</span> <span class="n">SD</span>
+    <span class="n">K4</span>  <span class="o">=</span> <span class="n">Key4</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="n">K5</span>  <span class="o">=</span> <span class="n">Key5</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="n">K6</span>  <span class="o">=</span> <span class="n">Key6</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">17</span><span class="p">)</span>
+    <span class="n">K7</span>  <span class="o">=</span> <span class="n">Key7</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">K8</span>  <span class="o">=</span> <span class="n">Key8</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">19</span><span class="p">)</span>
+    <span class="n">FI</span>  <span class="o">=</span> <span class="n">FadeIn</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">RD</span>  <span class="o">=</span> <span class="n">Random</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">)</span>
+    <span class="n">CN</span>  <span class="o">=</span> <span class="n">Cinema</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span><span class="p">)</span>
+    <span class="n">TP</span>  <span class="o">=</span> <span class="n">Target</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">)</span>
+    <span class="n">K9</span>  <span class="o">=</span> <span class="n">Key9</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">CO</span>  <span class="o">=</span> <span class="n">KeyCoop</span>      <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span><span class="p">)</span>
+    <span class="n">K1</span>  <span class="o">=</span> <span class="n">Key1</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">26</span><span class="p">)</span>
+    <span class="n">K3</span>  <span class="o">=</span> <span class="n">Key3</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">27</span><span class="p">)</span>
+    <span class="n">K2</span>  <span class="o">=</span> <span class="n">Key2</span>         <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">28</span><span class="p">)</span>
+    <span class="n">V2</span>  <span class="o">=</span> <span class="n">ScoreV2</span>      <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">29</span><span class="p">)</span>
+    <span class="n">MR</span>  <span class="o">=</span> <span class="n">Mirror</span>       <span class="o">=</span> <span class="n">ModCombination</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">)</span>
+
+    <span class="n">KM</span>  <span class="o">=</span> <span class="n">KeyMod</span>       <span class="o">=</span> <span class="n">K1</span> <span class="o">+</span> <span class="n">K2</span> <span class="o">+</span> <span class="n">K3</span> <span class="o">+</span> <span class="n">K4</span> <span class="o">+</span> <span class="n">K5</span> <span class="o">+</span> <span class="n">K6</span> <span class="o">+</span> <span class="n">K7</span> <span class="o">+</span> <span class="n">K8</span> <span class="o">+</span> <span class="n">K9</span> <span class="o">+</span> <span class="n">KeyCoop</span>
+
+    <span class="c1"># common mod combinations</span>
+    <span class="n">HDDT</span> <span class="o">=</span> <span class="n">HD</span> <span class="o">+</span> <span class="n">DT</span>
+    <span class="n">HDHR</span> <span class="o">=</span> <span class="n">HD</span> <span class="o">+</span> <span class="n">HR</span>
+    <span class="n">HDDTHR</span> <span class="o">=</span> <span class="n">HD</span> <span class="o">+</span> <span class="n">DT</span> <span class="o">+</span> <span class="n">HR</span>
+
+    <span class="c1"># how people naturally sort mods in combinations (HDDTHR, not DTHRHD)</span>
+    <span class="c1"># sphinx uses repr() here</span>
+    <span class="c1"># (see https://github.com/sphinx-doc/sphinx/issues/3857), so provide</span>
+    <span class="c1"># our own, more human readable docstrings. #: denotes sphinx docstrings.</span>
+    <span class="c1">#: [NM, EZ, HD, HT, DT, _NC, HR, FL, NF, SD, _PF, RX, AP, SO, AT, V2, TD,</span>
+    <span class="c1">#: FI, RD, CN, TP, K1, K2, K3, K4, K5, K6, K7, K8, K9, CO, MR]</span>
+    <span class="n">ORDER</span> <span class="o">=</span> <span class="p">[</span><span class="n">NM</span><span class="p">,</span> <span class="n">EZ</span><span class="p">,</span> <span class="n">HD</span><span class="p">,</span> <span class="n">HT</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">_NC</span><span class="p">,</span> <span class="n">HR</span><span class="p">,</span> <span class="n">FL</span><span class="p">,</span> <span class="n">NF</span><span class="p">,</span> <span class="n">SD</span><span class="p">,</span> <span class="n">_PF</span><span class="p">,</span> <span class="n">RX</span><span class="p">,</span> <span class="n">AP</span><span class="p">,</span> <span class="n">SO</span><span class="p">,</span> <span class="n">AT</span><span class="p">,</span>
+             <span class="n">V2</span><span class="p">,</span> <span class="n">TD</span><span class="p">,</span> <span class="c1"># we stop caring about order after this point</span>
+             <span class="n">FI</span><span class="p">,</span> <span class="n">RD</span><span class="p">,</span> <span class="n">CN</span><span class="p">,</span> <span class="n">TP</span><span class="p">,</span> <span class="n">K1</span><span class="p">,</span> <span class="n">K2</span><span class="p">,</span> <span class="n">K3</span><span class="p">,</span> <span class="n">K4</span><span class="p">,</span> <span class="n">K5</span><span class="p">,</span> <span class="n">K6</span><span class="p">,</span> <span class="n">K7</span><span class="p">,</span> <span class="n">K8</span><span class="p">,</span> <span class="n">K9</span><span class="p">,</span> <span class="n">CO</span><span class="p">,</span> <span class="n">MR</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">ModCombination</span><span class="o">.</span><span class="n">_parse_mod_string</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">Mod</span><span class="o">.</span><span class="n">NM</span>
+            <span class="k">for</span> <span class="n">mod_str</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+                <span class="n">mod</span> <span class="o">+=</span> <span class="n">Mod</span><span class="p">(</span><span class="n">mod_str</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ModCombination</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with 
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    </body>
+</html>
