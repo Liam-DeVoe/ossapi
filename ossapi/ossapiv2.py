@@ -2172,8 +2172,10 @@ class OssapiV2:
 
         Notes
         -----
-        Returns :class:`~.BeatmapPlaycount` for ``UserBeatmapType.MOST_PLAYED``,
-        and :class:`~.Beatmapset` otherwise.
+        Returns :class:`~.BeatmapPlaycount` for
+        :data:`UserBeatmapType.MOST_PLAYED
+        <ossapi.enums.UserBeatmapType.MOST_PLAYED>`, and :class:`~.Beatmapset`
+        otherwise.
 
         Implements `Get User Beatmaps
         <https://osu.ppy.sh/docs/index.html#get-user-beatmaps>`__ endpoint.
