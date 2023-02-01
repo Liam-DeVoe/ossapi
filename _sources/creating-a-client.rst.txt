@@ -7,7 +7,7 @@ Navigate to your `settings page <https://osu.ppy.sh/home/account/edit#oauth>`__ 
 
 When you create the application, it will show you a client id and secret. Take note of these two values.
 
-With this information in hand, we're ready to instantiate an :class:`~ossapi.ossapiv2.Ossapi` instance:
+With this information in hand, we're ready to create an :class:`~ossapi.ossapiv2.Ossapi` instance:
 
 .. code-block:: python
 

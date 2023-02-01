@@ -244,7 +244,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disc</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">beatmapset_discussion_posts</span><span class="p">(</span><span class="mi">2641058</span><span class="p">)</span><span class="o">.</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">user</span> <span class="o">=</span> <span class="n">disc</span><span class="o">.</span><span class="n">user</span><span class="p">()</span>
 
-<span class="n">bm_playcount</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_beatmaps</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="mi">12092800</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s2">&quot;most_played&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">bm_playcount</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_beatmaps</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="mi">12092800</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;most_played&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">beatmap</span> <span class="o">=</span> <span class="n">bm_playcount</span><span class="o">.</span><span class="n">beatmap</span><span class="p">()</span>
 </pre></div>
 </div>
