@@ -1042,27 +1042,22 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.download_score">
 <span class="sig-name descname"><span class="pre">download_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.download_score" title="Permalink to this definition">#</a></dt>
 <dd><p>Download the replay data of a score.</p>
-<dl class="simple">
-<dt>mode</dt><dd><p>The mode of the score to download.</p>
-</dd>
-<dt>score_id</dt><dd><p>The score to download.</p>
-</dd>
-<dt>raw</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the raw string response from the api
-instead of a <a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Replay</span></code></a> object.</p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
-<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – </p></li>
-<li><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The mode of the score to download.</p></li>
+<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The score to download.</p></li>
+<li><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the raw string response from the api
+instead of a <a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Replay</span></code></a> object.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><em>Replay</em></a></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#scoresmodescoredownload">Download Score</a>
+endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
