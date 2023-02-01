@@ -1019,20 +1019,16 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.rooms">
 <span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.rooms" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the list of current rooms.</p>
-<dl class="simple">
-<dt>type</dt><dd><p>Filter by room type. Default to all rooms.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsmode">Get Rooms</a> endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RoomSearchType" title="ossapi.enums.RoomSearchType"><em>RoomSearchType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p>
+<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RoomSearchType" title="ossapi.enums.RoomSearchType"><em>RoomSearchType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter by room type. Default to all rooms.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsmode">Get Rooms</a> endpoint.</p>
 </dd></dl>
 
 </section>
@@ -1172,28 +1168,20 @@ otherwise.</p>
 <dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user_kudosu">
 <span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user_kudosu" title="Permalink to this definition">#</a></dt>
 <dd><p>Get user kudosu history.</p>
-<dl class="simple">
-<dt>user_id</dt><dd><p>User to get kudosu history of.</p>
-</dd>
-<dt>limit</dt><dd><p>Maximum number of history events to return.</p>
-</dd>
-<dt>offset</dt><dd><p>Offset for pagination.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-kudosu">Get User Kudosu</a> endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – </p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – User to get kudosu history of.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of history events to return.</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.KudosuHistory" title="ossapi.models.KudosuHistory"><em>KudosuHistory</em></a>]</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-kudosu">Get User Kudosu</a> endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
