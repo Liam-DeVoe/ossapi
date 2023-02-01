@@ -2,10 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Grant Types" href="grants.html" /><link rel="prev" title="ossapi" href="index.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 --><title>Python Module Index - ossapi v3.0.0 documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Creating a Client - ossapi v3.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -133,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -157,8 +159,8 @@
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Creating a Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grants.html">Grant Types</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
@@ -215,7 +217,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -223,64 +226,72 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-o"><strong>o</strong></a></div>
+          <section id="creating-a-client">
+<h1>Creating a Client<a class="headerlink" href="#creating-a-client" title="Permalink to this heading">#</a></h1>
+<p>Before we can use ossapi, we’ll need to create an OAuth client.</p>
+<p>Navigate to your <a class="reference external" href="https://osu.ppy.sh/home/account/edit#oauth">settings page</a> and click “New OAuth Application”. You can name it anything you like, but choose a callback url on localhost. For example, <code class="docutils literal notranslate"><span class="pre">http://localhost:3914/</span></code> or <code class="docutils literal notranslate"><span class="pre">http://localhost:727/</span></code>. Any port is fine as long as you don’t choose something another application is using.</p>
+<p>When you create the application, it will show you a client id and secret. Take note of these two values.</p>
+<p>With this information in hand, we’re ready to instantiate an <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span>
+
+<span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="using-api">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">api</span></code><a class="headerlink" href="#using-api" title="Permalink to this heading">#</a></h2>
+<p>Let’s make a simple api call to make sure things are working:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">UserLookupKey</span>
+
+<span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug2&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">UserLookupKey</span><span class="o">.</span><span class="n">USERNAME</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With that, you’re ready to go! Take a look at <a class="reference internal" href="endpoints.html"><span class="doc">Endpoints</span></a> to see documentation for all endpoints, grouped by category (or look at the left sidebar).</p>
+<p>ossapi’s documentation follows the style of <a class="reference external" href="https://osu.ppy.sh/docs/index.html">osu-web’s documentation</a> very closely, and models in ossapi match osu-web almost 1:1, so you can use the docs of one to supplement the other.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are rare exceptions where ossapi’s models have different attribute names from osu-web. For example, <a class="reference internal" href="appendix.html#ossapi.enums.ChangelogSearch.from_" title="ossapi.enums.ChangelogSearch.from_"><code class="xref py py-data docutils literal notranslate"><span class="pre">ChangelogSearch.from_</span></code></a> is returned as <code class="docutils literal notranslate"><span class="pre">from</span></code> in the api, which is a keyword in python.</p>
+</div>
+<p>You can also continue reading about scopes and grants in <a class="reference internal" href="grants.html"><span class="doc">Grants</span></a>.</p>
 </section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-o">
-    <td></td><td><strong>o</strong></td><td></td>
-  </tr>
-  <tr>
-    <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-    <td>
-        <code class="xref">ossapi</code></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="appendix.html#module-ossapi.enums"><code class="xref">ossapi.enums</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="appendix.html#module-ossapi.models"><code class="xref">ossapi.models</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="appendix.html#module-ossapi.ossapiv2"><code class="xref">ossapi.ossapiv2</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="cg-1">
-    <td></td>
-    <td>&#160;&#160;&#160;
-        <a href="appendix.html#module-ossapi.replay"><code class="xref">ossapi.replay</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="grants.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Grant Types</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -295,8 +306,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Creating a Client</a><ul>
+<li><a class="reference internal" href="#using-api">Using <code class="docutils literal notranslate"><span class="pre">api</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

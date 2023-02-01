@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="ossapi" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="Serializing Models" href="serializing-models.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Beatmaps - ossapi v2.6.0 documentation</title>
+        <title>Beatmaps - ossapi v3.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ossapi v2.6.0 documentation</div></a>
+      <a href="index.html"><div class="brand">ossapi v3.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,7 +147,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v2.6.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v3.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -157,6 +157,18 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grants.html">Grant Types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Following Foreign Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul class="current">
@@ -185,6 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.models">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.ossapiv2">Ossapi</a></li>
 </ul>
 
 </div>
@@ -222,8 +235,8 @@
           <section id="beatmaps">
 <h1>Beatmaps<a class="headerlink" href="#beatmaps" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmap">
-<span class="sig-name descname"><span class="pre">beatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmap" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap">
+<span class="sig-name descname"><span class="pre">beatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a beatmap from an id, checksum, or filename.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -245,8 +258,8 @@ endpoints.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmap_attributes">
-<span class="sig-name descname"><span class="pre">beatmap_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmap_attributes" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_attributes">
+<span class="sig-name descname"><span class="pre">beatmap_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_attributes" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the difficult attributes of a beatmap. Used for pp calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -267,8 +280,8 @@ instead of a string (ruleset name).</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmap_scores">
-<span class="sig-name descname"><span class="pre">beatmap_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmap_scores" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_scores">
+<span class="sig-name descname"><span class="pre">beatmap_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the top scores of a beatmap.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -288,10 +301,10 @@ instead of a string (ruleset name).</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmap_user_score">
-<span class="sig-name descname"><span class="pre">beatmap_user_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_score" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_user_score">
+<span class="sig-name descname"><span class="pre">beatmap_user_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a user’s best score on a beatmap. If you want to retrieve all
-scores, see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_scores" title="ossapi.ossapiv2.OssapiV2.beatmap_user_scores"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a>.</p>
+scores, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores" title="ossapi.ossapiv2.Ossapi.beatmap_user_scores"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -311,10 +324,10 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmap_user_scores">
-<span class="sig-name descname"><span class="pre">beatmap_user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_scores" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_user_scores">
+<span class="sig-name descname"><span class="pre">beatmap_user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get all of a user’s scores on a beatmap. If you only want the top user
-score, see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_score" title="ossapi.ossapiv2.OssapiV2.beatmap_user_score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a>.</p>
+score, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score" title="ossapi.ossapiv2.Ossapi.beatmap_user_score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -333,11 +346,11 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmaps">
-<span class="sig-name descname"><span class="pre">beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmaps" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmaps">
+<span class="sig-name descname"><span class="pre">beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmaps" title="Permalink to this definition">#</a></dt>
 <dd><p>Batch get beatmaps by id. If you only want to retrieve a single beatmap,
 or want to retrieve beatmaps by something other than id (eg checksum),
-see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap" title="ossapi.ossapiv2.OssapiV2.beatmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap()</span></code></a>.</p>
+see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="ossapi.ossapiv2.Ossapi.beatmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
@@ -354,8 +367,8 @@ see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap" title
 <section id="beatmapsets">
 <h1>Beatmapsets<a class="headerlink" href="#beatmapsets" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmapset">
-<span class="sig-name descname"><span class="pre">beatmapset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmapset" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset">
+<span class="sig-name descname"><span class="pre">beatmapset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a beatmapset from a beatmapset id or a beatmap id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -374,8 +387,8 @@ see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap" title
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmapset_discussion_posts">
-<span class="sig-name descname"><span class="pre">beatmapset_discussion_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussion_posts" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts">
+<span class="sig-name descname"><span class="pre">beatmapset_discussion_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the posts of a beatmapset discussion.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -399,8 +412,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmapset_discussion_votes">
-<span class="sig-name descname"><span class="pre">beatmapset_discussion_votes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussion_votes" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes">
+<span class="sig-name descname"><span class="pre">beatmapset_discussion_votes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes" title="Permalink to this definition">#</a></dt>
 <dd><p>Get beatmapset discussion votes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -426,8 +439,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmapset_discussions">
-<span class="sig-name descname"><span class="pre">beatmapset_discussions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_unresolved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussions" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussions">
+<span class="sig-name descname"><span class="pre">beatmapset_discussions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_unresolved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions" title="Permalink to this definition">#</a></dt>
 <dd><p>Get beatmapset discussions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -456,8 +469,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.beatmapset_events">
-<span class="sig-name descname"><span class="pre">beatmapset_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.beatmapset_events" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_events">
+<span class="sig-name descname"><span class="pre">beatmapset_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_events" title="Permalink to this definition">#</a></dt>
 <dd><p>Get beatmapset events. Equivalent to the events search page on the
 website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets/events">https://osu.ppy.sh/beatmapsets/events</a>).</p>
 <dl class="field-list simple">
@@ -480,8 +493,8 @@ website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets/even
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.search_beatmapsets">
-<span class="sig-name descname"><span class="pre">search_beatmapsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchMode.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchCategory.HAS_LEADERBOARD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchExplicitContent.HIDE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchGenre.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchLanguage.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_storyboard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recommended_difficulty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_converts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_followed_mappers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_spotlights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_featured_artists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.search_beatmapsets" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search_beatmapsets">
+<span class="sig-name descname"><span class="pre">search_beatmapsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchMode.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchCategory.HAS_LEADERBOARD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchExplicitContent.HIDE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchGenre.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchLanguage.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_storyboard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recommended_difficulty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_converts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_followed_mappers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_spotlights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_featured_artists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets" title="Permalink to this definition">#</a></dt>
 <dd><p>Search beatmapsets. Equivalent to the beatmapset search page on the
 website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets">https://osu.ppy.sh/beatmapsets</a>).</p>
 <dl class="field-list simple">
@@ -517,8 +530,8 @@ endpoint.</p>
 <section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.changelog_build">
-<span class="sig-name descname"><span class="pre">changelog_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.changelog_build" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build">
+<span class="sig-name descname"><span class="pre">changelog_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build" title="Permalink to this definition">#</a></dt>
 <dd><p>Get changelog build details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -536,8 +549,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.changelog_build_lookup">
-<span class="sig-name descname"><span class="pre">changelog_build_lookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">changelog,</span> <span class="pre">key=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.changelog_build_lookup" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build_lookup">
+<span class="sig-name descname"><span class="pre">changelog_build_lookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">changelog,</span> <span class="pre">*,</span> <span class="pre">key=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup" title="Permalink to this definition">#</a></dt>
 <dd><p>Look up a changelog build by version, update stream name, or id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -557,8 +570,8 @@ by build id.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.changelog_listing">
-<span class="sig-name descname"><span class="pre">changelog_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">from_=None,</span> <span class="pre">to=None,</span> <span class="pre">max_id=None,</span> <span class="pre">stream=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.changelog_listing" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_listing">
+<span class="sig-name descname"><span class="pre">changelog_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">*,</span> <span class="pre">from_=None,</span> <span class="pre">to=None,</span> <span class="pre">max_id=None,</span> <span class="pre">stream=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_listing" title="Permalink to this definition">#</a></dt>
 <dd><p>Get list of changelogs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -583,12 +596,12 @@ by build id.</p></li>
 <section id="chat">
 <h1>Chat<a class="headerlink" href="#chat" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.send_announcement">
-<span class="sig-name descname"><span class="pre">send_announcement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.send_announcement" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.send_announcement">
+<span class="sig-name descname"><span class="pre">send_announcement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.send_announcement" title="Permalink to this definition">#</a></dt>
 <dd><p>Send an announcement message. You must be in the announce usergroup to
 use this endpoint (and if you don’t know what that is, then you aren’t
 in it).</p>
-<p>If you want to send a normal pm, see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.send_pm" title="ossapi.ossapiv2.OssapiV2.send_pm"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_pm()</span></code></a>.</p>
+<p>If you want to send a normal pm, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_pm" title="ossapi.ossapiv2.Ossapi.send_pm"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_pm()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -613,8 +626,8 @@ dm me on discord (tybug#8490)!</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.send_pm">
-<span class="sig-name descname"><span class="pre">send_pm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.send_pm" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.send_pm">
+<span class="sig-name descname"><span class="pre">send_pm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.send_pm" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a pm to a user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -636,8 +649,8 @@ dm me on discord (tybug#8490)!</p>
 <section id="comments">
 <h1>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.comment">
-<span class="sig-name descname"><span class="pre">comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.comment" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.comment" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a comment and its replies (up to 2 levels deep).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -652,10 +665,10 @@ dm me on discord (tybug#8490)!</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.comments">
-<span class="sig-name descname"><span class="pre">comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.comments" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.comments">
+<span class="sig-name descname"><span class="pre">comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.comments" title="Permalink to this definition">#</a></dt>
 <dd><p>Get comments and their replies (up to 2 levels deep). If you only want
-to retrieve a single comment, see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.comment" title="ossapi.ossapiv2.OssapiV2.comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comment()</span></code></a>.</p>
+to retrieve a single comment, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment" title="ossapi.ossapiv2.Ossapi.comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comment()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -679,15 +692,15 @@ the user-specified default when authenticated.</p></li>
 <section id="forums">
 <h1>Forums<a class="headerlink" href="#forums" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.forum_create_topic">
-<span class="sig-name descname"><span class="pre">forum_create_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forum_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.forum_create_topic" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_create_topic">
+<span class="sig-name descname"><span class="pre">forum_create_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forum_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_create_topic" title="Permalink to this definition">#</a></dt>
 <dd><p><a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-topic">https://osu.ppy.sh/docs/index.html#create-topic</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
 <li><p><strong>forum_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – </p></li>
 <li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
+<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
 <li><p><strong>poll</strong> (<a class="reference internal" href="appendix.html#ossapi.models.ForumPoll" title="ossapi.models.ForumPoll"><em>ForumPoll</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
@@ -698,8 +711,8 @@ the user-specified default when authenticated.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.forum_edit_post">
-<span class="sig-name descname"><span class="pre">forum_edit_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.forum_edit_post" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_edit_post">
+<span class="sig-name descname"><span class="pre">forum_edit_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_edit_post" title="Permalink to this definition">#</a></dt>
 <dd><p>Edit a forum post.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -717,8 +730,8 @@ the user-specified default when authenticated.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.forum_edit_topic">
-<span class="sig-name descname"><span class="pre">forum_edit_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.forum_edit_topic" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_edit_topic">
+<span class="sig-name descname"><span class="pre">forum_edit_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_edit_topic" title="Permalink to this definition">#</a></dt>
 <dd><p>Edit a forum topic.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -736,8 +749,8 @@ the user-specified default when authenticated.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.forum_reply">
-<span class="sig-name descname"><span class="pre">forum_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.forum_reply" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_reply">
+<span class="sig-name descname"><span class="pre">forum_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_reply" title="Permalink to this definition">#</a></dt>
 <dd><p>Reply to a forum topic.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -755,8 +768,8 @@ the user-specified default when authenticated.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.forum_topic">
-<span class="sig-name descname"><span class="pre">forum_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.forum_topic" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_topic">
+<span class="sig-name descname"><span class="pre">forum_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_topic" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a forum topic and its posts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -785,8 +798,8 @@ Ignored otherwise.</p></li>
 <section id="friends">
 <h1>Friends<a class="headerlink" href="#friends" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.friends">
-<span class="sig-name descname"><span class="pre">friends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.friends" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.friends">
+<span class="sig-name descname"><span class="pre">friends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.friends" title="Permalink to this definition">#</a></dt>
 <dd><p>Get friends of the authenticated user.</p>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#friends">Get Friends</a> endpoint.</p>
@@ -801,15 +814,15 @@ Ignored otherwise.</p></li>
 <section id="home">
 <h1>Home<a class="headerlink" href="#home" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.search" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search" title="Permalink to this definition">#</a></dt>
 <dd><p>Search users and wiki pages. If you want to search beatmapsets, see
-<a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.search_beatmapsets" title="ossapi.ossapiv2.OssapiV2.search_beatmapsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a>.</p>
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets" title="ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by mode.</p></li>
-<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Search query.</p></li>
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Search query.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (forum, wiki, player, etc.).</p></li>
 <li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
 </ul>
 </dd>
@@ -825,8 +838,8 @@ Ignored otherwise.</p></li>
 <section id="matches">
 <h1>Matches<a class="headerlink" href="#matches" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.match">
-<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.match" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.match" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a match (eg <a class="reference external" href="https://osu.ppy.sh/community/matches/97947404">https://osu.ppy.sh/community/matches/97947404</a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -841,10 +854,10 @@ Ignored otherwise.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.matches">
-<span class="sig-name descname"><span class="pre">matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.matches" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.matches">
+<span class="sig-name descname"><span class="pre">matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.matches" title="Permalink to this definition">#</a></dt>
 <dd><p>Get current matches. If you want to get a specific match, see
-<a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.match" title="ossapi.ossapiv2.OssapiV2.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a>.</p>
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi.match" title="ossapi.ossapiv2.Ossapi.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a>.</p>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#matches">Get Matches</a> endpoint.</p>
 <dl class="field-list simple">
@@ -858,8 +871,8 @@ Ignored otherwise.</p></li>
 <section id="me">
 <h1>Me<a class="headerlink" href="#me" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.get_me">
-<span class="sig-name descname"><span class="pre">get_me</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.get_me" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.get_me">
+<span class="sig-name descname"><span class="pre">get_me</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.get_me" title="Permalink to this definition">#</a></dt>
 <dd><p>Get data about the authenticated user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -875,8 +888,8 @@ mode.</p>
 <section id="news">
 <h1>News<a class="headerlink" href="#news" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.news_listing">
-<span class="sig-name descname"><span class="pre">news_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.news_listing" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.news_listing">
+<span class="sig-name descname"><span class="pre">news_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.news_listing" title="Permalink to this definition">#</a></dt>
 <dd><p>Get news posts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -895,8 +908,8 @@ mode.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.news_post">
-<span class="sig-name descname"><span class="pre">news_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NewsPostKey.SLUG</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.news_post" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.news_post">
+<span class="sig-name descname"><span class="pre">news_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NewsPostKey.SLUG</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.news_post" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a news post by id or slug.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -917,8 +930,8 @@ mode.</p>
 <section id="oauth">
 <h1>Oauth<a class="headerlink" href="#oauth" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.revoke_token">
-<span class="sig-name descname"><span class="pre">revoke_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.revoke_token" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.revoke_token">
+<span class="sig-name descname"><span class="pre">revoke_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.revoke_token" title="Permalink to this definition">#</a></dt>
 <dd><p>Revoke the current token. This will remove any authentication and leave
 you unable to make any more api calls until you re-authenticate.</p>
 <p class="rubric">Notes</p>
@@ -929,8 +942,8 @@ you unable to make any more api calls until you re-authenticate.</p>
 <section id="rankings">
 <h1>Rankings<a class="headerlink" href="#rankings" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.ranking">
-<span class="sig-name descname"><span class="pre">ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RankingFilter.ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spotlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.ranking" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.ranking">
+<span class="sig-name descname"><span class="pre">ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RankingFilter.ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spotlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.ranking" title="Permalink to this definition">#</a></dt>
 <dd><p>Get current rankings for the specified game mode. Can specify <code class="docutils literal notranslate"><span class="pre">type_</span></code>
 to get different types of rankings (performance, score, country, etc).</p>
 <dl class="field-list simple">
@@ -962,8 +975,8 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <section id="rooms">
 <h1>Rooms<a class="headerlink" href="#rooms" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.multiplayer_scores">
-<span class="sig-name descname"><span class="pre">multiplayer_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">playlist_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.multiplayer_scores" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.multiplayer_scores">
+<span class="sig-name descname"><span class="pre">multiplayer_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">playlist_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get scores on a playlist item in a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -984,8 +997,8 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.room">
-<span class="sig-name descname"><span class="pre">room</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.room" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room">
+<span class="sig-name descname"><span class="pre">room</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1000,8 +1013,8 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.room_leaderboard">
-<span class="sig-name descname"><span class="pre">room_leaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.room_leaderboard" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room_leaderboard">
+<span class="sig-name descname"><span class="pre">room_leaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room_leaderboard" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the leaderboard of a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1016,8 +1029,8 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.rooms">
-<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.rooms" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.rooms">
+<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.rooms" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the list of current rooms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1035,8 +1048,8 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <section id="scores">
 <h1>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.download_score">
-<span class="sig-name descname"><span class="pre">download_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.download_score" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.download_score">
+<span class="sig-name descname"><span class="pre">download_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.download_score" title="Permalink to this definition">#</a></dt>
 <dd><p>Download the replay data of a score.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1057,8 +1070,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.score">
-<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.score" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.score" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a score.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1079,8 +1092,8 @@ endpoint.</p>
 <section id="seasonal-backgrounds">
 <h1>Seasonal Backgrounds<a class="headerlink" href="#seasonal-backgrounds" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.seasonal_backgrounds">
-<span class="sig-name descname"><span class="pre">seasonal_backgrounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.seasonal_backgrounds" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.seasonal_backgrounds">
+<span class="sig-name descname"><span class="pre">seasonal_backgrounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.seasonal_backgrounds" title="Permalink to this definition">#</a></dt>
 <dd><p>Get current seasonal backgrounds.</p>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#seasonal-backgrounds">Seasonal Backgrounds</a> endpoint.</p>
@@ -1095,8 +1108,8 @@ endpoint.</p>
 <section id="spotlights">
 <h1>Spotlights<a class="headerlink" href="#spotlights" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.spotlights">
-<span class="sig-name descname"><span class="pre">spotlights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.spotlights" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.spotlights">
+<span class="sig-name descname"><span class="pre">spotlights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.spotlights" title="Permalink to this definition">#</a></dt>
 <dd><p>Get active spotlights.</p>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-spotlights">Get Spotlights</a> endpoint.</p>
@@ -1111,8 +1124,8 @@ endpoint.</p>
 <section id="users">
 <h1>Users<a class="headerlink" href="#users" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user">
-<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user">
+<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a user by id or username.</p>
 <dl class="simple">
 <dt>user</dt><dd><p>The user id or username of the user to get.</p>
@@ -1141,8 +1154,8 @@ if not passed.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user_beatmaps">
-<span class="sig-name descname"><span class="pre">user_beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user_beatmaps" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_beatmaps">
+<span class="sig-name descname"><span class="pre">user_beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_beatmaps" title="Permalink to this definition">#</a></dt>
 <dd><p>Get beatmaps of a user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1165,8 +1178,8 @@ otherwise.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user_kudosu">
-<span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user_kudosu" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_kudosu">
+<span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_kudosu" title="Permalink to this definition">#</a></dt>
 <dd><p>Get user kudosu history.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1185,8 +1198,8 @@ otherwise.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user_recent_activity">
-<span class="sig-name descname"><span class="pre">user_recent_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user_recent_activity" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_recent_activity">
+<span class="sig-name descname"><span class="pre">user_recent_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_recent_activity" title="Permalink to this definition">#</a></dt>
 <dd><p>Get recent activity of a user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1206,8 +1219,8 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.user_scores">
-<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.user_scores" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_scores">
+<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get scores of a user.</p>
 <dl class="simple">
 <dt>user_id</dt><dd><p>The user to get scores of.</p>
@@ -1243,10 +1256,10 @@ endpoint.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.users">
-<span class="sig-name descname"><span class="pre">users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.users" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.users">
+<span class="sig-name descname"><span class="pre">users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.users" title="Permalink to this definition">#</a></dt>
 <dd><p>Batch get users by id. If you only want to retrieve a single user, or
-want to retrieve users by username instead of id, see <a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user" title="ossapi.ossapiv2.OssapiV2.user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">user()</span></code></a>.</p>
+want to retrieve users by username instead of id, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user" title="ossapi.ossapiv2.Ossapi.user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">user()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>user_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – The users to get.</p>
@@ -1263,8 +1276,8 @@ want to retrieve users by username instead of id, see <a class="reference intern
 <section id="wiki">
 <h1>Wiki<a class="headerlink" href="#wiki" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.OssapiV2.wiki_page">
-<span class="sig-name descname"><span class="pre">wiki_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.OssapiV2.wiki_page" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.wiki_page">
+<span class="sig-name descname"><span class="pre">wiki_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.wiki_page" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a wiki page.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1297,14 +1310,14 @@ want to retrieve users by username instead of id, see <a class="reference intern
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="serializing-models.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Home</div>
+                <div class="title">Serializing Models</div>
                 
               </div>
             </a>
@@ -1335,108 +1348,108 @@ want to retrieve users by username instead of id, see <a class="reference intern
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Beatmaps</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap"><code class="docutils literal notranslate"><span class="pre">beatmap()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_attributes"><code class="docutils literal notranslate"><span class="pre">beatmap_attributes()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_score"><code class="docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmap_user_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmaps"><code class="docutils literal notranslate"><span class="pre">beatmaps()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap"><code class="docutils literal notranslate"><span class="pre">beatmap()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_attributes"><code class="docutils literal notranslate"><span class="pre">beatmap_attributes()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_scores()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score"><code class="docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmaps"><code class="docutils literal notranslate"><span class="pre">beatmaps()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#beatmapsets">Beatmapsets</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmapset"><code class="docutils literal notranslate"><span class="pre">beatmapset()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussion_posts"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_posts()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussion_votes"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_votes()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmapset_discussions"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussions()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.beatmapset_events"><code class="docutils literal notranslate"><span class="pre">beatmapset_events()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.search_beatmapsets"><code class="docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset"><code class="docutils literal notranslate"><span class="pre">beatmapset()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_posts()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_votes()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussions()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_events"><code class="docutils literal notranslate"><span class="pre">beatmapset_events()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changelog">Changelog</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.changelog_build"><code class="docutils literal notranslate"><span class="pre">changelog_build()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.changelog_build_lookup"><code class="docutils literal notranslate"><span class="pre">changelog_build_lookup()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.changelog_listing"><code class="docutils literal notranslate"><span class="pre">changelog_listing()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build"><code class="docutils literal notranslate"><span class="pre">changelog_build()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup"><code class="docutils literal notranslate"><span class="pre">changelog_build_lookup()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_listing"><code class="docutils literal notranslate"><span class="pre">changelog_listing()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#chat">Chat</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.send_announcement"><code class="docutils literal notranslate"><span class="pre">send_announcement()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.send_pm"><code class="docutils literal notranslate"><span class="pre">send_pm()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_announcement"><code class="docutils literal notranslate"><span class="pre">send_announcement()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_pm"><code class="docutils literal notranslate"><span class="pre">send_pm()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#comments">Comments</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.comment"><code class="docutils literal notranslate"><span class="pre">comment()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.comments"><code class="docutils literal notranslate"><span class="pre">comments()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment"><code class="docutils literal notranslate"><span class="pre">comment()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comments"><code class="docutils literal notranslate"><span class="pre">comments()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#forums">Forums</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.forum_create_topic"><code class="docutils literal notranslate"><span class="pre">forum_create_topic()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.forum_edit_post"><code class="docutils literal notranslate"><span class="pre">forum_edit_post()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.forum_edit_topic"><code class="docutils literal notranslate"><span class="pre">forum_edit_topic()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.forum_reply"><code class="docutils literal notranslate"><span class="pre">forum_reply()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.forum_topic"><code class="docutils literal notranslate"><span class="pre">forum_topic()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_create_topic"><code class="docutils literal notranslate"><span class="pre">forum_create_topic()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_edit_post"><code class="docutils literal notranslate"><span class="pre">forum_edit_post()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_edit_topic"><code class="docutils literal notranslate"><span class="pre">forum_edit_topic()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_reply"><code class="docutils literal notranslate"><span class="pre">forum_reply()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_topic"><code class="docutils literal notranslate"><span class="pre">forum_topic()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#friends">Friends</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.friends"><code class="docutils literal notranslate"><span class="pre">friends()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.friends"><code class="docutils literal notranslate"><span class="pre">friends()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#home">Home</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#matches">Matches</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.match"><code class="docutils literal notranslate"><span class="pre">match()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.matches"><code class="docutils literal notranslate"><span class="pre">matches()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.match"><code class="docutils literal notranslate"><span class="pre">match()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.matches"><code class="docutils literal notranslate"><span class="pre">matches()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#me">Me</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.get_me"><code class="docutils literal notranslate"><span class="pre">get_me()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.get_me"><code class="docutils literal notranslate"><span class="pre">get_me()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#news">News</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.news_listing"><code class="docutils literal notranslate"><span class="pre">news_listing()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.news_post"><code class="docutils literal notranslate"><span class="pre">news_post()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.news_listing"><code class="docutils literal notranslate"><span class="pre">news_listing()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.news_post"><code class="docutils literal notranslate"><span class="pre">news_post()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#oauth">Oauth</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.revoke_token"><code class="docutils literal notranslate"><span class="pre">revoke_token()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.revoke_token"><code class="docutils literal notranslate"><span class="pre">revoke_token()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#rankings">Rankings</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.ranking"><code class="docutils literal notranslate"><span class="pre">ranking()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.ranking"><code class="docutils literal notranslate"><span class="pre">ranking()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#rooms">Rooms</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.multiplayer_scores"><code class="docutils literal notranslate"><span class="pre">multiplayer_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.room"><code class="docutils literal notranslate"><span class="pre">room()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.room_leaderboard"><code class="docutils literal notranslate"><span class="pre">room_leaderboard()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.rooms"><code class="docutils literal notranslate"><span class="pre">rooms()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores"><code class="docutils literal notranslate"><span class="pre">multiplayer_scores()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room"><code class="docutils literal notranslate"><span class="pre">room()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room_leaderboard"><code class="docutils literal notranslate"><span class="pre">room_leaderboard()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.rooms"><code class="docutils literal notranslate"><span class="pre">rooms()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#scores">Scores</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.download_score"><code class="docutils literal notranslate"><span class="pre">download_score()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.download_score"><code class="docutils literal notranslate"><span class="pre">download_score()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#seasonal-backgrounds">Seasonal Backgrounds</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.seasonal_backgrounds"><code class="docutils literal notranslate"><span class="pre">seasonal_backgrounds()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.seasonal_backgrounds"><code class="docutils literal notranslate"><span class="pre">seasonal_backgrounds()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#spotlights">Spotlights</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.spotlights"><code class="docutils literal notranslate"><span class="pre">spotlights()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.spotlights"><code class="docutils literal notranslate"><span class="pre">spotlights()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#users">Users</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user"><code class="docutils literal notranslate"><span class="pre">user()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user_beatmaps"><code class="docutils literal notranslate"><span class="pre">user_beatmaps()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user_kudosu"><code class="docutils literal notranslate"><span class="pre">user_kudosu()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user_recent_activity"><code class="docutils literal notranslate"><span class="pre">user_recent_activity()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.user_scores"><code class="docutils literal notranslate"><span class="pre">user_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.users"><code class="docutils literal notranslate"><span class="pre">users()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user"><code class="docutils literal notranslate"><span class="pre">user()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_beatmaps"><code class="docutils literal notranslate"><span class="pre">user_beatmaps()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_kudosu"><code class="docutils literal notranslate"><span class="pre">user_kudosu()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_recent_activity"><code class="docutils literal notranslate"><span class="pre">user_recent_activity()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_scores"><code class="docutils literal notranslate"><span class="pre">user_scores()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.users"><code class="docutils literal notranslate"><span class="pre">users()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#wiki">Wiki</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.OssapiV2.wiki_page"><code class="docutils literal notranslate"><span class="pre">wiki_page()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.wiki_page"><code class="docutils literal notranslate"><span class="pre">wiki_page()</span></code></a></li>
 </ul>
 </li>
 </ul>
