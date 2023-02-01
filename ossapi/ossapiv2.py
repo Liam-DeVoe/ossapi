@@ -1962,6 +1962,8 @@ class OssapiV2:
         """
         Get the list of current rooms.
 
+        Parameters
+        ----------
         type
             Filter by room type. Default to all rooms.
 
@@ -2090,6 +2092,8 @@ class OssapiV2:
         """
         Get user kudosu history.
 
+        Parameters
+        ----------
         user_id
             User to get kudosu history of.
         limit
