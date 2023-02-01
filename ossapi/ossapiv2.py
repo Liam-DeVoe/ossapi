@@ -218,9 +218,9 @@ class Scope(Enum):
     PUBLIC = "public"
 
 
-class OssapiV2:
+class Ossapi:
     """
-    A wrapper around osu api v2.
+    A wrapper around osu! api v2. The main entry point for ossapi.
 
     Parameters
     ----------
@@ -240,7 +240,7 @@ class OssapiV2:
         What scopes to request when authenticating.
     grant: Grant or str
         Which oauth grant (aka flow) to use when authenticating with the api.
-        Currently the api offers the client credentials (pass "client" for this
+        The osu api offers the client credentials (pass "client" for this
         parameter) and authorization code (pass "authorization" for this
         parameter) grants.
         |br|
@@ -800,6 +800,7 @@ class OssapiV2:
     def beatmap_user_score(self,
         beatmap_id: BeatmapIdT,
         user_id: UserIdT,
+        *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None
     ) -> BeatmapUserScore:
@@ -832,6 +833,7 @@ class OssapiV2:
     def beatmap_user_scores(self,
         beatmap_id: BeatmapIdT,
         user_id: UserIdT,
+        *,
         mode: Optional[GameModeT] = None
     ) -> List[BeatmapUserScore]:
         """
@@ -861,6 +863,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="beatmaps")
     def beatmap_scores(self,
         beatmap_id: BeatmapIdT,
+        *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
         type: Optional[RankingTypeT] = None
@@ -891,6 +894,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="beatmaps")
     def beatmap(self,
         beatmap_id: Optional[BeatmapIdT] = None,
+        *,
         checksum: Optional[str] = None,
         filename: Optional[str] = None,
     ) -> Beatmap:
@@ -944,6 +948,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="beatmaps")
     def beatmap_attributes(self,
         beatmap_id: int,
+        *,
         mods: Optional[ModT] = None,
         ruleset: Optional[GameModeT] = None,
         ruleset_id: Optional[int] = None
@@ -979,6 +984,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="beatmapsets")
     def beatmapset_discussion_posts(self,
         beatmapset_discussion_id: Optional[int] = None,
+        *,
         limit: Optional[int] = None,
         page: Optional[int] = None,
         sort: Optional[BeatmapDiscussionPostSortT] = None,
@@ -1018,6 +1024,7 @@ class OssapiV2:
 
     @request(Scope.PUBLIC, category="beatmapsets")
     def beatmapset_discussion_votes(self,
+        *,
         beatmapset_discussion_id: Optional[int] = None,
         limit: Optional[int] = None,
         page: Optional[int] = None,
@@ -1065,6 +1072,7 @@ class OssapiV2:
 
     @request(Scope.PUBLIC, category="beatmapsets")
     def beatmapset_discussions(self,
+        *,
         beatmapset_id: Optional[BeatmapsetIdT] = None,
         beatmap_id: Optional[BeatmapIdT] = None,
         beatmapset_status: Optional[BeatmapsetStatusT] = None,
@@ -1230,6 +1238,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="beatmapsets")
     def beatmapset(self,
         beatmapset_id: Optional[BeatmapsetIdT] = None,
+        *,
         beatmap_id: Optional[BeatmapIdT] = None
     ) -> Beatmapset:
         """
@@ -1259,6 +1268,7 @@ class OssapiV2:
 
     @request(Scope.PUBLIC, category="beatmapsets")
     def beatmapset_events(self,
+        *,
         limit: Optional[int] = None,
         page: Optional[int] = None,
         user_id: Optional[UserIdT] = None,
@@ -1324,6 +1334,7 @@ class OssapiV2:
 
     @request(scope=None, category="changelog")
     def changelog_listing(self,
+        *,
         from_: Optional[str] = None,
         to: Optional[str] = None,
         max_id: Optional[int] = None,
@@ -1361,6 +1372,7 @@ class OssapiV2:
     @request(scope=None, category="changelog")
     def changelog_build_lookup(self,
         changelog: str,
+        *,
         key: Optional[str] = None,
         message_formats: List[ChangelogMessageFormat] =
             [ChangelogMessageFormat.HTML, ChangelogMessageFormat.MARKDOWN]
@@ -1395,6 +1407,7 @@ class OssapiV2:
     def send_pm(self,
         user_id: UserIdT,
         message: str,
+        *,
         is_action: Optional[bool] = False
     ) -> CreatePMResponse:
         """
@@ -1472,6 +1485,7 @@ class OssapiV2:
 
     @request(Scope.PUBLIC, category="comments")
     def comments(self,
+        *,
         commentable_type: Optional[CommentableTypeT] = None,
         commentable_id: Optional[int] = None,
         cursor: Optional[Cursor] = None,
@@ -1531,9 +1545,10 @@ class OssapiV2:
 
     @request(Scope.FORUM_WRITE, category="forums")
     def forum_create_topic(self,
-       body: str,
        forum_id: int,
        title: str,
+       body: str,
+       *,
        poll: Optional[ForumPoll] = None,
    ) -> CreateForumTopicResponse:
         """
@@ -1618,6 +1633,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="forums")
     def forum_topic(self,
         topic_id: int,
+        *,
         cursor_string: Optional[str] = None,
         sort: Optional[ForumTopicSortT] = None,
         limit: Optional[int] = None,
@@ -1678,8 +1694,9 @@ class OssapiV2:
 
     @request(Scope.PUBLIC, category="home")
     def search(self,
+        query: str,
+        *,
         mode: Optional[SearchModeT] = None,
-        query: Optional[str] = None,
         page: Optional[int] = None
     ) -> Search:
         """
@@ -1688,10 +1705,10 @@ class OssapiV2:
 
         Parameters
         ----------
-        mode
-            Filter results by mode.
         query
             Search query.
+        mode
+            Filter results by type (forum, wiki, player, etc.).
         page
             Pagination for results.
 
@@ -1767,6 +1784,7 @@ class OssapiV2:
 
     @request(scope=None, category="news")
     def news_listing(self,
+        *,
         limit: Optional[int] = None,
         year: Optional[int] = None,
         cursor_string: Optional[str] = None
@@ -1794,6 +1812,7 @@ class OssapiV2:
     @request(scope=None, category="news")
     def news_post(self,
         news: str,
+        *,
         key: Optional[NewsPostKeyT] = NewsPostKey.SLUG
     ) -> NewsPost:
         """
@@ -1843,6 +1862,7 @@ class OssapiV2:
     def ranking(self,
         mode: GameModeT,
         type: RankingTypeT,
+        *,
         country: Optional[str] = None,
         cursor: Optional[Cursor] = None,
         filter_: RankingFilterT = RankingFilter.ALL,
@@ -1894,6 +1914,7 @@ class OssapiV2:
     def multiplayer_scores(self,
         room_id: int,
         playlist_id: int,
+        *,
         limit: Optional[int] = None,
         sort: Optional[MultiplayerScoresSortT] = None,
         cursor_string: Optional[str] = None
@@ -2086,6 +2107,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="users")
     def user_kudosu(self,
         user_id: UserIdT,
+        *,
         limit: Optional[int] = None,
         offset: Optional[int] = None
     ) -> List[KudosuHistory]:
@@ -2114,6 +2136,7 @@ class OssapiV2:
     def user_scores(self,
         user_id: UserIdT,
         type: ScoreTypeT,
+        *,
         include_fails: Optional[bool] = None,
         mode: Optional[GameModeT] = None,
         limit: Optional[int] = None,
@@ -2157,6 +2180,7 @@ class OssapiV2:
     def user_beatmaps(self,
         user_id: UserIdT,
         type: UserBeatmapTypeT,
+        *,
         limit: Optional[int] = None,
         offset: Optional[int] = None
     ) -> Union[List[Beatmapset], List[BeatmapPlaycount]]:
@@ -2196,6 +2220,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="users")
     def user_recent_activity(self,
         user_id: UserIdT,
+        *,
         limit: Optional[int] = None,
         offset: Optional[int] = None
     ) -> List[Event]:
@@ -2224,6 +2249,7 @@ class OssapiV2:
     @request(Scope.PUBLIC, category="users")
     def user(self,
         user: Union[UserIdT, str],
+        *,
         mode: Optional[GameModeT] = None,
         key: Optional[UserLookupKeyT] = None
     ) -> User:

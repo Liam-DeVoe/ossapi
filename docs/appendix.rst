@@ -4323,3 +4323,11 @@ Replay
 .. autoclass:: Replay
    :members:
 
+
+
+Ossapi
+======
+
+.. module:: ossapi.ossapiv2
+
+.. autoclass:: Ossapi

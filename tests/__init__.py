@@ -1,7 +1,7 @@
 import os
 from unittest import TestCase
 
-from ossapi import OssapiV2, Ossapi, Grant, Scope
+from ossapi import Ossapi, OssapiV1, Grant, Scope
 
 
 # technically all scopes except Scope.DELEGATE, since I don't own a bot account
@@ -13,7 +13,7 @@ UNIT_TEST_MESSAGE = ("unit test from ossapi "
 headless = os.environ.get("OSSAPI_TEST_HEADLESS", False)
 
 
-class DevOssapiV2(OssapiV2):
+class DevOssapi(Ossapi):
     TOKEN_URL = "https://dev.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://dev.ppy.sh/oauth/authorize"
     BASE_URL = "https://dev.ppy.sh/api/v2"
@@ -26,19 +26,19 @@ def get_env(name):
 
 def setup_api_v1():
     key = get_env("OSU_API_KEY")
-    return Ossapi(key)
+    return OssapiV1(key)
 
 def setup_api_v2():
     client_id = int(get_env("OSU_API_CLIENT_ID"))
     client_secret = get_env("OSU_API_CLIENT_SECRET")
-    api_v2 = OssapiV2(client_id, client_secret, strict=True,
+    api_v2 = Ossapi(client_id, client_secret, strict=True,
         grant=Grant.CLIENT_CREDENTIALS)
 
     if headless:
         api_v2_full = None
     else:
         redirect_uri = get_env("OSU_API_REDIRECT_URI")
-        api_v2_full = OssapiV2(client_id, client_secret, redirect_uri,
+        api_v2_full = Ossapi(client_id, client_secret, redirect_uri,
             strict=True, grant=Grant.AUTHORIZATION_CODE, scopes=ALL_SCOPES)
 
     return (api_v2, api_v2_full)
@@ -67,7 +67,7 @@ def setup_api_v2_dev():
     client_secret = get_env("OSU_API_CLIENT_SECRET_DEV")
 
     redirect_uri = get_env("OSU_API_REDIRECT_URI_DEV")
-    return DevOssapiV2(client_id, client_secret, redirect_uri, strict=True,
+    return DevOssapi(client_id, client_secret, redirect_uri, strict=True,
         grant=Grant.AUTHORIZATION_CODE, scopes=ALL_SCOPES)
 
 api_v1 = setup_api_v1()

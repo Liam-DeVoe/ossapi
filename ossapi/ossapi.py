@@ -22,7 +22,7 @@ class InvalidKeyException(APIException):
 class ReplayUnavailableException(APIException):
     pass
 
-class Ossapi:
+class OssapiV1:
     """
     A simple api wrapper. Every public method takes a dict as its argument,
     mapping keys to values.

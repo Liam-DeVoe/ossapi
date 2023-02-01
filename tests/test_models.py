@@ -20,7 +20,7 @@ class TestMethodTypeConversion(TestCase):
 
 class TestExpandableModels(TestCase):
     def test_expand_user(self):
-        user = api.search(query="tybug").users.data[0]
+        user = api.search(query="tybug2").users.data[0]
         # `statistics` is only available on User models, so make sure it's not
         # present before expanding and is present afterwards
         self.assertIsNone(user.statistics)
@@ -66,7 +66,7 @@ class TestFollowingForeignKeys(TestCase):
         self.assertEqual(user.id, 4693052)
 
     def test_score_fks(self):
-        score = api.score(GameMode.STD, 3685255338)
+        score = api.score(GameMode.OSU, 3685255338)
 
         user = score.user()
         self.assertIsInstance(user, UserCompact)
@@ -115,7 +115,7 @@ class TestFollowingForeignKeys(TestCase):
         self.assertIsNone(deleted_by)
 
     def test_beatmap_playcount_fks(self):
-        most_played = api.user_beatmaps(user_id=12092800, type_="most_played")
+        most_played = api.user_beatmaps(user_id=12092800, type="most_played")
         bm_playcount = most_played[0]
 
         beatmap = bm_playcount.beatmap()

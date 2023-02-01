@@ -6,153 +6,153 @@
 Beatmaps
 ========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmap
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmap_attributes
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_attributes
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmap_scores
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_scores
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmap_user_score
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_user_score
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmap_user_scores
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_user_scores
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmaps
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmaps
 
 Beatmapsets
 ===========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmapset
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmapset
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmapset_discussion_posts
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmapset_discussion_votes
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmapset_discussions
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmapset_discussions
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.beatmapset_events
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmapset_events
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.search_beatmapsets
+.. autofunction:: ossapi.ossapiv2.Ossapi.search_beatmapsets
 
 Changelog
 =========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.changelog_build
+.. autofunction:: ossapi.ossapiv2.Ossapi.changelog_build
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.changelog_build_lookup
+.. autofunction:: ossapi.ossapiv2.Ossapi.changelog_build_lookup
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.changelog_listing
+.. autofunction:: ossapi.ossapiv2.Ossapi.changelog_listing
 
 Chat
 ====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.send_announcement
+.. autofunction:: ossapi.ossapiv2.Ossapi.send_announcement
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.send_pm
+.. autofunction:: ossapi.ossapiv2.Ossapi.send_pm
 
 Comments
 ========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.comment
+.. autofunction:: ossapi.ossapiv2.Ossapi.comment
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.comments
+.. autofunction:: ossapi.ossapiv2.Ossapi.comments
 
 Forums
 ======
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.forum_create_topic
+.. autofunction:: ossapi.ossapiv2.Ossapi.forum_create_topic
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.forum_edit_post
+.. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_post
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.forum_edit_topic
+.. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_topic
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.forum_reply
+.. autofunction:: ossapi.ossapiv2.Ossapi.forum_reply
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.forum_topic
+.. autofunction:: ossapi.ossapiv2.Ossapi.forum_topic
 
 Friends
 =======
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.friends
+.. autofunction:: ossapi.ossapiv2.Ossapi.friends
 
 Home
 ====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.search
+.. autofunction:: ossapi.ossapiv2.Ossapi.search
 
 Matches
 =======
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.match
+.. autofunction:: ossapi.ossapiv2.Ossapi.match
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.matches
+.. autofunction:: ossapi.ossapiv2.Ossapi.matches
 
 Me
 ==
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.get_me
+.. autofunction:: ossapi.ossapiv2.Ossapi.get_me
 
 News
 ====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.news_listing
+.. autofunction:: ossapi.ossapiv2.Ossapi.news_listing
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.news_post
+.. autofunction:: ossapi.ossapiv2.Ossapi.news_post
 
 Oauth
 =====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.revoke_token
+.. autofunction:: ossapi.ossapiv2.Ossapi.revoke_token
 
 Rankings
 ========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.ranking
+.. autofunction:: ossapi.ossapiv2.Ossapi.ranking
 
 Rooms
 =====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.multiplayer_scores
+.. autofunction:: ossapi.ossapiv2.Ossapi.multiplayer_scores
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.room
+.. autofunction:: ossapi.ossapiv2.Ossapi.room
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.room_leaderboard
+.. autofunction:: ossapi.ossapiv2.Ossapi.room_leaderboard
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.rooms
+.. autofunction:: ossapi.ossapiv2.Ossapi.rooms
 
 Scores
 ======
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.download_score
+.. autofunction:: ossapi.ossapiv2.Ossapi.download_score
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.score
+.. autofunction:: ossapi.ossapiv2.Ossapi.score
 
 Seasonal Backgrounds
 ====================
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.seasonal_backgrounds
+.. autofunction:: ossapi.ossapiv2.Ossapi.seasonal_backgrounds
 
 Spotlights
 ==========
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.spotlights
+.. autofunction:: ossapi.ossapiv2.Ossapi.spotlights
 
 Users
 =====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.user
+.. autofunction:: ossapi.ossapiv2.Ossapi.user
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.user_beatmaps
+.. autofunction:: ossapi.ossapiv2.Ossapi.user_beatmaps
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.user_kudosu
+.. autofunction:: ossapi.ossapiv2.Ossapi.user_kudosu
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.user_recent_activity
+.. autofunction:: ossapi.ossapiv2.Ossapi.user_recent_activity
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.user_scores
+.. autofunction:: ossapi.ossapiv2.Ossapi.user_scores
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.users
+.. autofunction:: ossapi.ossapiv2.Ossapi.users
 
 Wiki
 ====
 
-.. autofunction:: ossapi.ossapiv2.OssapiV2.wiki_page
+.. autofunction:: ossapi.ossapiv2.Ossapi.wiki_page
 

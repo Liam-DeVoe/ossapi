@@ -26,7 +26,7 @@ class TestSpotlights(TestCase):
 
 class TestUserBeatmaps(TestCase):
     def test_deserialize(self):
-        api.user_beatmaps(user_id=12092800, type_="most_played")
+        api.user_beatmaps(user_id=12092800, type="most_played")
 
 class TestUserKudosu(TestCase):
     def test_deserialize(self):
@@ -128,7 +128,7 @@ class TestChangelogListing(TestCase):
 
 class TestChangelogLookup(TestCase):
     def test_deserialize(self):
-        api.changelog_lookup("lazer")
+        api.changelog_build_lookup("lazer")
 
 class TestForumTopic(TestCase):
     def test_deserialize(self):
@@ -252,7 +252,7 @@ class TestForum(TestCaseDevServer):
         # 2d430a2/config/osu.php#L107.
 
         # create and edit a topic
-        response = api_dev.forum_create_topic(UNIT_TEST_MESSAGE, 85,
+        response = api_dev.forum_create_topic(85, UNIT_TEST_MESSAGE,
             UNIT_TEST_MESSAGE)
         topic_id = response.topic.id
         api_dev.forum_edit_topic(topic_id,

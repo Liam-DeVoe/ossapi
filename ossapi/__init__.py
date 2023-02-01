@@ -3,9 +3,9 @@ import logging
 handler = logging.StreamHandler()
 logging.getLogger("ossapi").addHandler(handler)
 
-from ossapi.ossapi import (Ossapi, ReplayUnavailableException,
+from ossapi.ossapi import (OssapiV1, ReplayUnavailableException,
     InvalidKeyException, APIException)
-from ossapi.ossapiv2 import OssapiV2, Grant, Scope
+from ossapi.ossapiv2 import Ossapi, Grant, Scope
 from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
     ForumTopicAndPosts, Search, CommentBundle, Cursor, Score,
     BeatmapsetSearchResult, ModdingHistoryEventsBundle, User, Rankings,
@@ -37,10 +37,10 @@ from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
 
 __all__ = [
     # OssapiV1
-    "Ossapi", "ReplayUnavailableException", "InvalidKeyException",
+    "OssapiV1", "ReplayUnavailableException", "InvalidKeyException",
     "APIException",
     # OssapiV2 core
-    "OssapiV2", "Grant", "Scope",
+    "Ossapi", "Grant", "Scope",
     # OssapiV2 models
     "Beatmap", "BeatmapCompact", "BeatmapUserScore", "ForumTopicAndPosts",
     "Search", "CommentBundle", "Cursor", "Score", "BeatmapsetSearchResult",
