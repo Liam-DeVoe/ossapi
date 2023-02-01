@@ -1,7 +1,7 @@
 Grant Types
 ===========
 
-Authenticating with the osu! api comes in two flavors: the `Client Credentials` grant, and the `Authorization Code` grant. Client credentials gives you access to most of the api, but you won't be able to do anything that requires a user, like posting to the forums or sending a pm.
+Authenticating with the osu! api comes in two flavors: the **Client Credentials** grant and the **Authorization Code** grant. Client credentials gives you access to most of the api, but you won't be able to do anything that requires a user, like posting to the forums or sending a pm.
 
 The authorization code grant does not have any such restrictions on the endpoints you can access. However, using the authorization code grant requires manual user interaction the first time you authenticate, in order to authorizate your OAuth application. The client credentials grant, in contrast, authenticates automatically and silently.
 

@@ -234,7 +234,7 @@
         <article role="main">
           <section id="grant-types">
 <h1>Grant Types<a class="headerlink" href="#grant-types" title="Permalink to this heading">#</a></h1>
-<p>Authenticating with the osu! api comes in two flavors: the <cite>Client Credentials</cite> grant, and the <cite>Authorization Code</cite> grant. Client credentials gives you access to most of the api, but you won’t be able to do anything that requires a user, like posting to the forums or sending a pm.</p>
+<p>Authenticating with the osu! api comes in two flavors: the <strong>Client Credentials</strong> grant and the <strong>Authorization Code</strong> grant. Client credentials gives you access to most of the api, but you won’t be able to do anything that requires a user, like posting to the forums or sending a pm.</p>
 <p>The authorization code grant does not have any such restrictions on the endpoints you can access. However, using the authorization code grant requires manual user interaction the first time you authenticate, in order to authorizate your OAuth application. The client credentials grant, in contrast, authenticates automatically and silently.</p>
 <p>In short, if you are writing a simple script or bot, or need the script to run in a headless environment, use the client credentials grant. If you need access to any endpoint which requires a user, use the authorization code grant.</p>
 <section id="specifying-a-grant">

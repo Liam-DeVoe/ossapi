@@ -247,14 +247,21 @@
 </div>
 <section id="using-api">
 <h2>Using <code class="docutils literal notranslate"><span class="pre">api</span></code><a class="headerlink" href="#using-api" title="Permalink to this heading">#</a></h2>
-<p>Let’s make a simple api call to make sure things are working:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">UserLookupKey</span>
+<p>Let’s make a few simple api calls to make sure things are working:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">UserLookupKey</span><span class="p">,</span> <span class="n">GameMode</span><span class="p">,</span> <span class="n">RankingType</span>
 
 <span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+
 <span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug2&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">UserLookupKey</span><span class="o">.</span><span class="n">USERNAME</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+<span class="n">top50</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="n">GameMode</span><span class="o">.</span><span class="n">OSU</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">)</span>
+<span class="c1"># can also use string version of enums</span>
+<span class="n">top50</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="s2">&quot;performance&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">top50</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span> <span class="c1"># mrekk as of 2022</span>
 </pre></div>
 </div>
 <p>With that, you’re ready to go! Take a look at <a class="reference internal" href="endpoints.html"><span class="doc">Endpoints</span></a> to see documentation for all endpoints, grouped by category (or look at the left sidebar).</p>
