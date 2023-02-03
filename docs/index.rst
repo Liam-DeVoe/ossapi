@@ -3,7 +3,7 @@ ossapi
 
 ossapi is an api wrapper for osu `api v2 <https://osu.ppy.sh/docs/index.html>`__ and `api v1 <https://github.com/ppy/osu-api/wiki>`__.
 
-osapi is developed and maintained by `tybug <https://github.com/tybug>`__.
+ossapi is developed and maintained by `tybug <https://github.com/tybug>`__.
 
 Installation
 ------------
