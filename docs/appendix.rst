@@ -4315,6 +4315,32 @@ Models
 
 
 
+Ossapi
+======
+
+.. module:: ossapi.ossapiv2
+
+.. autoclass:: Ossapi
+
+
+Scope
+=====
+
+.. module:: ossapi.ossapiv2
+
+.. autoclass:: Scope
+   :members:
+   :undoc-members:
+
+Grant
+=====
+
+.. module:: ossapi.ossapiv2
+
+.. autoclass:: Grant
+   :members:
+   :undoc-members:
+
 Replay
 ======
 
@@ -4322,12 +4348,4 @@ Replay
 
 .. autoclass:: Replay
    :members:
-
-
-
-Ossapi
-======
-
-.. module:: ossapi.ossapiv2
-
-.. autoclass:: Ossapi
+   :undoc-members:
