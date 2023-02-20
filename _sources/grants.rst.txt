@@ -30,7 +30,7 @@ Specifying a Grant
 Scopes
 ------
 
-Some endpoints require a scope other than the default ``Scope.PUBLIC``. For instance, the :meth:`~ossapi.ossapiv2.Ossapi.friends` endpoint requires the ``Scope.FRIENDS_READ`` scope. To be able to access this endpoint, specify the relevant scope when you instantiate :class:`~ossapi.ossapiv2.Ossapi`:
+Some endpoints require a scope other than the default :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>`. For instance, the :meth:`~ossapi.ossapiv2.Ossapi.friends` endpoint requires the :data:`Scope.FRIENDS_READ <ossapi.ossapiv2.Scope.FRIENDS_READ>` scope. To be able to access this endpoint, specify the relevant scope when you instantiate :class:`~ossapi.ossapiv2.Ossapi`:
 
 .. code-block:: python
 
@@ -44,6 +44,6 @@ Some endpoints require a scope other than the default ``Scope.PUBLIC``. For inst
     print(api.friends())
 
 .. note::
-    Scopes are only relevant for the authorization code grant, because the scope for client credentials is always ``Scope.PUBLIC``. Client credentials will not be able to access any endpoint which requires a scope other than ``Scope.PUBLIC``.
+    Scopes are only relevant for the authorization code grant, because the scope for client credentials is always :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>`. Client credentials will not be able to access any endpoint which requires a scope other than :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>`.
 
 You can see which endpoints require what scopes on the `osu! api docs <https://osu.ppy.sh/docs/index.html>`__.

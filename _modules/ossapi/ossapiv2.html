@@ -195,8 +195,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.models">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.replay">Replay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.ossapiv2">Ossapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-0">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-1">Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix.html#module-ossapi.replay">Replay</a></li>
 </ul>
 
 </div>
@@ -250,6 +252,7 @@
 <span class="kn">from</span> <span class="nn">oauthlib.oauth2</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BackendApplicationClient</span><span class="p">,</span> <span class="n">TokenExpiredError</span><span class="p">,</span>
     <span class="n">AccessDeniedError</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.errors</span> <span class="kn">import</span> <span class="n">InsufficientScopeError</span>
+<span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.tokens</span> <span class="kn">import</span> <span class="n">OAuth2Token</span>
 <span class="kn">import</span> <span class="nn">osrparse</span>
 <span class="kn">from</span> <span class="nn">typing_utils</span> <span class="kn">import</span> <span class="n">issubtype</span><span class="p">,</span> <span class="n">get_type_hints</span><span class="p">,</span> <span class="n">get_origin</span><span class="p">,</span> <span class="n">get_args</span>
 
@@ -433,22 +436,31 @@
 
             <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+        <span class="c1"># for docs generation</span>
         <span class="n">wrapper</span><span class="o">.</span><span class="n">__ossapi_category__</span> <span class="o">=</span> <span class="n">category</span>
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">__ossapi_scope__</span> <span class="o">=</span> <span class="n">scope</span>
+
         <span class="k">return</span> <span class="n">wrapper</span>
     <span class="k">return</span> <span class="n">decorator</span>
 
 
-<span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="Grant"><a class="viewcode-back" href="../../appendix.html#ossapi.ossapiv2.Grant">[docs]</a><span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The grant types used by the api.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">CLIENT_CREDENTIALS</span> <span class="o">=</span> <span class="s2">&quot;client&quot;</span>
-    <span class="n">AUTHORIZATION_CODE</span> <span class="o">=</span> <span class="s2">&quot;authorization&quot;</span>
+    <span class="n">AUTHORIZATION_CODE</span> <span class="o">=</span> <span class="s2">&quot;authorization&quot;</span></div>
 
-<span class="k">class</span> <span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="Scope"><a class="viewcode-back" href="../../appendix.html#ossapi.ossapiv2.Scope">[docs]</a><span class="k">class</span> <span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The OAuth scopes used by the api.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">CHAT_WRITE</span> <span class="o">=</span> <span class="s2">&quot;chat.write&quot;</span>
     <span class="n">DELEGATE</span> <span class="o">=</span> <span class="s2">&quot;delegate&quot;</span>
     <span class="n">FORUM_WRITE</span> <span class="o">=</span> <span class="s2">&quot;forum.write&quot;</span>
     <span class="n">FRIENDS_READ</span> <span class="o">=</span> <span class="s2">&quot;friends.read&quot;</span>
     <span class="n">IDENTIFY</span> <span class="o">=</span> <span class="s2">&quot;identify&quot;</span>
-    <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;public&quot;</span>
+    <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;public&quot;</span></div>
 
 
 <div class="viewcode-block" id="Ossapi"><a class="viewcode-back" href="../../appendix.html#ossapi.ossapiv2.Ossapi">[docs]</a><span class="k">class</span> <span class="nc">Ossapi</span><span class="p">:</span>
@@ -522,6 +534,8 @@
         <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">token_directory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">token_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">access_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">refresh_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">grant</span><span class="p">:</span>
             <span class="n">grant</span> <span class="o">=</span> <span class="p">(</span><span class="n">Grant</span><span class="o">.</span><span class="n">AUTHORIZATION_CODE</span> <span class="k">if</span> <span class="n">redirect_uri</span> <span class="k">else</span>
@@ -557,7 +571,19 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`redirect_uri` must be passed if the &quot;</span>
                 <span class="s2">&quot;authorization code grant is used.&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">access_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># allow refresh_token to be null for the case of client credentials</span>
+            <span class="c1"># grant from access token, which does not have an associated refresh</span>
+            <span class="c1"># token.</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="n">access_token</span><span class="p">,</span>
+                <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="n">refresh_token</span>
+            <span class="p">}</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">OAuth2Token</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">gen_token_key</span><span class="p">(</span><span class="n">grant</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">scopes</span><span class="p">):</span>
@@ -596,15 +622,16 @@
         <span class="n">token_file</span> <span class="o">=</span> <span class="n">token_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">.pickle&quot;</span>
         <span class="n">token_file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a valid OAuth2Session, either from a saved token file associated</span>
 <span class="sd">        with this OssapiV2&#39;s parameters, or from a fresh authentication if no</span>
 <span class="sd">        such file exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                <span class="n">token</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> <span class="n">token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">token</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
@@ -2001,7 +2028,7 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        mode</span>
-<span class="sd">            Get data dabout the specified mode. Defaults to the user&#39;s default</span>
+<span class="sd">            Get data about the specified mode. Defaults to the user&#39;s default</span>
 <span class="sd">            mode.</span>
 
 <span class="sd">        Notes</span>

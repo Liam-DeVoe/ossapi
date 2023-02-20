@@ -196,8 +196,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.models">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.ossapiv2">Ossapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-0">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-1">Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
 </ul>
 
 </div>
@@ -257,7 +259,7 @@
 </section>
 <section id="scopes">
 <h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this heading">#</a></h2>
-<p>Some endpoints require a scope other than the default <code class="docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code>. For instance, the <a class="reference internal" href="endpoints.html#ossapi.ossapiv2.Ossapi.friends" title="ossapi.ossapiv2.Ossapi.friends"><code class="xref py py-meth docutils literal notranslate"><span class="pre">friends()</span></code></a> endpoint requires the <code class="docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code> scope. To be able to access this endpoint, specify the relevant scope when you instantiate <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
+<p>Some endpoints require a scope other than the default <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>. For instance, the <a class="reference internal" href="endpoints.html#ossapi.ossapiv2.Ossapi.friends" title="ossapi.ossapiv2.Ossapi.friends"><code class="xref py py-meth docutils literal notranslate"><span class="pre">friends()</span></code></a> endpoint requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FRIENDS_READ" title="ossapi.ossapiv2.Scope.FRIENDS_READ"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code></a> scope. To be able to access this endpoint, specify the relevant scope when you instantiate <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Scope</span>
 
 <span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
@@ -270,7 +272,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Scopes are only relevant for the authorization code grant, because the scope for client credentials is always <code class="docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code>. Client credentials will not be able to access any endpoint which requires a scope other than <code class="docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code>.</p>
+<p>Scopes are only relevant for the authorization code grant, because the scope for client credentials is always <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>. Client credentials will not be able to access any endpoint which requires a scope other than <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>.</p>
 </div>
 <p>You can see which endpoints require what scopes on the <a class="reference external" href="https://osu.ppy.sh/docs/index.html">osu! api docs</a>.</p>
 </section>

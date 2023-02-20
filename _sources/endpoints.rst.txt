@@ -49,7 +49,13 @@ Chat
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_announcement
 
+ .. note::
+    Requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.
+
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_pm
+
+ .. note::
+    Requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.
 
 Comments
 ========
@@ -63,11 +69,23 @@ Forums
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_create_topic
 
+ .. note::
+    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_post
+
+ .. note::
+    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_topic
 
+ .. note::
+    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_reply
+
+ .. note::
+    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_topic
 
@@ -75,6 +93,9 @@ Friends
 =======
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.friends
+
+ .. note::
+    Requires the :data:`Scope.FRIENDS_READ <ossapi.ossapiv2.Scope.FRIENDS_READ>` scope.
 
 Home
 ====
@@ -92,6 +113,9 @@ Me
 ==
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.get_me
+
+ .. note::
+    Requires the :data:`Scope.IDENTIFY <ossapi.ossapiv2.Scope.IDENTIFY>` scope.
 
 News
 ====

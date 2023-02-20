@@ -196,8 +196,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.models">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.ossapiv2">Ossapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-0">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-1">Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
 </ul>
 
 </div>
@@ -624,6 +626,10 @@ in it).</p>
 this endpoint. If it breaks for you, please open an issue on github or
 dm me on discord (tybug#8490)!</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE" title="ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -644,6 +650,10 @@ dm me on discord (tybug#8490)!</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-new-pm">Create New PM</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE" title="ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 </section>
@@ -696,6 +706,10 @@ the user-specified default when authenticated.</p></li>
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_create_topic">
 <span class="sig-name descname"><span class="pre">forum_create_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forum_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_create_topic" title="Permalink to this definition">#</a></dt>
 <dd><p><a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-topic">https://osu.ppy.sh/docs/index.html#create-topic</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -728,6 +742,10 @@ the user-specified default when authenticated.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#edit-post">Edit Post</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -747,6 +765,10 @@ the user-specified default when authenticated.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#edit-topic">Edit Topic</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -766,6 +788,10 @@ the user-specified default when authenticated.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#reply-topic">Reply Topic</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -804,6 +830,10 @@ Ignored otherwise.</p></li>
 <dd><p>Get the friends of the authenticated user.</p>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#friends">Get Friends</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FRIENDS_READ" title="ossapi.ossapiv2.Scope.FRIENDS_READ"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code></a> scope.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
@@ -877,12 +907,16 @@ Ignored otherwise.</p></li>
 <dd><p>Get data about the authenticated user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Get data dabout the specified mode. Defaults to the user’s default
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Get data about the specified mode. Defaults to the user’s default
 mode.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-own-data">Get Own Data</a> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.IDENTIFY" title="ossapi.ossapiv2.Scope.IDENTIFY"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.IDENTIFY</span></code></a> scope.</p>
+</div>
 </dd></dl>
 
 </section>

@@ -196,8 +196,10 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.models">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#module-ossapi.replay">Replay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.ossapiv2">Ossapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-0">Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-1">Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-ossapi.replay">Replay</a></li>
 </ul>
 
 </div>
@@ -7331,6 +7333,123 @@ by an internal ModCombination, instead of exposing ModCombination to users.</p>
 </dd></dl>
 
 </section>
+<section id="module-ossapi.ossapiv2">
+<span id="ossapi"></span><h1>Ossapi<a class="headerlink" href="#module-ossapi.ossapiv2" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Ossapi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">client_id,</span> <span class="pre">client_secret,</span> <span class="pre">redirect_uri=None,</span> <span class="pre">scopes=[&lt;Scope.PUBLIC:</span> <span class="pre">'public'&gt;],</span> <span class="pre">*,</span> <span class="pre">grant=None,</span> <span class="pre">strict=False,</span> <span class="pre">token_directory=None,</span> <span class="pre">token_key=None,</span> <span class="pre">access_token=None,</span> <span class="pre">refresh_token=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2.html#Ossapi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2.Ossapi" title="Permalink to this definition">#</a></dt>
+<dd><p>A wrapper around osu! api v2. The main entry point for ossapi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The id of the client to authenticate with.</p></li>
+<li><p><strong>client_secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The secret of the client to authenticate with.</p></li>
+<li><p><strong>redirect_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The redirect uri for the client. Must be passed if using the
+authorization code grant. This must exactly match the redirect uri on
+the client’s settings page. Additionally, in order for ossapi to receive
+authentication from this redirect uri, it must be a port on localhost.
+So “<a class="reference external" href="http://localhost:3914/">http://localhost:3914/</a>”, “<a class="reference external" href="http://localhost:727/">http://localhost:727/</a>”, etc are all valid
+redirect uris. You can change your client’s redirect uri from its
+settings page.</p></li>
+<li><p><strong>scopes</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – What scopes to request when authenticating.</p></li>
+<li><p><strong>grant</strong> (<a class="reference internal" href="#ossapi.ossapiv2.Grant" title="ossapi.ossapiv2.Grant"><em>Grant</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Which oauth grant (aka flow) to use when authenticating with the api.
+The osu api offers the client credentials (pass “client” for this
+parameter) and authorization code (pass “authorization” for this
+parameter) grants.
+<br />
+The authorization code grant requires user interaction to authenticate
+the first time, but grants full access to the api. In contrast, the
+client credentials grant does not require user interaction to
+authenticate, but only grants guest user access to the api. This means
+you will not be able to do things like download replays on the client
+credentials grant.
+<br />
+If not passed, the grant will be automatically inferred as follows: if
+<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is passed, use the authorization code grant. If
+<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is not passed, use the client credentials grant.</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Whether to run in “strict” mode. In strict mode, ossapi will raise an
+exception if the api returns an attribute in a response which we didn’t
+expect to be there. This is useful for developers which want to catch
+new attributes as they get added. More checks may be added in the future
+for things which developers may want to be aware of, but normal users do
+not want to have an exception raised for.
+<br />
+If you are not a developer, you are very unlikely to want to use this
+parameter.</p></li>
+<li><p><strong>token_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given directory will be used to store and retrieve token
+files instead of locally wherever ossapi is installed. Useful if you
+want more control over token files.</p></li>
+<li><p><strong>token_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given key will be used to name the token file instead of
+an automatically generated one. Note that if you pass this, you are
+taking responsibility for making sure it is unique / unused, and also
+for remembering the key you passed if you wish to eg remove the token in
+the future, which requires the key.</p></li>
+<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-0">
+<span id="scope"></span><h1>Scope<a class="headerlink" href="#module-0" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2.html#Scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2.Scope" title="Permalink to this definition">#</a></dt>
+<dd><p>The OAuth scopes used by the api.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.CHAT_WRITE">
+<span class="sig-name descname"><span class="pre">CHAT_WRITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'chat.write'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.CHAT_WRITE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.DELEGATE">
+<span class="sig-name descname"><span class="pre">DELEGATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'delegate'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.DELEGATE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.FORUM_WRITE">
+<span class="sig-name descname"><span class="pre">FORUM_WRITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forum.write'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.FORUM_WRITE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.FRIENDS_READ">
+<span class="sig-name descname"><span class="pre">FRIENDS_READ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'friends.read'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.FRIENDS_READ" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.IDENTIFY">
+<span class="sig-name descname"><span class="pre">IDENTIFY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'identify'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.IDENTIFY" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Scope.PUBLIC">
+<span class="sig-name descname"><span class="pre">PUBLIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'public'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Scope.PUBLIC" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-1">
+<span id="grant"></span><h1>Grant<a class="headerlink" href="#module-1" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Grant">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Grant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2.html#Grant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2.Grant" title="Permalink to this definition">#</a></dt>
+<dd><p>The grant types used by the api.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Grant.AUTHORIZATION_CODE">
+<span class="sig-name descname"><span class="pre">AUTHORIZATION_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'authorization'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Grant.AUTHORIZATION_CODE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS">
+<span class="sig-name descname"><span class="pre">CLIENT_CREDENTIALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'client'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
 <section id="module-ossapi.replay">
 <span id="replay"></span><h1>Replay<a class="headerlink" href="#module-ossapi.replay" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
@@ -7365,63 +7484,6 @@ accesses are free.</p>
 </div>
 </dd></dl>
 
-</dd></dl>
-
-</section>
-<section id="module-ossapi.ossapiv2">
-<span id="ossapi"></span><h1>Ossapi<a class="headerlink" href="#module-ossapi.ossapiv2" title="Permalink to this heading">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Ossapi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">client_id,</span> <span class="pre">client_secret,</span> <span class="pre">redirect_uri=None,</span> <span class="pre">scopes=[&lt;Scope.PUBLIC:</span> <span class="pre">'public'&gt;],</span> <span class="pre">*,</span> <span class="pre">grant=None,</span> <span class="pre">strict=False,</span> <span class="pre">token_directory=None,</span> <span class="pre">token_key=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2.html#Ossapi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2.Ossapi" title="Permalink to this definition">#</a></dt>
-<dd><p>A wrapper around osu! api v2. The main entry point for ossapi.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>client_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The id of the client to authenticate with.</p></li>
-<li><p><strong>client_secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The secret of the client to authenticate with.</p></li>
-<li><p><strong>redirect_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The redirect uri for the client. Must be passed if using the
-authorization code grant. This must exactly match the redirect uri on
-the client’s settings page. Additionally, in order for ossapi to receive
-authentication from this redirect uri, it must be a port on localhost.
-So “<a class="reference external" href="http://localhost:3914/">http://localhost:3914/</a>”, “<a class="reference external" href="http://localhost:727/">http://localhost:727/</a>”, etc are all valid
-redirect uris. You can change your client’s redirect uri from its
-settings page.</p></li>
-<li><p><strong>scopes</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – What scopes to request when authenticating.</p></li>
-<li><p><strong>grant</strong> (<em>Grant</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Which oauth grant (aka flow) to use when authenticating with the api.
-The osu api offers the client credentials (pass “client” for this
-parameter) and authorization code (pass “authorization” for this
-parameter) grants.
-<br />
-The authorization code grant requires user interaction to authenticate
-the first time, but grants full access to the api. In contrast, the
-client credentials grant does not require user interaction to
-authenticate, but only grants guest user access to the api. This means
-you will not be able to do things like download replays on the client
-credentials grant.
-<br />
-If not passed, the grant will be automatically inferred as follows: if
-<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is passed, use the authorization code grant. If
-<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is not passed, use the client credentials grant.</p></li>
-<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Whether to run in “strict” mode. In strict mode, ossapi will raise an
-exception if the api returns an attribute in a response which we didn’t
-expect to be there. This is useful for developers which want to catch
-new attributes as they get added. More checks may be added in the future
-for things which developers may want to be aware of, but normal users do
-not want to have an exception raised for.
-<br />
-If you are not a developer, you are very unlikely to want to use this
-parameter.</p></li>
-<li><p><strong>token_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given directory will be used to store and retrieve token
-files instead of locally wherever ossapi is installed. Useful if you
-want more control over token files.</p></li>
-<li><p><strong>token_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given key will be used to name the token file instead of
-an automatically generated one. Note that if you pass this, you are
-taking responsibility for making sure it is unique / unused, and also
-for remembering the key you passed if you wish to eg remove the token in
-the future, which requires the key.</p></li>
-</ul>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
@@ -9246,16 +9308,36 @@ the future, which requires the key.</p></li>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-ossapi.ossapiv2">Ossapi</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi"><code class="docutils literal notranslate"><span class="pre">Ossapi</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-0">Scope</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope"><code class="docutils literal notranslate"><span class="pre">Scope</span></code></a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.DELEGATE"><code class="docutils literal notranslate"><span class="pre">Scope.DELEGATE</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.FRIENDS_READ"><code class="docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.IDENTIFY"><code class="docutils literal notranslate"><span class="pre">Scope.IDENTIFY</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Scope.PUBLIC"><code class="docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-1">Grant</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Grant"><code class="docutils literal notranslate"><span class="pre">Grant</span></code></a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Grant.AUTHORIZATION_CODE"><code class="docutils literal notranslate"><span class="pre">Grant.AUTHORIZATION_CODE</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS"><code class="docutils literal notranslate"><span class="pre">Grant.CLIENT_CREDENTIALS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-ossapi.replay">Replay</a><ul>
 <li><a class="reference internal" href="#ossapi.replay.Replay"><code class="docutils literal notranslate"><span class="pre">Replay</span></code></a><ul>
 <li><a class="reference internal" href="#ossapi.replay.Replay.beatmap"><code class="docutils literal notranslate"><span class="pre">Replay.beatmap</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.replay.Replay.user"><code class="docutils literal notranslate"><span class="pre">Replay.user</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-ossapi.ossapiv2">Ossapi</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi"><code class="docutils literal notranslate"><span class="pre">Ossapi</span></code></a></li>
 </ul>
 </li>
 </ul>
