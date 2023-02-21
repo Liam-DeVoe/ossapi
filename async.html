@@ -244,11 +244,11 @@
 </div>
 <p>ossapi provides <a class="reference internal" href="appendix.html#ossapi.ossapiv2_async.OssapiAsync" title="ossapi.ossapiv2_async.OssapiAsync"><code class="xref py py-class docutils literal notranslate"><span class="pre">OssapiAsync</span></code></a>, an async equivalent of <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>. The interfaces are identical, except you must <code class="docutils literal notranslate"><span class="pre">await</span></code> any endpoint calls:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span>
+<span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">OssapiAsync</span>
 
 <span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">OssapiAsync</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug2&quot;</span><span class="p">)</span>
