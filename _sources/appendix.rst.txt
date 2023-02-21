@@ -2282,6 +2282,9 @@ Models
    .. py:attribute:: current_user_attributes
       :type: typing.Any | None
 
+   .. py:attribute:: deleted_at
+      :type: ~datetime.datetime | None
+
    .. py:attribute:: description
       :type: typing.Any | None
 
@@ -3980,6 +3983,18 @@ Models
       :type: int
 
 .. py:class:: UserStatistics
+
+   .. py:attribute:: count_100
+      :type: int
+
+   .. py:attribute:: count_300
+      :type: int
+
+   .. py:attribute:: count_50
+      :type: int
+
+   .. py:attribute:: count_miss
+      :type: int
 
    .. py:attribute:: country_rank
       :type: int | None
