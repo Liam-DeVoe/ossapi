@@ -10,11 +10,11 @@ ossapi provides :class:`~ossapi.ossapiv2_async.OssapiAsync`, an async equivalent
 .. code-block:: python
 
     import asyncio
-    from ossapi import Ossapi
+    from ossapi import OssapiAsync
 
     client_id = None
     client_secret = None
-    api = Ossapi(client_id, client_secret)
+    api = OssapiAsync(client_id, client_secret)
 
     async def main():
         await api.user("tybug2")
