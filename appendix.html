@@ -169,6 +169,7 @@
 <li class="toctree-l1"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Following Foreign Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="async.html">Async</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
@@ -197,6 +198,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Enums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.models">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.ossapiv2">Ossapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-ossapi.ossapiv2_async">OssapiAsync</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-0">Scope</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-1">Grant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.replay">Replay</a></li>
@@ -7392,6 +7394,66 @@ the future, which requires the key.</p></li>
 </dd></dl>
 
 </section>
+<section id="module-ossapi.ossapiv2_async">
+<span id="ossapiasync"></span><h1>OssapiAsync<a class="headerlink" href="#module-ossapi.ossapiv2_async" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ossapi.ossapiv2_async.OssapiAsync">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OssapiAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">client_id,</span> <span class="pre">client_secret,</span> <span class="pre">redirect_uri=None,</span> <span class="pre">scopes=[&lt;Scope.PUBLIC:</span> <span class="pre">'public'&gt;],</span> <span class="pre">*,</span> <span class="pre">grant=None,</span> <span class="pre">strict=False,</span> <span class="pre">token_directory=None,</span> <span class="pre">token_key=None,</span> <span class="pre">access_token=None,</span> <span class="pre">refresh_token=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2_async.html#OssapiAsync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2_async.OssapiAsync" title="Permalink to this definition">#</a></dt>
+<dd><p>Async equivalent of <a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>. Main (async) entry
+point into the osu! api v2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The id of the client to authenticate with.</p></li>
+<li><p><strong>client_secret</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The secret of the client to authenticate with.</p></li>
+<li><p><strong>redirect_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The redirect uri for the client. Must be passed if using the
+authorization code grant. This must exactly match the redirect uri on
+the client’s settings page. Additionally, in order for ossapi to receive
+authentication from this redirect uri, it must be a port on localhost.
+So “<a class="reference external" href="http://localhost:3914/">http://localhost:3914/</a>”, “<a class="reference external" href="http://localhost:727/">http://localhost:727/</a>”, etc are all valid
+redirect uris. You can change your client’s redirect uri from its
+settings page.</p></li>
+<li><p><strong>scopes</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – What scopes to request when authenticating.</p></li>
+<li><p><strong>grant</strong> (<a class="reference internal" href="#ossapi.ossapiv2.Grant" title="ossapi.ossapiv2.Grant"><em>Grant</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Which oauth grant (aka flow) to use when authenticating with the api.
+The osu api offers the client credentials (pass “client” for this
+parameter) and authorization code (pass “authorization” for this
+parameter) grants.
+<br />
+The authorization code grant requires user interaction to authenticate
+the first time, but grants full access to the api. In contrast, the
+client credentials grant does not require user interaction to
+authenticate, but only grants guest user access to the api. This means
+you will not be able to do things like download replays on the client
+credentials grant.
+<br />
+If not passed, the grant will be automatically inferred as follows: if
+<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is passed, use the authorization code grant. If
+<code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is not passed, use the client credentials grant.</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Whether to run in “strict” mode. In strict mode, ossapi will raise an
+exception if the api returns an attribute in a response which we didn’t
+expect to be there. This is useful for developers which want to catch
+new attributes as they get added. More checks may be added in the future
+for things which developers may want to be aware of, but normal users do
+not want to have an exception raised for.
+<br />
+If you are not a developer, you are very unlikely to want to use this
+parameter.</p></li>
+<li><p><strong>token_directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given directory will be used to store and retrieve token
+files instead of locally wherever ossapi is installed. Useful if you
+want more control over token files.</p></li>
+<li><p><strong>token_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – If passed, the given key will be used to name the token file instead of
+an automatically generated one. Note that if you pass this, you are
+taking responsibility for making sure it is unique / unused, and also
+for remembering the key you passed if you wish to eg remove the token in
+the future, which requires the key.</p></li>
+<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-0">
 <span id="scope"></span><h1>Scope<a class="headerlink" href="#module-0" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
@@ -9310,6 +9372,10 @@ accesses are free.</p>
 </li>
 <li><a class="reference internal" href="#module-ossapi.ossapiv2">Ossapi</a><ul>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi"><code class="docutils literal notranslate"><span class="pre">Ossapi</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-ossapi.ossapiv2_async">OssapiAsync</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2_async.OssapiAsync"><code class="docutils literal notranslate"><span class="pre">OssapiAsync</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-0">Scope</a><ul>
