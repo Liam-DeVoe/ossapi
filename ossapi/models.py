@@ -320,6 +320,7 @@ class Beatmapset(BeatmapsetCompact):
     submitted_date: Optional[Datetime]
     tags: str
     current_nominations: Optional[List[Nomination]]
+    deleted_at: Optional[Datetime]
 
     def expand(self) -> Beatmapset:
         return self
@@ -1103,6 +1104,10 @@ class UserStatistics(Model):
     variants: Optional[Any]
     global_rank_exp: Optional[float]
     pp_exp: float
+    count_100: int
+    count_300: int
+    count_50: int
+    count_miss: int
 
 class UserStatisticsRulesets(Model):
     # undocumented

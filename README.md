@@ -38,7 +38,7 @@ To install:
 
 ```bash
 pip install ossapi
-# or, if you want to use the async version of ossapi:
+# or, if you want to use OssapiAsync:
 pip install ossapi[async]
 ```
 
