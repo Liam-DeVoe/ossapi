@@ -2,12 +2,13 @@
 
 # ossapi ([documentation](https://circleguard.github.io/ossapi/))
 
-ossapi is a python wrapper for the osu! api. ossapi supports both [api v2](https://osu.ppy.sh/docs/index.html) and [api v1](https://github.com/ppy/osu-api/wiki) and has every endpoint in both versions implemented.
+ossapi is a python wrapper for the osu! api. ossapi has complete coverage of both [api v2](https://osu.ppy.sh/docs/index.html) and [api v1](https://github.com/ppy/osu-api/wiki). ossapi also provides both sync (`Ossapi`) and async (`OssapiAsync`) versions.
 
 If you need support or would like to contribute, feel free to ask in the `#ossapi` channel of the [circleguard discord](https://discord.gg/e84qxkQ).
 
 * [Installation](#installation)
 * [Quickstart](#quickstart)
+* [Async](#async)
 * [Endpoints](#endpoints)
   * [Beatmaps](#endpoints-beatmaps)
   * [Beatmapsets](#endpoints-beatmapsets)
@@ -37,6 +38,8 @@ To install:
 
 ```bash
 pip install ossapi
+# or, if you want to use the async version of ossapi:
+pip install ossapi[async]
 ```
 
 To upgrade:
@@ -67,6 +70,27 @@ api = Ossapi(client_id, client_secret, callback_url)
 # go wild with endpoint calls! See docs for all endpoints
 print(api.user("tybug2"))
 ```
+
+## Async
+
+ossapi provides an async variant, `OssapiAsync`, which has an identical interface to `Ossapi`:
+
+```python
+import asyncio
+from ossapi import Ossapi
+
+client_id = None
+client_secret = None
+api = Ossapi(client_id, client_secret)
+
+async def main():
+    await api.user("tybug2")
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+```
+
+[Read more about OssapiAsync on the docs.](https://circleguard.github.io/ossapi/async.html)
 
 ## Endpoints
 

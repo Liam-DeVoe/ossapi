@@ -40,5 +40,10 @@ setup(
         "requests_oauthlib",
         "osrparse~=6.0",
         "typing_utils"
-    ]
+    ],
+    extras_require={
+        "async": [
+            "aiohttp"
+        ]
+    }
 )

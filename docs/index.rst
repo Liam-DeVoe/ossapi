@@ -44,7 +44,7 @@ Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc
     expandable-models
     foreign-keys
     serializing-models
-
+    async
 
 .. toctree::
     :maxdepth: 3

@@ -30,6 +30,7 @@ from ossapi.mod import Mod
 from ossapi.replay import Replay
 from ossapi.version import __version__
 from ossapi.encoder import ModelEncoder, serialize_model
+from ossapi.ossapiv2_async import OssapiAsync
 
 from oauthlib.oauth2 import AccessDeniedError, TokenExpiredError
 from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
@@ -40,7 +41,7 @@ __all__ = [
     "OssapiV1", "ReplayUnavailableException", "InvalidKeyException",
     "APIException",
     # OssapiV2 core
-    "Ossapi", "Grant", "Scope",
+    "Ossapi", "OssapiAsync", "Grant", "Scope",
     # OssapiV2 models
     "Beatmap", "BeatmapCompact", "BeatmapUserScore", "ForumTopicAndPosts",
     "Search", "CommentBundle", "Cursor", "Score", "BeatmapsetSearchResult",

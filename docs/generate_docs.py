@@ -237,6 +237,7 @@ def write_class(file, class_name, *, members=True):
             f.write("\n   :undoc-members:")
 
 write_class("ossapiv2", "Ossapi", members=False)
+write_class("ossapiv2_async", "OssapiAsync", members=False)
 write_class("ossapiv2", "Scope")
 write_class("ossapiv2", "Grant")
 write_class("replay", "Replay")

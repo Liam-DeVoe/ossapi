@@ -4323,6 +4323,14 @@ Ossapi
 .. autoclass:: Ossapi
 
 
+OssapiAsync
+===========
+
+.. module:: ossapi.ossapiv2_async
+
+.. autoclass:: OssapiAsync
+
+
 Scope
 =====
 
