@@ -19,7 +19,6 @@ ossapi provides :class:`~ossapi.ossapiv2_async.OssapiAsync`, an async equivalent
     async def main():
         await api.user("tybug2")
 
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(main())
 
 It is possible that the async version may lag behind the sync version in terms of features, as I generally focus on the sync version first. If you run into any issues using the async version, please open an issue! I likely just forgot to copy some improvement from the sync version.

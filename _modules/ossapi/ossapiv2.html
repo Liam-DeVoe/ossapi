@@ -377,7 +377,10 @@
             <span class="k">if</span> <span class="n">requires_user</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">AccessDeniedError</span><span class="p">(</span><span class="s2">&quot;To access this endpoint you must be &quot;</span>
                     <span class="s2">&quot;authorized using the authorization code grant. You are &quot;</span>
-                    <span class="s2">&quot;currently authorized with the client credentials grant&quot;</span><span class="p">)</span>
+                    <span class="s2">&quot;currently authorized with the client credentials grant.&quot;</span>
+                    <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;For more details, see &quot;</span>
+                    <span class="s2">&quot;https://circleguard.github.io/ossapi/grants.html.&quot;</span><span class="p">)</span>
 
             <span class="c1"># we may need to edit this later so convert from tuple</span>
             <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
@@ -521,6 +524,15 @@
 <span class="sd">        taking responsibility for making sure it is unique / unused, and also</span>
 <span class="sd">        for remembering the key you passed if you wish to eg remove the token in</span>
 <span class="sd">        the future, which requires the key.</span>
+<span class="sd">    access_token: str</span>
+<span class="sd">        Access token from the osu! api. Allows instantiating</span>
+<span class="sd">        :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the</span>
+<span class="sd">        osu! api.</span>
+<span class="sd">    refresh_token: str</span>
+<span class="sd">        Refresh token from the osu! api. Allows instantiating</span>
+<span class="sd">        :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the</span>
+<span class="sd">        osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS</span>
+<span class="sd">        &lt;ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS&gt;`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">TOKEN_URL</span> <span class="o">=</span> <span class="s2">&quot;https://osu.ppy.sh/oauth/token&quot;</span>
     <span class="n">AUTH_CODE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://osu.ppy.sh/oauth/authorize&quot;</span>

@@ -7411,8 +7411,12 @@ an automatically generated one. Note that if you pass this, you are
 taking responsibility for making sure it is unique / unused, and also
 for remembering the key you passed if you wish to eg remove the token in
 the future, which requires the key.</p></li>
-<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Access token from the osu! api. Allows instantiating
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> after manually authenticating with the
+osu! api.</p></li>
+<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Refresh token from the osu! api. Allows instantiating
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> after manually authenticating with the
+osu! api. Optional if using <a class="reference internal" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS" title="ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS"><code class="xref py py-data docutils literal notranslate"><span class="pre">Grant.CLIENT_CREDENTIALS</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -7425,7 +7429,7 @@ the future, which requires the key.</p></li>
 <dt class="sig sig-object py" id="ossapi.ossapiv2_async.OssapiAsync">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">OssapiAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">client_id,</span> <span class="pre">client_secret,</span> <span class="pre">redirect_uri=None,</span> <span class="pre">scopes=[&lt;Scope.PUBLIC:</span> <span class="pre">'public'&gt;],</span> <span class="pre">*,</span> <span class="pre">grant=None,</span> <span class="pre">strict=False,</span> <span class="pre">token_directory=None,</span> <span class="pre">token_key=None,</span> <span class="pre">access_token=None,</span> <span class="pre">refresh_token=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2_async.html#OssapiAsync"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2_async.OssapiAsync" title="Permalink to this definition">#</a></dt>
 <dd><p>Async equivalent of <a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>. Main (async) entry
-point into the osu! api v2.</p>
+point into osu! api v2.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -7471,8 +7475,12 @@ an automatically generated one. Note that if you pass this, you are
 taking responsibility for making sure it is unique / unused, and also
 for remembering the key you passed if you wish to eg remove the token in
 the future, which requires the key.</p></li>
-<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>access_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Access token from the osu! api. Allows instantiating
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> after manually authenticating with the
+osu! api.</p></li>
+<li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Refresh token from the osu! api. Allows instantiating
+<a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> after manually authenticating with the
+osu! api. Optional if using <a class="reference internal" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS" title="ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS"><code class="xref py py-data docutils literal notranslate"><span class="pre">Grant.CLIENT_CREDENTIALS</span></code></a></p></li>
 </ul>
 </dd>
 </dl>

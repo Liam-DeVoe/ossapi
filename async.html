@@ -253,8 +253,7 @@
 <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug2&quot;</span><span class="p">)</span>
 
-<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
-<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>It is possible that the async version may lag behind the sync version in terms of features, as I generally focus on the sync version first. If you run into any issues using the async version, please open an issue! I likely just forgot to copy some improvement from the sync version.</p>
