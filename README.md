@@ -56,19 +56,14 @@ To get started, read the docs: https://circleguard.github.io/ossapi/.
 
 ```python
 from ossapi import Ossapi
-# create a new client at https://osu.ppy.sh/home/account/edit#oauth
-client_id = None
-client_secret = None
-callback_url = None # choose a port on localhost, eg http://localhost:727/
 
-# client credentials authentication...
+# create a new client at https://osu.ppy.sh/home/account/edit#oauth
 api = Ossapi(client_id, client_secret)
 
-# ...or authorization grant authentication
-api = Ossapi(client_id, client_secret, callback_url)
-
-# go wild with endpoint calls! See docs for all endpoints
-print(api.user("tybug2"))
+# see docs for full list of endpoints
+print(api.user("tybug2").username)
+print(api.user(12092800, mode="osu").username)
+print(api.beatmap(221777).id)
 ```
 
 ## Async
@@ -79,15 +74,12 @@ ossapi provides an async variant, `OssapiAsync`, which has an identical interfac
 import asyncio
 from ossapi import Ossapi
 
-client_id = None
-client_secret = None
 api = Ossapi(client_id, client_secret)
 
 async def main():
     await api.user("tybug2")
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
+asyncio.run(main())
 ```
 
 [Read more about OssapiAsync on the docs.](https://circleguard.github.io/ossapi/async.html)

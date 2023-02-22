@@ -209,7 +209,10 @@ def request(scope, *, requires_user=False, category):
             if requires_user and self.grant is Grant.CLIENT_CREDENTIALS:
                 raise AccessDeniedError("To access this endpoint you must be "
                     "authorized using the authorization code grant. You are "
-                    "currently authorized with the client credentials grant")
+                    "currently authorized with the client credentials grant."
+                    "\n\n"
+                    "For more details, see "
+                    "https://circleguard.github.io/ossapi/grants.html.")
 
             # we may need to edit this later so convert from tuple
             args = list(args)
@@ -300,7 +303,7 @@ class Scope(Enum):
 class OssapiAsync:
     """
     Async equivalent of :class:`~ossapi.ossapiv2.Ossapi`. Main (async) entry
-    point into the osu! api v2.
+    point into osu! api v2.
 
     Parameters
     ----------
@@ -354,6 +357,15 @@ class OssapiAsync:
         taking responsibility for making sure it is unique / unused, and also
         for remembering the key you passed if you wish to eg remove the token in
         the future, which requires the key.
+    access_token: str
+        Access token from the osu! api. Allows instantiating
+        :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
+        osu! api.
+    refresh_token: str
+        Refresh token from the osu! api. Allows instantiating
+        :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
+        osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIAlS
+        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIAlS>`
     """
     TOKEN_URL = "https://osu.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://osu.ppy.sh/oauth/authorize"
