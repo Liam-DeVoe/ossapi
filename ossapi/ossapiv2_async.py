@@ -364,8 +364,8 @@ class OssapiAsync:
     refresh_token: str
         Refresh token from the osu! api. Allows instantiating
         :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
-        osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIAlS
-        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIAlS>`
+        osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS
+        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`
     """
     TOKEN_URL = "https://osu.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://osu.ppy.sh/oauth/authorize"
