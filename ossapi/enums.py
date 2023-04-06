@@ -34,21 +34,9 @@ class PlayStyles(IntFlagModel):
         api returns a list of strings for User.playstyle.
         """
         if isinstance(value, list):
-            value = iter(value)
-            new_val = cls(next(value))
-            for val in value:
-                new_val |= cls(val)
-            return new_val
+            return cls(*[getattr(cls, val.upper()) for val in value])
 
-        if value == "mouse":
-            return PlayStyles.MOUSE
-        if value == "keyboard":
-            return PlayStyles.KEYBOARD
-        if value == "tablet":
-            return PlayStyles.TABLET
-        if value == "touch":
-            return PlayStyles.TOUCH
-        return super()._missing_(value)
+        return getattr(cls, value.upper(), super()._missing_(value))
 
 class RankStatus(EnumModel):
     GRAVEYARD = -2
@@ -66,21 +54,7 @@ class RankStatus(EnumModel):
         so if we try to instantiate with a string, return the corresponding
         enum attribute.
         """
-        if value == "graveyard":
-            return cls(-2)
-        if value == "wip":
-            return cls(-1)
-        if value == "pending":
-            return cls(0)
-        if value == "ranked":
-            return cls(1)
-        if value == "approved":
-            return cls(2)
-        if value == "qualified":
-            return cls(3)
-        if value == "loved":
-            return cls(4)
-        return super()._missing_(value)
+        return getattr(cls, value.upper(), super()._missing_(value))
 
 class UserAccountHistoryType(EnumModel):
     NOTE = "note"
