@@ -8,6 +8,7 @@ from tests import (
     TestCaseAuthorizationCode, TestCaseDevServer, UNIT_TEST_MESSAGE,
     api_v2 as api,
     api_v2_full as api_full,
+    api_v2_lazer as api_lazer,
     api_v2_dev as api_dev
 )
 
@@ -84,7 +85,12 @@ class TestSearch(TestCase):
 
 class TestComment(TestCase):
     def test_deserialize(self):
-        api.comment(comment_id=1)
+        # normal comments
+        api.comment(1)
+        api.comment(1123123)
+
+        # comment on a deleted object
+        api.comment(3)
 
 class TestDownloadScore(TestCase):
     def test_deserialize(self):
@@ -206,6 +212,10 @@ class TestMatch(TestCase):
         # https://osu.ppy.sh/community/matches/97947404, tournament match
         api.match(97947404)
 
+class TestComments(TestCase):
+    def test_deserialize(self):
+        api.comments()
+
 
 # ======================
 # api_full test cases
@@ -236,6 +246,30 @@ class TestRooms(TestCaseAuthorizationCode):
         # but when I test it against myself I don't think it returns my hosted
         # rooms...
         api_full.rooms(RoomSearchType.OWNED)
+
+
+# ====================
+# api_lazer test cases
+# ====================
+class TestLazerUser(TestCase):
+    def test_lazer_different_from_osu(self):
+        # make sure the lazer domain returns something different than the osu
+        # domain. ie, we're actually hitting a different db.
+
+        statistics = api.user("tybug2").statistics
+        pp_osu = statistics.pp
+        pp_exp_osu = statistics.pp_exp
+
+        statistics = api_lazer.user("tybug2").statistics
+        pp_lazer = statistics.pp
+        pp_exp_lazer = statistics.pp_exp
+
+        # pp_exp is 0 in lazer
+        self.assertEqual(pp_exp_lazer, 0)
+        # not necessarily an invariant, but happens to be true for my account
+        self.assertNotEqual(pp_osu, pp_lazer)
+        # this is the real invariant relating pp_exp and pp on the two domains.
+        self.assertEqual(pp_lazer, pp_exp_osu)
 
 
 # =====================

@@ -24,7 +24,7 @@ Links
 Pages
 -----
 
-Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc:`Endpoints <endpoints>` for documentation of all endpoints, if you already know how to authenticate.
+Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc:`Endpoints <endpoints>` for documentation of all endpoints.
 
 .. toctree::
     :hidden:
@@ -45,6 +45,7 @@ Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc
     foreign-keys
     serializing-models
     async
+    domains
 
 .. toctree::
     :maxdepth: 3

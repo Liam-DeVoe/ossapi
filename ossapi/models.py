@@ -176,7 +176,7 @@ class User(UserCompact):
     website: Optional[str]
     scores_pinned_count: int
     nominated_beatmapset_count: int
-    rank_highest: RankHighest
+    rank_highest: Optional[RankHighest]
 
     def expand(self) -> User:
         # we're already expanded, no need to waste an api call
@@ -321,6 +321,7 @@ class Beatmapset(BeatmapsetCompact):
     tags: str
     current_nominations: Optional[List[Nomination]]
     deleted_at: Optional[Datetime]
+    pack_tags: List[str]
 
     def expand(self) -> Beatmapset:
         return self
@@ -391,21 +392,23 @@ class BeatmapScores(Model):
 
 
 class CommentableMeta(Model):
-    # this class is currently not following the documentation in order to work
-    # around https://github.com/ppy/osu-web/issues/7317. Will be updated when
-    # that issue is resolved (one way or the other).
+    # title is the only attribute returned for deleted commentables.
     id: Optional[int]
     title: str
     type: Optional[str]
     url: Optional[str]
-    # both undocumented
     owner_id: Optional[int]
     owner_title: Optional[str]
-    current_user_attributes: Any
+    current_user_attributes: Optional[CommentableMetaCurrentUserAttributes]
+
+class CommentableMetaCurrentUserAttributes(Model):
+    can_new_comment_reason: Optional[str]
 
 class Comment(Model):
-    commentable_id: int
-    commentable_type: str
+    # null for deleted commentables, eg on /comments/3.
+    commentable_id: Optional[int]
+    # null for deleted commentables, eg on /comments/3.
+    commentable_type: Optional[str]
     created_at: Datetime
     deleted_at: Optional[Datetime]
     edited_at: Optional[Datetime]
@@ -418,7 +421,8 @@ class Comment(Model):
     pinned: bool
     replies_count: int
     updated_at: Datetime
-    user_id: int
+    # null for some commentables, eg on /comments/3.
+    user_id: Optional[int]
     votes_count: int
 
     def user(self) -> User:
@@ -1050,6 +1054,8 @@ class ChatMessage(Model):
     sender: UserCompact
     sender_id: int
     timestamp: Datetime
+    # TODO enumify, example value: "plain"
+    type: str
 
 class CreatePMResponse(Model):
     message: ChatMessage
@@ -1184,17 +1190,20 @@ class Matches(Model):
     matches: List[Match]
     cursor: CursorT
     params: Any
+    cursor_string: str
 
 class MatchGame(Model):
     id: int
     start_time: Datetime
-    end_time: Datetime
+    # null for in-progress matches.
+    end_time: Optional[Datetime]
     mode: GameMode
     mode_int: int
     scoring_type: ScoringType
     team_type: TeamType
     mods: List[Mod]
     beatmap: BeatmapCompact
+    beatmap_id: int
     scores: List[Score]
 
 class MatchEventDetail(Model):

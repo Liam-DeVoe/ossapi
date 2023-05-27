@@ -59,11 +59,6 @@ from ossapi.replay import Replay
 
 
 class Oauth2SessionAsync(OAuth2Session):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        from aiohttp import ClientSession
-        self.session = ClientSession()
-
     # this method is shamelessly copied from `OAuth2Session.request`, modified
     # to call `self.session.request` instead of `super().request`.
     # Any OAuth2Session code which calls `request` will remain sync, but we have
@@ -75,6 +70,8 @@ class Oauth2SessionAsync(OAuth2Session):
         self,
         method,
         url,
+        *,
+        session,
         data=None,
         headers=None,
         withhold_token=False,
@@ -111,7 +108,7 @@ class Oauth2SessionAsync(OAuth2Session):
                 else:
                     raise
 
-        return await self.session.request(
+        return await session.request(
             method, url, headers=headers, data=data, **kwargs
         )
 
@@ -365,7 +362,7 @@ class OssapiAsync:
         Refresh token from the osu! api. Allows instantiating
         :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
         osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS
-        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`
+        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`.
     """
     TOKEN_URL = "https://osu.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://osu.ppy.sh/oauth/authorize"
@@ -572,11 +569,21 @@ class OssapiAsync:
             pickle.dump(token, f)
 
     async def _request(self, type_, method, url, params={}, data={}):
+        from aiohttp import ClientSession
+
         params = self._format_params(params)
         # also format data for post requests
         data = self._format_params(data)
+
+        # No, we should not be using a session for every request. Yes, we are
+        # not achieving 100% performance by doing this. The benefit is that we
+        # don't require `async with OssapiAsync(...) as api:` syntax in order to
+        # use ossapi.
+        aiohttp_session = ClientSession()
+
         try:
-            r = await self.session.request_async(method, f"{self.BASE_URL}{url}",
+            r = await self.session.request_async(method,
+                f"{self.BASE_URL}{url}", session=aiohttp_session,
                 params=params, data=data)
         except TokenExpiredError:
             # provide "auto refreshing" for client credentials grant. The client
@@ -590,13 +597,28 @@ class OssapiAsync:
             self.session = self._new_client_grant(self.client_id,
                 self.client_secret)
             # redo the request now that we have a valid token
-            r = await self.session.request_async(method, f"{self.BASE_URL}{url}",
+            r = await self.session.request_async(method,
+                f"{self.BASE_URL}{url}", session=aiohttp_session,
                 params=params, data=data)
 
-        self.log.info(f"made {method} request to {r.real_url}, data {data}")
-        json_ = await r.json()
+        # aiohttp annoyingly differentiates between url (no url fragments, for
+        # some reason) and real_url (actual url). They also use a URL object
+        # here instead of a string.
+        url = str(r.real_url)
+        self.log.info(f"made {method} request to {url}, data {data}")
+        # aiohttp throws on unexpected encoding (non-json mimetype). Match
+        # requests behavior by automatically detecting encoding.
+        # See https://github.com/circleguard/ossapi/issues/60.
+        json_ = await r.json(encoding=None)
+        # aiohttp sessions have to live as long as any responses returned via
+        # the session. Wait to close it until we're done with the response `r`.
+        # Make sure we close this before we call _check_response, or any errors
+        # there will result in the session not being closed. We should probably
+        # move this to a try/finally block at some point for safety.
+        await aiohttp_session.close()
+
         self.log.debug(f"received json: \n{json.dumps(json_, indent=4)}")
-        self._check_response(json_, r.url)
+        self._check_response(json_, url)
 
         return self._instantiate_type(type_, json_)
 
@@ -976,7 +998,8 @@ class OssapiAsync:
         *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
-        type: Optional[RankingTypeT] = None
+        type: Optional[RankingTypeT] = None,
+        limit: Optional[int] = None
     ) -> BeatmapScores:
         """
         Get the top scores of a beatmap.
@@ -991,13 +1014,16 @@ class OssapiAsync:
             Get the top scores set with exactly these mods, if passed.
         type
             How to order the scores. Defaults to ordering by score.
+        limit
+            How many results to return. Defaults to 50. Must be between 1 and
+            100.
 
         Notes
         -----
         Implements the `Get Beatmap Scores
         <https://osu.ppy.sh/docs/index.html#get-beatmap-scores>`__ endpoint.
         """
-        params = {"mode": mode, "mods": mods, "type": type}
+        params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
         return await self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores",
             params)
 
@@ -1023,7 +1049,7 @@ class OssapiAsync:
         Notes
         -----
         Combines the
-        `Get Beatmap <https://osu.ppy.sh/docs/index.html#get-beatmapL>`_ and
+        `Get Beatmap <https://osu.ppy.sh/docs/index.html#get-beatmap>`_ and
         `Lookup Beatmap <https://osu.ppy.sh/docs/index.html#lookup-beatmap>`_
         endpoints.
         """
@@ -1053,7 +1079,8 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmaps>`__ endpoint.
         """
         params = {"ids": beatmap_ids}
-        return await self._get(Beatmaps, "/beatmaps", params).beatmaps
+        beatmaps = await self._get(Beatmaps, "/beatmaps", params)
+        return beatmaps.beatmaps
 
     @request(Scope.PUBLIC, category="beatmaps")
     async def beatmap_attributes(self,
@@ -1818,7 +1845,7 @@ class OssapiAsync:
         query
             Search query.
         mode
-            Filter results by type (forum, wiki, player, etc.).
+            Filter results by type (wiki or player).
         page
             Pagination for results.
 
@@ -1980,7 +2007,7 @@ class OssapiAsync:
         variant: Optional[str] = None
     ) -> Rankings:
         """
-        Get current rankings for the specified game mode. Can specify ``type_``
+        Get current rankings for the specified game mode. Can specify ``type``
         to get different types of rankings (performance, score, country, etc).
 
         Parameters
@@ -2157,24 +2184,35 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
         endpoint.
         """
+        from aiohttp import ClientSession, ContentTypeError
+
         url = f"{self.BASE_URL}/scores/{mode.value}/{score_id}/download"
-        r = await self.session.request_async("GET", url)
+
+        aiohttp_session = ClientSession()
+        r = await self.session.request_async("GET", url,
+            session=aiohttp_session)
 
         # if the response above succeeded, it will return a raw string
         # instead of json. If it didn't succeed, it will return json with an
         # error.
-        # So always try parsing as json to check if there's an error. If parsin
+        # So always try parsing as json to check if there's an error. If parsing
         # fails, just assume the request succeeded and move on.
+        # TODO we probably want to be checking headers here instead.
+        # Should be x-osu-replay for valid response.
         try:
-            json_ = r.json()
+            json_ = await r.json()
+            await aiohttp_session.close()
             self._check_response(json_, url)
-        except json.JSONDecodeError:
+        except ContentTypeError:
             pass
 
-        if raw:
-            return r.content
+        content = await r.read()
+        await aiohttp_session.close()
 
-        replay = osrparse.Replay.from_string(r.content)
+        if raw:
+            return content
+
+        replay = osrparse.Replay.from_string(content)
         return Replay(replay, self)
 
 
@@ -2403,7 +2441,8 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-users>`__ endpoint.
         """
         params = {"ids": user_ids}
-        return await self._get(Users, "/users", params).users
+        users = await self._get(Users, "/users", params)
+        return users.users
 
     # /wiki
     # -----

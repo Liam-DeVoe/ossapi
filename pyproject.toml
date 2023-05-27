@@ -1,0 +1,26 @@
+[project]
+name = "ossapi"
+version = "3.1.9"
+description = "Complete python wrapper for osu! api v2 and v1."
+readme = "README.md"
+keywords = ["osu!", "wrapper", "api", "python"]
+authors = [
+  {name = "Liam DeVoe", email = "orionldevoe@gmail.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "requests",
+    "requests_oauthlib",
+    "osrparse~=6.0",
+    "typing_utils"
+]
+
+[project.optional-dependencies]
+async = ["aiohttp"]
+
+[project.urls]
+"Homepage" = "https://github.com/circleguard/ossapi"

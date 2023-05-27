@@ -220,7 +220,7 @@ generator.process_module(ossapi.models, "Models")
 generator.write_to_path(p / "appendix.rst")
 
 generator = Generator()
-generator.result += ("|br| |br| All functions in this file are methods of the "
+generator.result += ("|br| |br| All functions on this page are methods of the "
     ":class:`~ossapi.ossapiv2.Ossapi` class.\n\n")
 generator.process_endpoints(ossapi.Ossapi)
 generator.write_to_path(p / "endpoints.rst")

@@ -230,6 +230,18 @@ class Scope(Enum):
     IDENTIFY = "identify"
     PUBLIC = "public"
 
+class Domain(Enum):
+    """
+    Different possible api domains. These correspond to different deployments of
+    the osu server: osu.ppy.sh, lazer.ppy.sh, and dev.ppy.sh respectively.
+
+    The default domain, and the one the vast majority of users want, is
+    Domain.OSU, and corresponds to the main website. To retrieve information
+    from the lazer website or the dev website, use the corresponding domain.
+    """
+    OSU = "osu"
+    LAZER = "lazer"
+    DEV = "dev"
 
 class Ossapi:
     """
@@ -295,11 +307,23 @@ class Ossapi:
         Refresh token from the osu! api. Allows instantiating
         :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
         osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS
-        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`
+        <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`.
+    domain: Domain or str
+        The domain to retrieve information from. This defaults to
+        :data:`Domain.OSU <ossapi.ossapiv2.Domain.OSU>`, which corresponds to
+        osu.ppy.sh, the main website.
+        |br|
+        To retrieve information from lazer.ppy.sh - for instance, the
+        leaderboards on lazer, or a user's best score on lazer - specify
+        :data:`Domain.LAZER <ossapi.ossapiv2.Domain.LAZER>`. To retureve
+        information from dev.ppy.sh, specify
+        :data:`Domain.DEV <ossapi.ossapiv2.Domain.DEV>`.
+        |br|
+        See :doc:`Domains <domains>` for more about domains.
     """
-    TOKEN_URL = "https://osu.ppy.sh/oauth/token"
-    AUTH_CODE_URL = "https://osu.ppy.sh/oauth/authorize"
-    BASE_URL = "https://osu.ppy.sh/api/v2"
+    TOKEN_URL = "https://{domain}.ppy.sh/oauth/token"
+    AUTH_CODE_URL = "https://{domain}.ppy.sh/oauth/authorize"
+    BASE_URL = "https://{domain}.ppy.sh/api/v2"
 
     def __init__(self,
         client_id: int,
@@ -312,12 +336,19 @@ class Ossapi:
         token_directory: Optional[str] = None,
         token_key: Optional[str] = None,
         access_token: Optional[str] = None,
-        refresh_token: Optional[str] = None
+        refresh_token: Optional[str] = None,
+        domain: Union[str, Domain] = Domain.OSU
     ):
         if not grant:
             grant = (Grant.AUTHORIZATION_CODE if redirect_uri else
                 Grant.CLIENT_CREDENTIALS)
         grant = Grant(grant)
+
+        domain = Domain(domain)
+
+        self.token_url = self.TOKEN_URL.format(domain=domain.value)
+        self.auth_code_url = self.AUTH_CODE_URL.format(domain=domain.value)
+        self.base_url = self.BASE_URL.format(domain=domain.value)
 
         self.grant = grant
         self.client_id = client_id
@@ -325,10 +356,11 @@ class Ossapi:
         self.redirect_uri = redirect_uri
         self.scopes = [Scope(scope) for scope in scopes]
         self.strict = strict
+        self.domain = domain
 
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(self.grant,
-            self.client_id, self.client_secret, self.scopes)
+            self.client_id, self.client_secret, self.scopes, self.domain.value)
 
         # support saving tokens when being run from pyinstaller
         if hasattr(sys, '_MEIPASS') and not token_directory:
@@ -363,7 +395,9 @@ class Ossapi:
         self.session = self.authenticate(token=token)
 
     @staticmethod
-    def gen_token_key(grant, client_id, client_secret, scopes):
+    def gen_token_key(grant, client_id, client_secret, scopes,
+        domain=Domain.OSU
+    ):
         """
         The unique key / hash for the given set of parameters. This is intended
         to provide a way to allow multiple OssapiV2's to live at the same time,
@@ -375,12 +409,24 @@ class Ossapi:
         """
         grant = Grant(grant)
         scopes = [Scope(scope) for scope in scopes]
+        domain = Domain(domain)
+
         m = hashlib.sha256()
         m.update(grant.value.encode("utf-8"))
         m.update(str(client_id).encode("utf-8"))
         m.update(client_secret.encode("utf-8"))
+
         for scope in scopes:
             m.update(scope.value.encode("utf-8"))
+
+        # for backwards compatability, only hash the domain when it's
+        # non-default. This ensures keys from before and after domains were
+        # introduced coincide.
+        # This intentionally treats Domain.OSU and Domain.LAZER as the same key,
+        # as those domains share account and oauth credentials.
+        if domain is Domain.DEV:
+            m.update(domain.value.encode("utf-8"))
+
         return m.hexdigest()
 
     @staticmethod
@@ -420,7 +466,7 @@ class Ossapi:
                 }
                 return OAuth2Session(self.client_id, token=token,
                     redirect_uri=self.redirect_uri,
-                    auto_refresh_url=self.TOKEN_URL,
+                    auto_refresh_url=self.token_url,
                     auto_refresh_kwargs=auto_refresh_kwargs,
                     token_updater=self._save_token,
                     scope=[scope.value for scope in self.scopes])
@@ -438,7 +484,7 @@ class Ossapi:
         self.log.info("initializing client credentials grant")
         client = BackendApplicationClient(client_id=client_id, scope=["public"])
         session = OAuth2Session(client=client)
-        token = session.fetch_token(token_url=self.TOKEN_URL,
+        token = session.fetch_token(token_url=self.token_url,
             client_id=client_id, client_secret=client_secret)
 
         self._save_token(token)
@@ -456,13 +502,13 @@ class Ossapi:
             "client_secret": client_secret
         }
         session = OAuth2Session(client_id, redirect_uri=redirect_uri,
-            auto_refresh_url=self.TOKEN_URL,
+            auto_refresh_url=self.token_url,
             auto_refresh_kwargs=auto_refresh_kwargs,
             token_updater=self._save_token,
             scope=[scope.value for scope in scopes])
 
         authorization_url, _state = (
-            session.authorization_url(self.AUTH_CODE_URL)
+            session.authorization_url(self.auth_code_url)
         )
         webbrowser.open(authorization_url)
 
@@ -487,7 +533,7 @@ class Ossapi:
         serversocket.close()
 
         code = data.split("code=")[1].split("&state=")[0]
-        token = session.fetch_token(self.TOKEN_URL, client_id=client_id,
+        token = session.fetch_token(self.token_url, client_id=client_id,
             client_secret=client_secret, code=code)
         self._save_token(token)
 
@@ -506,7 +552,7 @@ class Ossapi:
         # also format data for post requests
         data = self._format_params(data)
         try:
-            r = self.session.request(method, f"{self.BASE_URL}{url}",
+            r = self.session.request(method, f"{self.base_url}{url}",
                 params=params, data=data)
         except TokenExpiredError:
             # provide "auto refreshing" for client credentials grant. The client
@@ -520,7 +566,7 @@ class Ossapi:
             self.session = self._new_client_grant(self.client_id,
                 self.client_secret)
             # redo the request now that we have a valid token
-            r = self.session.request(method, f"{self.BASE_URL}{url}",
+            r = self.session.request(method, f"{self.base_url}{url}",
                 params=params, data=data)
 
         self.log.info(f"made {method} request to {r.request.url}, data {data}")
@@ -537,6 +583,13 @@ class Ossapi:
         if len(json_) == 1 and "error" in json_:
             raise ValueError(f"api returned an error of `{json_['error']}` for "
                 f"a request to {unquote(url)}")
+
+        # Shouldn't happen in normal usage. Might occur if a client gets revoked
+        # and we still have a local token.pickel saved for it. But I haven't
+        # tested.
+        if json_ == {"authentication": "basic"}:
+            raise ValueError(f"Invalid authentication. json: {json_}, url: "
+                f"{url}")
 
     def _get(self, type_, url, params={}):
         return self._request(type_, "GET", url, params=params)
@@ -903,7 +956,8 @@ class Ossapi:
         *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
-        type: Optional[RankingTypeT] = None
+        type: Optional[RankingTypeT] = None,
+        limit: Optional[int] = None
     ) -> BeatmapScores:
         """
         Get the top scores of a beatmap.
@@ -918,13 +972,16 @@ class Ossapi:
             Get the top scores set with exactly these mods, if passed.
         type
             How to order the scores. Defaults to ordering by score.
+        limit
+            How many results to return. Defaults to 50. Must be between 1 and
+            100.
 
         Notes
         -----
         Implements the `Get Beatmap Scores
         <https://osu.ppy.sh/docs/index.html#get-beatmap-scores>`__ endpoint.
         """
-        params = {"mode": mode, "mods": mods, "type": type}
+        params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
         return self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores",
             params)
 
@@ -950,7 +1007,7 @@ class Ossapi:
         Notes
         -----
         Combines the
-        `Get Beatmap <https://osu.ppy.sh/docs/index.html#get-beatmapL>`_ and
+        `Get Beatmap <https://osu.ppy.sh/docs/index.html#get-beatmap>`_ and
         `Lookup Beatmap <https://osu.ppy.sh/docs/index.html#lookup-beatmap>`_
         endpoints.
         """
@@ -1530,8 +1587,8 @@ class Ossapi:
         sort: Optional[CommentSortT] = None
     ) -> CommentBundle:
         """
-        Get comments and their replies (up to 2 levels deep). If you only want
-        to retrieve a single comment, see :meth:`comment`.
+        Get recent comments and their replies (up to 2 levels deep). If you only
+        want to retrieve a single comment, see :meth:`comment`.
 
         Parameters
         ----------
@@ -1745,7 +1802,7 @@ class Ossapi:
         query
             Search query.
         mode
-            Filter results by type (forum, wiki, player, etc.).
+            Filter results by type (wiki or player).
         page
             Pagination for results.
 
@@ -1798,7 +1855,7 @@ class Ossapi:
     @request(Scope.IDENTIFY, category="me")
     def get_me(self,
         mode: Optional[GameModeT] = None
-    ):
+    ) -> User:
         """
         Get data about the authenticated user.
 
@@ -1888,7 +1945,7 @@ class Ossapi:
         Implements the `Revoke Current Token
         <https://osu.ppy.sh/docs/index.html#revoke-current-token>`__ endpoint.
         """
-        self.session.delete(f"{self.BASE_URL}/oauth/tokens/current")
+        self.session.delete(f"{self.base_url}/oauth/tokens/current")
         self.remove_token(self.token_key, self.token_directory)
 
 
@@ -1907,7 +1964,7 @@ class Ossapi:
         variant: Optional[str] = None
     ) -> Rankings:
         """
-        Get current rankings for the specified game mode. Can specify ``type_``
+        Get current rankings for the specified game mode. Can specify ``type``
         to get different types of rankings (performance, score, country, etc).
 
         Parameters
@@ -2084,13 +2141,20 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
         endpoint.
         """
-        url = f"{self.BASE_URL}/scores/{mode.value}/{score_id}/download"
+        if self.domain is Domain.LAZER:
+            raise ValueError("Downloading scores using the lazer domain is not "
+                "currently supported, as lazer itself does not currently "
+                "support replay downloads. This may change in the future. To "
+                "download replays, use the osu domain (ie, a normal Ossapi "
+                "instance.)")
+
+        url = f"{self.base_url}/scores/{mode.value}/{score_id}/download"
         r = self.session.get(url)
 
         # if the response above succeeded, it will return a raw string
         # instead of json. If it didn't succeed, it will return json with an
         # error.
-        # So always try parsing as json to check if there's an error. If parsin
+        # So always try parsing as json to check if there's an error. If parsing
         # fails, just assume the request succeeded and move on.
         try:
             json_ = r.json()
