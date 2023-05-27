@@ -1933,7 +1933,7 @@ Models
       :type: RankHistory | None
 
    .. py:attribute:: rank_highest
-      :type: RankHighest
+      :type: RankHighest | None
 
    .. py:attribute:: rank_history
       :type: RankHistory | None
@@ -2342,6 +2342,9 @@ Models
    .. py:attribute:: offset
       :type: int
 
+   .. py:attribute:: pack_tags
+      :type: list[str]
+
    .. py:attribute:: play_count
       :type: int
 
@@ -2517,7 +2520,7 @@ Models
 .. py:class:: CommentableMeta
 
    .. py:attribute:: current_user_attributes
-      :type: typing.Any
+      :type: CommentableMetaCurrentUserAttributes | None
 
    .. py:attribute:: id
       :type: int | None
@@ -2537,13 +2540,18 @@ Models
    .. py:attribute:: url
       :type: str | None
 
+.. py:class:: CommentableMetaCurrentUserAttributes
+
+   .. py:attribute:: can_new_comment_reason
+      :type: str | None
+
 .. py:class:: Comment
 
    .. py:attribute:: commentable_id
-      :type: int
+      :type: int | None
 
    .. py:attribute:: commentable_type
-      :type: str
+      :type: str | None
 
    .. py:attribute:: created_at
       :type: ~datetime.datetime
@@ -2588,7 +2596,7 @@ Models
       :type: function
 
    .. py:attribute:: user_id
-      :type: int
+      :type: int | None
 
    .. py:attribute:: votes_count
       :type: int
@@ -3943,6 +3951,9 @@ Models
    .. py:attribute:: timestamp
       :type: ~datetime.datetime
 
+   .. py:attribute:: type
+      :type: str
+
 .. py:class:: CreatePMResponse
 
    .. py:attribute:: channel
@@ -4245,6 +4256,9 @@ Models
    .. py:attribute:: cursor
       :type: Cursor | None
 
+   .. py:attribute:: cursor_string
+      :type: str
+
    .. py:attribute:: matches
       :type: list[Match]
 
@@ -4256,8 +4270,11 @@ Models
    .. py:attribute:: beatmap
       :type: BeatmapCompact
 
+   .. py:attribute:: beatmap_id
+      :type: int
+
    .. py:attribute:: end_time
-      :type: ~datetime.datetime
+      :type: ~datetime.datetime | None
 
    .. py:attribute:: id
       :type: int
