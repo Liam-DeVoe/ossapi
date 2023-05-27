@@ -202,6 +202,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.ossapiv2_async">OssapiAsync</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-0">Scope</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-1">Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-2">Domain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-ossapi.replay">Replay</a></li>
 </ul>
 
@@ -7448,15 +7449,15 @@ osu! api.</p></li>
 <li><p><strong>refresh_token</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Refresh token from the osu! api. Allows instantiating
 <a class="reference internal" href="#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> after manually authenticating with the
 osu! api. Optional if using <a class="reference internal" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS" title="ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS"><code class="xref py py-data docutils literal notranslate"><span class="pre">Grant.CLIENT_CREDENTIALS</span></code></a>.</p></li>
-<li><p><strong>domain</strong> (<em>Domain</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The domain to retrieve information from. This defaults to
-<code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code>, which corresponds to
+<li><p><strong>domain</strong> (<a class="reference internal" href="#ossapi.ossapiv2.Domain" title="ossapi.ossapiv2.Domain"><em>Domain</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The domain to retrieve information from. This defaults to
+<a class="reference internal" href="#ossapi.ossapiv2.Domain.OSU" title="ossapi.ossapiv2.Domain.OSU"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code></a>, which corresponds to
 osu.ppy.sh, the main website.
 <br />
 To retrieve information from lazer.ppy.sh - for instance, the
 leaderboards on lazer, or a user’s best score on lazer - specify
-<code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.LAZER</span></code>. To retureve
+<a class="reference internal" href="#ossapi.ossapiv2.Domain.LAZER" title="ossapi.ossapiv2.Domain.LAZER"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.LAZER</span></code></a>. To retureve
 information from dev.ppy.sh, specify
-<code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.DEV</span></code>.
+<a class="reference internal" href="#ossapi.ossapiv2.Domain.DEV" title="ossapi.ossapiv2.Domain.DEV"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.DEV</span></code></a>.
 <br />
 See <a class="reference internal" href="domains.html"><span class="doc">Domains</span></a> for more about domains.</p></li>
 </ul>
@@ -7582,6 +7583,34 @@ osu! api. Optional if using <a class="reference internal" href="#ossapi.ossapiv2
 <dl class="py attribute">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS">
 <span class="sig-name descname"><span class="pre">CLIENT_CREDENTIALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'client'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-2">
+<span id="domain"></span><h1>Domain<a class="headerlink" href="#module-2" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Domain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ossapi/ossapiv2.html#Domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.ossapiv2.Domain" title="Permalink to this definition">#</a></dt>
+<dd><p>Different possible api domains. These correspond to different deployments of
+the osu server: osu.ppy.sh, lazer.ppy.sh, and dev.ppy.sh respectively.</p>
+<p>The default domain, and the one the vast majority of users want, is
+Domain.OSU, and corresponds to the main website. To retrieve information
+from the lazer website or the dev website, use the corresponding domain.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Domain.DEV">
+<span class="sig-name descname"><span class="pre">DEV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'dev'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Domain.DEV" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Domain.LAZER">
+<span class="sig-name descname"><span class="pre">LAZER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lazer'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Domain.LAZER" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Domain.OSU">
+<span class="sig-name descname"><span class="pre">OSU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'osu'</span></em><a class="headerlink" href="#ossapi.ossapiv2.Domain.OSU" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -9482,6 +9511,15 @@ accesses are free.</p>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Grant"><code class="docutils literal notranslate"><span class="pre">Grant</span></code></a><ul>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Grant.AUTHORIZATION_CODE"><code class="docutils literal notranslate"><span class="pre">Grant.AUTHORIZATION_CODE</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS"><code class="docutils literal notranslate"><span class="pre">Grant.CLIENT_CREDENTIALS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-2">Domain</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Domain"><code class="docutils literal notranslate"><span class="pre">Domain</span></code></a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Domain.DEV"><code class="docutils literal notranslate"><span class="pre">Domain.DEV</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Domain.LAZER"><code class="docutils literal notranslate"><span class="pre">Domain.LAZER</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Domain.OSU"><code class="docutils literal notranslate"><span class="pre">Domain.OSU</span></code></a></li>
 </ul>
 </li>
 </ul>
