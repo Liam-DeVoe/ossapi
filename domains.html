@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Serializing Models" href="serializing-models.html" /><link rel="prev" title="Expandable Models" href="expandable-models.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Beatmaps" href="endpoints.html" /><link rel="prev" title="Async" href="async.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Foreign Keys - ossapi v3.1.9 documentation</title>
+        <title>Domains - ossapi v3.1.9 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -167,10 +167,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Foreign Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async.html">Async</a></li>
-<li class="toctree-l1"><a class="reference internal" href="domains.html">Domains</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Domains</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
@@ -237,40 +237,43 @@
           </label>
         </div>
         <article role="main">
-          <section id="foreign-keys">
-<h1>Foreign Keys<a class="headerlink" href="#foreign-keys" title="Permalink to this heading">#</a></h1>
-<section id="following-foreign-keys">
-<h2>Following Foreign Keys<a class="headerlink" href="#following-foreign-keys" title="Permalink to this heading">#</a></h2>
-<p>The osu! api often returns models which contain an id which references another model. For instance, <a class="reference internal" href="appendix.html#ossapi.models.Beatmap.beatmapset_id" title="ossapi.models.Beatmap.beatmapset_id"><code class="xref py py-data docutils literal notranslate"><span class="pre">Beatmap.beatmapset_id</span></code></a> references the id of the <a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Beatmapset</span></code></a> model. This is a similar concept to foreign keys in databases.</p>
-<p>Where applicable, ossapi provides methods to “follow” these ids and retrieve the full model from the id:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">beatmap</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">beatmap</span><span class="p">(</span><span class="mi">221777</span><span class="p">)</span>
-<span class="n">bmset</span> <span class="o">=</span> <span class="n">beatmap</span><span class="o">.</span><span class="n">beatmapset</span><span class="p">()</span>
+          <section id="domains">
+<h1>Domains<a class="headerlink" href="#domains" title="Permalink to this heading">#</a></h1>
+<section id="lazer-domain">
+<h2>Lazer Domain<a class="headerlink" href="#lazer-domain" title="Permalink to this heading">#</a></h2>
+<p>It is possible to retrieve information from <a class="reference external" href="https://lazer.ppy.sh/home">lazer.ppy.sh</a> via the api. For instance, a user’s top lazer scores, or the lazer leaderboard. To do so, specify the <code class="docutils literal notranslate"><span class="pre">domain</span></code> argument to <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
+
+<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;lazer&quot;</span><span class="p">)</span>
+<span class="c1"># or</span>
+<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">LAZER</span><span class="p">)</span>
+
+<span class="c1"># best score on the lazer server (lazer + osu scores combined)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">api_lazer</span><span class="o">.</span><span class="n">user_scores</span><span class="p">(</span><span class="mi">12092800</span><span class="p">,</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pp</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can do the same for <code class="docutils literal notranslate"><span class="pre">user()</span></code> and <code class="docutils literal notranslate"><span class="pre">beatmap()</span></code>, in applicable models:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disc</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">beatmapset_discussion_posts</span><span class="p">(</span><span class="mi">2641058</span><span class="p">)</span><span class="o">.</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">disc</span><span class="o">.</span><span class="n">user</span><span class="p">()</span>
+<p>This works with both the client credentials and authorization code grant, with the normal caveats of the two grants. E.g., you cannot send chat messages with the client credentials grant when in the lazer domain, just like you cannot in the normal domain. See <a class="reference internal" href="grants.html"><span class="doc">Grants</span></a> for more about the differences between the two grants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lazer and osu domains share credentials, so your same oauth application from osu.ppy.sh will work in the lazer domain.</p>
+</div>
+</section>
+<section id="other-domains">
+<h2>Other Domains<a class="headerlink" href="#other-domains" title="Permalink to this heading">#</a></h2>
+<p>The standard domain is <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code> and retrieves information from <a class="reference external" href="https://osu.ppy.sh/home">osu.ppy.sh</a>. This is the default domain used by ossapi.</p>
+<p>There is a third domain, besides <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.LAZER</span></code> and <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code>: <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.DEV</span></code>. This corresponds to <a class="reference external" href="https://dev.ppy.sh/home">dev.ppy.sh</a>, the dev server. Use this domain to retrieve information from the dev server:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
 
-<span class="n">bm_playcount</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_beatmaps</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="mi">12092800</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;most_played&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">beatmap</span> <span class="o">=</span> <span class="n">bm_playcount</span><span class="o">.</span><span class="n">beatmap</span><span class="p">()</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
+<span class="c1"># pearline06 as of 2023</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="s2">&quot;performance&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Following a foreign key usually involves an api call, so it is not free.</p>
+<p>The dev domains has separate authentication from the osu/lazer domains. If you want to access the dev server’s api, you will need to create an account and oauth client on the dev server. As of 2023, this is only possible by running lazer locally in debug mode and creating an account from the client.</p>
 </div>
-</section>
-<section id="other-foreign-keys">
-<h2>Other Foreign Keys<a class="headerlink" href="#other-foreign-keys" title="Permalink to this heading">#</a></h2>
-<p>Note that the id attribute and corresponding method isn’t always called <code class="docutils literal notranslate"><span class="pre">beatmap</span></code>, <code class="docutils literal notranslate"><span class="pre">beatmapset</span></code>, or <code class="docutils literal notranslate"><span class="pre">user</span></code>. For instance, <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost" title="ossapi.models.BeatmapsetDiscussionPost"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeatmapsetDiscussionPost</span></code></a> has the attributes <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost.last_editor_id" title="ossapi.models.BeatmapsetDiscussionPost.last_editor_id"><code class="xref py py-data docutils literal notranslate"><span class="pre">last_editor_id</span></code></a> and <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost.deleted_by_id" title="ossapi.models.BeatmapsetDiscussionPost.deleted_by_id"><code class="xref py py-data docutils literal notranslate"><span class="pre">deleted_by_id</span></code></a>, referencing the users who last edited and deleted the discussion respectively.</p>
-<p>In line with this, <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost" title="ossapi.models.BeatmapsetDiscussionPost"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeatmapsetDiscussionPost</span></code></a> defines the methods <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost.last_editor" title="ossapi.models.BeatmapsetDiscussionPost.last_editor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">last_editor</span></code></a> and <a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPost.deleted_by" title="ossapi.models.BeatmapsetDiscussionPost.deleted_by"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deleted_by</span></code></a> to retrieve the full user objects:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">disc</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">beatmapset_discussion_posts</span><span class="p">(</span><span class="mi">2641058</span><span class="p">)</span><span class="o">.</span><span class="n">posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">last_editor</span> <span class="o">=</span> <span class="n">disc</span><span class="o">.</span><span class="n">last_editor</span><span class="p">()</span>
-<span class="n">deleted_by</span> <span class="o">=</span> <span class="n">disc</span><span class="o">.</span><span class="n">deleted_by</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">last_editor</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">deleted_by</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Models with similar attributes also define similar methods. The functions are almost always named by dropping <code class="docutils literal notranslate"><span class="pre">_id</span></code> from the attribute name.</p>
 </section>
 </section>
 
@@ -279,23 +282,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="serializing-models.html">
+          <a class="next-page" href="endpoints.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Serializing Models</div>
+                <div class="title">Beatmaps</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="expandable-models.html">
+          <a class="prev-page" href="async.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Expandable Models</div>
+                <div class="title">Async</div>
                 
               </div>
             </a>
@@ -325,9 +328,9 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Foreign Keys</a><ul>
-<li><a class="reference internal" href="#following-foreign-keys">Following Foreign Keys</a></li>
-<li><a class="reference internal" href="#other-foreign-keys">Other Foreign Keys</a></li>
+<li><a class="reference internal" href="#">Domains</a><ul>
+<li><a class="reference internal" href="#lazer-domain">Lazer Domain</a></li>
+<li><a class="reference internal" href="#other-domains">Other Domains</a></li>
 </ul>
 </li>
 </ul>

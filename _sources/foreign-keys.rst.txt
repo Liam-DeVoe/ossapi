@@ -1,5 +1,8 @@
+Foreign Keys
+============
+
 Following Foreign Keys
-======================
+----------------------
 
 The osu! api often returns models which contain an id which references another model. For instance, :data:`Beatmap.beatmapset_id <ossapi.models.Beatmap.beatmapset_id>` references the id of the :class:`~ossapi.models.Beatmapset` model. This is a similar concept to foreign keys in databases.
 

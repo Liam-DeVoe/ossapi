@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>ossapi.ossapiv2 - ossapi v3.1.0 documentation</title>
+        <title>ossapi.ossapiv2 - ossapi v3.1.9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v3.1.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v3.1.9 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.1.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v3.1.9 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -166,9 +166,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pagination.html">Pagination</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../foreign-keys.html">Following Foreign Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../foreign-keys.html">Foreign Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serializing-models.html">Serializing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../async.html">Async</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domains.html">Domains</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
@@ -467,6 +468,18 @@
     <span class="n">IDENTIFY</span> <span class="o">=</span> <span class="s2">&quot;identify&quot;</span>
     <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;public&quot;</span></div>
 
+<span class="k">class</span> <span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Different possible api domains. These correspond to different deployments of</span>
+<span class="sd">    the osu server: osu.ppy.sh, lazer.ppy.sh, and dev.ppy.sh respectively.</span>
+
+<span class="sd">    The default domain, and the one the vast majority of users want, is</span>
+<span class="sd">    Domain.OSU, and corresponds to the main website. To retrieve information</span>
+<span class="sd">    from the lazer website or the dev website, use the corresponding domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">OSU</span> <span class="o">=</span> <span class="s2">&quot;osu&quot;</span>
+    <span class="n">LAZER</span> <span class="o">=</span> <span class="s2">&quot;lazer&quot;</span>
+    <span class="n">DEV</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span>
 
 <div class="viewcode-block" id="Ossapi"><a class="viewcode-back" href="../../appendix.html#ossapi.ossapiv2.Ossapi">[docs]</a><span class="k">class</span> <span class="nc">Ossapi</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -532,11 +545,23 @@
 <span class="sd">        Refresh token from the osu! api. Allows instantiating</span>
 <span class="sd">        :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the</span>
 <span class="sd">        osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS</span>
-<span class="sd">        &lt;ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS&gt;`</span>
+<span class="sd">        &lt;ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS&gt;`.</span>
+<span class="sd">    domain: Domain or str</span>
+<span class="sd">        The domain to retrieve information from. This defaults to</span>
+<span class="sd">        :data:`Domain.OSU &lt;ossapi.ossapiv2.Domain.OSU&gt;`, which corresponds to</span>
+<span class="sd">        osu.ppy.sh, the main website.</span>
+<span class="sd">        |br|</span>
+<span class="sd">        To retrieve information from lazer.ppy.sh - for instance, the</span>
+<span class="sd">        leaderboards on lazer, or a user&#39;s best score on lazer - specify</span>
+<span class="sd">        :data:`Domain.LAZER &lt;ossapi.ossapiv2.Domain.LAZER&gt;`. To retureve</span>
+<span class="sd">        information from dev.ppy.sh, specify</span>
+<span class="sd">        :data:`Domain.DEV &lt;ossapi.ossapiv2.Domain.DEV&gt;`.</span>
+<span class="sd">        |br|</span>
+<span class="sd">        See :doc:`Domains &lt;domains&gt;` for more about domains.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">TOKEN_URL</span> <span class="o">=</span> <span class="s2">&quot;https://osu.ppy.sh/oauth/token&quot;</span>
-    <span class="n">AUTH_CODE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://osu.ppy.sh/oauth/authorize&quot;</span>
-    <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://osu.ppy.sh/api/v2&quot;</span>
+    <span class="n">TOKEN_URL</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{domain}</span><span class="s2">.ppy.sh/oauth/token&quot;</span>
+    <span class="n">AUTH_CODE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{domain}</span><span class="s2">.ppy.sh/oauth/authorize&quot;</span>
+    <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{domain}</span><span class="s2">.ppy.sh/api/v2&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">client_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -549,12 +574,19 @@
         <span class="n">token_directory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">token_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">access_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">refresh_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">refresh_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Domain</span><span class="p">]</span> <span class="o">=</span> <span class="n">Domain</span><span class="o">.</span><span class="n">OSU</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">grant</span><span class="p">:</span>
             <span class="n">grant</span> <span class="o">=</span> <span class="p">(</span><span class="n">Grant</span><span class="o">.</span><span class="n">AUTHORIZATION_CODE</span> <span class="k">if</span> <span class="n">redirect_uri</span> <span class="k">else</span>
                 <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">)</span>
         <span class="n">grant</span> <span class="o">=</span> <span class="n">Grant</span><span class="p">(</span><span class="n">grant</span><span class="p">)</span>
+
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">token_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">auth_code_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AUTH_CODE_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASE_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="o">=</span> <span class="n">grant</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
@@ -562,10 +594,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">redirect_uri</span> <span class="o">=</span> <span class="n">redirect_uri</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">strict</span> <span class="o">=</span> <span class="n">strict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token_key</span> <span class="o">=</span> <span class="n">token_key</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_token_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grant</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
         <span class="c1"># support saving tokens when being run from pyinstaller</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">token_directory</span><span class="p">:</span>
@@ -600,7 +633,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">gen_token_key</span><span class="p">(</span><span class="n">grant</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">scopes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">gen_token_key</span><span class="p">(</span><span class="n">grant</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span>
+        <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">OSU</span>
+    <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The unique key / hash for the given set of parameters. This is intended</span>
 <span class="sd">        to provide a way to allow multiple OssapiV2&#39;s to live at the same time,</span>
@@ -612,12 +647,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">grant</span> <span class="o">=</span> <span class="n">Grant</span><span class="p">(</span><span class="n">grant</span><span class="p">)</span>
         <span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">]</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+
         <span class="n">m</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
         <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">grant</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
         <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">client_id</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
         <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">client_secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
         <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">:</span>
             <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
+        <span class="c1"># for backwards compatability, only hash the domain when it&#39;s</span>
+        <span class="c1"># non-default. This ensures keys from before and after domains were</span>
+        <span class="c1"># introduced coincide.</span>
+        <span class="c1"># This intentionally treats Domain.OSU and Domain.LAZER as the same key,</span>
+        <span class="c1"># as those domains share account and oauth credentials.</span>
+        <span class="k">if</span> <span class="n">domain</span> <span class="ow">is</span> <span class="n">Domain</span><span class="o">.</span><span class="n">DEV</span><span class="p">:</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
         <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
@@ -657,7 +704,7 @@
                 <span class="p">}</span>
                 <span class="k">return</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
                     <span class="n">redirect_uri</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">redirect_uri</span><span class="p">,</span>
-                    <span class="n">auto_refresh_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="p">,</span>
+                    <span class="n">auto_refresh_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token_url</span><span class="p">,</span>
                     <span class="n">auto_refresh_kwargs</span><span class="o">=</span><span class="n">auto_refresh_kwargs</span><span class="p">,</span>
                     <span class="n">token_updater</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">,</span>
                     <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">])</span>
@@ -675,7 +722,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;initializing client credentials grant&quot;</span><span class="p">)</span>
         <span class="n">client</span> <span class="o">=</span> <span class="n">BackendApplicationClient</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;public&quot;</span><span class="p">])</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span><span class="n">token_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="p">,</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span><span class="n">token_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token_url</span><span class="p">,</span>
             <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
@@ -693,13 +740,13 @@
             <span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="n">client_secret</span>
         <span class="p">}</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">OAuth2Session</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">redirect_uri</span><span class="o">=</span><span class="n">redirect_uri</span><span class="p">,</span>
-            <span class="n">auto_refresh_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="p">,</span>
+            <span class="n">auto_refresh_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token_url</span><span class="p">,</span>
             <span class="n">auto_refresh_kwargs</span><span class="o">=</span><span class="n">auto_refresh_kwargs</span><span class="p">,</span>
             <span class="n">token_updater</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">,</span>
             <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">])</span>
 
         <span class="n">authorization_url</span><span class="p">,</span> <span class="n">_state</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">session</span><span class="o">.</span><span class="n">authorization_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AUTH_CODE_URL</span><span class="p">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">authorization_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">auth_code_url</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">authorization_url</span><span class="p">)</span>
 
@@ -724,7 +771,7 @@
         <span class="n">serversocket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
         <span class="n">code</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;code=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&amp;state=&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="p">,</span> <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_url</span><span class="p">,</span> <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
             <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
 
@@ -743,7 +790,7 @@
         <span class="c1"># also format data for post requests</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_params</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_URL</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                 <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">TokenExpiredError</span><span class="p">:</span>
             <span class="c1"># provide &quot;auto refreshing&quot; for client credentials grant. The client</span>
@@ -757,7 +804,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">)</span>
             <span class="c1"># redo the request now that we have a valid token</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_URL</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
                 <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;made </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> request to </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">, data </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -774,6 +821,13 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s2">&quot;error&quot;</span> <span class="ow">in</span> <span class="n">json_</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;api returned an error of `</span><span class="si">{</span><span class="n">json_</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">` for &quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;a request to </span><span class="si">{</span><span class="n">unquote</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Shouldn&#39;t happen in normal usage. Might occur if a client gets revoked</span>
+        <span class="c1"># and we still have a local token.pickel saved for it. But I haven&#39;t</span>
+        <span class="c1"># tested.</span>
+        <span class="k">if</span> <span class="n">json_</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;authentication&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">}:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid authentication. json: </span><span class="si">{</span><span class="n">json_</span><span class="si">}</span><span class="s2">, url: &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
@@ -1140,7 +1194,8 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapScores</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the top scores of a beatmap.</span>
@@ -1155,13 +1210,16 @@
 <span class="sd">            Get the top scores set with exactly these mods, if passed.</span>
 <span class="sd">        type</span>
 <span class="sd">            How to order the scores. Defaults to ordering by score.</span>
+<span class="sd">        limit</span>
+<span class="sd">            How many results to return. Defaults to 50. Must be between 1 and</span>
+<span class="sd">            100.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get Beatmap Scores</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-beatmap-scores&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores&quot;</span><span class="p">,</span>
             <span class="n">params</span><span class="p">)</span>
 
@@ -1187,7 +1245,7 @@
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Combines the</span>
-<span class="sd">        `Get Beatmap &lt;https://osu.ppy.sh/docs/index.html#get-beatmapL&gt;`_ and</span>
+<span class="sd">        `Get Beatmap &lt;https://osu.ppy.sh/docs/index.html#get-beatmap&gt;`_ and</span>
 <span class="sd">        `Lookup Beatmap &lt;https://osu.ppy.sh/docs/index.html#lookup-beatmap&gt;`_</span>
 <span class="sd">        endpoints.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1767,8 +1825,8 @@
         <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CommentSortT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CommentBundle</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get comments and their replies (up to 2 levels deep). If you only want</span>
-<span class="sd">        to retrieve a single comment, see :meth:`comment`.</span>
+<span class="sd">        Get recent comments and their replies (up to 2 levels deep). If you only</span>
+<span class="sd">        want to retrieve a single comment, see :meth:`comment`.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1982,7 +2040,7 @@
 <span class="sd">        query</span>
 <span class="sd">            Search query.</span>
 <span class="sd">        mode</span>
-<span class="sd">            Filter results by type (forum, wiki, player, etc.).</span>
+<span class="sd">            Filter results by type (wiki or player).</span>
 <span class="sd">        page</span>
 <span class="sd">            Pagination for results.</span>
 
@@ -2035,7 +2093,7 @@
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">IDENTIFY</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;me&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">get_me</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">):</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get data about the authenticated user.</span>
 
@@ -2125,7 +2183,7 @@
 <span class="sd">        Implements the `Revoke Current Token</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#revoke-current-token&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/oauth/tokens/current&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/oauth/tokens/current&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">remove_token</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_directory</span><span class="p">)</span>
 
 
@@ -2144,7 +2202,7 @@
         <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Rankings</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get current rankings for the specified game mode. Can specify ``type_``</span>
+<span class="sd">        Get current rankings for the specified game mode. Can specify ``type``</span>
 <span class="sd">        to get different types of rankings (performance, score, country, etc).</span>
 
 <span class="sd">        Parameters</span>
@@ -2321,13 +2379,20 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescoredownload&gt;`__</span>
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="ow">is</span> <span class="n">Domain</span><span class="o">.</span><span class="n">LAZER</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Downloading scores using the lazer domain is not &quot;</span>
+                <span class="s2">&quot;currently supported, as lazer itself does not currently &quot;</span>
+                <span class="s2">&quot;support replay downloads. This may change in the future. To &quot;</span>
+                <span class="s2">&quot;download replays, use the osu domain (ie, a normal Ossapi &quot;</span>
+                <span class="s2">&quot;instance.)&quot;</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
         <span class="c1"># if the response above succeeded, it will return a raw string</span>
         <span class="c1"># instead of json. If it didn&#39;t succeed, it will return json with an</span>
         <span class="c1"># error.</span>
-        <span class="c1"># So always try parsing as json to check if there&#39;s an error. If parsin</span>
+        <span class="c1"># So always try parsing as json to check if there&#39;s an error. If parsing</span>
         <span class="c1"># fails, just assume the request succeeded and move on.</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">json_</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>

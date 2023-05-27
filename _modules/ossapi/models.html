@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>ossapi.models - ossapi v3.1.0 documentation</title>
+        <title>ossapi.models - ossapi v3.1.9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v3.1.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v3.1.9 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.1.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v3.1.9 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -166,9 +166,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pagination.html">Pagination</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../foreign-keys.html">Following Foreign Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../foreign-keys.html">Foreign Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serializing-models.html">Serializing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../async.html">Async</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domains.html">Domains</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
@@ -413,7 +414,7 @@
     <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">scores_pinned_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">nominated_beatmapset_count</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">rank_highest</span><span class="p">:</span> <span class="n">RankHighest</span>
+    <span class="n">rank_highest</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHighest</span><span class="p">]</span>
 
 <div class="viewcode-block" id="User.expand"><a class="viewcode-back" href="../../appendix.html#ossapi.models.User.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
         <span class="c1"># we&#39;re already expanded, no need to waste an api call</span>
@@ -558,6 +559,7 @@
     <span class="n">tags</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">current_nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Nomination</span><span class="p">]]</span>
     <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">pack_tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Beatmapset.expand"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Beatmapset.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Beatmapset</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
@@ -628,21 +630,23 @@
 
 
 <div class="viewcode-block" id="CommentableMeta"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CommentableMeta">[docs]</a><span class="k">class</span> <span class="nc">CommentableMeta</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="c1"># this class is currently not following the documentation in order to work</span>
-    <span class="c1"># around https://github.com/ppy/osu-web/issues/7317. Will be updated when</span>
-    <span class="c1"># that issue is resolved (one way or the other).</span>
+    <span class="c1"># title is the only attribute returned for deleted commentables.</span>
     <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
     <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="c1"># both undocumented</span>
     <span class="n">owner_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">owner_title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Any</span></div>
+    <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CommentableMetaCurrentUserAttributes</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="CommentableMetaCurrentUserAttributes"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CommentableMetaCurrentUserAttributes">[docs]</a><span class="k">class</span> <span class="nc">CommentableMetaCurrentUserAttributes</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">can_new_comment_reason</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Comment"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Comment">[docs]</a><span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">commentable_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">commentable_type</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1"># null for deleted commentables, eg on /comments/3.</span>
+    <span class="n">commentable_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="c1"># null for deleted commentables, eg on /comments/3.</span>
+    <span class="n">commentable_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">created_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">edited_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
@@ -655,7 +659,8 @@
     <span class="n">pinned</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">replies_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="c1"># null for some commentables, eg on /comments/3.</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">votes_count</span><span class="p">:</span> <span class="nb">int</span>
 
 <div class="viewcode-block" id="Comment.user"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Comment.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
@@ -1286,7 +1291,9 @@
     <span class="n">message_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">sender</span><span class="p">:</span> <span class="n">UserCompact</span>
     <span class="n">sender_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">timestamp</span><span class="p">:</span> <span class="n">Datetime</span></div>
+    <span class="n">timestamp</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="c1"># TODO enumify, example value: &quot;plain&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="CreatePMResponse"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CreatePMResponse">[docs]</a><span class="k">class</span> <span class="nc">CreatePMResponse</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">message</span><span class="p">:</span> <span class="n">ChatMessage</span>
@@ -1420,18 +1427,21 @@
 <div class="viewcode-block" id="Matches"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Matches">[docs]</a><span class="k">class</span> <span class="nc">Matches</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">matches</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Match</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">params</span><span class="p">:</span> <span class="n">Any</span></div>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="MatchGame"><a class="viewcode-back" href="../../appendix.html#ossapi.models.MatchGame">[docs]</a><span class="k">class</span> <span class="nc">MatchGame</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">start_time</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">end_time</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="c1"># null for in-progress matches.</span>
+    <span class="n">end_time</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">GameMode</span>
     <span class="n">mode_int</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">scoring_type</span><span class="p">:</span> <span class="n">ScoringType</span>
     <span class="n">team_type</span><span class="p">:</span> <span class="n">TeamType</span>
     <span class="n">mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
     <span class="n">beatmap</span><span class="p">:</span> <span class="n">BeatmapCompact</span>
+    <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MatchEventDetail"><a class="viewcode-back" href="../../appendix.html#ossapi.models.MatchEventDetail">[docs]</a><span class="k">class</span> <span class="nc">MatchEventDetail</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>

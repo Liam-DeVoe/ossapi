@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="Async" href="async.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="Domains" href="domains.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Beatmaps - ossapi v3.1.0 documentation</title>
+        <title>Beatmaps - ossapi v3.1.9 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ossapi v3.1.0 documentation</div></a>
+      <a href="index.html"><div class="brand">ossapi v3.1.9 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,7 +147,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.1.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v3.1.9 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -167,9 +167,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Following Foreign Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul class="current">
@@ -236,7 +237,7 @@
           </label>
         </div>
         <article role="main">
-          <p><br /> <br /> All functions in this file are methods of the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> class.</p>
+          <p><br /> <br /> All functions on this page are methods of the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> class.</p>
 <section id="beatmaps">
 <h1>Beatmaps<a class="headerlink" href="#beatmaps" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
@@ -257,7 +258,7 @@
 </dl>
 <p class="rubric">Notes</p>
 <p>Combines the
-<a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapL">Get Beatmap</a> and
+<a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap">Get Beatmap</a> and
 <a class="reference external" href="https://osu.ppy.sh/docs/index.html#lookup-beatmap">Lookup Beatmap</a>
 endpoints.</p>
 </dd></dl>
@@ -286,7 +287,7 @@ instead of a string (ruleset name).</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_scores">
-<span class="sig-name descname"><span class="pre">beatmap_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_scores" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">beatmap_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the top scores of a beatmap.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -295,6 +296,8 @@ instead of a string (ruleset name).</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The mode to get scores of.</p></li>
 <li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> | </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
 <li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to order the scores. Defaults to ordering by score.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – How many results to return. Defaults to 50. Must be between 1 and
+100.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -680,8 +683,8 @@ dm me on discord (tybug#8490)!</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.comments">
 <span class="sig-name descname"><span class="pre">comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.comments" title="Permalink to this definition">#</a></dt>
-<dd><p>Get comments and their replies (up to 2 levels deep). If you only want
-to retrieve a single comment, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment" title="ossapi.ossapiv2.Ossapi.comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comment()</span></code></a>.</p>
+<dd><p>Get recent comments and their replies (up to 2 levels deep). If you only
+want to retrieve a single comment, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment" title="ossapi.ossapiv2.Ossapi.comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comment()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -855,7 +858,7 @@ Ignored otherwise.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Search query.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (forum, wiki, player, etc.).</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (wiki or player).</p></li>
 <li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
 </ul>
 </dd>
@@ -911,6 +914,9 @@ Ignored otherwise.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Get data about the specified mode. Defaults to the user’s default
 mode.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.User" title="ossapi.models.User"><em>User</em></a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -981,7 +987,7 @@ you unable to make any more api calls until you re-authenticate.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.ranking">
 <span class="sig-name descname"><span class="pre">ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RankingFilter.ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spotlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.ranking" title="Permalink to this definition">#</a></dt>
-<dd><p>Get current rankings for the specified game mode. Can specify <code class="docutils literal notranslate"><span class="pre">type_</span></code>
+<dd><p>Get current rankings for the specified game mode. Can specify <code class="docutils literal notranslate"><span class="pre">type</span></code>
 to get different types of rankings (performance, score, country, etc).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1347,14 +1353,14 @@ want to retrieve users by username instead of id, see <a class="reference intern
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="async.html">
+          <a class="prev-page" href="domains.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Async</div>
+                <div class="title">Domains</div>
                 
               </div>
             </a>
