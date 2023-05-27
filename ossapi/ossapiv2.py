@@ -236,8 +236,9 @@ class Domain(Enum):
     the osu server: osu.ppy.sh, lazer.ppy.sh, and dev.ppy.sh respectively.
 
     The default domain, and the one the vast majority of users want, is
-    Domain.OSU, and corresponds to the main website. To retrieve information
-    from the lazer website or the dev website, use the corresponding domain.
+    :data:`Domain.OSU <ossapi.ossapiv2.Domain.OSU>`, and corresponds to the
+    main website. To retrieve information from the lazer website or the dev
+    website, use the corresponding domain.
     """
     OSU = "osu"
     LAZER = "lazer"
