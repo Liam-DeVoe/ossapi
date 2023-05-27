@@ -316,7 +316,7 @@ class Ossapi:
         |br|
         To retrieve information from lazer.ppy.sh - for instance, the
         leaderboards on lazer, or a user's best score on lazer - specify
-        :data:`Domain.LAZER <ossapi.ossapiv2.Domain.LAZER>`. To retureve
+        :data:`Domain.LAZER <ossapi.ossapiv2.Domain.LAZER>`. To retrieve
         information from dev.ppy.sh, specify
         :data:`Domain.DEV <ossapi.ossapiv2.Domain.DEV>`.
         |br|
