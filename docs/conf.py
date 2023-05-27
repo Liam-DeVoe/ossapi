@@ -13,6 +13,8 @@ master_doc = "index"
 add_module_names = False
 nitpicky = True
 autodoc_typehints = "description"
+# disable alphabetical ordering
+autodoc_member_order = "bysource"
 
 html_show_copyright = False
 html_show_sphinx = False
