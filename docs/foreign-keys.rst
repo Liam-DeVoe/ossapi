@@ -62,4 +62,4 @@ In line with this, :class:`~ossapi.models.BeatmapsetDiscussionPost` defines the 
     deleted_by = disc.deleted_by
     print(last_editor.username, deleted_by)
 
-Models with similar attributes also define similar properties. These properties are almost always named by dropping ``_id`` from the end of the attribute name.
+This is not an exhaustive list. Models with similar attributes define similar properties. These properties are almost always named by dropping ``_id`` from the end of the attribute name.
