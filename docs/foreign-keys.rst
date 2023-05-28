@@ -32,7 +32,7 @@ You can do the same for ``user`` and ``beatmap``, in applicable models:
 
     Properties which are also foreign keys are clearly marked on the docs.
 
-Foreign keys are cached, so you don't need to worry about incurring multiple api calls in your program:
+Foreign keys are cached, so you don't need to worry about incurring multiple api calls for a single attribute:
 
 .. code-block:: python
     # +1 api call (initial call)
