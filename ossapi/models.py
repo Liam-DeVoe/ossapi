@@ -2,8 +2,9 @@
 # https://docs.python.org/3.7/whatsnew/3.7.html#pep-563-postponed-evaluation-
 # of-annotations
 from __future__ import annotations
-from typing import Optional, TypeVar, Generic, Any, List, Union, Dict
+from typing import Optional, TypeVar, Generic, Any, List, Dict
 from dataclasses import dataclass
+from functools import cached_property
 
 from ossapi.mod import Mod
 from ossapi.enums import (UserAccountHistory, ProfileBanner, UserBadge, Country,
@@ -179,8 +180,7 @@ class User(UserCompact):
     rank_highest: Optional[RankHighest]
 
     def expand(self) -> User:
-        # we're already expanded, no need to waste an api call
-        return self
+        return self._fk_user(self.id)
 
 
 class BeatmapCompact(Model):
@@ -205,10 +205,12 @@ class BeatmapCompact(Model):
     def expand(self) -> Beatmap:
         return self._fk_beatmap(self.id)
 
+    @cached_property
     def user(self) -> User:
         return self._fk_user(self.user_id)
 
-    def beatmapset(self) -> Union[Beatmapset, BeatmapsetCompact]:
+    @cached_property
+    def beatmapset(self) -> BeatmapsetCompact:
         return self._fk_beatmapset(self.beatmapset_id,
             existing=self._beatmapset)
 
@@ -245,8 +247,9 @@ class Beatmap(BeatmapCompact):
     _beatmapset: Optional[Beatmapset] = Field(name="beatmapset")
 
     def expand(self) -> Beatmap:
-        return self
+        return self._fk_beatmap(self.id)
 
+    @cached_property
     def beatmapset(self) -> Beatmapset:
         return self._fk_beatmapset(self.beatmapset_id,
             existing=self._beatmapset)
@@ -301,7 +304,8 @@ class BeatmapsetCompact(Model):
     def expand(self) -> Beatmapset:
         return self._fk_beatmapset(self.id)
 
-    def user(self) -> Union[UserCompact, User]:
+    @cached_property
+    def user(self) -> UserCompact:
         return self._fk_user(self.user_id, existing=self._user)
 
 class Beatmapset(BeatmapsetCompact):
@@ -324,7 +328,7 @@ class Beatmapset(BeatmapsetCompact):
     pack_tags: List[str]
 
     def expand(self) -> Beatmapset:
-        return self
+        return self._fk_beatmapset(self.id)
 
 # undocumented, but defined here to avoid a forward reference in Score.
 class ScoreMatchInfo(Model):
@@ -373,7 +377,8 @@ class Score(Model):
             data["perfect"] = bool(data["perfect"])
         return data
 
-    def user(self) -> Union[UserCompact, User]:
+    @cached_property
+    def user(self) -> UserCompact:
         return self._fk_user(self.user_id, existing=self._user)
 
     def download(self):
@@ -425,9 +430,11 @@ class Comment(Model):
     user_id: Optional[int]
     votes_count: int
 
+    @cached_property
     def user(self) -> User:
         return self._fk_user(self.user_id)
 
+    @cached_property
     def edited_by(self) -> Optional[User]:
         return self._fk_user(self.edited_by_id)
 
@@ -458,9 +465,11 @@ class ForumPost(Model):
     user_id: int
     body: ForumPostBody
 
+    @cached_property
     def user(self) -> User:
         return self._fk_user(self.user_id)
 
+    @cached_property
     def edited_by(self) -> Optional[User]:
         return self._fk_user(self.edited_by_id)
 
@@ -479,6 +488,7 @@ class ForumTopic(Model):
     user_id: int
     poll: Any
 
+    @cached_property
     def user(self) -> User:
         return self._fk_user(self.user_id)
 
@@ -556,12 +566,15 @@ class BeatmapsetDiscussionPost(Model):
     updated_at: Datetime
     deleted_at: Optional[Datetime]
 
+    @cached_property
     def user(self) -> user:
         return self._fk_user(self.user_id)
 
+    @cached_property
     def last_editor(self) -> Optional[User]:
         return self._fk_user(self.last_editor_id)
 
+    @cached_property
     def deleted_by(self) -> Optional[User]:
         return self._fk_user(self.deleted_by_id)
 
@@ -593,17 +606,21 @@ class BeatmapsetDiscussion(Model):
     _beatmap: Optional[BeatmapCompact] = Field(name="beatmap")
     _beatmapset: Optional[BeatmapsetCompact] = Field(name="beatmapset")
 
+    @cached_property
     def user(self) -> User:
         return self._fk_user(self.user_id)
 
+    @cached_property
     def deleted_by(self) -> Optional[User]:
         return self._fk_user(self.deleted_by_id)
 
-    def beatmapset(self) -> Union[Beatmapset, BeatmapsetCompact]:
+    @cached_property
+    def beatmapset(self) -> BeatmapsetCompact:
         return self._fk_beatmapset(self.beatmapset_id,
             existing=self._beatmapset)
 
-    def beatmap(self) -> Union[Optional[Beatmap], BeatmapCompact]:
+    @cached_property
+    def beatmap(self) -> BeatmapCompact:
         return self._fk_beatmap(self.beatmap_id, existing=self._beatmap)
 
 class BeatmapsetDiscussionVote(Model):
@@ -615,6 +632,7 @@ class BeatmapsetDiscussionVote(Model):
     updated_at: Datetime
     cursor_string: Optional[str]
 
+    @cached_property
     def user(self):
         return self._fk_user(self.user_id)
 
@@ -637,7 +655,8 @@ class BeatmapPlaycount(Model):
     beatmapset: Optional[BeatmapsetCompact]
     count: int
 
-    def beatmap(self) -> Union[Beatmap, BeatmapCompact]:
+    @cached_property
+    def beatmap(self) -> BeatmapCompact:
         return self._fk_beatmap(self.beatmap_id, existing=self._beatmap)
 
 
@@ -787,6 +806,7 @@ class MultiplayerScore(Model):
     scores_around: Optional[MultiplayerScoresAround]
     user: User
 
+    @cached_property
     def beatmap(self):
         return self._fk_beatmap(self.beatmap_id)
 
@@ -1025,6 +1045,7 @@ class BeatmapsetEvent(Model):
         type_ = BeatmapsetEventType(self.type)
         return {"comment": mapping[type_]}
 
+    @cached_property
     def user(self) -> Optional[User]:
         return self._fk_user(self.user_id)
 
@@ -1086,7 +1107,8 @@ class UserRelation(Model):
     # ---------------
     target: Optional[UserCompact]
 
-    def target(self) -> Union[User, UserCompact]:
+    @cached_property
+    def target(self) -> UserCompact:
         return self._fk_user(self.target_id, existing=self.target)
 
 class StatisticsVariant(Model):

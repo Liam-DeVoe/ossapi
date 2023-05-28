@@ -1,4 +1,5 @@
 from typing import Optional, List, Any
+from functools import cached_property
 
 from ossapi.utils import (EnumModel, Datetime, Model, Field, IntFlagModel)
 
@@ -556,6 +557,7 @@ class KudosuVote(Model):
     user_id: int
     score: int
 
+    @cached_property
     def user(self):
         return self._fk_user(self.user_id)
 
@@ -593,6 +595,7 @@ class GithubUser(Model):
     user_id: Optional[int]
     user_url: Optional[str]
 
+    @cached_property
     def user(self):
         return self._fk_user(self.user_id)
 
