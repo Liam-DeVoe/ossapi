@@ -1,9 +1,6 @@
 Expandable Models
 =================
 
-Expansion
----------
-
 A common pattern in the osu! api is to have a "compact" variant of a model with less attributes, for performance reasons. For instance, :class:`~ossapi.models.UserCompact` is the compact version of :class:`~ossapi.models.User`. it is sometimes desirable to "expand" a compact model into its full representation in order to access the ommitted attributes. To do so, use the ``expand`` method:
 
 .. code-block:: python
