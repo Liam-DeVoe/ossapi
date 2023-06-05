@@ -295,7 +295,7 @@ class Scope(Enum):
     FRIENDS_READ = "friends.read"
     IDENTIFY = "identify"
     PUBLIC = "public"
-    
+
 class Domain(Enum):
     """
     Different possible api domains. These correspond to different deployments of
@@ -309,7 +309,6 @@ class Domain(Enum):
     OSU = "osu"
     LAZER = "lazer"
     DEV = "dev"
-
 
 class OssapiAsync:
     """
@@ -377,6 +376,18 @@ class OssapiAsync:
         :class:`~ossapi.ossapiv2.Ossapi` after manually authenticating with the
         osu! api. Optional if using :data:`Grant.CLIENT_CREDENTIALS
         <ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS>`.
+    domain: Domain or str
+        The domain to retrieve information from. This defaults to
+        :data:`Domain.OSU <ossapi.ossapiv2.Domain.OSU>`, which corresponds to
+        osu.ppy.sh, the main website.
+        |br|
+        To retrieve information from lazer.ppy.sh - for instance, the
+        leaderboards on lazer, or a user's best score on lazer - specify
+        :data:`Domain.LAZER <ossapi.ossapiv2.Domain.LAZER>`. To retureve
+        information from dev.ppy.sh, specify
+        :data:`Domain.DEV <ossapi.ossapiv2.Domain.DEV>`.
+        |br|
+        See :doc:`Domains <domains>` for more about domains.
     """
     TOKEN_URL = "https://{domain}.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://{domain}.ppy.sh/oauth/authorize"
@@ -400,7 +411,7 @@ class OssapiAsync:
             grant = (Grant.AUTHORIZATION_CODE if redirect_uri else
                 Grant.CLIENT_CREDENTIALS)
         grant = Grant(grant)
-        
+
         domain = Domain(domain)
 
         self.token_url = self.TOKEN_URL.format(domain=domain.value)
@@ -413,6 +424,7 @@ class OssapiAsync:
         self.redirect_uri = redirect_uri
         self.scopes = [Scope(scope) for scope in scopes]
         self.strict = strict
+        self.domain = domain
 
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(self.grant,
@@ -451,7 +463,9 @@ class OssapiAsync:
         self.session = self.authenticate(token=token)
 
     @staticmethod
-    def gen_token_key(grant, client_id, client_secret, scopes, domain=Domain.OSU):
+    def gen_token_key(grant, client_id, client_secret, scopes,
+        domain=Domain.OSU
+    ):
         """
         The unique key / hash for the given set of parameters. This is intended
         to provide a way to allow multiple OssapiV2's to live at the same time,
@@ -464,14 +478,23 @@ class OssapiAsync:
         grant = Grant(grant)
         scopes = [Scope(scope) for scope in scopes]
         domain = Domain(domain)
+
         m = hashlib.sha256()
         m.update(grant.value.encode("utf-8"))
         m.update(str(client_id).encode("utf-8"))
         m.update(client_secret.encode("utf-8"))
+
         for scope in scopes:
             m.update(scope.value.encode("utf-8"))
+
+        # for backwards compatability, only hash the domain when it's
+        # non-default. This ensures keys from before and after domains were
+        # introduced coincide.
+        # This intentionally treats Domain.OSU and Domain.LAZER as the same key,
+        # as those domains share account and oauth credentials.
         if domain is Domain.DEV:
             m.update(domain.value.encode("utf-8"))
+
         return m.hexdigest()
 
     @staticmethod
@@ -553,7 +576,7 @@ class OssapiAsync:
             scope=[scope.value for scope in scopes])
 
         authorization_url, _state = (
-            session.authorization_url(self.AUTH_CODE_URL)
+            session.authorization_url(self.auth_code_url)
         )
         webbrowser.open(authorization_url)
 
@@ -607,7 +630,7 @@ class OssapiAsync:
 
         try:
             r = await self.session.request_async(method,
-                f"{self.BASE_URL}{url}", session=aiohttp_session,
+                f"{self.base_url}{url}", session=aiohttp_session,
                 params=params, data=data)
         except TokenExpiredError:
             # provide "auto refreshing" for client credentials grant. The client
