@@ -1,12 +1,13 @@
 # ossapi ([documentation](https://circleguard.github.io/ossapi/)) [![PyPI version](https://badge.fury.io/py/ossapi.svg)](https://pypi.org/project/ossapi/)
 
-ossapi is a python wrapper for the osu! api which has complete coverage of both [api v2](https://osu.ppy.sh/docs/index.html) and [api v1](https://github.com/ppy/osu-api/wiki). ossapi provides both sync (`Ossapi`) and async (`OssapiAsync`) versions for api v2.
+ossapi is the definitive python wrapper for the osu! api. ossapi has complete coverage of [api v2](https://osu.ppy.sh/docs/index.html) and [api v1](https://github.com/ppy/osu-api/wiki), and provides both sync (`Ossapi`) and async (`OssapiAsync`) versions for api v2.
 
 If you need support or would like to contribute, feel free to ask in the `#ossapi` channel of the [circleguard discord](https://discord.gg/e84qxkQ).
 
 * [Installation](#installation)
 * [Quickstart](#quickstart)
 * [Async](#async)
+* [Lazer](#lazer)
 * [Endpoints](#endpoints)
   * [Beatmaps](#endpoints-beatmaps)
   * [Beatmapsets](#endpoints-beatmapsets)
@@ -59,7 +60,7 @@ from ossapi import Ossapi
 api = Ossapi(client_id, client_secret)
 
 # see docs for full list of endpoints
-print(api.user("tybug2").username)
+print(api.user("tybug").username)
 print(api.user(12092800, mode="osu").username)
 print(api.beatmap(221777).id)
 ```
@@ -75,12 +76,28 @@ from ossapi import Ossapi
 api = Ossapi(client_id, client_secret)
 
 async def main():
-    await api.user("tybug2")
+    await api.user("tybug")
 
 asyncio.run(main())
 ```
 
 [Read more about OssapiAsync on the docs.](https://circleguard.github.io/ossapi/async.html)
+
+## Lazer
+
+You can retrieve lazer-specific data (scores, leaderboards, etc) with ossapi:
+
+```python
+from ossapi import Ossapi
+
+api_lazer = Ossapi(client_id, client_secret, domain="lazer")
+
+# best score on the lazer server (lazer + osu scores combined)
+scores = api_lazer.user_scores(12092800, "best")
+print(scores[0].pp)
+```
+
+[Read more about domains on the docs.](https://circleguard.github.io/ossapi/domains.html)
 
 ## Endpoints
 
@@ -156,7 +173,7 @@ All endpoints for api v2.
 
 ## API v1 Usage
 
-You can get your api v1 key at <https://osu.ppy.sh/p/api/>. Note that due to a [redirection bug](https://github.com/ppy/osu-web/issues/2867), you may need to log in and wait 30 seconds before being able to access the api page through the above link.
+You can get your api v1 key at <https://osu.ppy.sh/home/account/edit#legacy-api>.
 
 Basic usage:
 

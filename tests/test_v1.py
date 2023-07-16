@@ -4,10 +4,10 @@ from tests import api_v1 as api
 
 class TestGetUser(TestCase):
     def test_deserialize(self):
-        r = api.get_user("tybug2")
+        r = api.get_user("tybug")
 
-        self.assertEqual(r.username, "tybug2")
-        self.assertEqual(api.get_user(12092800).username, "tybug2")
+        self.assertEqual(r.username, "tybug")
+        self.assertEqual(api.get_user(12092800).username, "tybug")
 
 class TestGetBeatmaps(TestCase):
     def test_deserialize(self):
@@ -29,7 +29,7 @@ class TestGetReplay(TestCase):
 class TestGetScores(TestCase):
     def test_deserialize(self):
         api.get_scores(221777)
-        api.get_scores(221777, user="tybug2")
+        api.get_scores(221777, user="tybug")
 
 class TestGetUserRecent(TestCase):
     def test_deserialize(self):

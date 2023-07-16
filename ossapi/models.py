@@ -16,7 +16,8 @@ from ossapi.enums import (UserAccountHistory, ProfileBanner, UserBadge, Country,
     BeatmapsetEventType, UserRelationType, UserLevel, UserGradeCounts,
     GithubUser, ChangelogSearch, ForumTopicType, ForumPostBody, ForumTopicSort,
     ChannelType, ReviewsConfig, NewsSearch, Nomination, RankHighest, RoomType,
-    RoomCategory, MatchEventType, ScoringType, TeamType)
+    RoomCategory, MatchEventType, ScoringType, TeamType, Variant, ForumPollText,
+    ForumPollTitle)
 from ossapi.utils import Datetime, Model, BaseModel, Field
 
 T = TypeVar("T")
@@ -86,7 +87,6 @@ class UserCompact(Model):
     # ---------------
     avatar_url: str
     country_code: str
-    default_group: str
     id: int
     is_active: bool
     is_bot: bool
@@ -107,14 +107,13 @@ class UserCompact(Model):
     blocks: Optional[UserRelation]
     country: Optional[Country]
     cover: Optional[Cover]
+    default_group: Optional[str]
     favourite_beatmapset_count: Optional[int]
-    # undocumented
     follow_user_mapping: Optional[List[int]]
     follower_count: Optional[int]
     friends: Optional[List[UserRelation]]
     graveyard_beatmapset_count: Optional[int]
     groups: Optional[List[UserGroup]]
-    # undocumented
     guest_beatmapset_count: Optional[int]
     is_admin: Optional[bool]
     is_bng: Optional[bool]
@@ -130,7 +129,11 @@ class UserCompact(Model):
     mapping_follower_count: Optional[int]
     monthly_playcounts: Optional[List[UserMonthlyPlaycount]]
     page: Optional[UserPage]
+    pending_beatmapset_count: Optional[int]
     previous_usernames: Optional[List[str]]
+    # deprecated, replaced by rank_history
+    rankHistory: Optional[RankHistory]
+    rank_history: Optional[RankHistory]
     # deprecated, replaced by ranked_beatmapset_count
     ranked_and_approved_beatmapset_count: Optional[int]
     ranked_beatmapset_count: Optional[int]
@@ -143,13 +146,10 @@ class UserCompact(Model):
     support_level: Optional[int]
     # deprecated, replaced by pending_beatmapset_count
     unranked_beatmapset_count: Optional[int]
-    pending_beatmapset_count: Optional[int]
     unread_pm_count: Optional[int]
     user_achievements: Optional[List[UserAchievement]]
     user_preferences: Optional[UserProfileCustomization]
-    rank_history: Optional[RankHistory]
-    # deprecated, replaced by rank_history
-    rankHistory: Optional[RankHistory]
+
 
     def expand(self) -> User:
         return self._fk_user(self.id)
@@ -264,17 +264,17 @@ class BeatmapsetCompact(Model):
     creator: str
     favourite_count: int
     id: int
+    nsfw: bool
+    offset: int
     play_count: int
     preview_url: str
     source: str
     status: RankStatus
+    spotlight: bool
     title: str
     title_unicode: str
     user_id: int
     video: bool
-    nsfw: bool
-    offset: int
-    spotlight: bool
     # documented as being in `Beatmapset` only, but returned by
     # `api.beatmapset_events` which uses a `BeatmapsetCompact`.
     hype: Optional[Hype]
@@ -283,6 +283,7 @@ class BeatmapsetCompact(Model):
     # ---------------
     beatmaps: Optional[List[Beatmap]]
     converts: Optional[Any]
+    current_nominations: Optional[List[Nomination]]
     current_user_attributes: Optional[Any]
     description: Optional[Any]
     discussions: Optional[Any]
@@ -291,12 +292,12 @@ class BeatmapsetCompact(Model):
     has_favourited: Optional[bool]
     language: Optional[Any]
     nominations: Optional[Any]
+    pack_tags: Optional[List[str]]
     ratings: Optional[Any]
     recent_favourites: Optional[Any]
     related_users: Optional[Any]
-    _user: Optional[UserCompact] = Field(name="user")
-    # undocumented
     track_id: Optional[int]
+    _user: Optional[UserCompact] = Field(name="user")
 
     def expand(self) -> Beatmapset:
         return self._fk_beatmapset(self.id)
@@ -308,6 +309,7 @@ class Beatmapset(BeatmapsetCompact):
     availability: Availability
     bpm: float
     can_be_hyped: bool
+    deleted_at: Optional[Datetime]
     discussion_enabled: bool
     discussion_locked: bool
     is_scoreable: bool
@@ -319,9 +321,6 @@ class Beatmapset(BeatmapsetCompact):
     storyboard: bool
     submitted_date: Optional[Datetime]
     tags: str
-    current_nominations: Optional[List[Nomination]]
-    deleted_at: Optional[Datetime]
-    pack_tags: List[str]
 
     def expand(self) -> Beatmapset:
         return self
@@ -434,18 +433,18 @@ class Comment(Model):
 class CommentBundle(Model):
     commentable_meta: List[CommentableMeta]
     comments: List[Comment]
+    cursor: CursorT
     has_more: bool
     has_more_id: Optional[int]
     included_comments: List[Comment]
     pinned_comments: Optional[List[Comment]]
+    # TODO this should be type CommentSort
     sort: str
     top_level_count: Optional[int]
     total: Optional[int]
     user_follow: bool
     user_votes: List[int]
     users: List[UserCompact]
-    # undocumented
-    cursor: CursorT
 
 class ForumPost(Model):
     created_at: Datetime
@@ -477,10 +476,26 @@ class ForumTopic(Model):
     type: ForumTopicType
     updated_at: Datetime
     user_id: int
-    poll: Any
+    poll: Optional[ForumPollModel]
 
     def user(self) -> User:
         return self._fk_user(self.user_id)
+
+class ForumPollModel(Model):
+    allow_vote_change: bool
+    ended_at: Optional[Datetime]
+    hide_incomplete_results: bool
+    last_vote_at: Optional[Datetime]
+    max_votes: int
+    options: List[ForumPollOption]
+    started_at: Datetime
+    title: ForumPollTitle
+    total_vote_count: int
+
+class ForumPollOption(Model):
+    id: int
+    text: ForumPollText
+    vote_count: Optional[int]
 
 class ForumTopicAndPosts(Model):
     cursor: CursorT
@@ -579,13 +594,9 @@ class BeatmapsetDiscussion(Model):
     can_be_resolved: bool
     can_grant_kudosu: bool
     created_at: Datetime
-    # documented as non-optional, api.beatmapset_events() might give a null
-    # response for this? but very rarely. need to find a repro case
     current_user_attributes: Any
     updated_at: Datetime
     deleted_at: Optional[Datetime]
-    # similarly as for current_user_attributes, in the past this has been null
-    # but can't find a repro case
     last_post_at: Datetime
     kudosu_denied: bool
     starting_post: Optional[BeatmapsetDiscussionPost]
@@ -613,6 +624,8 @@ class BeatmapsetDiscussionVote(Model):
     beatmapset_discussion_id: int
     created_at: Datetime
     updated_at: Datetime
+    # TODO is this field ever actually returned? not documented and can't find
+    # a repro case.
     cursor_string: Optional[str]
 
     def user(self):
@@ -731,6 +744,7 @@ class Build(Model):
     version: Optional[str]
     changelog_entries: Optional[List[ChangelogEntry]]
     versions: Optional[Versions]
+    youtube_id: Optional[str]
 
 class Versions(Model):
     next: Optional[Build]
@@ -851,8 +865,8 @@ class BeatmapDifficultyAttributes(Model):
     stamina_difficulty: Optional[float]
     rhythm_difficulty: Optional[float]
     colour_difficulty: Optional[float]
-    approach_raty: Optional[float]
-    great_hit_windoy: Optional[float]
+    approach_rate: Optional[float]
+    great_hit_window: Optional[float]
 
     # ctb attributes
     approach_rate: Optional[float]
@@ -861,6 +875,9 @@ class BeatmapDifficultyAttributes(Model):
     great_hit_window: Optional[float]
     score_multiplier: Optional[float]
 
+class Events(Model):
+    cursor_string: str
+    events: List[Event]
 
 
 # ================
@@ -1032,15 +1049,14 @@ class ChatChannel(Model):
     channel_id: int
     description: Optional[str]
     icon: Optional[str]
-    # documented as non-optional (to see that it can be null, pm tillerino)
     moderated: Optional[bool]
     name: str
     type: ChannelType
     uuid: Optional[str]
+    message_length_limit: int
 
     # optional fields
     # ---------------
-    first_message_id: Optional[int]
     last_message_id: Optional[int]
     last_read_id: Optional[int]
     recent_messages: Optional[List[ChatMessage]]
@@ -1089,31 +1105,38 @@ class UserRelation(Model):
     def target(self) -> Union[User, UserCompact]:
         return self._fk_user(self.target_id, existing=self.target)
 
-
-class UserStatistics(Model):
-    level: UserLevel
-    pp: float
-    ranked_score: int
-    hit_accuracy: float
-    play_count: int
-    play_time: int
-    total_score: int
-    total_hits: int
-    maximum_combo: int
-    replays_watched_by_others: int
-    is_ranked: bool
-    grade_counts: UserGradeCounts
+class StatisticsVariant(Model):
+    mode: GameMode
+    variant: Variant
     country_rank: Optional[int]
     global_rank: Optional[int]
-    rank: Optional[Any]
-    user: Optional[UserCompact]
-    variants: Optional[Any]
-    global_rank_exp: Optional[float]
-    pp_exp: float
+    pp: float
+
+class UserStatistics(Model):
     count_100: int
     count_300: int
     count_50: int
     count_miss: int
+    country_rank: Optional[int]
+    grade_counts: UserGradeCounts
+    hit_accuracy: float
+    is_ranked: bool
+    level: UserLevel
+    maximum_combo: int
+    play_count: int
+    play_time: int
+    pp: float
+    pp_exp: float
+    global_rank: Optional[int]
+    global_rank_exp: Optional[float]
+    # deprecated, replaced by global_rank and country_rank
+    rank: Optional[Any]
+    ranked_score: int
+    replays_watched_by_others: int
+    total_hits: int
+    total_score: int
+    user: Optional[UserCompact]
+    variants: Optional[List[StatisticsVariant]]
 
 class UserStatisticsRulesets(Model):
     # undocumented

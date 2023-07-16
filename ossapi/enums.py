@@ -88,10 +88,8 @@ class UserAccountHistoryType(EnumModel):
     SILENCE = "silence"
 
 class MessageType(EnumModel):
-    DISQUALIFY = "disqualify"
     HYPE = "hype"
     MAPPER_NOTE = "mapper_note"
-    NOMINATION_RESET = "nomination_reset"
     PRAISE = "praise"
     PROBLEM = "problem"
     REVIEW = "review"
@@ -217,6 +215,7 @@ class RoomCategory(EnumModel):
     # 430a2/resources/js/interfaces/room-json.ts#L7
     NORMAL = "normal"
     SPOTLIGHT = "spotlight"
+    FEATURED_ARTIST = "featured_artist"
 
 class MatchEventType(EnumModel):
     # https://github.dev/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2
@@ -246,6 +245,10 @@ class TeamType(EnumModel):
     TEAM_VS = "team-vs"
     TAG_TEAM_VS = "tag-team-vs"
 
+class Variant(EnumModel):
+    # can't start a python identifier with an integer
+    KEY_4 = "4k"
+    KEY_7 = "7k"
 
 
 # ===============
@@ -298,6 +301,7 @@ class ChannelType(EnumModel):
     TEMPORARY = "TEMPORARY"
     PM = "PM"
     GROUP = "GROUP"
+    ANNOUNCE = "ANNOUNCE"
 
 class CommentableType(EnumModel):
     NEWS_POST = "news_post"
@@ -379,8 +383,8 @@ class BeatmapsetSearchLanguage(EnumModel):
     ENGLISH = 2
     JAPANESE = 3
     CHINESE = 4
-    KOREAN = 6
     INSTRUMENTAL = 5
+    KOREAN = 6
     FRENCH = 7
     GERMAN = 8
     SWEDISH = 9
@@ -425,6 +429,9 @@ class RoomSearchType(EnumModel):
     PARTICIPATED = "participated"
     ENDED = "ended"
 
+class EventsSort(EnumModel):
+    NEW = "id_desc"
+    OLD = "id_asc"
 
 
 # =================
@@ -608,6 +615,14 @@ class NewsSearch(Model):
 class ForumPostBody(Model):
     html: str
     raw: str
+
+class ForumPollText(Model):
+    bbcode: str
+    html: str
+
+class ForumPollTitle(Model):
+    bbcode: str
+    html: str
 
 class ReviewsConfig(Model):
     max_blocks: int

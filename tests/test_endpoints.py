@@ -2,7 +2,8 @@ from datetime import datetime
 from unittest import TestCase
 
 from ossapi import (RankingType, BeatmapsetEventType, AccessDeniedError,
-    InsufficientScopeError, Mod, GameMode, ForumPoll, RoomSearchType)
+    InsufficientScopeError, Mod, GameMode, ForumPoll, RoomSearchType,
+    EventsSort)
 
 from tests import (
     TestCaseAuthorizationCode, TestCaseDevServer, UNIT_TEST_MESSAGE,
@@ -109,10 +110,10 @@ class TestUser(TestCase):
 
     def test_key(self):
         # make sure it automatically falls back to username if not specified
-        api.user("tybug2")
-        api.user("tybug2", key="username")
+        api.user("tybug")
+        api.user("tybug", key="username")
 
-        self.assertRaises(Exception, lambda: api.user("tybug2", key="id"))
+        self.assertRaises(Exception, lambda: api.user("tybug", key="id"))
 
 class TestMe(TestCase):
     def test_insufficient_scope(self):
@@ -138,7 +139,12 @@ class TestChangelogLookup(TestCase):
 
 class TestForumTopic(TestCase):
     def test_deserialize(self):
+        # normal topic
+        # https://osu.ppy.sh/community/forums/topics/141240?n=1
         api.forum_topic(141240)
+        # topic with a poll
+        # https://osu.ppy.sh/community/forums/topics/1781998?n=1
+        api.forum_topic(1781998)
 
 class TestBeatmapsetDiscussionVotes(TestCase):
     def test_deserialize(self):
@@ -216,6 +222,12 @@ class TestComments(TestCase):
     def test_deserialize(self):
         api.comments()
 
+class TestEvents(TestCase):
+    def test_deserialize(self):
+        events = api.events()
+        api.events(cursor_string=events.cursor_string)
+        api.events(sort=EventsSort.NEW)
+
 
 # ======================
 # api_full test cases
@@ -256,11 +268,11 @@ class TestLazerUser(TestCase):
         # make sure the lazer domain returns something different than the osu
         # domain. ie, we're actually hitting a different db.
 
-        statistics = api.user("tybug2").statistics
+        statistics = api.user("tybug").statistics
         pp_osu = statistics.pp
         pp_exp_osu = statistics.pp_exp
 
-        statistics = api_lazer.user("tybug2").statistics
+        statistics = api_lazer.user("tybug").statistics
         pp_lazer = statistics.pp
         pp_exp_lazer = statistics.pp_exp
 

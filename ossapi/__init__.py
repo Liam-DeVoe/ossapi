@@ -17,7 +17,8 @@ from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
     UserCompact, BeatmapsetCompact, ForumPoll, Room, RoomPlaylistItem,
     RoomPlaylistItemMod, RoomLeaderboardScore, RoomLeaderboardUserScore,
     RoomLeaderboard, Match, Matches, MatchResponse, ScoreMatchInfo, MatchGame,
-    MatchEventDetail, MatchEvent, ScoringType, TeamType)
+    MatchEventDetail, MatchEvent, ScoringType, TeamType, StatisticsVariant,
+    Events)
 from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
     UserBeatmapType, BeatmapDiscussionPostSort, UserLookupKey,
     BeatmapsetEventType, CommentableType, CommentSort, ForumTopicSort,
@@ -26,7 +27,7 @@ from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
     BeatmapsetSearchCategory, BeatmapsetSearchMode,
     BeatmapsetSearchExplicitContent, BeatmapsetSearchLanguage,
     BeatmapsetSearchGenre, NewsPostKey, BeatmapsetSearchSort, RoomType,
-    RoomCategory, RoomSearchType, MatchEventType)
+    RoomCategory, RoomSearchType, MatchEventType, Variant, EventsSort)
 from ossapi.mod import Mod
 from ossapi.replay import Replay
 from ossapi.encoder import ModelEncoder, serialize_model
@@ -55,7 +56,7 @@ __all__ = [
     "Room", "RoomPlaylistItem", "RoomPlaylistItemMod", "RoomLeaderboardScore",
     "RoomLeaderboardUserScore", "RoomLeaderboard", "Match", "Matches",
     "MatchResponse", "ScoreMatchInfo", "MatchGame", "MatchEventDetail",
-    "MatchEvent",
+    "MatchEvent", "StatisticsVariant", "Events",
     # OssapiV2 enums
     "GameMode", "ScoreType", "RankingFilter", "RankingType",
     "UserBeatmapType", "BeatmapDiscussionPostSort", "UserLookupKey",
@@ -66,7 +67,7 @@ __all__ = [
     "BeatmapsetSearchExplicitContent", "BeatmapsetSearchLanguage",
     "BeatmapsetSearchGenre", "NewsPostKey", "BeatmapsetSearchSort", "RoomType",
     "RoomCategory", "RoomSearchType", "MatchEventType", "ScoringType",
-    "TeamType",
+    "TeamType", "Variant", "EventsSort",
     # OssapiV2 exceptions
     "AccessDeniedError", "TokenExpiredError", "InsufficientScopeError",
     # misc
