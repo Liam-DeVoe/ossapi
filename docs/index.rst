@@ -1,7 +1,7 @@
 ossapi
 ======
 
-ossapi is an api wrapper for osu `api v2 <https://osu.ppy.sh/docs/index.html>`__ and `api v1 <https://github.com/ppy/osu-api/wiki>`__.
+ossapi is the definitive python wrapper for osu! `api v2 <https://osu.ppy.sh/docs/index.html>`__ and `api v1 <https://github.com/ppy/osu-api/wiki>`__.
 
 ossapi is developed and maintained by `tybug <https://github.com/tybug>`__.
 
