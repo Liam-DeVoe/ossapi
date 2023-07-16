@@ -178,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#home">Home</a></li>
@@ -255,7 +256,8 @@
     <span class="n">BeatmapsetEventType</span><span class="p">,</span> <span class="n">UserRelationType</span><span class="p">,</span> <span class="n">UserLevel</span><span class="p">,</span> <span class="n">UserGradeCounts</span><span class="p">,</span>
     <span class="n">GithubUser</span><span class="p">,</span> <span class="n">ChangelogSearch</span><span class="p">,</span> <span class="n">ForumTopicType</span><span class="p">,</span> <span class="n">ForumPostBody</span><span class="p">,</span> <span class="n">ForumTopicSort</span><span class="p">,</span>
     <span class="n">ChannelType</span><span class="p">,</span> <span class="n">ReviewsConfig</span><span class="p">,</span> <span class="n">NewsSearch</span><span class="p">,</span> <span class="n">Nomination</span><span class="p">,</span> <span class="n">RankHighest</span><span class="p">,</span> <span class="n">RoomType</span><span class="p">,</span>
-    <span class="n">RoomCategory</span><span class="p">,</span> <span class="n">MatchEventType</span><span class="p">,</span> <span class="n">ScoringType</span><span class="p">,</span> <span class="n">TeamType</span><span class="p">)</span>
+    <span class="n">RoomCategory</span><span class="p">,</span> <span class="n">MatchEventType</span><span class="p">,</span> <span class="n">ScoringType</span><span class="p">,</span> <span class="n">TeamType</span><span class="p">,</span> <span class="n">Variant</span><span class="p">,</span> <span class="n">ForumPollText</span><span class="p">,</span>
+    <span class="n">ForumPollTitle</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="n">Datetime</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -325,7 +327,6 @@
     <span class="c1"># ---------------</span>
     <span class="n">avatar_url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">default_group</span><span class="p">:</span> <span class="nb">str</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">is_active</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">is_bot</span><span class="p">:</span> <span class="nb">bool</span>
@@ -346,14 +347,13 @@
     <span class="n">blocks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]</span>
     <span class="n">country</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Country</span><span class="p">]</span>
     <span class="n">cover</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Cover</span><span class="p">]</span>
+    <span class="n">default_group</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">favourite_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="c1"># undocumented</span>
     <span class="n">follow_user_mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
     <span class="n">follower_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">friends</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]]</span>
     <span class="n">graveyard_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">groups</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserGroup</span><span class="p">]]</span>
-    <span class="c1"># undocumented</span>
     <span class="n">guest_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">is_admin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">is_bng</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
@@ -369,7 +369,11 @@
     <span class="n">mapping_follower_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">monthly_playcounts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserMonthlyPlaycount</span><span class="p">]]</span>
     <span class="n">page</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserPage</span><span class="p">]</span>
+    <span class="n">pending_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">previous_usernames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="c1"># deprecated, replaced by rank_history</span>
+    <span class="n">rankHistory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
+    <span class="n">rank_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
     <span class="c1"># deprecated, replaced by ranked_beatmapset_count</span>
     <span class="n">ranked_and_approved_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">ranked_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
@@ -382,13 +386,10 @@
     <span class="n">support_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="c1"># deprecated, replaced by pending_beatmapset_count</span>
     <span class="n">unranked_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">pending_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">unread_pm_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_achievements</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserAchievement</span><span class="p">]]</span>
     <span class="n">user_preferences</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserProfileCustomization</span><span class="p">]</span>
-    <span class="n">rank_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
-    <span class="c1"># deprecated, replaced by rank_history</span>
-    <span class="n">rankHistory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
+
 
 <div class="viewcode-block" id="UserCompact.expand"><a class="viewcode-back" href="../../appendix.html#ossapi.models.UserCompact.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div></div>
@@ -503,17 +504,17 @@
     <span class="n">creator</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">favourite_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">nsfw</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">play_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">preview_url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">source</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">status</span><span class="p">:</span> <span class="n">RankStatus</span>
+    <span class="n">spotlight</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">title_unicode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">video</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">nsfw</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">spotlight</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="c1"># documented as being in `Beatmapset` only, but returned by</span>
     <span class="c1"># `api.beatmapset_events` which uses a `BeatmapsetCompact`.</span>
     <span class="n">hype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Hype</span><span class="p">]</span>
@@ -522,6 +523,7 @@
     <span class="c1"># ---------------</span>
     <span class="n">beatmaps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]]</span>
     <span class="n">converts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="n">current_nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Nomination</span><span class="p">]]</span>
     <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">discussions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
@@ -530,12 +532,12 @@
     <span class="n">has_favourited</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="n">pack_tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="n">ratings</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">recent_favourites</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">related_users</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
-    <span class="n">_user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
-    <span class="c1"># undocumented</span>
     <span class="n">track_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">_user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BeatmapsetCompact.expand"><a class="viewcode-back" href="../../appendix.html#ossapi.models.BeatmapsetCompact.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Beatmapset</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_beatmapset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
@@ -547,6 +549,7 @@
     <span class="n">availability</span><span class="p">:</span> <span class="n">Availability</span>
     <span class="n">bpm</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">can_be_hyped</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">discussion_enabled</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">discussion_locked</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">is_scoreable</span><span class="p">:</span> <span class="nb">bool</span>
@@ -558,9 +561,6 @@
     <span class="n">storyboard</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">submitted_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">tags</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">current_nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Nomination</span><span class="p">]]</span>
-    <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
-    <span class="n">pack_tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Beatmapset.expand"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Beatmapset.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Beatmapset</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
@@ -673,18 +673,18 @@
 <div class="viewcode-block" id="CommentBundle"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CommentBundle">[docs]</a><span class="k">class</span> <span class="nc">CommentBundle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">commentable_meta</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CommentableMeta</span><span class="p">]</span>
     <span class="n">comments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
+    <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">has_more</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">has_more_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">included_comments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
     <span class="n">pinned_comments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]]</span>
+    <span class="c1"># TODO this should be type CommentSort</span>
     <span class="n">sort</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">top_level_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_follow</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">user_votes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
-    <span class="c1"># undocumented</span>
-    <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span></div>
+    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ForumPost"><a class="viewcode-back" href="../../appendix.html#ossapi.models.ForumPost">[docs]</a><span class="k">class</span> <span class="nc">ForumPost</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">created_at</span><span class="p">:</span> <span class="n">Datetime</span>
@@ -716,10 +716,26 @@
     <span class="nb">type</span><span class="p">:</span> <span class="n">ForumTopicType</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">poll</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">poll</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ForumPollModel</span><span class="p">]</span>
 
 <div class="viewcode-block" id="ForumTopic.user"><a class="viewcode-back" href="../../appendix.html#ossapi.models.ForumTopic.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="ForumPollModel"><a class="viewcode-back" href="../../appendix.html#ossapi.models.ForumPollModel">[docs]</a><span class="k">class</span> <span class="nc">ForumPollModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">allow_vote_change</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">ended_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">hide_incomplete_results</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">last_vote_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">max_votes</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ForumPollOption</span><span class="p">]</span>
+    <span class="n">started_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">title</span><span class="p">:</span> <span class="n">ForumPollTitle</span>
+    <span class="n">total_vote_count</span><span class="p">:</span> <span class="nb">int</span></div>
+
+<div class="viewcode-block" id="ForumPollOption"><a class="viewcode-back" href="../../appendix.html#ossapi.models.ForumPollOption">[docs]</a><span class="k">class</span> <span class="nc">ForumPollOption</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">text</span><span class="p">:</span> <span class="n">ForumPollText</span>
+    <span class="n">vote_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ForumTopicAndPosts"><a class="viewcode-back" href="../../appendix.html#ossapi.models.ForumTopicAndPosts">[docs]</a><span class="k">class</span> <span class="nc">ForumTopicAndPosts</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
@@ -818,13 +834,9 @@
     <span class="n">can_be_resolved</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">can_grant_kudosu</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">created_at</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="c1"># documented as non-optional, api.beatmapset_events() might give a null</span>
-    <span class="c1"># response for this? but very rarely. need to find a repro case</span>
     <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
-    <span class="c1"># similarly as for current_user_attributes, in the past this has been null</span>
-    <span class="c1"># but can&#39;t find a repro case</span>
     <span class="n">last_post_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">kudosu_denied</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">starting_post</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]</span>
@@ -852,6 +864,8 @@
     <span class="n">beatmapset_discussion_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">created_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="c1"># TODO is this field ever actually returned? not documented and can&#39;t find</span>
+    <span class="c1"># a repro case.</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
 <div class="viewcode-block" id="BeatmapsetDiscussionVote.user"><a class="viewcode-back" href="../../appendix.html#ossapi.models.BeatmapsetDiscussionVote.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -969,7 +983,8 @@
     <span class="n">users</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">changelog_entries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ChangelogEntry</span><span class="p">]]</span>
-    <span class="n">versions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Versions</span><span class="p">]</span></div>
+    <span class="n">versions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Versions</span><span class="p">]</span>
+    <span class="n">youtube_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Versions"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Versions">[docs]</a><span class="k">class</span> <span class="nc">Versions</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">next</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Build</span><span class="p">]</span>
@@ -1090,8 +1105,8 @@
     <span class="n">stamina_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">rhythm_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">colour_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
-    <span class="n">approach_raty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
-    <span class="n">great_hit_windoy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">approach_rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">great_hit_window</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
 
     <span class="c1"># ctb attributes</span>
     <span class="n">approach_rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
@@ -1100,6 +1115,9 @@
     <span class="n">great_hit_window</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">score_multiplier</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="Events"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Events">[docs]</a><span class="k">class</span> <span class="nc">Events</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span></div>
 
 
 <span class="c1"># ================</span>
@@ -1271,15 +1289,14 @@
     <span class="n">channel_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">icon</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="c1"># documented as non-optional (to see that it can be null, pm tillerino)</span>
     <span class="n">moderated</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="nb">type</span><span class="p">:</span> <span class="n">ChannelType</span>
     <span class="n">uuid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">message_length_limit</span><span class="p">:</span> <span class="nb">int</span>
 
     <span class="c1"># optional fields</span>
     <span class="c1"># ---------------</span>
-    <span class="n">first_message_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">last_message_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">last_read_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">recent_messages</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]</span>
@@ -1328,31 +1345,38 @@
     <span class="k">def</span> <span class="nf">target</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">User</span><span class="p">,</span> <span class="n">UserCompact</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_id</span><span class="p">,</span> <span class="n">existing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="UserStatistics"><a class="viewcode-back" href="../../appendix.html#ossapi.models.UserStatistics">[docs]</a><span class="k">class</span> <span class="nc">UserStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">level</span><span class="p">:</span> <span class="n">UserLevel</span>
-    <span class="n">pp</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">ranked_score</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">hit_accuracy</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">play_count</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">play_time</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">total_hits</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">maximum_combo</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">replays_watched_by_others</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">is_ranked</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">grade_counts</span><span class="p">:</span> <span class="n">UserGradeCounts</span>
+<div class="viewcode-block" id="StatisticsVariant"><a class="viewcode-back" href="../../appendix.html#ossapi.models.StatisticsVariant">[docs]</a><span class="k">class</span> <span class="nc">StatisticsVariant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">GameMode</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Variant</span>
     <span class="n">country_rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">global_rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
-    <span class="n">user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
-    <span class="n">variants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
-    <span class="n">global_rank_exp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
-    <span class="n">pp_exp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">pp</span><span class="p">:</span> <span class="nb">float</span></div>
+
+<div class="viewcode-block" id="UserStatistics"><a class="viewcode-back" href="../../appendix.html#ossapi.models.UserStatistics">[docs]</a><span class="k">class</span> <span class="nc">UserStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">count_100</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">count_300</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">count_50</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_miss</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">count_miss</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">country_rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">grade_counts</span><span class="p">:</span> <span class="n">UserGradeCounts</span>
+    <span class="n">hit_accuracy</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">is_ranked</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">level</span><span class="p">:</span> <span class="n">UserLevel</span>
+    <span class="n">maximum_combo</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">play_count</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">play_time</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">pp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">pp_exp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">global_rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">global_rank_exp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="c1"># deprecated, replaced by global_rank and country_rank</span>
+    <span class="n">rank</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="n">ranked_score</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">replays_watched_by_others</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_hits</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">variants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">StatisticsVariant</span><span class="p">]]</span></div>
 
 <div class="viewcode-block" id="UserStatisticsRulesets"><a class="viewcode-back" href="../../appendix.html#ossapi.models.UserStatisticsRulesets">[docs]</a><span class="k">class</span> <span class="nc">UserStatisticsRulesets</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>

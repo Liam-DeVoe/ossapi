@@ -179,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#home">Home</a></li>
@@ -703,6 +704,28 @@ the user-specified default when authenticated.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-comments">Get Comments</a> endpoint.</p>
+</dd></dl>
+
+</section>
+<section id="events">
+<h1>Events<a class="headerlink" href="#events" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.events" title="Permalink to this definition">#</a></dt>
+<dd><p>Get most recent events, in order of creation time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.EventsSort" title="ossapi.enums.EventsSort"><em>EventsSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Sort events by oldest or newest.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Events" title="ossapi.models.Events"><em>Events</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-events">Get Events</a> endpoint.</p>
 </dd></dl>
 
 </section>
@@ -1423,6 +1446,10 @@ want to retrieve users by username instead of id, see <a class="reference intern
 <li><a class="reference internal" href="#comments">Comments</a><ul>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment"><code class="docutils literal notranslate"><span class="pre">comment()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comments"><code class="docutils literal notranslate"><span class="pre">comments()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#events">Events</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.events"><code class="docutils literal notranslate"><span class="pre">events()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#forums">Forums</a><ul>

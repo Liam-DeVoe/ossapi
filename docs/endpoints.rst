@@ -64,6 +64,11 @@ Comments
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.comments
 
+Events
+======
+
+.. autofunction:: ossapi.ossapiv2.Ossapi.events
+
 Forums
 ======
 

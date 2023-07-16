@@ -179,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#home">Home</a></li>
@@ -242,7 +243,7 @@
 <h1>Serializing Models<a class="headerlink" href="#serializing-models" title="Permalink to this heading">#</a></h1>
 <p>If you need to access the original json returned by the api, you can serialize a model back into a json string with <code class="docutils literal notranslate"><span class="pre">serialize_model</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">serialize_model</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">serialize_model</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug2&quot;</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serialize_model</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>Note that this is not guaranteed to be identical to the json returned by the api. For instance, there may be additional attributes in the serialized json which are optional in the api spec, not returned by the api, and set to null. But it should be essentially the same.</p>

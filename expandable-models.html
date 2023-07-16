@@ -179,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#home">Home</a></li>
@@ -241,7 +242,7 @@
           <section id="expandable-models">
 <h1>Expandable Models<a class="headerlink" href="#expandable-models" title="Permalink to this heading">#</a></h1>
 <p>A common pattern in the osu! api is to have a “compact” variant of a model with less attributes, for performance reasons. For instance, <a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserCompact</span></code></a> and <a class="reference internal" href="appendix.html#ossapi.models.User" title="ossapi.models.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a>. It is also common to want to “expand” a compact model into its full representation to access these additional attributes. To do so, use the <code class="docutils literal notranslate"><span class="pre">expand</span></code> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compact_user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;tybug2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compact_user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;tybug&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># `statistics` is only available on `User` not `UserCompact`,</span>
 <span class="c1"># so expansion is necessary</span>
 <span class="n">full_user</span> <span class="o">=</span> <span class="n">compact_user</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>

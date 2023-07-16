@@ -30,7 +30,7 @@ Let's make a few simple api calls to make sure things are working:
     client_secret = None
     api = Ossapi(client_id, client_secret)
 
-    user = api.user("tybug2", key=UserLookupKey.USERNAME)
+    user = api.user("tybug", key=UserLookupKey.USERNAME)
     print(user.id)
 
     top50 = api.ranking(GameMode.OSU, RankingType.PERFORMANCE)

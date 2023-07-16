@@ -178,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#home">Home</a></li>
@@ -270,7 +271,7 @@
     <span class="n">UserCompact</span><span class="p">,</span> <span class="n">NewsListing</span><span class="p">,</span> <span class="n">NewsPost</span><span class="p">,</span> <span class="n">SeasonalBackgrounds</span><span class="p">,</span> <span class="n">BeatmapsetCompact</span><span class="p">,</span>
     <span class="n">BeatmapUserScores</span><span class="p">,</span> <span class="n">DifficultyAttributes</span><span class="p">,</span> <span class="n">Users</span><span class="p">,</span> <span class="n">Beatmaps</span><span class="p">,</span>
     <span class="n">CreateForumTopicResponse</span><span class="p">,</span> <span class="n">ForumPoll</span><span class="p">,</span> <span class="n">ForumPost</span><span class="p">,</span> <span class="n">ForumTopic</span><span class="p">,</span> <span class="n">Room</span><span class="p">,</span>
-    <span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="n">Matches</span><span class="p">,</span> <span class="n">Match</span><span class="p">,</span> <span class="n">MatchResponse</span><span class="p">,</span> <span class="n">ChatChannel</span><span class="p">)</span>
+    <span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="n">Matches</span><span class="p">,</span> <span class="n">Match</span><span class="p">,</span> <span class="n">MatchResponse</span><span class="p">,</span> <span class="n">ChatChannel</span><span class="p">,</span> <span class="n">Events</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span><span class="n">GameMode</span><span class="p">,</span> <span class="n">ScoreType</span><span class="p">,</span> <span class="n">RankingFilter</span><span class="p">,</span> <span class="n">RankingType</span><span class="p">,</span>
     <span class="n">UserBeatmapType</span><span class="p">,</span> <span class="n">BeatmapDiscussionPostSort</span><span class="p">,</span> <span class="n">UserLookupKey</span><span class="p">,</span>
     <span class="n">BeatmapsetEventType</span><span class="p">,</span> <span class="n">CommentableType</span><span class="p">,</span> <span class="n">CommentSort</span><span class="p">,</span> <span class="n">ForumTopicSort</span><span class="p">,</span>
@@ -279,7 +280,7 @@
     <span class="n">BeatmapsetSearchCategory</span><span class="p">,</span> <span class="n">BeatmapsetSearchMode</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchExplicitContent</span><span class="p">,</span> <span class="n">BeatmapsetSearchGenre</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchLanguage</span><span class="p">,</span> <span class="n">NewsPostKey</span><span class="p">,</span> <span class="n">BeatmapsetSearchSort</span><span class="p">,</span> <span class="n">RoomSearchType</span><span class="p">,</span>
-    <span class="n">ChangelogMessageFormat</span><span class="p">)</span>
+    <span class="n">ChangelogMessageFormat</span><span class="p">,</span> <span class="n">EventsSort</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">is_compatible_type</span><span class="p">,</span> <span class="n">is_primitive_type</span><span class="p">,</span> <span class="n">is_optional</span><span class="p">,</span>
     <span class="n">is_base_model_type</span><span class="p">,</span> <span class="n">is_model_type</span><span class="p">,</span> <span class="n">is_high_model_type</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
@@ -319,6 +320,7 @@
 <span class="n">NewsPostKeyT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">NewsPostKey</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">BeatmapsetSearchSortT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">BeatmapsetSearchSort</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">RoomSearchTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RoomSearchType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<span class="n">EventsSortT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">EventsSort</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 
 <span class="n">BeatmapIdT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">BeatmapCompact</span><span class="p">]</span>
 <span class="n">UserIdT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">UserCompact</span><span class="p">]</span>
@@ -1872,6 +1874,34 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-a-comment&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">CommentBundle</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/comments/</span><span class="si">{</span><span class="n">comment_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+    <span class="c1"># /events</span>
+    <span class="c1"># -------</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EventsSortT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Events</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get most recent events, in order of creation time.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sort</span>
+<span class="sd">            Sort events by oldest or newest.</span>
+<span class="sd">        cursor_string</span>
+<span class="sd">            Cursor for pagination.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Get Events</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-events&gt;`__ endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">,</span> <span class="s2">&quot;sort&quot;</span><span class="p">:</span> <span class="n">sort</span><span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Events</span><span class="p">,</span> <span class="s2">&quot;/events&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
 
     <span class="c1"># /forums</span>

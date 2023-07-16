@@ -5,7 +5,7 @@ A common pattern in the osu! api is to have a "compact" variant of a model with 
 
 .. code-block:: python
 
-    compact_user = api.search(query="tybug2").users.data[0]
+    compact_user = api.search(query="tybug").users.data[0]
     # `statistics` is only available on `User` not `UserCompact`,
     # so expansion is necessary
     full_user = compact_user.expand()

@@ -17,7 +17,7 @@ ossapi provides :class:`~ossapi.ossapiv2_async.OssapiAsync`, an async equivalent
     api = OssapiAsync(client_id, client_secret)
 
     async def main():
-        await api.user("tybug2")
+        await api.user("tybug")
 
     asyncio.run(main())
 

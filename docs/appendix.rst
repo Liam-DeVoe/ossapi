@@ -120,10 +120,6 @@ Enums
 
 .. py:class:: MessageType
 
-   .. py:attribute:: DISQUALIFY
-      :type: str
-      :value: "disqualify"
-
    .. py:attribute:: HYPE
       :type: str
       :value: "hype"
@@ -131,10 +127,6 @@ Enums
    .. py:attribute:: MAPPER_NOTE
       :type: str
       :value: "mapper_note"
-
-   .. py:attribute:: NOMINATION_RESET
-      :type: str
-      :value: "nomination_reset"
 
    .. py:attribute:: PRAISE
       :type: str
@@ -496,6 +488,10 @@ Enums
 
 .. py:class:: RoomCategory
 
+   .. py:attribute:: FEATURED_ARTIST
+      :type: str
+      :value: "featured_artist"
+
    .. py:attribute:: NORMAL
       :type: str
       :value: "normal"
@@ -569,6 +565,16 @@ Enums
    .. py:attribute:: TEAM_VS
       :type: str
       :value: "team-vs"
+
+.. py:class:: Variant
+
+   .. py:attribute:: KEY_4
+      :type: str
+      :value: "4k"
+
+   .. py:attribute:: KEY_7
+      :type: str
+      :value: "7k"
 
 .. py:class:: ScoreType
 
@@ -681,6 +687,10 @@ Enums
       :value: "ranked"
 
 .. py:class:: ChannelType
+
+   .. py:attribute:: ANNOUNCE
+      :type: str
+      :value: "ANNOUNCE"
 
    .. py:attribute:: GROUP
       :type: str
@@ -1068,6 +1078,16 @@ Enums
       :type: str
       :value: "participated"
 
+.. py:class:: EventsSort
+
+   .. py:attribute:: NEW
+      :type: str
+      :value: "id_desc"
+
+   .. py:attribute:: OLD
+      :type: str
+      :value: "id_asc"
+
 .. py:class:: Failtimes
 
    .. py:attribute:: exit
@@ -1443,6 +1463,22 @@ Enums
    .. py:attribute:: raw
       :type: str
 
+.. py:class:: ForumPollText
+
+   .. py:attribute:: bbcode
+      :type: str
+
+   .. py:attribute:: html
+      :type: str
+
+.. py:class:: ForumPollTitle
+
+   .. py:attribute:: bbcode
+      :type: str
+
+   .. py:attribute:: html
+      :type: str
+
 .. py:class:: ReviewsConfig
 
    .. py:attribute:: max_blocks
@@ -1607,7 +1643,7 @@ Models
       :type: Cover | None
 
    .. py:attribute:: default_group
-      :type: str
+      :type: str | None
 
    .. py:attribute:: expand
       :type: function
@@ -1789,7 +1825,7 @@ Models
       :type: str
 
    .. py:attribute:: default_group
-      :type: str
+      :type: str | None
 
    .. py:attribute:: discord
       :type: str | None
@@ -2163,6 +2199,9 @@ Models
    .. py:attribute:: creator
       :type: str
 
+   .. py:attribute:: current_nominations
+      :type: list[Nomination] | None
+
    .. py:attribute:: current_user_attributes
       :type: typing.Any | None
 
@@ -2204,6 +2243,9 @@ Models
 
    .. py:attribute:: offset
       :type: int
+
+   .. py:attribute:: pack_tags
+      :type: list[str] | None
 
    .. py:attribute:: play_count
       :type: int
@@ -2343,7 +2385,7 @@ Models
       :type: int
 
    .. py:attribute:: pack_tags
-      :type: list[str]
+      :type: list[str] | None
 
    .. py:attribute:: play_count
       :type: int
@@ -2701,7 +2743,7 @@ Models
       :type: int
 
    .. py:attribute:: poll
-      :type: typing.Any
+      :type: ForumPollModel | None
 
    .. py:attribute:: post_count
       :type: int
@@ -2720,6 +2762,46 @@ Models
 
    .. py:attribute:: user_id
       :type: int
+
+.. py:class:: ForumPollModel
+
+   .. py:attribute:: allow_vote_change
+      :type: bool
+
+   .. py:attribute:: ended_at
+      :type: ~datetime.datetime | None
+
+   .. py:attribute:: hide_incomplete_results
+      :type: bool
+
+   .. py:attribute:: last_vote_at
+      :type: ~datetime.datetime | None
+
+   .. py:attribute:: max_votes
+      :type: int
+
+   .. py:attribute:: options
+      :type: list[ForumPollOption]
+
+   .. py:attribute:: started_at
+      :type: ~datetime.datetime
+
+   .. py:attribute:: title
+      :type: ForumPollTitle
+
+   .. py:attribute:: total_vote_count
+      :type: int
+
+.. py:class:: ForumPollOption
+
+   .. py:attribute:: id
+      :type: int
+
+   .. py:attribute:: text
+      :type: ForumPollText
+
+   .. py:attribute:: vote_count
+      :type: int | None
 
 .. py:class:: ForumTopicAndPosts
 
@@ -3341,6 +3423,9 @@ Models
    .. py:attribute:: versions
       :type: Versions | None
 
+   .. py:attribute:: youtube_id
+      :type: str | None
+
 .. py:class:: Versions
 
    .. py:attribute:: next
@@ -3593,9 +3678,6 @@ Models
    .. py:attribute:: approach_rate
       :type: float | None
 
-   .. py:attribute:: approach_raty
-      :type: float | None
-
    .. py:attribute:: colour_difficulty
       :type: float | None
 
@@ -3603,9 +3685,6 @@ Models
       :type: float | None
 
    .. py:attribute:: great_hit_window
-      :type: float | None
-
-   .. py:attribute:: great_hit_windoy
       :type: float | None
 
    .. py:attribute:: max_combo
@@ -3634,6 +3713,14 @@ Models
 
    .. py:attribute:: star_rating
       :type: float
+
+.. py:class:: Events
+
+   .. py:attribute:: cursor_string
+      :type: str
+
+   .. py:attribute:: events
+      :type: list[Event]
 
 .. py:class:: ForumPoll
 
@@ -3898,9 +3985,6 @@ Models
    .. py:attribute:: description
       :type: str | None
 
-   .. py:attribute:: first_message_id
-      :type: int | None
-
    .. py:attribute:: icon
       :type: str | None
 
@@ -3909,6 +3993,9 @@ Models
 
    .. py:attribute:: last_read_id
       :type: int | None
+
+   .. py:attribute:: message_length_limit
+      :type: int
 
    .. py:attribute:: moderated
       :type: bool | None
@@ -3993,6 +4080,23 @@ Models
    .. py:attribute:: target_id
       :type: int
 
+.. py:class:: StatisticsVariant
+
+   .. py:attribute:: country_rank
+      :type: int | None
+
+   .. py:attribute:: global_rank
+      :type: int | None
+
+   .. py:attribute:: mode
+      :type: GameMode
+
+   .. py:attribute:: pp
+      :type: float
+
+   .. py:attribute:: variant
+      :type: Variant
+
 .. py:class:: UserStatistics
 
    .. py:attribute:: count_100
@@ -4062,7 +4166,7 @@ Models
       :type: UserCompact | None
 
    .. py:attribute:: variants
-      :type: typing.Any | None
+      :type: list[StatisticsVariant] | None
 
 .. py:class:: UserStatisticsRulesets
 

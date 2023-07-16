@@ -178,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#comments">Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#events">Events</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#forums">Forums</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#friends">Friends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#home">Home</a></li>
@@ -327,10 +328,8 @@
     <span class="n">SILENCE</span> <span class="o">=</span> <span class="s2">&quot;silence&quot;</span></div>
 
 <div class="viewcode-block" id="MessageType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.MessageType">[docs]</a><span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
-    <span class="n">DISQUALIFY</span> <span class="o">=</span> <span class="s2">&quot;disqualify&quot;</span>
     <span class="n">HYPE</span> <span class="o">=</span> <span class="s2">&quot;hype&quot;</span>
     <span class="n">MAPPER_NOTE</span> <span class="o">=</span> <span class="s2">&quot;mapper_note&quot;</span>
-    <span class="n">NOMINATION_RESET</span> <span class="o">=</span> <span class="s2">&quot;nomination_reset&quot;</span>
     <span class="n">PRAISE</span> <span class="o">=</span> <span class="s2">&quot;praise&quot;</span>
     <span class="n">PROBLEM</span> <span class="o">=</span> <span class="s2">&quot;problem&quot;</span>
     <span class="n">REVIEW</span> <span class="o">=</span> <span class="s2">&quot;review&quot;</span>
@@ -455,7 +454,8 @@
     <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d</span>
     <span class="c1"># 430a2/resources/js/interfaces/room-json.ts#L7</span>
     <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
-    <span class="n">SPOTLIGHT</span> <span class="o">=</span> <span class="s2">&quot;spotlight&quot;</span></div>
+    <span class="n">SPOTLIGHT</span> <span class="o">=</span> <span class="s2">&quot;spotlight&quot;</span>
+    <span class="n">FEATURED_ARTIST</span> <span class="o">=</span> <span class="s2">&quot;featured_artist&quot;</span></div>
 
 <div class="viewcode-block" id="MatchEventType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.MatchEventType">[docs]</a><span class="k">class</span> <span class="nc">MatchEventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.dev/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2</span>
@@ -485,6 +485,10 @@
     <span class="n">TEAM_VS</span> <span class="o">=</span> <span class="s2">&quot;team-vs&quot;</span>
     <span class="n">TAG_TEAM_VS</span> <span class="o">=</span> <span class="s2">&quot;tag-team-vs&quot;</span></div>
 
+<div class="viewcode-block" id="Variant"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.Variant">[docs]</a><span class="k">class</span> <span class="nc">Variant</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+    <span class="c1"># can&#39;t start a python identifier with an integer</span>
+    <span class="n">KEY_4</span> <span class="o">=</span> <span class="s2">&quot;4k&quot;</span>
+    <span class="n">KEY_7</span> <span class="o">=</span> <span class="s2">&quot;7k&quot;</span></div>
 
 
 <span class="c1"># ===============</span>
@@ -536,7 +540,8 @@
     <span class="n">SPECTATOR</span> <span class="o">=</span> <span class="s2">&quot;SPECTATOR&quot;</span>
     <span class="n">TEMPORARY</span> <span class="o">=</span> <span class="s2">&quot;TEMPORARY&quot;</span>
     <span class="n">PM</span> <span class="o">=</span> <span class="s2">&quot;PM&quot;</span>
-    <span class="n">GROUP</span> <span class="o">=</span> <span class="s2">&quot;GROUP&quot;</span></div>
+    <span class="n">GROUP</span> <span class="o">=</span> <span class="s2">&quot;GROUP&quot;</span>
+    <span class="n">ANNOUNCE</span> <span class="o">=</span> <span class="s2">&quot;ANNOUNCE&quot;</span></div>
 
 <div class="viewcode-block" id="CommentableType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.CommentableType">[docs]</a><span class="k">class</span> <span class="nc">CommentableType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEWS_POST</span> <span class="o">=</span> <span class="s2">&quot;news_post&quot;</span>
@@ -618,8 +623,8 @@
     <span class="n">ENGLISH</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">JAPANESE</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">CHINESE</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="n">KOREAN</span> <span class="o">=</span> <span class="mi">6</span>
     <span class="n">INSTRUMENTAL</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">KOREAN</span> <span class="o">=</span> <span class="mi">6</span>
     <span class="n">FRENCH</span> <span class="o">=</span> <span class="mi">7</span>
     <span class="n">GERMAN</span> <span class="o">=</span> <span class="mi">8</span>
     <span class="n">SWEDISH</span> <span class="o">=</span> <span class="mi">9</span>
@@ -664,6 +669,9 @@
     <span class="n">PARTICIPATED</span> <span class="o">=</span> <span class="s2">&quot;participated&quot;</span>
     <span class="n">ENDED</span> <span class="o">=</span> <span class="s2">&quot;ended&quot;</span></div>
 
+<div class="viewcode-block" id="EventsSort"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.EventsSort">[docs]</a><span class="k">class</span> <span class="nc">EventsSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+    <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
+    <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
 
 <span class="c1"># =================</span>
@@ -847,6 +855,14 @@
 <div class="viewcode-block" id="ForumPostBody"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.ForumPostBody">[docs]</a><span class="k">class</span> <span class="nc">ForumPostBody</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="ForumPollText"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.ForumPollText">[docs]</a><span class="k">class</span> <span class="nc">ForumPollText</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">bbcode</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="ForumPollTitle"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.ForumPollTitle">[docs]</a><span class="k">class</span> <span class="nc">ForumPollTitle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">bbcode</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">html</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="ReviewsConfig"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.ReviewsConfig">[docs]</a><span class="k">class</span> <span class="nc">ReviewsConfig</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">max_blocks</span><span class="p">:</span> <span class="nb">int</span></div>
