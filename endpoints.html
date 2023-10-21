@@ -249,9 +249,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – The id of the beatmap.</p></li>
-<li><p><strong>checksum</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The md5 hash of the beatmap.</p></li>
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The filename of the beatmap.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – The id of the beatmap.</p></li>
+<li><p><strong>checksum</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The md5 hash of the beatmap.</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The filename of the beatmap.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -272,10 +272,10 @@ endpoints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The beatmap to get the difficulty attributes of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> | </em><em>None</em>) – The mods to calculate difficulty attributes with.</p></li>
-<li><p><strong>ruleset</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The ruleset (gamemode) to calculate difficulty attributes of.</p></li>
-<li><p><strong>ruleset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Alternative parameter to ruleset which takes an integer (ruleset id)
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The beatmap to get the difficulty attributes of.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods to calculate difficulty attributes with.</p></li>
+<li><p><strong>ruleset</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The ruleset (gamemode) to calculate difficulty attributes of.</p></li>
+<li><p><strong>ruleset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Alternative parameter to ruleset which takes an integer (ruleset id)
 instead of a string (ruleset name).</p></li>
 </ul>
 </dd>
@@ -294,11 +294,11 @@ instead of a string (ruleset name).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap to get scores of.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The mode to get scores of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> | </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to order the scores. Defaults to ordering by score.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – How many results to return. Defaults to 50. Must be between 1 and
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap to get scores of.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode to get scores of.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to order the scores. Defaults to ordering by score.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – How many results to return. Defaults to 50. Must be between 1 and
 100.</p></li>
 </ul>
 </dd>
@@ -318,10 +318,10 @@ scores, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the score was set on.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the score.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a><em> | </em><em>None</em>) – The mods the score was set with.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the score was set on.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the score.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods the score was set with.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -341,13 +341,13 @@ score, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_u
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the scores were set on.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the scores.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the scores were set on.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the scores.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.BeatmapUserScore" title="ossapi.models.BeatmapUserScore"><em>BeatmapUserScore</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -363,10 +363,10 @@ or want to retrieve beatmaps by something other than id (eg checksum),
 see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="ossapi.ossapiv2.Ossapi.beatmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
+<dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -383,8 +383,8 @@ see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – The beatmapset to get.</p></li>
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Get the beatmapset associated with this beatmap.</p></li>
+<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – The beatmapset to get.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Get the beatmapset associated with this beatmap.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -403,12 +403,12 @@ see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – The beatmapset discussion to get the posts of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The beatmapset discussion to get the posts of.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
 you are a gmt/admin.</p></li>
 </ul>
 </dd>
@@ -428,14 +428,14 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Filter by a beatmapset discussion.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of votes to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>receiver_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Filter by the user receiving the votes.</p></li>
-<li><p><strong>vote</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVote" title="ossapi.enums.BeatmapsetDiscussionVote"><em>BeatmapsetDiscussionVote</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Specify to return either only upvotes or only downvotes.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVoteSort" title="ossapi.enums.BeatmapsetDiscussionVoteSort"><em>BeatmapsetDiscussionVoteSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the votes.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by the user giving the votes.</p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by a beatmapset discussion.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of votes to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>receiver_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by the user receiving the votes.</p></li>
+<li><p><strong>vote</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVote" title="ossapi.enums.BeatmapsetDiscussionVote"><em>BeatmapsetDiscussionVote</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Specify to return either only upvotes or only downvotes.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVoteSort" title="ossapi.enums.BeatmapsetDiscussionVoteSort"><em>BeatmapsetDiscussionVoteSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the votes.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by the user giving the votes.</p></li>
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
 you are a gmt/admin.</p></li>
 </ul>
 </dd>
@@ -455,18 +455,18 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmapset.</p></li>
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmap.</p></li>
-<li><p><strong>beatmapset_status</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetStatus" title="ossapi.enums.BeatmapsetStatus"><em>BeatmapsetStatus</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter by a category of beatmapsets.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of discussions to return.</p></li>
-<li><p><strong>message_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.MessageType" title="ossapi.enums.MessageType"><em>MessageType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by a discussion message type.</p></li>
-<li><p><strong>only_unresolved</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only show unresolved issues. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the discussions.</p></li>
+<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmapset.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmap.</p></li>
+<li><p><strong>beatmapset_status</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetStatus" title="ossapi.enums.BeatmapsetStatus"><em>BeatmapsetStatus</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter by a category of beatmapsets.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of discussions to return.</p></li>
+<li><p><strong>message_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.MessageType" title="ossapi.enums.MessageType"><em>MessageType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by a discussion message type.</p></li>
+<li><p><strong>only_unresolved</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only show unresolved issues. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the discussions.</p></li>
 <li><p><strong>user</strong> – Filter by poster id.</p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
 you are a gmt/admin.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -486,12 +486,12 @@ website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets/even
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for events.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by event author.</p></li>
-<li><p><strong>types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetEventType" title="ossapi.enums.BeatmapsetEventType"><em>BeatmapsetEventType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by event type.</p></li>
-<li><p><strong>min_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.11)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
-<li><p><strong>max_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.11)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for events.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by event author.</p></li>
+<li><p><strong>types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetEventType" title="ossapi.enums.BeatmapsetEventType"><em>BeatmapsetEventType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by event type.</p></li>
+<li><p><strong>min_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
+<li><p><strong>max_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -510,21 +510,21 @@ website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets">htt
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The search query. Can include filters like <code class="docutils literal notranslate"><span class="pre">ranked&lt;2019</span></code>.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchMode" title="ossapi.enums.BeatmapsetSearchMode"><em>BeatmapsetSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Filter by mode.</p></li>
-<li><p><strong>category</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchCategory" title="ossapi.enums.BeatmapsetSearchCategory"><em>BeatmapsetSearchCategory</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Filter by category.</p></li>
-<li><p><strong>explicit_content</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchExplicitContent" title="ossapi.enums.BeatmapsetSearchExplicitContent"><em>BeatmapsetSearchExplicitContent</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Whether to include beatmaps with explicit content.</p></li>
-<li><p><strong>genre</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchGenre" title="ossapi.enums.BeatmapsetSearchGenre"><em>BeatmapsetSearchGenre</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Filter by genre.</p></li>
-<li><p><strong>language</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchLanguage" title="ossapi.enums.BeatmapsetSearchLanguage"><em>BeatmapsetSearchLanguage</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Filter by language.</p></li>
-<li><p><strong>force_video</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with videos.</p></li>
-<li><p><strong>force_storyboard</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with storyboards.</p></li>
-<li><p><strong>force_recommended_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to filter by recommended difficulty.</p></li>
-<li><p><strong>include_converts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to include converted beatmapsets.</p></li>
-<li><p><strong>force_followed_mappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by mappers you follow.</p></li>
-<li><p><strong>force_spotlights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets which have been in a spotlight.</p></li>
-<li><p><strong>force_featured_artists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by a featured artist.</p></li>
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The search query. Can include filters like <code class="docutils literal notranslate"><span class="pre">ranked&lt;2019</span></code>.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchMode" title="ossapi.enums.BeatmapsetSearchMode"><em>BeatmapsetSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by mode.</p></li>
+<li><p><strong>category</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchCategory" title="ossapi.enums.BeatmapsetSearchCategory"><em>BeatmapsetSearchCategory</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by category.</p></li>
+<li><p><strong>explicit_content</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchExplicitContent" title="ossapi.enums.BeatmapsetSearchExplicitContent"><em>BeatmapsetSearchExplicitContent</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Whether to include beatmaps with explicit content.</p></li>
+<li><p><strong>genre</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchGenre" title="ossapi.enums.BeatmapsetSearchGenre"><em>BeatmapsetSearchGenre</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by genre.</p></li>
+<li><p><strong>language</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchLanguage" title="ossapi.enums.BeatmapsetSearchLanguage"><em>BeatmapsetSearchLanguage</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by language.</p></li>
+<li><p><strong>force_video</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with videos.</p></li>
+<li><p><strong>force_storyboard</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with storyboards.</p></li>
+<li><p><strong>force_recommended_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to filter by recommended difficulty.</p></li>
+<li><p><strong>include_converts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to include converted beatmapsets.</p></li>
+<li><p><strong>force_followed_mappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by mappers you follow.</p></li>
+<li><p><strong>force_spotlights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets which have been in a spotlight.</p></li>
+<li><p><strong>force_featured_artists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by a featured artist.</p></li>
 <li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchSort" title="ossapi.enums.BeatmapsetSearchSort"><em>BeatmapsetSearchSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the beatmapsets.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchSort" title="ossapi.enums.BeatmapsetSearchSort"><em>BeatmapsetSearchSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the beatmapsets.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -546,8 +546,8 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
-<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
+<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -565,10 +565,10 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
-<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
+<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
 by build id.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -587,11 +587,11 @@ by build id.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>from</strong> – Minimum build version.</p></li>
-<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
-<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
-<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
+<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -615,10 +615,10 @@ in it).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channel_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The name of the announce channel that will be created.</p></li>
-<li><p><strong>channel_description</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The description of the announce channel that will be created.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The message to send.</p></li>
-<li><p><strong>target_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em>]</em>) – The users to send the message to.</p></li>
+<li><p><strong>channel_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name of the announce channel that will be created.</p></li>
+<li><p><strong>channel_description</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The description of the announce channel that will be created.</p></li>
+<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The message to send.</p></li>
+<li><p><strong>target_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em>]</em>) – The users to send the message to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -646,9 +646,9 @@ dm me on discord (tybug#8490)!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to send a message to.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The message to send.</p></li>
-<li><p><strong>is_action</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to send a message to.</p></li>
+<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The message to send.</p></li>
+<li><p><strong>is_action</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -672,7 +672,7 @@ dm me on discord (tybug#8490)!</p>
 <dd><p>Get a comment and its replies (up to 2 levels deep).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>comment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The comment to get.</p>
+<dd class="field-odd"><p><strong>comment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The comment to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.CommentBundle" title="ossapi.models.CommentBundle"><em>CommentBundle</em></a></p>
@@ -690,11 +690,11 @@ want to retrieve a single comment, see <a class="reference internal" href="#ossa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>commentable_type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentableType" title="ossapi.enums.CommentableType"><em>CommentableType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – The type of resource to get comments for.</p></li>
-<li><p><strong>commentable_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – The id of the resource to get comments for.</p></li>
+<li><p><strong>commentable_type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentableType" title="ossapi.enums.CommentableType"><em>CommentableType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The type of resource to get comments for.</p></li>
+<li><p><strong>commentable_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the resource to get comments for.</p></li>
 <li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>parent_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Filter by id of the parent comment.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentSort" title="ossapi.enums.CommentSort"><em>CommentSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the comments. Defaults to <code class="docutils literal notranslate"><span class="pre">new</span></code> for guest account and
+<li><p><strong>parent_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by id of the parent comment.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentSort" title="ossapi.enums.CommentSort"><em>CommentSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the comments. Defaults to <code class="docutils literal notranslate"><span class="pre">new</span></code> for guest account and
 the user-specified default when authenticated.</p></li>
 </ul>
 </dd>
@@ -716,8 +716,8 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.EventsSort" title="ossapi.enums.EventsSort"><em>EventsSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Sort events by oldest or newest.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.EventsSort" title="ossapi.enums.EventsSort"><em>EventsSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort events by oldest or newest.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -742,9 +742,9 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>forum_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – </p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
+<li><p><strong>forum_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – </p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
+<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
 <li><p><strong>poll</strong> (<a class="reference internal" href="appendix.html#ossapi.models.ForumPoll" title="ossapi.models.ForumPoll"><em>ForumPoll</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
@@ -761,8 +761,8 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>post_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The post to edit.</p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The new content of the post.</p></li>
+<li><p><strong>post_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The post to edit.</p></li>
+<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The new content of the post.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -784,8 +784,8 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The topic to edit.</p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The new title of the topic.</p></li>
+<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to edit.</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The new title of the topic.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -807,8 +807,8 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The topic to reply to.</p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Content of the reply.</p></li>
+<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to reply to.</p></li>
+<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Content of the reply.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -830,14 +830,14 @@ the user-specified default when authenticated.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The topic to get.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort" title="ossapi.enums.ForumTopicSort"><em>ForumTopicSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
+<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to get.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort" title="ossapi.enums.ForumTopicSort"><em>ForumTopicSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
 <a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort.NEW" title="ossapi.enums.ForumTopicSort.NEW"><code class="xref py py-data docutils literal notranslate"><span class="pre">ForumTopicSort.NEW</span></code></a>.
 Ignored otherwise.</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
 <a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort.OLD" title="ossapi.enums.ForumTopicSort.OLD"><code class="xref py py-data docutils literal notranslate"><span class="pre">ForumTopicSort.OLD</span></code></a>.
 Ignored otherwise.</p></li>
 </ul>
@@ -865,7 +865,7 @@ Ignored otherwise.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -881,9 +881,9 @@ Ignored otherwise.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Search query.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (wiki or player).</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Search query.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (wiki or player).</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -899,11 +899,16 @@ Ignored otherwise.</p></li>
 <h1>Matches<a class="headerlink" href="#matches" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.match">
-<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.match" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.match" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a match (eg <a class="reference external" href="https://osu.ppy.sh/community/matches/97947404">https://osu.ppy.sh/community/matches/97947404</a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>match_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Match" title="ossapi.models.Match"><em>Match</em></a>) – The match to get.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>match_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Match" title="ossapi.models.Match"><em>Match</em></a>) – The match to get.</p></li>
+<li><p><strong>after</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>before</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.MatchResponse" title="ossapi.models.MatchResponse"><em>MatchResponse</em></a></p>
@@ -936,7 +941,7 @@ Ignored otherwise.</p></li>
 <dd><p>Get data about the authenticated user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Get data about the specified mode. Defaults to the user’s default
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Get data about the specified mode. Defaults to the user’s default
 mode.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -961,9 +966,9 @@ mode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of news posts to return.</p></li>
-<li><p><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Filter by year the news post was created.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of news posts to return.</p></li>
+<li><p><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by year the news post was created.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -981,8 +986,8 @@ mode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>news</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The id or slug of the news post.</p></li>
-<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.NewsPostKey" title="ossapi.enums.NewsPostKey"><em>NewsPostKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Whether to query by id or slug.</p></li>
+<li><p><strong>news</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The id or slug of the news post.</p></li>
+<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.NewsPostKey" title="ossapi.enums.NewsPostKey"><em>NewsPostKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Whether to query by id or slug.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1016,18 +1021,18 @@ to get different types of rankings (performance, score, country, etc).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The mode to get rankings for.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The type of ranking to get.</p></li>
-<li><p><strong>country</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by 2 letter country code. Only available for
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode to get rankings for.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The type of ranking to get.</p></li>
+<li><p><strong>country</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by 2 letter country code. Only available for
 <code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
 <li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 <li><p><strong>filter</strong> – Filter ranking by specified filter.</p></li>
-<li><p><strong>spotlight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – The id of the spotlight to return rankings for. Ranking for latest
+<li><p><strong>spotlight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the spotlight to return rankings for. Ranking for latest
 spotlight will be returned if not specified. Only available for
 <code class="docutils literal notranslate"><span class="pre">RankingType.SPOTLIGHT</span></code>.</p></li>
-<li><p><strong>variant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by game mode variant. Either <code class="docutils literal notranslate"><span class="pre">4k</span></code> or <code class="docutils literal notranslate"><span class="pre">7k</span></code> for
+<li><p><strong>variant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by game mode variant. Either <code class="docutils literal notranslate"><span class="pre">4k</span></code> or <code class="docutils literal notranslate"><span class="pre">7k</span></code> for
 mania. Only available for <code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
-<li><p><strong>filter_</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingFilter" title="ossapi.enums.RankingFilter"><em>RankingFilter</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
+<li><p><strong>filter_</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingFilter" title="ossapi.enums.RankingFilter"><em>RankingFilter</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1048,11 +1053,11 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The room to get the scores from.</p></li>
-<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The room to get the scores from.</p></li>
+<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1069,7 +1074,7 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dd><p>Get a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a></p>
@@ -1085,7 +1090,7 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dd><p>Get the leaderboard of a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.RoomLeaderboard" title="ossapi.models.RoomLeaderboard"><em>RoomLeaderboard</em></a></p>
@@ -1097,14 +1102,20 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.rooms">
-<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.rooms" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">season_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.rooms" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the list of current rooms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RoomSearchType" title="ossapi.enums.RoomSearchType"><em>RoomSearchType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – Filter by room type. Default to all rooms.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
+<li><p><strong>mode</strong> (<em>RoomSearchMode</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
+<li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
+<li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
+<li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1121,9 +1132,9 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The mode of the score to download.</p></li>
-<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The score to download.</p></li>
-<li><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the raw string response from the api
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode of the score to download.</p></li>
+<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The score to download.</p></li>
+<li><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the raw string response from the api
 instead of a <a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Replay</span></code></a> object.</p></li>
 </ul>
 </dd>
@@ -1143,8 +1154,8 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The mode the score was set on.</p></li>
-<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – The score to get.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode the score was set on.</p></li>
+<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The score to get.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1182,7 +1193,7 @@ endpoint.</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-spotlights">Get Spotlights</a> endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Spotlight" title="ossapi.models.Spotlight"><em>Spotlight</em></a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Spotlight" title="ossapi.models.Spotlight"><em>Spotlight</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1209,9 +1220,9 @@ if not passed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserLookupKey" title="ossapi.enums.UserLookupKey"><em>UserLookupKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserLookupKey" title="ossapi.enums.UserLookupKey"><em>UserLookupKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1227,14 +1238,14 @@ if not passed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get beatmaps of.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserBeatmapType" title="ossapi.enums.UserBeatmapType"><em>UserBeatmapType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The type of beatmaps to get.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of beatmaps to get.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get beatmaps of.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserBeatmapType" title="ossapi.enums.UserBeatmapType"><em>UserBeatmapType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The type of beatmaps to get.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of beatmaps to get.</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><em>Beatmapset</em></a>] | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.BeatmapPlaycount" title="ossapi.models.BeatmapPlaycount"><em>BeatmapPlaycount</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><em>Beatmapset</em></a>] | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.BeatmapPlaycount" title="ossapi.models.BeatmapPlaycount"><em>BeatmapPlaycount</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1251,13 +1262,13 @@ otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – User to get kudosu history of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of history events to return.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – User to get kudosu history of.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of history events to return.</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.KudosuHistory" title="ossapi.models.KudosuHistory"><em>KudosuHistory</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.KudosuHistory" title="ossapi.models.KudosuHistory"><em>KudosuHistory</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1271,13 +1282,13 @@ otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get recent activity of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get recent activity of.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Event" title="ossapi.models.Event"><em>Event</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Event" title="ossapi.models.Event"><em>Event</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1308,16 +1319,16 @@ endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – </p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ScoreType" title="ossapi.enums.ScoreType"><em>ScoreType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – </p></li>
-<li><p><strong>include_fails</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – </p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ScoreType" title="ossapi.enums.ScoreType"><em>ScoreType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
+<li><p><strong>include_fails</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1329,10 +1340,10 @@ endpoint.</p>
 want to retrieve users by username instead of id, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user" title="ossapi.ossapiv2.Ossapi.user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">user()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>user_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – The users to get.</p>
+<dd class="field-odd"><p><strong>user_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – The users to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1349,8 +1360,8 @@ want to retrieve users by username instead of id, see <a class="reference intern
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>locale</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – two letter language code of the wiki page.</p></li>
-<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The path name of the wiki page.</p></li>
+<li><p><strong>locale</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – two letter language code of the wiki page.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path name of the wiki page.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

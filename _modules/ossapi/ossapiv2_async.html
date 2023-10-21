@@ -266,12 +266,13 @@
 <span class="kn">from</span> <span class="nn">requests_oauthlib</span> <span class="kn">import</span> <span class="n">OAuth2Session</span>
 <span class="kn">from</span> <span class="nn">requests_oauthlib.oauth2_session</span> <span class="kn">import</span> <span class="n">TokenUpdated</span>
 <span class="kn">from</span> <span class="nn">oauthlib.oauth2</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BackendApplicationClient</span><span class="p">,</span> <span class="n">TokenExpiredError</span><span class="p">,</span>
-    <span class="n">AccessDeniedError</span><span class="p">,</span> <span class="n">InsecureTransportError</span><span class="p">,</span> <span class="n">is_secure_transport</span><span class="p">)</span>
+    <span class="n">AccessDeniedError</span><span class="p">,</span> <span class="n">InsecureTransportError</span><span class="p">,</span> <span class="n">is_secure_transport</span><span class="p">,</span> <span class="n">OAuth2Error</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.errors</span> <span class="kn">import</span> <span class="n">InsufficientScopeError</span>
 <span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.tokens</span> <span class="kn">import</span> <span class="n">OAuth2Token</span>
 <span class="kn">import</span> <span class="nn">osrparse</span>
 <span class="kn">from</span> <span class="nn">typing_utils</span> <span class="kn">import</span> <span class="n">issubtype</span><span class="p">,</span> <span class="n">get_type_hints</span><span class="p">,</span> <span class="n">get_origin</span><span class="p">,</span> <span class="n">get_args</span>
 
+<span class="kn">import</span> <span class="nn">ossapi</span>
 <span class="kn">from</span> <span class="nn">ossapi.models</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Beatmap</span><span class="p">,</span> <span class="n">BeatmapCompact</span><span class="p">,</span> <span class="n">BeatmapUserScore</span><span class="p">,</span>
     <span class="n">ForumTopicAndPosts</span><span class="p">,</span> <span class="n">Search</span><span class="p">,</span> <span class="n">CommentBundle</span><span class="p">,</span> <span class="n">Cursor</span><span class="p">,</span> <span class="n">Score</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchResult</span><span class="p">,</span> <span class="n">ModdingHistoryEventsBundle</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Rankings</span><span class="p">,</span>
@@ -282,7 +283,8 @@
     <span class="n">UserCompact</span><span class="p">,</span> <span class="n">NewsListing</span><span class="p">,</span> <span class="n">NewsPost</span><span class="p">,</span> <span class="n">SeasonalBackgrounds</span><span class="p">,</span> <span class="n">BeatmapsetCompact</span><span class="p">,</span>
     <span class="n">BeatmapUserScores</span><span class="p">,</span> <span class="n">DifficultyAttributes</span><span class="p">,</span> <span class="n">Users</span><span class="p">,</span> <span class="n">Beatmaps</span><span class="p">,</span>
     <span class="n">CreateForumTopicResponse</span><span class="p">,</span> <span class="n">ForumPoll</span><span class="p">,</span> <span class="n">ForumPost</span><span class="p">,</span> <span class="n">ForumTopic</span><span class="p">,</span> <span class="n">Room</span><span class="p">,</span>
-    <span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="n">Matches</span><span class="p">,</span> <span class="n">Match</span><span class="p">,</span> <span class="n">MatchResponse</span><span class="p">,</span> <span class="n">ChatChannel</span><span class="p">,</span> <span class="n">Events</span><span class="p">)</span>
+    <span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="n">Matches</span><span class="p">,</span> <span class="n">Match</span><span class="p">,</span> <span class="n">MatchResponse</span><span class="p">,</span> <span class="n">ChatChannel</span><span class="p">,</span> <span class="n">Events</span><span class="p">,</span>
+    <span class="n">BeatmapPack</span><span class="p">,</span> <span class="n">BeatmapPacks</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span><span class="n">GameMode</span><span class="p">,</span> <span class="n">ScoreType</span><span class="p">,</span> <span class="n">RankingFilter</span><span class="p">,</span> <span class="n">RankingType</span><span class="p">,</span>
     <span class="n">UserBeatmapType</span><span class="p">,</span> <span class="n">BeatmapDiscussionPostSort</span><span class="p">,</span> <span class="n">UserLookupKey</span><span class="p">,</span>
     <span class="n">BeatmapsetEventType</span><span class="p">,</span> <span class="n">CommentableType</span><span class="p">,</span> <span class="n">CommentSort</span><span class="p">,</span> <span class="n">ForumTopicSort</span><span class="p">,</span>
@@ -290,15 +292,21 @@
     <span class="n">BeatmapsetDiscussionVoteSort</span><span class="p">,</span> <span class="n">BeatmapsetStatus</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchCategory</span><span class="p">,</span> <span class="n">BeatmapsetSearchMode</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchExplicitContent</span><span class="p">,</span> <span class="n">BeatmapsetSearchGenre</span><span class="p">,</span>
-    <span class="n">BeatmapsetSearchLanguage</span><span class="p">,</span> <span class="n">NewsPostKey</span><span class="p">,</span> <span class="n">BeatmapsetSearchSort</span><span class="p">,</span> <span class="n">RoomSearchType</span><span class="p">,</span>
-    <span class="n">ChangelogMessageFormat</span><span class="p">,</span> <span class="n">EventsSort</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">is_compatible_type</span><span class="p">,</span> <span class="n">is_primitive_type</span><span class="p">,</span> <span class="n">is_optional</span><span class="p">,</span>
-    <span class="n">is_base_model_type</span><span class="p">,</span> <span class="n">is_model_type</span><span class="p">,</span> <span class="n">is_high_model_type</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span>
+    <span class="n">BeatmapsetSearchLanguage</span><span class="p">,</span> <span class="n">NewsPostKey</span><span class="p">,</span> <span class="n">BeatmapsetSearchSort</span><span class="p">,</span> <span class="n">RoomSearchMode</span><span class="p">,</span>
+    <span class="n">ChangelogMessageFormat</span><span class="p">,</span> <span class="n">EventsSort</span><span class="p">,</span> <span class="n">BeatmapPackType</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">is_primitive_type</span><span class="p">,</span> <span class="n">is_optional</span><span class="p">,</span> <span class="n">is_base_model_type</span><span class="p">,</span>
+    <span class="n">is_model_type</span><span class="p">,</span> <span class="n">is_high_model_type</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">convert_primitive_type</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
 <span class="kn">from</span> <span class="nn">ossapi.replay</span> <span class="kn">import</span> <span class="n">Replay</span>
 
 
 <span class="k">class</span> <span class="nc">Oauth2SessionAsync</span><span class="p">(</span><span class="n">OAuth2Session</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;ossapi (v</span><span class="si">{</span><span class="n">ossapi</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
     <span class="c1"># this method is shamelessly copied from `OAuth2Session.request`, modified</span>
     <span class="c1"># to call `self.session.request` instead of `super().request`.</span>
     <span class="c1"># Any OAuth2Session code which calls `request` will remain sync, but we have</span>
@@ -362,7 +370,7 @@
 <span class="c1"># details).</span>
 <span class="n">GameModeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">GameMode</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">ScoreTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">ScoreType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-<span class="n">ModT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
+<span class="n">ModT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span>
 <span class="n">RankingFilterT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RankingFilter</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">RankingTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RankingType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">UserBeatmapTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">UserBeatmapType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
@@ -385,8 +393,9 @@
 <span class="n">BeatmapsetSearchLanguageT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">BeatmapsetSearchLanguage</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">NewsPostKeyT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">NewsPostKey</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">BeatmapsetSearchSortT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">BeatmapsetSearchSort</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-<span class="n">RoomSearchTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RoomSearchType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<span class="n">RoomSearchModeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RoomSearchMode</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">EventsSortT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">EventsSort</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<span class="n">BeatmapPackTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">BeatmapPackType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 
 <span class="n">BeatmapIdT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">BeatmapCompact</span><span class="p">]</span>
 <span class="n">UserIdT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">UserCompact</span><span class="p">]</span>
@@ -519,6 +528,19 @@
     <span class="k">return</span> <span class="n">decorator</span>
 
 
+<span class="k">class</span> <span class="nc">ReauthenticationRequired</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that either the user has revoked this application from their</span>
+<span class="sd">    account, or osu-web itself has invalidated the refresh token associated with</span>
+<span class="sd">    this application.</span>
+<span class="sd">    This exception is only raised when a manual access_token is passed to</span>
+<span class="sd">    Ossapi, to bypass Ossapi&#39;s default authentication methods. The expectation</span>
+<span class="sd">    is that in these cases, the consumer has their own way of authenticating</span>
+<span class="sd">    with the user. That method should be used here to handle the</span>
+<span class="sd">    reauthentication.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
 <span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The grant types used by the api.</span>
@@ -531,6 +553,8 @@
 <span class="sd">    The OAuth scopes used by the api.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">CHAT_WRITE</span> <span class="o">=</span> <span class="s2">&quot;chat.write&quot;</span>
+    <span class="n">CHAT_WRITE_MANAGE</span> <span class="o">=</span> <span class="s2">&quot;chat.write_manage&quot;</span>
+    <span class="n">CHAT_READ</span> <span class="o">=</span> <span class="s2">&quot;chat.read&quot;</span>
     <span class="n">DELEGATE</span> <span class="o">=</span> <span class="s2">&quot;delegate&quot;</span>
     <span class="n">FORUM_WRITE</span> <span class="o">=</span> <span class="s2">&quot;forum.write&quot;</span>
     <span class="n">FRIENDS_READ</span> <span class="o">=</span> <span class="s2">&quot;friends.read&quot;</span>
@@ -566,10 +590,9 @@
 <span class="sd">        The redirect uri for the client. Must be passed if using the</span>
 <span class="sd">        authorization code grant. This must exactly match the redirect uri on</span>
 <span class="sd">        the client&#39;s settings page. Additionally, in order for ossapi to receive</span>
-<span class="sd">        authentication from this redirect uri, it must be a port on localhost.</span>
-<span class="sd">        So &quot;http://localhost:3914/&quot;, &quot;http://localhost:727/&quot;, etc are all valid</span>
-<span class="sd">        redirect uris. You can change your client&#39;s redirect uri from its</span>
-<span class="sd">        settings page.</span>
+<span class="sd">        authentication from this redirect uri, it must be a port on localhost,</span>
+<span class="sd">        e.g. &quot;http://localhost:3914/&quot;. You can change your client&#39;s redirect uri</span>
+<span class="sd">        from its settings page.</span>
 <span class="sd">    scopes: List[str]</span>
 <span class="sd">        What scopes to request when authenticating.</span>
 <span class="sd">    grant: Grant or str</span>
@@ -670,6 +693,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token_key</span> <span class="o">=</span> <span class="n">token_key</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_token_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grant</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="c1"># support saving tokens when being run from pyinstaller</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s1">&#39;_MEIPASS&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">token_directory</span><span class="p">:</span>
@@ -689,6 +713,8 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`redirect_uri` must be passed if the &quot;</span>
                 <span class="s2">&quot;authorization code grant is used.&quot;</span><span class="p">)</span>
 
+        <span class="c1"># whether the consumer passed a token to ossapi to bypass authentication</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">access_token_passed</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">access_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># allow refresh_token to be null for the case of client credentials</span>
@@ -700,6 +726,7 @@
                 <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="n">refresh_token</span>
             <span class="p">}</span>
             <span class="n">token</span> <span class="o">=</span> <span class="n">OAuth2Token</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">access_token_passed</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
 
@@ -760,6 +787,8 @@
 <span class="sd">        with this OssapiV2&#39;s parameters, or from a fresh authentication if no</span>
 <span class="sd">        such file exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># try saved token file first</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">or</span> <span class="n">token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -780,6 +809,10 @@
                     <span class="n">token_updater</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">,</span>
                     <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">])</span>
 
+        <span class="c1"># otherwise, authorize from scratch</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_grant</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_new_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">)</span>
 
@@ -859,6 +892,14 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{},</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
         <span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">ClientSession</span>
 
+        <span class="c1"># I don&#39;t *think* type hints should change over the lifetime of a</span>
+        <span class="c1"># program, but clear them every request out of an abundance of caution.</span>
+        <span class="c1"># This costs us almost nothing and may avoid bugs when eg a consumer</span>
+        <span class="c1"># changes type hints of a custom model dynamically at some point.</span>
+        <span class="c1"># They should certainly not be doing so in the middle of a request,</span>
+        <span class="c1"># however.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clear_type_hints_cache</span><span class="p">()</span>
+
         <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
         <span class="c1"># also format data for post requests</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_params</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -869,10 +910,30 @@
         <span class="c1"># use ossapi.</span>
         <span class="n">aiohttp_session</span> <span class="o">=</span> <span class="n">ClientSession</span><span class="p">()</span>
 
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">method</span><span class="p">,</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">make_request</span><span class="p">():</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">method</span><span class="p">,</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">aiohttp_session</span><span class="p">,</span>
                 <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">reauthenticate_and_retry</span><span class="p">():</span>
+            <span class="c1"># don&#39;t automatically re-authenticate if the user passed an access</span>
+            <span class="c1"># token. They should handle re-authentication with the user</span>
+            <span class="c1"># manually (since they may have a bespoke system, like a website).</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">access_token_passed</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;refresh token is invalid. raising for consumer &quot;</span>
+                    <span class="s2">&quot;to handle since access token was passed originally.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">ReauthenticationRequired</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;refresh token invalid, re-authenticating (grant: &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grant</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="c1"># don&#39;t use .authenticate, that falls back to cached tokens. go</span>
+            <span class="c1"># straight to authenticating from scratch.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_grant</span><span class="p">()</span>
+            <span class="c1"># redo the request now that we have a valid session</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">make_request</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">make_request</span><span class="p">()</span>
         <span class="k">except</span> <span class="n">TokenExpiredError</span><span class="p">:</span>
             <span class="c1"># provide &quot;auto refreshing&quot; for client credentials grant. The client</span>
             <span class="c1"># grant doesn&#39;t actually provide a refresh token, so we can&#39;t hook</span>
@@ -885,19 +946,32 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">)</span>
             <span class="c1"># redo the request now that we have a valid token</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">method</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">aiohttp_session</span><span class="p">,</span>
-                <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">make_request</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">OAuth2Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">description</span> <span class="o">!=</span> <span class="s2">&quot;The refresh token is invalid.&quot;</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reauthenticate_and_retry</span><span class="p">()</span>
 
         <span class="c1"># aiohttp annoyingly differentiates between url (no url fragments, for</span>
         <span class="c1"># some reason) and real_url (actual url). They also use a URL object</span>
         <span class="c1"># here instead of a string.</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">real_url</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;made </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> request to </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">, data </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># XXX don&#39;t overwrite url passed in function, used in</span>
+        <span class="c1"># authenticate_and_retry</span>
+        <span class="n">url_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">real_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;made </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> request to </span><span class="si">{</span><span class="n">url_</span><span class="si">}</span><span class="s2">, data </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
         <span class="c1"># aiohttp throws on unexpected encoding (non-json mimetype). Match</span>
         <span class="c1"># requests behavior by automatically detecting encoding.</span>
         <span class="c1"># See https://github.com/circleguard/ossapi/issues/60.</span>
         <span class="n">json_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># occurs if a client gets revoked and the token hasn&#39;t officially</span>
+        <span class="c1"># expired yet (so it doesn&#39;t error earlier up in the chain with</span>
+        <span class="c1"># Oauth2Error).</span>
+        <span class="k">if</span> <span class="n">json_</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;authentication&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">}:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reauthenticate_and_retry</span><span class="p">()</span>
+            <span class="n">json_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
         <span class="c1"># aiohttp sessions have to live as long as any responses returned via</span>
         <span class="c1"># the session. Wait to close it until we&#39;re done with the response `r`.</span>
         <span class="c1"># Make sure we close this before we call _check_response, or any errors</span>
@@ -906,7 +980,7 @@
         <span class="k">await</span> <span class="n">aiohttp_session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;received json: </span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">json_</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">json_</span><span class="p">,</span> <span class="n">url_</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_type</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">json_</span><span class="p">)</span>
 
@@ -1002,7 +1076,7 @@
         <span class="c1"># why we pass `type(obj)` instead of just `obj`, which would only</span>
         <span class="c1"># return annotations for attributes defined in `obj` and not its</span>
         <span class="c1"># inherited attributes.</span>
-        <span class="n">annotations</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
         <span class="n">override_annotations</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">override_types</span><span class="p">()</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">annotations</span><span class="p">,</span> <span class="o">**</span><span class="n">override_annotations</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolving annotations for type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1055,13 +1129,15 @@
             <span class="c1"># strict mode.</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_compatible_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type_</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type_</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2"> for value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">, got &quot;</span>
                     <span class="sa">f</span><span class="s2">&quot;type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="sa">f</span><span class="s2">&quot; (for attribute: </span><span class="si">{</span><span class="n">attr_name</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">if</span> <span class="n">attr_name</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">is_primitive_type</span><span class="p">(</span><span class="n">type_</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">convert_primitive_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type_</span><span class="p">)</span>
             <span class="n">_check_primitive_type</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">value</span>
 
         <span class="k">if</span> <span class="n">is_base_model_type</span><span class="p">(</span><span class="n">type_</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;instantiating base type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1128,12 +1204,12 @@
         <span class="c1"># hints from a `_GenericAlias` if we see one, as standard methods</span>
         <span class="c1"># won&#39;t work.</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
+            <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span> <span class="ow">is</span> <span class="n">_GenericAlias</span> <span class="c1"># pylint: disable=unidiomatic-typecheck</span>
+            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span> <span class="ow">is</span> <span class="n">_GenericAlias</span>
 
             <span class="n">signature_type</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
-            <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">signature_type</span><span class="p">)</span>
+            <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">signature_type</span><span class="p">)</span>
 
         <span class="n">field_names</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
@@ -1203,14 +1279,70 @@
             <span class="n">val</span> <span class="o">=</span> <span class="n">type_</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs_</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;type error while instantiating class </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">: &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
         <span class="k">return</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">_get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># type hints are expensive to compute. Our models should never change</span>
+        <span class="c1"># their type hints, so cache them.</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span>
+
+        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="n">type_hints</span>
+        <span class="k">return</span> <span class="n">type_hints</span>
+
+    <span class="k">def</span> <span class="nf">_clear_type_hints_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
 
     <span class="c1"># =========</span>
     <span class="c1"># Endpoints</span>
     <span class="c1"># =========</span>
+
+
+    <span class="c1"># /beatmaps/packs</span>
+    <span class="c1"># ---------------</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmap packs&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">beatmap_packs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapPacks</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a list of beatmap packs. If you want to retrieve a specific pack,</span>
+<span class="sd">        see :meth:`beatmap_pack`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cursor_string</span>
+<span class="sd">            Cursor for pagination.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Beatmap Packs</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-beatmap-packs&gt;`__</span>
+<span class="sd">        endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">}</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapPacks</span><span class="p">,</span> <span class="s2">&quot;/beatmaps/packs&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmap packs&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">beatmap_pack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="n">pack</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapPack</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a beatmap pack. If you want to retrieve a list of beatmap packs, see</span>
+<span class="sd">        see :meth:`beatmap_packs`.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Beatmap Pack</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-beatmap-pack&gt;`__</span>
+<span class="sd">        endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapPack</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/packs/</span><span class="si">{</span><span class="n">pack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
     <span class="c1"># /beatmaps</span>
@@ -1255,7 +1387,7 @@
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapUserScore</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get all of a user&#39;s scores on a beatmap. If you only want the top user</span>
 <span class="sd">        score, see :meth:`beatmap_user_score`.</span>
@@ -1857,7 +1989,7 @@
 
     <span class="c1"># this method requires a user in the announce group, so I&#39;ve never tested</span>
     <span class="c1"># it.</span>
-    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">CHAT_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span><span class="p">)</span>
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">CHAT_WRITE_MANAGE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span><span class="p">)</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">send_announcement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">channel_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">channel_description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2432,21 +2564,40 @@
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/rooms/</span><span class="si">{</span><span class="n">room_id</span><span class="si">}</span><span class="s2">/leaderboard&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RoomSearchTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RoomSearchModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">season_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># TODO enumify</span>
+        <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># TODO enumify</span>
+        <span class="n">type_group</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the list of current rooms.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        type</span>
-<span class="sd">            Filter by room type. Default to all rooms.</span>
+<span class="sd">        limit</span>
+<span class="sd">            Maximum number of results.</span>
+<span class="sd">        mode</span>
+<span class="sd">            Mode to filter rooms by. Defaults to all rooms.</span>
+<span class="sd">        season_id</span>
+<span class="sd">            Season id to return rooms from.</span>
+<span class="sd">        sort</span>
+<span class="sd">            Sort order. One of &quot;ended&quot; or &quot;created&quot;.</span>
+<span class="sd">        type_group</span>
+<span class="sd">            &quot;playlists&quot; (default) or &quot;realtime&quot;.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get Rooms</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#roomsmode&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/rooms/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;season_id&quot;</span><span class="p">:</span> <span class="n">season_id</span><span class="p">,</span>
+            <span class="s2">&quot;sort&quot;</span><span class="p">:</span> <span class="n">sort</span><span class="p">,</span> <span class="s2">&quot;type_group&quot;</span><span class="p">:</span> <span class="n">type_group</span><span class="p">}</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">],</span> <span class="s2">&quot;/rooms&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
 
     <span class="c1"># /scores</span>

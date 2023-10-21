@@ -325,7 +325,9 @@
 <div class="viewcode-block" id="UserAccountHistoryType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.UserAccountHistoryType">[docs]</a><span class="k">class</span> <span class="nc">UserAccountHistoryType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NOTE</span> <span class="o">=</span> <span class="s2">&quot;note&quot;</span>
     <span class="n">RESTRICTION</span> <span class="o">=</span> <span class="s2">&quot;restriction&quot;</span>
-    <span class="n">SILENCE</span> <span class="o">=</span> <span class="s2">&quot;silence&quot;</span></div>
+    <span class="n">SILENCE</span> <span class="o">=</span> <span class="s2">&quot;silence&quot;</span>
+    <span class="c1"># TODO undocumented</span>
+    <span class="n">TOURNAMENT_BAN</span> <span class="o">=</span> <span class="s2">&quot;tournament_ban&quot;</span></div>
 
 <div class="viewcode-block" id="MessageType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.MessageType">[docs]</a><span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">HYPE</span> <span class="o">=</span> <span class="s2">&quot;hype&quot;</span>
@@ -505,7 +507,7 @@
     <span class="n">FRIENDS</span> <span class="o">=</span> <span class="s2">&quot;friends&quot;</span></div>
 
 <div class="viewcode-block" id="RankingType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.RankingType">[docs]</a><span class="k">class</span> <span class="nc">RankingType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
-    <span class="n">CHARTS</span> <span class="o">=</span> <span class="s2">&quot;spotlight&quot;</span>
+    <span class="n">CHARTS</span> <span class="o">=</span> <span class="s2">&quot;charts&quot;</span>
     <span class="n">COUNTRY</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span>
     <span class="n">PERFORMANCE</span> <span class="o">=</span> <span class="s2">&quot;performance&quot;</span>
     <span class="n">SCORE</span> <span class="o">=</span> <span class="s2">&quot;score&quot;</span></div>
@@ -520,7 +522,9 @@
     <span class="n">LOVED</span> <span class="o">=</span> <span class="s2">&quot;loved&quot;</span>
     <span class="n">MOST_PLAYED</span> <span class="o">=</span> <span class="s2">&quot;most_played&quot;</span>
     <span class="n">RANKED</span> <span class="o">=</span> <span class="s2">&quot;ranked&quot;</span>
-    <span class="n">PENDING</span> <span class="o">=</span> <span class="s2">&quot;pending&quot;</span></div>
+    <span class="n">PENDING</span> <span class="o">=</span> <span class="s2">&quot;pending&quot;</span>
+    <span class="n">GUEST</span> <span class="o">=</span> <span class="s2">&quot;guest&quot;</span>
+    <span class="n">NOMINATED</span> <span class="o">=</span> <span class="s2">&quot;nominated&quot;</span></div>
 
 <div class="viewcode-block" id="BeatmapDiscussionPostSort"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.BeatmapDiscussionPostSort">[docs]</a><span class="k">class</span> <span class="nc">BeatmapDiscussionPostSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
@@ -662,16 +666,25 @@
     <span class="n">ID</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span></div>
 
 <span class="c1"># `RoomType` is already taken as a model name (and more appropriate elsewhere)</span>
-<div class="viewcode-block" id="RoomSearchType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.RoomSearchType">[docs]</a><span class="k">class</span> <span class="nc">RoomSearchType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
-    <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d4</span>
-    <span class="c1"># 30a2/routes/web.php#L462</span>
-    <span class="n">OWNED</span> <span class="o">=</span> <span class="s2">&quot;owned&quot;</span>
+<span class="k">class</span> <span class="nc">RoomSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+    <span class="n">ACTIVE</span> <span class="o">=</span> <span class="s2">&quot;active&quot;</span>
+    <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+    <span class="n">ENDED</span> <span class="o">=</span> <span class="s2">&quot;ended&quot;</span>
     <span class="n">PARTICIPATED</span> <span class="o">=</span> <span class="s2">&quot;participated&quot;</span>
-    <span class="n">ENDED</span> <span class="o">=</span> <span class="s2">&quot;ended&quot;</span></div>
+    <span class="n">OWNED</span> <span class="o">=</span> <span class="s2">&quot;owned&quot;</span>
 
 <div class="viewcode-block" id="EventsSort"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.EventsSort">[docs]</a><span class="k">class</span> <span class="nc">EventsSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
+
+<span class="k">class</span> <span class="nc">BeatmapPackType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+    <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;standard&quot;</span>
+    <span class="n">FEATURED</span> <span class="o">=</span> <span class="s2">&quot;featured&quot;</span>
+    <span class="n">TOURNAMENT</span> <span class="o">=</span> <span class="s2">&quot;tournament&quot;</span>
+    <span class="n">LOVED</span> <span class="o">=</span> <span class="s2">&quot;loved&quot;</span>
+    <span class="n">CHART</span> <span class="o">=</span> <span class="s2">&quot;chart&quot;</span>
+    <span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;theme&quot;</span>
+    <span class="n">ARTIST</span> <span class="o">=</span> <span class="s2">&quot;artist&quot;</span>
 
 
 <span class="c1"># =================</span>
@@ -710,19 +723,23 @@
 <div class="viewcode-block" id="ProfileBanner"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.ProfileBanner">[docs]</a><span class="k">class</span> <span class="nc">ProfileBanner</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">tournament_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">image</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="n">image</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">image_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UserAccountHistory"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.UserAccountHistory">[docs]</a><span class="k">class</span> <span class="nc">UserAccountHistory</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="nb">type</span><span class="p">:</span> <span class="n">UserAccountHistoryType</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">length</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">permanent</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">timestamp</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">length</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">UserAccountHistoryType</span></div>
 
 
 <div class="viewcode-block" id="UserBadge"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.UserBadge">[docs]</a><span class="k">class</span> <span class="nc">UserBadge</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">awarded_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">image_2x_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x_url&quot;</span><span class="p">)</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="GroupDescription"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.GroupDescription">[docs]</a><span class="k">class</span> <span class="nc">GroupDescription</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -830,6 +847,7 @@
 
 <div class="viewcode-block" id="GithubUser"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.GithubUser">[docs]</a><span class="k">class</span> <span class="nc">GithubUser</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">github_username</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">github_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">osu_username</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -870,6 +888,10 @@
 <div class="viewcode-block" id="RankHighest"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.RankHighest">[docs]</a><span class="k">class</span> <span class="nc">RankHighest</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span></div>
+
+<span class="k">class</span> <span class="nc">BeatmapPackUserCompletionData</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">beatmapset_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">completed</span><span class="p">:</span> <span class="nb">bool</span>
 
 
 <span class="c1"># ===================</span>
