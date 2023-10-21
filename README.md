@@ -9,6 +9,7 @@ If you need support or would like to contribute, feel free to ask in the `#ossap
 * [Async](#async)
 * [Lazer](#lazer)
 * [Endpoints](#endpoints)
+  * [Beatmap Packs](#endpoints-beatmap-packs)
   * [Beatmaps](#endpoints-beatmaps)
   * [Beatmapsets](#endpoints-beatmapsets)
   * [Changelog](#endpoints-changelog)
