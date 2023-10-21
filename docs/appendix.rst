@@ -1753,6 +1753,9 @@ Models
    .. py:attribute:: ranked_beatmapset_count
       :type: int | None
 
+   .. py:attribute:: refresh
+      :type: function
+
    .. py:attribute:: replays_watched_counts
       :type: list[UserReplaysWatchedCount] | None
 
@@ -1979,6 +1982,9 @@ Models
 
    .. py:attribute:: ranked_beatmapset_count
       :type: int | None
+
+   .. py:attribute:: refresh
+      :type: function
 
    .. py:attribute:: replays_watched_counts
       :type: list[UserReplaysWatchedCount] | None

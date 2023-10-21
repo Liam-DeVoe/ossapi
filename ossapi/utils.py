@@ -1,9 +1,9 @@
 from enum import Enum, IntFlag
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Union
 from dataclasses import dataclass
 
-from typing_utils import issubtype
+from typing_utils import issubtype, get_origin, get_args
 
 def is_high_model_type(type_):
     """
@@ -32,9 +32,19 @@ def is_base_model_type(type_):
 
 
 class Field:
-    def __init__(self, *, name=None):
+    def __init__(self, *, name=None, deserialize_type=None):
         self.name = name
 
+        # We use annotations for two distinct purposes: deserialization, and
+        # type hints. If the deserialize type does not match the runtime type,
+        # these two annotations are in conflict.
+        #
+        # For instance, events should deserialize as _Event, but have a runtime
+        # type of Event.
+        #
+        # This field allows setting the runtime type via annotations and the
+        # deserialize type via passing this field.
+        self.deserialize_type = deserialize_type
 
 class _Model:
     """
@@ -104,7 +114,12 @@ class ModelMeta(type):
                 continue
             setattr(model, name, None)
 
-        return dataclass(model)
+        # @dataclass will automatically define a str/repr if it can't find one
+        # we defined ourselves. We *do* define one on Model, but I guess because
+        # we're doing weird stuff with metaclasses it can't find it sometimes?
+        # not sure. but we can fix it by telling @dataclass to never generate
+        # a repr for us.
+        return dataclass(model, repr=False)
 
 class Model(_Model, metaclass=ModelMeta):
     """
@@ -133,6 +148,16 @@ class Model(_Model, metaclass=ModelMeta):
     def _fk_beatmapset(self, beatmapset_id, existing=None):
         func = lambda: self._api.beatmapset(beatmapset_id)
         return self._foreign_key(beatmapset_id, func, existing)
+
+    def __str__(self):
+        # don't print internal values
+        blacklisted_keys = ["_api"]
+        items = [
+            f"{k}={v!r}" for k, v in self.__dict__.items()
+            if k not in blacklisted_keys
+        ]
+        return "{}({})".format(type(self).__name__, ", ".join(items))
+    __repr__ = __str__
 
 class BaseModel(_Model):
     """
@@ -218,6 +243,31 @@ def is_optional(type_):
     ``Union[Any, str]`` is a valid type not equal to ``Any`` (in python), but
     representing the same set of types.
     """
+
+    # issubtype is expensive as it requires normalizing the types. It's possible
+    # we could improve performance there, but there is low hanging fruit for
+    # is_optional in particular: the vast majority of calls are on very simple
+    # types, such as primitive types (int, str, etc), model types (UserCompact),
+    # or the simplest form of optional type (Optional[int]). For these cases,
+    # we can do much better with faster checks.
+    #
+    # It's rare that complicated types such as Union[Union[int, None], str] come
+    # up which  require normalization. However, we'll keep the issubtype check
+    # as the "ground truth" fallback for when the optimizations fail.
+    #
+    # This method is used in tight deserialization loops, so it's important to
+    # keep it inexpensive.
+
+    # optimization for common case of primitive types
+    if type_ in [int, float, str, bool]:
+        return False
+
+    # optimization for common case of simple optional - Optional[int] ie
+    # Union[int, NoneType].
+    if get_origin(type_) is Union:
+        if get_args(type_)[1] is type(None):
+            return True
+
     return issubtype(type(None), type_) and not issubtype(Any, type_)
 
 def is_primitive_type(type_):
@@ -225,11 +275,12 @@ def is_primitive_type(type_):
         return False
     return type_ in [int, float, str, bool]
 
-def is_compatible_type(value, type_):
-    # make an exception for an integer being instantiated as a float. In
-    # the json we receive, eg ``pp`` can have a value of ``15833``, which is
-    # interpreted as an int by our json parser even though ``pp`` is a
-    # float.
+def convert_primitive_type(value, type_):
+    # In the json we receive, eg ``pp`` can have a value of ``15833``, which is
+    # interpreted as an int by our json parser even though ``pp`` is a float.
+    # Convert back to the correct typing here.
+    # This is important as some consumers may rely on float-specific methods
+    # (`#is_integer`)
     if type_ is float and isinstance(value, int):
-        return True
-    return isinstance(value, type_)
+        return float(value)
+    return value

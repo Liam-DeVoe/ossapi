@@ -3,7 +3,7 @@ Creating a Client
 
 Before we can use ossapi, we'll need to create an OAuth client.
 
-Navigate to your `settings page <https://osu.ppy.sh/home/account/edit#oauth>`__ and click "New OAuth Application". You can name it anything you like, but choose a callback url on localhost. For example, ``http://localhost:3914/`` or ``http://localhost:727/``. Any port is fine as long as you don't choose something another application is using.
+Navigate to your `settings page <https://osu.ppy.sh/home/account/edit#oauth>`__ and click "New OAuth Application". You can name it anything you like, but choose a callback url on localhost. For example, ``http://localhost:3914/``. Any port greater than 1024 is fine as long as you don't choose something another application is using.
 
 When you create the application, it will show you a client id and secret. Take note of these two values.
 

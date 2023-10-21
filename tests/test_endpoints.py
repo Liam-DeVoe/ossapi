@@ -2,7 +2,7 @@ from datetime import datetime
 from unittest import TestCase
 
 from ossapi import (RankingType, BeatmapsetEventType, AccessDeniedError,
-    InsufficientScopeError, Mod, GameMode, ForumPoll, RoomSearchType,
+    InsufficientScopeError, Mod, GameMode, ForumPoll, RoomSearchMode,
     EventsSort)
 
 from tests import (
@@ -67,6 +67,9 @@ class TestBeatmapsetEvents(TestCase):
 class TestRanking(TestCase):
     def test_deserialize(self):
         api.ranking("osu", RankingType.PERFORMANCE, country="US")
+        api.ranking("osu", type="country")
+        api.ranking("osu", type="charts")
+        api.ranking("osu", type="score")
 
 class TestUserScores(TestCase):
     def test_deserialize(self):
@@ -107,6 +110,8 @@ class TestSearchBeatmaps(TestCase):
 class TestUser(TestCase):
     def test_deserialize(self):
         api.user(12092800)
+        # user with an account_history (tournament ban)
+        api.user(9997093)
 
     def test_key(self):
         # make sure it automatically falls back to username if not specified
@@ -217,6 +222,8 @@ class TestMatch(TestCase):
     def test_deserialize(self):
         # https://osu.ppy.sh/community/matches/97947404, tournament match
         api.match(97947404)
+        # https://osu.ppy.sh/community/matches/103721175, deleted beatmap
+        api.match(103721175)
 
 class TestComments(TestCase):
     def test_deserialize(self):
@@ -227,6 +234,16 @@ class TestEvents(TestCase):
         events = api.events()
         api.events(cursor_string=events.cursor_string)
         api.events(sort=EventsSort.NEW)
+
+class TestBeatmapPacks(TestCase):
+    def test_deserialize(self):
+        api.beatmap_packs()
+        api.beatmap_packs("artist")
+
+class TestBeatmapPack(TestCase):
+    def test_deserialize(self):
+        api.beatmap_pack("S100")
+        api.beatmap_pack("A1")
 
 
 # ======================
@@ -254,10 +271,7 @@ class TestRoomLeaderboard(TestCaseAuthorizationCode):
 class TestRooms(TestCaseAuthorizationCode):
     def test_deserialize(self):
         api_full.rooms()
-        # not really sure what OWNED means here, owned by the resource owner?
-        # but when I test it against myself I don't think it returns my hosted
-        # rooms...
-        api_full.rooms(RoomSearchType.OWNED)
+        api_full.rooms(mode=RoomSearchMode.OWNED)
 
 
 # ====================

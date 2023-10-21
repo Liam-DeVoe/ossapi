@@ -86,6 +86,8 @@ class UserAccountHistoryType(EnumModel):
     NOTE = "note"
     RESTRICTION = "restriction"
     SILENCE = "silence"
+    # TODO undocumented
+    TOURNAMENT_BAN = "tournament_ban"
 
 class MessageType(EnumModel):
     HYPE = "hype"
@@ -265,7 +267,7 @@ class RankingFilter(EnumModel):
     FRIENDS = "friends"
 
 class RankingType(EnumModel):
-    CHARTS = "spotlight"
+    CHARTS = "charts"
     COUNTRY = "country"
     PERFORMANCE = "performance"
     SCORE = "score"
@@ -281,6 +283,8 @@ class UserBeatmapType(EnumModel):
     MOST_PLAYED = "most_played"
     RANKED = "ranked"
     PENDING = "pending"
+    GUEST = "guest"
+    NOMINATED = "nominated"
 
 class BeatmapDiscussionPostSort(EnumModel):
     NEW = "id_desc"
@@ -422,16 +426,25 @@ class NewsPostKey(EnumModel):
     ID = "id"
 
 # `RoomType` is already taken as a model name (and more appropriate elsewhere)
-class RoomSearchType(EnumModel):
-    # https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d4
-    # 30a2/routes/web.php#L462
-    OWNED = "owned"
-    PARTICIPATED = "participated"
+class RoomSearchMode(EnumModel):
+    ACTIVE = "active"
+    ALL = "all"
     ENDED = "ended"
+    PARTICIPATED = "participated"
+    OWNED = "owned"
 
 class EventsSort(EnumModel):
     NEW = "id_desc"
     OLD = "id_asc"
+
+class BeatmapPackType(EnumModel):
+    STANDARD = "standard"
+    FEATURED = "featured"
+    TOURNAMENT = "tournament"
+    LOVED = "loved"
+    CHART = "chart"
+    THEME = "theme"
+    ARTIST = "artist"
 
 
 # =================
@@ -471,18 +484,22 @@ class ProfileBanner(Model):
     id: int
     tournament_id: int
     image: str
+    image_2x: str = Field(name="image@2x")
 
 class UserAccountHistory(Model):
     description: Optional[str]
-    type: UserAccountHistoryType
-    timestamp: Datetime
+    id: int
     length: int
+    permanent: bool
+    timestamp: Datetime
+    type: UserAccountHistoryType
 
 
 class UserBadge(Model):
     awarded_at: Datetime
     description: str
     image_url: str
+    image_2x_url: str = Field(name="image@2x_url")
     url: str
 
 class GroupDescription(Model):
@@ -590,6 +607,7 @@ class EventAchivement(Model):
 
 class GithubUser(Model):
     display_name: str
+    github_username: Optional[str]
     github_url: Optional[str]
     id: Optional[int]
     osu_username: Optional[str]
@@ -630,6 +648,10 @@ class ReviewsConfig(Model):
 class RankHighest(Model):
     rank: int
     updated_at: Datetime
+
+class BeatmapPackUserCompletionData(Model):
+    beatmapset_ids: List[int]
+    completed: bool
 
 
 # ===================

@@ -26,12 +26,13 @@ import sys
 from requests_oauthlib import OAuth2Session
 from requests_oauthlib.oauth2_session import TokenUpdated
 from oauthlib.oauth2 import (BackendApplicationClient, TokenExpiredError,
-    AccessDeniedError, InsecureTransportError, is_secure_transport)
+    AccessDeniedError, InsecureTransportError, is_secure_transport, OAuth2Error)
 from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
 from oauthlib.oauth2.rfc6749.tokens import OAuth2Token
 import osrparse
 from typing_utils import issubtype, get_type_hints, get_origin, get_args
 
+import ossapi
 from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
     ForumTopicAndPosts, Search, CommentBundle, Cursor, Score,
     BeatmapsetSearchResult, ModdingHistoryEventsBundle, User, Rankings,
@@ -42,7 +43,8 @@ from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
     UserCompact, NewsListing, NewsPost, SeasonalBackgrounds, BeatmapsetCompact,
     BeatmapUserScores, DifficultyAttributes, Users, Beatmaps,
     CreateForumTopicResponse, ForumPoll, ForumPost, ForumTopic, Room,
-    RoomLeaderboard, Matches, Match, MatchResponse, ChatChannel, Events)
+    RoomLeaderboard, Matches, Match, MatchResponse, ChatChannel, Events,
+    BeatmapPack, BeatmapPacks)
 from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
     UserBeatmapType, BeatmapDiscussionPostSort, UserLookupKey,
     BeatmapsetEventType, CommentableType, CommentSort, ForumTopicSort,
@@ -50,15 +52,21 @@ from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
     BeatmapsetDiscussionVoteSort, BeatmapsetStatus, MessageType,
     BeatmapsetSearchCategory, BeatmapsetSearchMode,
     BeatmapsetSearchExplicitContent, BeatmapsetSearchGenre,
-    BeatmapsetSearchLanguage, NewsPostKey, BeatmapsetSearchSort, RoomSearchType,
-    ChangelogMessageFormat, EventsSort)
-from ossapi.utils import (is_compatible_type, is_primitive_type, is_optional,
-    is_base_model_type, is_model_type, is_high_model_type, Field)
+    BeatmapsetSearchLanguage, NewsPostKey, BeatmapsetSearchSort, RoomSearchMode,
+    ChangelogMessageFormat, EventsSort, BeatmapPackType)
+from ossapi.utils import (is_primitive_type, is_optional, is_base_model_type,
+    is_model_type, is_high_model_type, Field, convert_primitive_type)
 from ossapi.mod import Mod
 from ossapi.replay import Replay
 
 
 class Oauth2SessionAsync(OAuth2Session):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        headers = {"User-Agent": f"ossapi (v{ossapi.__version__})"}
+        self.headers.update(headers)
+
     # this method is shamelessly copied from `OAuth2Session.request`, modified
     # to call `self.session.request` instead of `super().request`.
     # Any OAuth2Session code which calls `request` will remain sync, but we have
@@ -122,7 +130,7 @@ class Oauth2SessionAsync(OAuth2Session):
 # details).
 GameModeT = Union[GameMode, str]
 ScoreTypeT = Union[ScoreType, str]
-ModT = Union[Mod, str, int, list]
+ModT = Union[Mod, str, int, List[Union[Mod, str, int]]]
 RankingFilterT = Union[RankingFilter, str]
 RankingTypeT = Union[RankingType, str]
 UserBeatmapTypeT = Union[UserBeatmapType, str]
@@ -145,8 +153,9 @@ BeatmapsetSearchGenreT = Union[BeatmapsetSearchGenre, int]
 BeatmapsetSearchLanguageT = Union[BeatmapsetSearchLanguage, str]
 NewsPostKeyT = Union[NewsPostKey, str]
 BeatmapsetSearchSortT = Union[BeatmapsetSearchSort, str]
-RoomSearchTypeT = Union[RoomSearchType, str]
+RoomSearchModeT = Union[RoomSearchMode, str]
 EventsSortT = Union[EventsSort, str]
+BeatmapPackTypeT = Union[BeatmapPackType, str]
 
 BeatmapIdT = Union[int, BeatmapCompact]
 UserIdT = Union[int, UserCompact]
@@ -279,6 +288,19 @@ def request(scope, *, requires_user=False, category):
     return decorator
 
 
+class ReauthenticationRequired(Exception):
+    """
+    Indicates that either the user has revoked this application from their
+    account, or osu-web itself has invalidated the refresh token associated with
+    this application.
+    This exception is only raised when a manual access_token is passed to
+    Ossapi, to bypass Ossapi's default authentication methods. The expectation
+    is that in these cases, the consumer has their own way of authenticating
+    with the user. That method should be used here to handle the
+    reauthentication.
+    """
+    pass
+
 class Grant(Enum):
     """
     The grant types used by the api.
@@ -291,6 +313,8 @@ class Scope(Enum):
     The OAuth scopes used by the api.
     """
     CHAT_WRITE = "chat.write"
+    CHAT_WRITE_MANAGE = "chat.write_manage"
+    CHAT_READ = "chat.read"
     DELEGATE = "delegate"
     FORUM_WRITE = "forum.write"
     FRIENDS_READ = "friends.read"
@@ -326,10 +350,9 @@ class OssapiAsync:
         The redirect uri for the client. Must be passed if using the
         authorization code grant. This must exactly match the redirect uri on
         the client's settings page. Additionally, in order for ossapi to receive
-        authentication from this redirect uri, it must be a port on localhost.
-        So "http://localhost:3914/", "http://localhost:727/", etc are all valid
-        redirect uris. You can change your client's redirect uri from its
-        settings page.
+        authentication from this redirect uri, it must be a port on localhost,
+        e.g. "http://localhost:3914/". You can change your client's redirect uri
+        from its settings page.
     scopes: List[str]
         What scopes to request when authenticating.
     grant: Grant or str
@@ -430,6 +453,7 @@ class OssapiAsync:
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(self.grant,
             self.client_id, self.client_secret, self.scopes, self.domain.value)
+        self._type_hints_cache = {}
 
         # support saving tokens when being run from pyinstaller
         if hasattr(sys, '_MEIPASS') and not token_directory:
@@ -449,6 +473,8 @@ class OssapiAsync:
             raise ValueError("`redirect_uri` must be passed if the "
                 "authorization code grant is used.")
 
+        # whether the consumer passed a token to ossapi to bypass authentication
+        self.access_token_passed = False
         token = None
         if access_token is not None:
             # allow refresh_token to be null for the case of client credentials
@@ -460,6 +486,7 @@ class OssapiAsync:
                 "refresh_token": refresh_token
             }
             token = OAuth2Token(params)
+            self.access_token_passed = True
 
         self.session = self.authenticate(token=token)
 
@@ -520,6 +547,8 @@ class OssapiAsync:
         with this OssapiV2's parameters, or from a fresh authentication if no
         such file exists.
         """
+
+        # try saved token file first
         if self.token_file.exists() or token is not None:
             if token is None:
                 with open(self.token_file, "rb") as f:
@@ -540,6 +569,10 @@ class OssapiAsync:
                     token_updater=self._save_token,
                     scope=[scope.value for scope in self.scopes])
 
+        # otherwise, authorize from scratch
+        return self._new_grant()
+
+    def _new_grant(self):
         if self.grant is Grant.CLIENT_CREDENTIALS:
             return self._new_client_grant(self.client_id, self.client_secret)
 
@@ -619,6 +652,14 @@ class OssapiAsync:
     async def _request(self, type_, method, url, params={}, data={}):
         from aiohttp import ClientSession
 
+        # I don't *think* type hints should change over the lifetime of a
+        # program, but clear them every request out of an abundance of caution.
+        # This costs us almost nothing and may avoid bugs when eg a consumer
+        # changes type hints of a custom model dynamically at some point.
+        # They should certainly not be doing so in the middle of a request,
+        # however.
+        self._clear_type_hints_cache()
+
         params = self._format_params(params)
         # also format data for post requests
         data = self._format_params(data)
@@ -629,10 +670,30 @@ class OssapiAsync:
         # use ossapi.
         aiohttp_session = ClientSession()
 
-        try:
-            r = await self.session.request_async(method,
+        async def make_request():
+            return await self.session.request_async(method,
                 f"{self.base_url}{url}", session=aiohttp_session,
                 params=params, data=data)
+
+        async def reauthenticate_and_retry():
+            # don't automatically re-authenticate if the user passed an access
+            # token. They should handle re-authentication with the user
+            # manually (since they may have a bespoke system, like a website).
+            if self.access_token_passed:
+                self.log.info("refresh token is invalid. raising for consumer "
+                    "to handle since access token was passed originally.")
+                raise ReauthenticationRequired()
+
+            self.log.info("refresh token invalid, re-authenticating (grant: "
+                f"{self.grant})")
+            # don't use .authenticate, that falls back to cached tokens. go
+            # straight to authenticating from scratch.
+            self.session = self._new_grant()
+            # redo the request now that we have a valid session
+            return await make_request()
+
+        try:
+            r = await make_request()
         except TokenExpiredError:
             # provide "auto refreshing" for client credentials grant. The client
             # grant doesn't actually provide a refresh token, so we can't hook
@@ -645,19 +706,32 @@ class OssapiAsync:
             self.session = self._new_client_grant(self.client_id,
                 self.client_secret)
             # redo the request now that we have a valid token
-            r = await self.session.request_async(method,
-                f"{self.base_url}{url}", session=aiohttp_session,
-                params=params, data=data)
+            r = await make_request()
+        except OAuth2Error as e:
+            if e.description != "The refresh token is invalid.":
+                raise
+
+            r = await reauthenticate_and_retry()
 
         # aiohttp annoyingly differentiates between url (no url fragments, for
         # some reason) and real_url (actual url). They also use a URL object
         # here instead of a string.
-        url = str(r.real_url)
-        self.log.info(f"made {method} request to {url}, data {data}")
+        # XXX don't overwrite url passed in function, used in
+        # authenticate_and_retry
+        url_ = str(r.real_url)
+        self.log.info(f"made {method} request to {url_}, data {data}")
+
         # aiohttp throws on unexpected encoding (non-json mimetype). Match
         # requests behavior by automatically detecting encoding.
         # See https://github.com/circleguard/ossapi/issues/60.
         json_ = await r.json(encoding=None)
+        # occurs if a client gets revoked and the token hasn't officially
+        # expired yet (so it doesn't error earlier up in the chain with
+        # Oauth2Error).
+        if json_ == {"authentication": "basic"}:
+            r = await reauthenticate_and_retry()
+            json_ = await r.json(encoding=None)
+
         # aiohttp sessions have to live as long as any responses returned via
         # the session. Wait to close it until we're done with the response `r`.
         # Make sure we close this before we call _check_response, or any errors
@@ -666,7 +740,7 @@ class OssapiAsync:
         await aiohttp_session.close()
 
         self.log.debug(f"received json: \n{json.dumps(json_, indent=4)}")
-        self._check_response(json_, url)
+        self._check_response(json_, url_)
 
         return self._instantiate_type(type_, json_)
 
@@ -762,7 +836,7 @@ class OssapiAsync:
         # why we pass `type(obj)` instead of just `obj`, which would only
         # return annotations for attributes defined in `obj` and not its
         # inherited attributes.
-        annotations = get_type_hints(type(obj))
+        annotations = self._get_type_hints(type(obj))
         override_annotations = obj.override_types()
         annotations = {**annotations, **override_annotations}
         self.log.debug(f"resolving annotations for type {type(obj)}")
@@ -815,13 +889,15 @@ class OssapiAsync:
             # strict mode.
             if not self.strict and value is None:
                 return
-            if not is_compatible_type(value, type_):
+            if not isinstance(value, type_):
                 raise TypeError(f"expected type {type_} for value {value}, got "
                     f"type {type(value)}"
                     f" (for attribute: {attr_name})" if attr_name else "")
 
         if is_primitive_type(type_):
+            value = convert_primitive_type(value, type_)
             _check_primitive_type()
+            return value
 
         if is_base_model_type(type_):
             self.log.debug(f"instantiating base type {type_}")
@@ -888,12 +964,12 @@ class OssapiAsync:
         # hints from a `_GenericAlias` if we see one, as standard methods
         # won't work.
         try:
-            type_hints = get_type_hints(type_)
+            type_hints = self._get_type_hints(type_)
         except TypeError:
-            assert type(type_) is _GenericAlias # pylint: disable=unidiomatic-typecheck
+            assert type(type_) is _GenericAlias
 
             signature_type = get_origin(type_)
-            type_hints = get_type_hints(signature_type)
+            type_hints = self._get_type_hints(signature_type)
 
         field_names = {}
         for name in type_hints:
@@ -963,14 +1039,70 @@ class OssapiAsync:
             val = type_(**kwargs_)
         except TypeError as e:
             raise TypeError(f"type error while instantiating class {type_}: "
-                f"{str(e)}") from e
+                f"{e}") from e
 
         return val
+
+    def _get_type_hints(self, obj):
+        # type hints are expensive to compute. Our models should never change
+        # their type hints, so cache them.
+        if obj in self._type_hints_cache:
+            return self._type_hints_cache[obj]
+
+        type_hints = get_type_hints(obj)
+        self._type_hints_cache[obj] = type_hints
+        return type_hints
+
+    def _clear_type_hints_cache(self):
+        self._type_hints_cache = {}
 
 
     # =========
     # Endpoints
     # =========
+
+
+    # /beatmaps/packs
+    # ---------------
+
+    @request(Scope.PUBLIC, category="beatmap packs")
+    async def beatmap_packs(self,
+        type: Optional[BeatmapPackTypeT] = None,
+        cursor_string: Optional[str] = None
+    ) -> BeatmapPacks:
+        """
+        Get a list of beatmap packs. If you want to retrieve a specific pack,
+        see :meth:`beatmap_pack`.
+
+        Parameters
+        ----------
+        cursor_string
+            Cursor for pagination.
+
+        Notes
+        -----
+        Implements the `Beatmap Packs
+        <https://osu.ppy.sh/docs/index.html#get-beatmap-packs>`__
+        endpoint.
+        """
+        params = {"type": type, "cursor_string": cursor_string}
+        return await self._get(BeatmapPacks, "/beatmaps/packs", params)
+
+    @request(Scope.PUBLIC, category="beatmap packs")
+    async def beatmap_pack(self,
+        pack: str
+    ) -> BeatmapPack:
+        """
+        Get a beatmap pack. If you want to retrieve a list of beatmap packs, see
+        see :meth:`beatmap_packs`.
+
+        Notes
+        -----
+        Implements the `Beatmap Pack
+        <https://osu.ppy.sh/docs/index.html#get-beatmap-pack>`__
+        endpoint.
+        """
+        return await self._get(BeatmapPack, f"/beatmaps/packs/{pack}")
 
 
     # /beatmaps
@@ -1015,7 +1147,7 @@ class OssapiAsync:
         user_id: UserIdT,
         *,
         mode: Optional[GameModeT] = None
-    ) -> List[BeatmapUserScore]:
+    ) -> List[Score]:
         """
         Get all of a user's scores on a beatmap. If you only want the top user
         score, see :meth:`beatmap_user_score`.
@@ -1617,7 +1749,7 @@ class OssapiAsync:
 
     # this method requires a user in the announce group, so I've never tested
     # it.
-    @request(Scope.CHAT_WRITE, category="chat")
+    @request(Scope.CHAT_WRITE_MANAGE, category="chat")
     async def send_announcement(self,
         channel_name: str,
         channel_description: str,
@@ -2192,21 +2324,40 @@ class OssapiAsync:
         return await self._get(RoomLeaderboard, f"/rooms/{room_id}/leaderboard")
 
     @request(Scope.PUBLIC, requires_user=True, category="rooms")
-    async def rooms(self, type: Optional[RoomSearchTypeT] = None) -> List[Room]:
+    async def rooms(self,
+        *,
+        limit: Optional[int] = None,
+        mode: Optional[RoomSearchModeT] = None,
+        season_id: Optional[int] = None,
+        # TODO enumify
+        sort: Optional[str] = None,
+        # TODO enumify
+        type_group: Optional[str] = None
+    ) -> List[Room]:
         """
         Get the list of current rooms.
 
         Parameters
         ----------
-        type
-            Filter by room type. Default to all rooms.
+        limit
+            Maximum number of results.
+        mode
+            Mode to filter rooms by. Defaults to all rooms.
+        season_id
+            Season id to return rooms from.
+        sort
+            Sort order. One of "ended" or "created".
+        type_group
+            "playlists" (default) or "realtime".
 
         Notes
         -----
         Implements the `Get Rooms
         <https://osu.ppy.sh/docs/index.html#roomsmode>`__ endpoint.
         """
-        return await self._get(List[Room], f"/rooms/{type.value if type else ''}")
+        params = {"limit": limit, "mode": mode, "season_id": season_id,
+            "sort": sort, "type_group": type_group}
+        return await self._get(List[Room], "/rooms", params=params)
 
 
     # /scores

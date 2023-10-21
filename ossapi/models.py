@@ -17,7 +17,7 @@ from ossapi.enums import (UserAccountHistory, ProfileBanner, UserBadge, Country,
     GithubUser, ChangelogSearch, ForumTopicType, ForumPostBody, ForumTopicSort,
     ChannelType, ReviewsConfig, NewsSearch, Nomination, RankHighest, RoomType,
     RoomCategory, MatchEventType, ScoringType, TeamType, Variant, ForumPollText,
-    ForumPollTitle)
+    ForumPollTitle, BeatmapPackUserCompletionData)
 from ossapi.utils import Datetime, Model, BaseModel, Field
 
 T = TypeVar("T")
@@ -115,13 +115,6 @@ class UserCompact(Model):
     graveyard_beatmapset_count: Optional[int]
     groups: Optional[List[UserGroup]]
     guest_beatmapset_count: Optional[int]
-    is_admin: Optional[bool]
-    is_bng: Optional[bool]
-    is_full_bn: Optional[bool]
-    is_gmt: Optional[bool]
-    is_limited_bn: Optional[bool]
-    is_moderator: Optional[bool]
-    is_nat: Optional[bool]
     is_restricted: Optional[bool]
     is_silenced: Optional[bool]
     loved_beatmapset_count: Optional[int]
@@ -552,10 +545,15 @@ class Users(Model):
 class Beatmaps(Model):
     beatmaps: List[Beatmap]
 
+class BeatmapPacks(Model):
+    cursor: CursorT
+    cursor_string: str
+    beatmap_packs: List[BeatmapPack]
+
 class Rankings(Model):
     beatmapsets: Optional[List[Beatmapset]]
     cursor: CursorT
-    ranking: List[UserStatistics]
+    ranking: Union[List[UserStatistics], List[CountryStatistics]]
     spotlight: Optional[Spotlight]
     total: int
 
@@ -571,7 +569,7 @@ class BeatmapsetDiscussionPost(Model):
     updated_at: Datetime
     deleted_at: Optional[Datetime]
 
-    def user(self) -> user:
+    def user(self) -> User:
         return self._fk_user(self.user_id)
 
     def last_editor(self) -> Optional[User]:
@@ -877,8 +875,21 @@ class BeatmapDifficultyAttributes(Model):
 
 class Events(Model):
     cursor_string: str
-    events: List[Event]
+    events: List[Event] = Field(deserialize_type=List[_Event])
 
+class BeatmapPack(Model):
+    author: str
+    date: Datetime
+    name: str
+    no_diff_reduction: bool
+    # marked as nonnull on docs
+    ruleset_id: Optional[int]
+    tag: str
+    url: str
+
+    # optional attributes
+    beatmapsets: Optional[List[Beatmapset]]
+    user_completion_data: Optional[BeatmapPackUserCompletionData]
 
 # ================
 # Parameter Models
@@ -1073,6 +1084,14 @@ class ChatMessage(Model):
     # TODO enumify, example value: "plain"
     type: str
 
+class CountryStatistics(Model):
+    code: str
+    active_users: int
+    play_count: int
+    ranked_score: int
+    performance: int
+    country: Country
+
 class CreatePMResponse(Model):
     message: ChatMessage
     new_channel_id: int
@@ -1225,7 +1244,9 @@ class MatchGame(Model):
     scoring_type: ScoringType
     team_type: TeamType
     mods: List[Mod]
-    beatmap: BeatmapCompact
+    # null for deleted beatmaps.
+    # TODO doesn't match docs
+    beatmap: Optional[BeatmapCompact]
     beatmap_id: int
     scores: List[Score]
 

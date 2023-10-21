@@ -14,6 +14,7 @@ If you need support or would like to contribute, feel free to ask in the `#ossap
   * [Changelog](#endpoints-changelog)
   * [Chat](#endpoints-chat)
   * [Comments](#endpoints-comments)
+  * [Events](#endpoints-events)
   * [Forums](#endpoints-forums)
   * [Friends](#endpoints-friends)
   * [Home](#endpoints-home)
@@ -71,9 +72,9 @@ ossapi provides an async variant, `OssapiAsync`, which has an identical interfac
 
 ```python
 import asyncio
-from ossapi import Ossapi
+from ossapi import OssapiAsync
 
-api = Ossapi(client_id, client_secret)
+api = OssapiAsync(client_id, client_secret)
 
 async def main():
     await api.user("tybug")
@@ -103,6 +104,9 @@ print(scores[0].pp)
 
 All endpoints for api v2.
 
+* Beatmap Packs<a name="endpoints-beatmap-packs"></a>
+  * [`api.beatmap_pack`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.beatmap_pack)
+  * [`api.beatmap_packs`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.beatmap_packs)
 * Beatmaps<a name="endpoints-beatmaps"></a>
   * [`api.beatmap`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.beatmap)
   * [`api.beatmap_attributes`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.beatmap_attributes)
@@ -127,6 +131,8 @@ All endpoints for api v2.
 * Comments<a name="endpoints-comments"></a>
   * [`api.comment`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.comment)
   * [`api.comments`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.comments)
+* Events<a name="endpoints-events"></a>
+  * [`api.events`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.events)
 * Forums<a name="endpoints-forums"></a>
   * [`api.forum_create_topic`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.forum_create_topic)
   * [`api.forum_edit_post`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.forum_edit_post)
@@ -145,7 +151,7 @@ All endpoints for api v2.
 * News<a name="endpoints-news"></a>
   * [`api.news_listing`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.news_listing)
   * [`api.news_post`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.news_post)
-* Oauth<a name="endpoints-oauth"></a>
+* OAuth<a name="endpoints-oauth"></a>
   * [`api.revoke_token`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.revoke_token)
 * Rankings<a name="endpoints-rankings"></a>
   * [`api.ranking`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.ranking)
