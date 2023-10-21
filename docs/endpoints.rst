@@ -5,6 +5,13 @@
 
 |br| |br| All functions on this page are methods of the :class:`~ossapi.ossapiv2.Ossapi` class.
 
+Beatmap Packs
+=============
+
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_pack
+
+.. autofunction:: ossapi.ossapiv2.Ossapi.beatmap_packs
+
 Beatmaps
 ========
 
@@ -50,7 +57,7 @@ Chat
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_announcement
 
  .. note::
-    Requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.
+    Requires the :data:`Scope.CHAT_WRITE_MANAGE <ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_pm
 

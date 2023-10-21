@@ -172,7 +172,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Beatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Beatmap Packs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html#beatmaps">Beatmaps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#beatmapsets">Beatmapsets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html#chat">Chat</a></li>
@@ -283,14 +284,20 @@
 </li>
         <li><a href="appendix.html#ossapi.models.Room.active">active (Room attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.enums.RoomSearchMode.ACTIVE">ACTIVE (RoomSearchMode attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.User.active_tournament_banner">active_tournament_banner (User attribute)</a>
 
         <ul>
           <li><a href="appendix.html#ossapi.models.UserCompact.active_tournament_banner">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="appendix.html#ossapi.enums.Ranking.active_users">active_users (Ranking attribute)</a>
+        <li><a href="appendix.html#ossapi.models.CountryStatistics.active_users">active_users (CountryStatistics attribute)</a>
+
+        <ul>
+          <li><a href="appendix.html#ossapi.enums.Ranking.active_users">(Ranking attribute)</a>
 </li>
+        </ul></li>
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes.aim_difficulty">aim_difficulty (BeatmapDifficultyAttributes attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetDownload.ALL">ALL (BeatmapsetDownload attribute)</a>
@@ -299,6 +306,8 @@
           <li><a href="appendix.html#ossapi.enums.BeatmapsetStatus.ALL">(BeatmapsetStatus attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.RankingFilter.ALL">(RankingFilter attribute)</a>
+</li>
+          <li><a href="appendix.html#ossapi.enums.RoomSearchMode.ALL">(RoomSearchMode attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.SearchMode.ALL">(SearchMode attribute)</a>
 </li>
@@ -315,10 +324,10 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.ChannelType.ANNOUNCE">ANNOUNCE (ChannelType attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.ForumTopicType.ANNOUNCEMENT">ANNOUNCEMENT (ForumTopicType attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="appendix.html#ossapi.enums.ForumTopicType.ANNOUNCEMENT">ANNOUNCEMENT (ForumTopicType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchCategory.ANY">ANY (BeatmapsetSearchCategory attribute)</a>
 
         <ul>
@@ -342,6 +351,8 @@
 </li>
         </ul></li>
         <li><a href="appendix.html#ossapi.models.Beatmap.ar">ar (Beatmap attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.ARTIST">ARTIST (BeatmapPackType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.Beatmapset.artist">artist (Beatmapset attribute)</a>
 
@@ -373,8 +384,12 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.UserProfileCustomization.audio_volume">audio_volume (UserProfileCustomization attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.NewsPost.author">author (NewsPost attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.author">author (BeatmapPack attribute)</a>
+
+        <ul>
+          <li><a href="appendix.html#ossapi.models.NewsPost.author">(NewsPost attribute)</a>
 </li>
+        </ul></li>
         <li><a href="appendix.html#ossapi.ossapiv2.Grant.AUTHORIZATION_CODE">AUTHORIZATION_CODE (Grant attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.Room.auto_skip">auto_skip (Room attribute)</a>
@@ -511,6 +526,12 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetEventType.BEATMAP_OWNER_CHANGE">BEATMAP_OWNER_CHANGE (BeatmapsetEventType attribute)</a>
 </li>
+        <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.beatmap_pack">beatmap_pack() (in module ossapi.ossapiv2.Ossapi)</a>
+</li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPacks.beatmap_packs">beatmap_packs (BeatmapPacks attribute)</a>
+</li>
+        <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.beatmap_packs">beatmap_packs() (in module ossapi.ossapiv2.Ossapi)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.EventType.BEATMAP_PLAYCOUNT">BEATMAP_PLAYCOUNT (EventType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.User.beatmap_playcounts_count">beatmap_playcounts_count (User attribute)</a>
@@ -532,6 +553,14 @@
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes">BeatmapDifficultyAttributes (class in ossapi.models)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort">BeatmapDiscussionPostSort (class in ossapi.enums)</a>
+</li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack">BeatmapPack (class in ossapi.models)</a>
+</li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPacks">BeatmapPacks (class in ossapi.models)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType">BeatmapPackType (class in ossapi.enums)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackUserCompletionData">BeatmapPackUserCompletionData (class in ossapi.enums)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.BeatmapPlaycount">BeatmapPlaycount (class in ossapi.models)</a>
 </li>
@@ -617,6 +646,8 @@
           <li><a href="appendix.html#ossapi.enums.Nomination.beatmapset_id">(Nomination attribute)</a>
 </li>
         </ul></li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackUserCompletionData.beatmapset_ids">beatmapset_ids (BeatmapPackUserCompletionData attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.EventType.BEATMAPSET_REVIVE">BEATMAPSET_REVIVE (EventType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.UserProfileCustomization.beatmapset_show_nsfw">beatmapset_show_nsfw (UserProfileCustomization attribute)</a>
@@ -685,9 +716,11 @@
 </li>
         <li><a href="appendix.html#ossapi.models.BeatmapsetReviveEvent">BeatmapsetReviveEvent (class in ossapi.models)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.beatmapsets">beatmapsets (BeatmapsetDiscussionPosts attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.beatmapsets">beatmapsets (BeatmapPack attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.beatmapsets">(BeatmapsetDiscussionPosts attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussions.beatmapsets">(BeatmapsetDiscussions attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetSearchResult.beatmapsets">(BeatmapsetSearchResult attribute)</a>
@@ -811,6 +844,8 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.enums.ChannelType">ChannelType (class in ossapi.enums)</a>
 </li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.CHART">CHART (BeatmapPackType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.RankingType.CHARTS">CHARTS (RankingType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.ossapiv2.Scope.CHAT_READ">CHAT_READ (Scope attribute)</a>
@@ -836,7 +871,11 @@
         <li><a href="appendix.html#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS">CLIENT_CREDENTIALS (Grant attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.Country.code">code (Country attribute)</a>
+
+        <ul>
+          <li><a href="appendix.html#ossapi.models.CountryStatistics.code">(CountryStatistics attribute)</a>
 </li>
+        </ul></li>
         <li><a href="appendix.html#ossapi.enums.UserGroup.colour">colour (UserGroup attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes.colour_difficulty">colour_difficulty (BeatmapDifficultyAttributes attribute)</a>
@@ -873,9 +912,11 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.CommentSort">CommentSort (class in ossapi.enums)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.RoomLeaderboardScore.completed">completed (RoomLeaderboardScore attribute)</a>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackUserCompletionData.completed">completed (BeatmapPackUserCompletionData attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.RoomLeaderboardScore.completed">(RoomLeaderboardScore attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.RoomLeaderboardUserScore.completed">(RoomLeaderboardUserScore attribute)</a>
 </li>
         </ul></li>
@@ -939,6 +980,8 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.Country">Country (class in ossapi.enums)</a>
 </li>
+        <li><a href="appendix.html#ossapi.models.CountryStatistics.country">country (CountryStatistics attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.RankingType.COUNTRY">COUNTRY (RankingType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.User.country">country (User attribute)</a>
@@ -953,14 +996,16 @@
           <li><a href="appendix.html#ossapi.models.UserCompact.country_code">(UserCompact attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.models.StatisticsVariant.country_rank">country_rank (StatisticsVariant attribute)</a>
 
         <ul>
           <li><a href="appendix.html#ossapi.models.UserStatistics.country_rank">(UserStatistics attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="appendix.html#ossapi.models.CountryStatistics">CountryStatistics (class in ossapi.models)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.Cover">Cover (class in ossapi.enums)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.Covers.cover">cover (Covers attribute)</a>
@@ -1107,9 +1152,11 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.models.NewsSidebar.current_year">current_year (NewsSidebar attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.cursor">cursor (BeatmapsetDiscussionPosts attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPacks.cursor">cursor (BeatmapPacks attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.cursor">(BeatmapsetDiscussionPosts attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussions.cursor">(BeatmapsetDiscussions attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionVotes.cursor">(BeatmapsetDiscussionVotes attribute)</a>
@@ -1131,9 +1178,11 @@
           <li><a href="appendix.html#ossapi.models.Rankings.cursor">(Rankings attribute)</a>
 </li>
         </ul></li>
-        <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.cursor_string">cursor_string (BeatmapsetDiscussionPosts attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPacks.cursor_string">cursor_string (BeatmapPacks attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts.cursor_string">(BeatmapsetDiscussionPosts attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussions.cursor_string">(BeatmapsetDiscussions attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussionVote.cursor_string">(BeatmapsetDiscussionVote attribute)</a>
@@ -1171,6 +1220,8 @@
           <li><a href="appendix.html#ossapi.models.SearchResult.data">(SearchResult attribute)</a>
 </li>
         </ul></li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.date">date (BeatmapPack attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.User.default_group">default_group (User attribute)</a>
 
         <ul>
@@ -1345,7 +1396,7 @@
           <li><a href="appendix.html#ossapi.models.MatchGame.end_time">(MatchGame attribute)</a>
 </li>
         </ul></li>
-        <li><a href="appendix.html#ossapi.enums.RoomSearchType.ENDED">ENDED (RoomSearchType attribute)</a>
+        <li><a href="appendix.html#ossapi.enums.RoomSearchMode.ENDED">ENDED (RoomSearchMode attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.ForumPollModel.ended_at">ended_at (ForumPollModel attribute)</a>
 </li>
@@ -1451,6 +1502,8 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchCategory.FAVOURITES">FAVOURITES (BeatmapsetSearchCategory attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.FEATURED">FEATURED (BeatmapPackType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.RoomCategory.FEATURED_ARTIST">FEATURED_ARTIST (RoomCategory attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.MatchResponse.first_event_id">first_event_id (MatchResponse attribute)</a>
@@ -1481,10 +1534,10 @@
 </li>
         <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.forum_edit_post">forum_edit_post() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
-        <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.forum_edit_topic">forum_edit_topic() (in module ossapi.ossapiv2.Ossapi)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.forum_edit_topic">forum_edit_topic() (in module ossapi.ossapiv2.Ossapi)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.ForumPost.forum_id">forum_id (ForumPost attribute)</a>
 
         <ul>
@@ -1577,6 +1630,8 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.models.ChangelogEntry.github_user">github_user (ChangelogEntry attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.enums.GithubUser.github_username">github_username (GithubUser attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.GithubUser">GithubUser (class in ossapi.enums)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.KudosuAction.GIVE">GIVE (KudosuAction attribute)</a>
@@ -1627,6 +1682,8 @@
           <li><a href="appendix.html#ossapi.models.UserCompact.groups">(UserCompact attribute)</a>
 </li>
         </ul></li>
+        <li><a href="appendix.html#ossapi.enums.UserBeatmapType.GUEST">GUEST (UserBeatmapType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.User.guest_beatmapset_count">guest_beatmapset_count (User attribute)</a>
 
         <ul>
@@ -1812,11 +1869,15 @@
 </li>
           <li><a href="appendix.html#ossapi.models.User.id">(User attribute)</a>
 </li>
+          <li><a href="appendix.html#ossapi.enums.UserAccountHistory.id">(UserAccountHistory attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.UserCompact.id">(UserCompact attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.UserGroup.id">(UserGroup attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.enums.UserLookupKey.ID">ID (UserLookupKey attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.UsernameChangeEvent.id">id (UsernameChangeEvent attribute)</a>
@@ -1829,13 +1890,15 @@
           <li><a href="appendix.html#ossapi.models.UserSupportGiftEvent.id">(UserSupportGiftEvent attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.enums.UserGroup.identifier">identifier (UserGroup attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.ossapiv2.Scope.IDENTIFY">IDENTIFY (Scope attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.ProfileBanner.image">image (ProfileBanner attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.ProfileBanner.image_2x">image_2x (ProfileBanner attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.UserBadge.image_2x_url">image_2x_url (UserBadge attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.UserBadge.image_url">image_url (UserBadge attribute)</a>
 </li>
@@ -1857,18 +1920,6 @@
           <li><a href="appendix.html#ossapi.models.UserCompact.is_active">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="appendix.html#ossapi.models.User.is_admin">is_admin (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_admin">(UserCompact attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="appendix.html#ossapi.models.User.is_bng">is_bng (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_bng">(UserCompact attribute)</a>
-</li>
-        </ul></li>
         <li><a href="appendix.html#ossapi.models.User.is_bot">is_bot (User attribute)</a>
 
         <ul>
@@ -1883,38 +1934,8 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.models.UpdateStream.is_featured">is_featured (UpdateStream attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.User.is_full_bn">is_full_bn (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_full_bn">(UserCompact attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="appendix.html#ossapi.models.User.is_gmt">is_gmt (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_gmt">(UserCompact attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="appendix.html#ossapi.models.User.is_limited_bn">is_limited_bn (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_limited_bn">(UserCompact attribute)</a>
-</li>
-        </ul></li>
         <li><a href="appendix.html#ossapi.models.ForumTopic.is_locked">is_locked (ForumTopic attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.User.is_moderator">is_moderator (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_moderator">(UserCompact attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="appendix.html#ossapi.models.User.is_nat">is_nat (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.is_nat">(UserCompact attribute)</a>
-</li>
-        </ul></li>
         <li><a href="appendix.html#ossapi.models.User.is_online">is_online (User attribute)</a>
 
         <ul>
@@ -2071,10 +2092,10 @@
 </li>
         <li><a href="appendix.html#ossapi.models.RoomLeaderboard.leaderboard">leaderboard (RoomLeaderboard attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.models.Comment.legacy_name">legacy_name (Comment attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.models.Beatmapset.legacy_thread_url">legacy_thread_url (Beatmapset attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.UserAccountHistory.length">length (UserAccountHistory attribute)</a>
@@ -2103,9 +2124,11 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetEventType.LOVE">LOVE (BeatmapsetEventType attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.BeatmapsetApproval.LOVED">LOVED (BeatmapsetApproval attribute)</a>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.LOVED">LOVED (BeatmapPackType attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.enums.BeatmapsetApproval.LOVED">(BeatmapsetApproval attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchCategory.LOVED">(BeatmapsetSearchCategory attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.RankStatus.LOVED">(RankStatus attribute)</a>
@@ -2348,9 +2371,11 @@
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="appendix.html#ossapi.models.ChatChannel.name">name (ChatChannel attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.name">name (BeatmapPack attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.ChatChannel.name">(ChatChannel attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.enums.Country.name">(Country attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.EventAchivement.name">(EventAchivement attribute)</a>
@@ -2432,11 +2457,15 @@
 </li>
         <li><a href="appendix.html#ossapi.models.Versions.next">next (Versions attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.no_diff_reduction">no_diff_reduction (BeatmapPack attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetDownload.NO_VIDEO">NO_VIDEO (BeatmapsetDownload attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetEventType.NOMINATE">NOMINATE (BeatmapsetEventType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetEventType.NOMINATE_MODES">NOMINATE_MODES (BeatmapsetEventType attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.UserBeatmapType.NOMINATED">NOMINATED (UserBeatmapType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.User.nominated_beatmapset_count">nominated_beatmapset_count (User attribute)</a>
 </li>
@@ -2583,7 +2612,7 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes.overall_difficulty">overall_difficulty (BeatmapDifficultyAttributes attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.RoomSearchType.OWNED">OWNED (RoomSearchType attribute)</a>
+        <li><a href="appendix.html#ossapi.enums.RoomSearchMode.OWNED">OWNED (RoomSearchMode attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.Beatmap.owner">owner (Beatmap attribute)</a>
 </li>
@@ -2633,7 +2662,7 @@
           <li><a href="appendix.html#ossapi.models.Spotlight.participant_count">(Spotlight attribute)</a>
 </li>
         </ul></li>
-        <li><a href="appendix.html#ossapi.enums.RoomSearchType.PARTICIPATED">PARTICIPATED (RoomSearchType attribute)</a>
+        <li><a href="appendix.html#ossapi.enums.RoomSearchMode.PARTICIPATED">PARTICIPATED (RoomSearchMode attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.ScoreMatchInfo.pass_">pass_ (ScoreMatchInfo attribute)</a>
 </li>
@@ -2665,9 +2694,15 @@
 </li>
         <li><a href="appendix.html#ossapi.models.Score.perfect">perfect (Score attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.Ranking.performance">performance (Ranking attribute)</a>
+        <li><a href="appendix.html#ossapi.models.CountryStatistics.performance">performance (CountryStatistics attribute)</a>
+
+        <ul>
+          <li><a href="appendix.html#ossapi.enums.Ranking.performance">(Ranking attribute)</a>
 </li>
+        </ul></li>
         <li><a href="appendix.html#ossapi.enums.RankingType.PERFORMANCE">PERFORMANCE (RankingType attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.UserAccountHistory.permanent">permanent (UserAccountHistory attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.Comment.pinned">pinned (Comment attribute)</a>
 </li>
@@ -2677,6 +2712,8 @@
 
         <ul>
           <li><a href="appendix.html#ossapi.models.BeatmapsetCompact.play_count">(BeatmapsetCompact attribute)</a>
+</li>
+          <li><a href="appendix.html#ossapi.models.CountryStatistics.play_count">(CountryStatistics attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.enums.Ranking.play_count">(Ranking attribute)</a>
 </li>
@@ -2707,12 +2744,12 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.UserGroup.playmodes">playmodes (UserGroup attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchSort.PLAYS_ASCENDING">PLAYS_ASCENDING (BeatmapsetSearchSort attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchSort.PLAYS_DESCENDING">PLAYS_DESCENDING (BeatmapsetSearchSort attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.models.User.playstyle">playstyle (User attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.PlayStyles">PlayStyles (class in ossapi.enums)</a>
@@ -2925,9 +2962,11 @@
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchSort.RANKED_DESCENDING">RANKED_DESCENDING (BeatmapsetSearchSort attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.Ranking.ranked_score">ranked_score (Ranking attribute)</a>
+        <li><a href="appendix.html#ossapi.models.CountryStatistics.ranked_score">ranked_score (CountryStatistics attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.enums.Ranking.ranked_score">(Ranking attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.UserStatistics.ranked_score">(UserStatistics attribute)</a>
 </li>
         </ul></li>
@@ -2983,10 +3022,10 @@
         </ul></li>
         <li><a href="appendix.html#ossapi.models.BeatmapsetEventCommentLovedRemoval.reason">reason (BeatmapsetEventCommentLovedRemoval attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.ScoreType.RECENT">RECENT (ScoreType attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="appendix.html#ossapi.enums.ScoreType.RECENT">RECENT (ScoreType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.ProfilePage.RECENT_ACTIVITY">RECENT_ACTIVITY (ProfilePage attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.Beatmapset.recent_favourites">recent_favourites (Beatmapset attribute)</a>
@@ -3001,12 +3040,6 @@
 </li>
         <li><a href="appendix.html#ossapi.models.BeatmapsetSearchResult.recommended_difficulty">recommended_difficulty (BeatmapsetSearchResult attribute)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.User.refresh">refresh (User attribute)</a>
-
-        <ul>
-          <li><a href="appendix.html#ossapi.models.UserCompact.refresh">(UserCompact attribute)</a>
-</li>
-        </ul></li>
         <li><a href="appendix.html#ossapi.models.Beatmapset.related_users">related_users (Beatmapset attribute)</a>
 
         <ul>
@@ -3095,12 +3128,16 @@
 </li>
         <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.rooms">rooms() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
-        <li><a href="appendix.html#ossapi.enums.RoomSearchType">RoomSearchType (class in ossapi.enums)</a>
+        <li><a href="appendix.html#ossapi.enums.RoomSearchMode">RoomSearchMode (class in ossapi.enums)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.RoomType">RoomType (class in ossapi.enums)</a>
 </li>
-        <li><a href="appendix.html#ossapi.models.RoomPlaylistItem.ruleset_id">ruleset_id (RoomPlaylistItem attribute)</a>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.ruleset_id">ruleset_id (BeatmapPack attribute)</a>
+
+        <ul>
+          <li><a href="appendix.html#ossapi.models.RoomPlaylistItem.ruleset_id">(RoomPlaylistItem attribute)</a>
 </li>
+        </ul></li>
         <li><a href="appendix.html#ossapi.enums.Nomination.rulesets">rulesets (Nomination attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.BeatmapsetSearchLanguage.RUSSIAN">RUSSIAN (BeatmapsetSearchLanguage attribute)</a>
@@ -3303,6 +3340,8 @@
 </li>
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes.stamina_difficulty">stamina_difficulty (BeatmapDifficultyAttributes attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.STANDARD">STANDARD (BeatmapPackType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.BeatmapDifficultyAttributes.star_rating">star_rating (BeatmapDifficultyAttributes attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.ForumTopicSearch.start">start (ForumTopicSearch attribute)</a>
@@ -3391,6 +3430,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="appendix.html#ossapi.enums.PlayStyles.TABLET">TABLET (PlayStyles attribute)</a>
 </li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.tag">tag (BeatmapPack attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.enums.TeamType.TAG_COOP">TAG_COOP (TeamType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.TeamType.TAG_TEAM_VS">TAG_TEAM_VS (TeamType attribute)</a>
@@ -3431,6 +3472,8 @@
           <li><a href="appendix.html#ossapi.models.MatchEventDetail.text">(MatchEventDetail attribute)</a>
 </li>
         </ul></li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.THEME">THEME (BeatmapPackType attribute)</a>
+</li>
         <li><a href="appendix.html#ossapi.models.BeatmapsetDiscussion.timestamp">timestamp (BeatmapsetDiscussion attribute)</a>
 
         <ul>
@@ -3532,6 +3575,10 @@
         <li><a href="appendix.html#ossapi.models.ForumPollModel.total_vote_count">total_vote_count (ForumPollModel attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.PlayStyles.TOUCH">TOUCH (PlayStyles attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.BeatmapPackType.TOURNAMENT">TOURNAMENT (BeatmapPackType attribute)</a>
+</li>
+        <li><a href="appendix.html#ossapi.enums.UserAccountHistoryType.TOURNAMENT_BAN">TOURNAMENT_BAN (UserAccountHistoryType attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.enums.ProfileBanner.tournament_id">tournament_id (ProfileBanner attribute)</a>
 </li>
@@ -3646,6 +3693,8 @@
         <li><a href="appendix.html#ossapi.models.Beatmap.url">url (Beatmap attribute)</a>
 
         <ul>
+          <li><a href="appendix.html#ossapi.models.BeatmapPack.url">(BeatmapPack attribute)</a>
+</li>
           <li><a href="appendix.html#ossapi.models.ChangelogEntry.url">(ChangelogEntry attribute)</a>
 </li>
           <li><a href="appendix.html#ossapi.models.CommentableMeta.url">(CommentableMeta attribute)</a>
@@ -3742,6 +3791,8 @@
 </li>
         </ul></li>
         <li><a href="endpoints.html#ossapi.ossapiv2.Ossapi.user_beatmaps">user_beatmaps() (in module ossapi.ossapiv2.Ossapi)</a>
+</li>
+        <li><a href="appendix.html#ossapi.models.BeatmapPack.user_completion_data">user_completion_data (BeatmapPack attribute)</a>
 </li>
         <li><a href="appendix.html#ossapi.models.UpdateStream.user_count">user_count (UpdateStream attribute)</a>
 </li>

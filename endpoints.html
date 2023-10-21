@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="Domains" href="domains.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Beatmaps - ossapi v3.3.0 documentation</title>
+        <title>Beatmap Packs - ossapi v3.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -174,7 +174,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Beatmaps</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Beatmap Packs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#beatmaps">Beatmaps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#beatmapsets">Beatmapsets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#chat">Chat</a></li>
@@ -240,6 +241,48 @@
         </div>
         <article role="main">
           <p><br /> <br /> All functions on this page are methods of the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> class.</p>
+<section id="beatmap-packs">
+<h1>Beatmap Packs<a class="headerlink" href="#beatmap-packs" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_pack">
+<span class="sig-name descname"><span class="pre">beatmap_pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_pack" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a beatmap pack. If you want to retrieve a list of beatmap packs, see
+see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="ossapi.ossapiv2.Ossapi.beatmap_packs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_packs()</span></code></a>.</p>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-pack">Beatmap Pack</a>
+endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pack</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapPack" title="ossapi.models.BeatmapPack"><em>BeatmapPack</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_packs">
+<span class="sig-name descname"><span class="pre">beatmap_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a list of beatmap packs. If you want to retrieve a specific pack,
+see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_pack" title="ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapPackType" title="ossapi.enums.BeatmapPackType"><em>BeatmapPackType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapPacks" title="ossapi.models.BeatmapPacks"><em>BeatmapPacks</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-packs">Beatmap Packs</a>
+endpoint.</p>
+</dd></dl>
+
+</section>
 <section id="beatmaps">
 <h1>Beatmaps<a class="headerlink" href="#beatmaps" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
@@ -635,7 +678,7 @@ dm me on discord (tybug#8490)!</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE" title="ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a> scope.</p>
+<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE" title="ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE_MANAGE</span></code></a> scope.</p>
 </div>
 </dd></dl>
 
@@ -1108,7 +1151,7 @@ mania. Only available for <code class="docutils literal notranslate"><span class
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
-<li><p><strong>mode</strong> (<em>RoomSearchMode</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RoomSearchMode" title="ossapi.enums.RoomSearchMode"><em>RoomSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
 <li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
 <li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
 <li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
@@ -1425,7 +1468,12 @@ want to retrieve users by username instead of id, see <a class="reference intern
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Beatmaps</a><ul>
+<li><a class="reference internal" href="#">Beatmap Packs</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_packs"><code class="docutils literal notranslate"><span class="pre">beatmap_packs()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#beatmaps">Beatmaps</a><ul>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap"><code class="docutils literal notranslate"><span class="pre">beatmap()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_attributes"><code class="docutils literal notranslate"><span class="pre">beatmap_attributes()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_scores()</span></code></a></li>

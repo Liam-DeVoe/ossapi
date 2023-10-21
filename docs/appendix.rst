@@ -118,6 +118,10 @@ Enums
       :type: str
       :value: "silence"
 
+   .. py:attribute:: TOURNAMENT_BAN
+      :type: str
+      :value: "tournament_ban"
+
 .. py:class:: MessageType
 
    .. py:attribute:: HYPE
@@ -604,7 +608,7 @@ Enums
 
    .. py:attribute:: CHARTS
       :type: str
-      :value: "spotlight"
+      :value: "charts"
 
    .. py:attribute:: COUNTRY
       :type: str
@@ -638,6 +642,10 @@ Enums
       :type: str
       :value: "graveyard"
 
+   .. py:attribute:: GUEST
+      :type: str
+      :value: "guest"
+
    .. py:attribute:: LOVED
       :type: str
       :value: "loved"
@@ -645,6 +653,10 @@ Enums
    .. py:attribute:: MOST_PLAYED
       :type: str
       :value: "most_played"
+
+   .. py:attribute:: NOMINATED
+      :type: str
+      :value: "nominated"
 
    .. py:attribute:: PENDING
       :type: str
@@ -1064,7 +1076,15 @@ Enums
       :type: str
       :value: "slug"
 
-.. py:class:: RoomSearchType
+.. py:class:: RoomSearchMode
+
+   .. py:attribute:: ACTIVE
+      :type: str
+      :value: "active"
+
+   .. py:attribute:: ALL
+      :type: str
+      :value: "all"
 
    .. py:attribute:: ENDED
       :type: str
@@ -1087,6 +1107,36 @@ Enums
    .. py:attribute:: OLD
       :type: str
       :value: "id_asc"
+
+.. py:class:: BeatmapPackType
+
+   .. py:attribute:: ARTIST
+      :type: str
+      :value: "artist"
+
+   .. py:attribute:: CHART
+      :type: str
+      :value: "chart"
+
+   .. py:attribute:: FEATURED
+      :type: str
+      :value: "featured"
+
+   .. py:attribute:: LOVED
+      :type: str
+      :value: "loved"
+
+   .. py:attribute:: STANDARD
+      :type: str
+      :value: "standard"
+
+   .. py:attribute:: THEME
+      :type: str
+      :value: "theme"
+
+   .. py:attribute:: TOURNAMENT
+      :type: str
+      :value: "tournament"
 
 .. py:class:: Failtimes
 
@@ -1143,6 +1193,12 @@ Enums
    .. py:attribute:: image
       :type: str
 
+   .. py:attribute:: image_2x
+      :type: str
+
+   .. note::
+      ``image_2x`` is returned in the osu! api as ``image@2x``.
+
    .. py:attribute:: tournament_id
       :type: int
 
@@ -1151,8 +1207,14 @@ Enums
    .. py:attribute:: description
       :type: str | None
 
+   .. py:attribute:: id
+      :type: int
+
    .. py:attribute:: length
       :type: int
+
+   .. py:attribute:: permanent
+      :type: bool
 
    .. py:attribute:: timestamp
       :type: ~datetime.datetime
@@ -1167,6 +1229,12 @@ Enums
 
    .. py:attribute:: description
       :type: str
+
+   .. py:attribute:: image_2x_url
+      :type: str
+
+   .. note::
+      ``image_2x_url`` is returned in the osu! api as ``image@2x_url``.
 
    .. py:attribute:: image_url
       :type: str
@@ -1409,6 +1477,9 @@ Enums
    .. py:attribute:: github_url
       :type: str | None
 
+   .. py:attribute:: github_username
+      :type: str | None
+
    .. py:attribute:: id
       :type: int | None
 
@@ -1491,6 +1562,14 @@ Enums
 
    .. py:attribute:: updated_at
       :type: ~datetime.datetime
+
+.. py:class:: BeatmapPackUserCompletionData
+
+   .. py:attribute:: beatmapset_ids
+      :type: list[int]
+
+   .. py:attribute:: completed
+      :type: bool
 
 .. py:class:: UserMonthlyPlaycount
 
@@ -1675,32 +1754,11 @@ Models
    .. py:attribute:: is_active
       :type: bool
 
-   .. py:attribute:: is_admin
-      :type: bool | None
-
-   .. py:attribute:: is_bng
-      :type: bool | None
-
    .. py:attribute:: is_bot
       :type: bool
 
    .. py:attribute:: is_deleted
       :type: bool
-
-   .. py:attribute:: is_full_bn
-      :type: bool | None
-
-   .. py:attribute:: is_gmt
-      :type: bool | None
-
-   .. py:attribute:: is_limited_bn
-      :type: bool | None
-
-   .. py:attribute:: is_moderator
-      :type: bool | None
-
-   .. py:attribute:: is_nat
-      :type: bool | None
 
    .. py:attribute:: is_online
       :type: bool
@@ -1752,9 +1810,6 @@ Models
 
    .. py:attribute:: ranked_beatmapset_count
       :type: int | None
-
-   .. py:attribute:: refresh
-      :type: function
 
    .. py:attribute:: replays_watched_counts
       :type: list[UserReplaysWatchedCount] | None
@@ -1869,32 +1924,11 @@ Models
    .. py:attribute:: is_active
       :type: bool
 
-   .. py:attribute:: is_admin
-      :type: bool | None
-
-   .. py:attribute:: is_bng
-      :type: bool | None
-
    .. py:attribute:: is_bot
       :type: bool
 
    .. py:attribute:: is_deleted
       :type: bool
-
-   .. py:attribute:: is_full_bn
-      :type: bool | None
-
-   .. py:attribute:: is_gmt
-      :type: bool | None
-
-   .. py:attribute:: is_limited_bn
-      :type: bool | None
-
-   .. py:attribute:: is_moderator
-      :type: bool | None
-
-   .. py:attribute:: is_nat
-      :type: bool | None
 
    .. py:attribute:: is_online
       :type: bool
@@ -1982,9 +2016,6 @@ Models
 
    .. py:attribute:: ranked_beatmapset_count
       :type: int | None
-
-   .. py:attribute:: refresh
-      :type: function
 
    .. py:attribute:: replays_watched_counts
       :type: list[UserReplaysWatchedCount] | None
@@ -2934,6 +2965,17 @@ Models
    .. py:attribute:: beatmaps
       :type: list[Beatmap]
 
+.. py:class:: BeatmapPacks
+
+   .. py:attribute:: beatmap_packs
+      :type: list[BeatmapPack]
+
+   .. py:attribute:: cursor
+      :type: Cursor | None
+
+   .. py:attribute:: cursor_string
+      :type: str
+
 .. py:class:: Rankings
 
    .. py:attribute:: beatmapsets
@@ -2943,7 +2985,7 @@ Models
       :type: Cursor | None
 
    .. py:attribute:: ranking
-      :type: list[UserStatistics]
+      :type: list[UserStatistics] | list[CountryStatistics] | None
 
    .. py:attribute:: spotlight
       :type: Spotlight | None
@@ -3728,6 +3770,38 @@ Models
    .. py:attribute:: events
       :type: list[Event]
 
+   .. note::
+      ``events`` is returned in the osu! api as ``None``.
+
+.. py:class:: BeatmapPack
+
+   .. py:attribute:: author
+      :type: str
+
+   .. py:attribute:: beatmapsets
+      :type: list[Beatmapset] | None
+
+   .. py:attribute:: date
+      :type: ~datetime.datetime
+
+   .. py:attribute:: name
+      :type: str
+
+   .. py:attribute:: no_diff_reduction
+      :type: bool
+
+   .. py:attribute:: ruleset_id
+      :type: int | None
+
+   .. py:attribute:: tag
+      :type: str
+
+   .. py:attribute:: url
+      :type: str
+
+   .. py:attribute:: user_completion_data
+      :type: BeatmapPackUserCompletionData | None
+
 .. py:class:: ForumPoll
 
    .. py:attribute:: hide_results
@@ -4046,6 +4120,26 @@ Models
 
    .. py:attribute:: type
       :type: str
+
+.. py:class:: CountryStatistics
+
+   .. py:attribute:: active_users
+      :type: int
+
+   .. py:attribute:: code
+      :type: str
+
+   .. py:attribute:: country
+      :type: Country
+
+   .. py:attribute:: performance
+      :type: int
+
+   .. py:attribute:: play_count
+      :type: int
+
+   .. py:attribute:: ranked_score
+      :type: int
 
 .. py:class:: CreatePMResponse
 
@@ -4378,7 +4472,7 @@ Models
 .. py:class:: MatchGame
 
    .. py:attribute:: beatmap
-      :type: BeatmapCompact
+      :type: BeatmapCompact | None
 
    .. py:attribute:: beatmap_id
       :type: int

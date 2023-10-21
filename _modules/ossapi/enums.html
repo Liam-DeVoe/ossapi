@@ -173,7 +173,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Beatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Beatmap Packs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#beatmaps">Beatmaps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#beatmapsets">Beatmapsets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
@@ -666,25 +667,25 @@
     <span class="n">ID</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span></div>
 
 <span class="c1"># `RoomType` is already taken as a model name (and more appropriate elsewhere)</span>
-<span class="k">class</span> <span class="nc">RoomSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="RoomSearchMode"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.RoomSearchMode">[docs]</a><span class="k">class</span> <span class="nc">RoomSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ACTIVE</span> <span class="o">=</span> <span class="s2">&quot;active&quot;</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">ENDED</span> <span class="o">=</span> <span class="s2">&quot;ended&quot;</span>
     <span class="n">PARTICIPATED</span> <span class="o">=</span> <span class="s2">&quot;participated&quot;</span>
-    <span class="n">OWNED</span> <span class="o">=</span> <span class="s2">&quot;owned&quot;</span>
+    <span class="n">OWNED</span> <span class="o">=</span> <span class="s2">&quot;owned&quot;</span></div>
 
 <div class="viewcode-block" id="EventsSort"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.EventsSort">[docs]</a><span class="k">class</span> <span class="nc">EventsSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
-<span class="k">class</span> <span class="nc">BeatmapPackType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="BeatmapPackType"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.BeatmapPackType">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPackType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;standard&quot;</span>
     <span class="n">FEATURED</span> <span class="o">=</span> <span class="s2">&quot;featured&quot;</span>
     <span class="n">TOURNAMENT</span> <span class="o">=</span> <span class="s2">&quot;tournament&quot;</span>
     <span class="n">LOVED</span> <span class="o">=</span> <span class="s2">&quot;loved&quot;</span>
     <span class="n">CHART</span> <span class="o">=</span> <span class="s2">&quot;chart&quot;</span>
     <span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;theme&quot;</span>
-    <span class="n">ARTIST</span> <span class="o">=</span> <span class="s2">&quot;artist&quot;</span>
+    <span class="n">ARTIST</span> <span class="o">=</span> <span class="s2">&quot;artist&quot;</span></div>
 
 
 <span class="c1"># =================</span>
@@ -889,9 +890,9 @@
     <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span></div>
 
-<span class="k">class</span> <span class="nc">BeatmapPackUserCompletionData</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="BeatmapPackUserCompletionData"><a class="viewcode-back" href="../../appendix.html#ossapi.enums.BeatmapPackUserCompletionData">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPackUserCompletionData</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmapset_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">completed</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">completed</span><span class="p">:</span> <span class="nb">bool</span></div>
 
 
 <span class="c1"># ===================</span>

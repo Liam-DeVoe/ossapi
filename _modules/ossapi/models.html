@@ -173,7 +173,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Beatmaps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html">Beatmap Packs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#beatmaps">Beatmaps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#beatmapsets">Beatmapsets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#changelog">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../endpoints.html#chat">Chat</a></li>
@@ -785,10 +786,10 @@
 <div class="viewcode-block" id="Beatmaps"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Beatmaps">[docs]</a><span class="k">class</span> <span class="nc">Beatmaps</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmaps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]</span></div>
 
-<span class="k">class</span> <span class="nc">BeatmapPacks</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="BeatmapPacks"><a class="viewcode-back" href="../../appendix.html#ossapi.models.BeatmapPacks">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPacks</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">beatmap_packs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPack</span><span class="p">]</span>
+    <span class="n">beatmap_packs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPack</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Rankings"><a class="viewcode-back" href="../../appendix.html#ossapi.models.Rankings">[docs]</a><span class="k">class</span> <span class="nc">Rankings</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
@@ -1117,7 +1118,7 @@
     <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">deserialize_type</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">_Event</span><span class="p">])</span></div>
 
-<span class="k">class</span> <span class="nc">BeatmapPack</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="BeatmapPack"><a class="viewcode-back" href="../../appendix.html#ossapi.models.BeatmapPack">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPack</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">date</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
@@ -1129,7 +1130,7 @@
 
     <span class="c1"># optional attributes</span>
     <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
-    <span class="n">user_completion_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackUserCompletionData</span><span class="p">]</span>
+    <span class="n">user_completion_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackUserCompletionData</span><span class="p">]</span></div>
 
 <span class="c1"># ================</span>
 <span class="c1"># Parameter Models</span>
@@ -1324,13 +1325,13 @@
     <span class="c1"># TODO enumify, example value: &quot;plain&quot;</span>
     <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span></div>
 
-<span class="k">class</span> <span class="nc">CountryStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="CountryStatistics"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CountryStatistics">[docs]</a><span class="k">class</span> <span class="nc">CountryStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">code</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">active_users</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">play_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">ranked_score</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">performance</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">country</span><span class="p">:</span> <span class="n">Country</span>
+    <span class="n">country</span><span class="p">:</span> <span class="n">Country</span></div>
 
 <div class="viewcode-block" id="CreatePMResponse"><a class="viewcode-back" href="../../appendix.html#ossapi.models.CreatePMResponse">[docs]</a><span class="k">class</span> <span class="nc">CreatePMResponse</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">message</span><span class="p">:</span> <span class="n">ChatMessage</span>
