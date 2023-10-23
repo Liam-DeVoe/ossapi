@@ -27,9 +27,10 @@ Pages
 Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc:`Endpoints <endpoints>` for documentation of all endpoints.
 
 .. toctree::
+   :maxdepth: 2
 
-    self
-    quickstart
-    advanced
-    endpoints
-    api-reference
+   self
+   quickstart
+   advanced
+   endpoints
+   api-reference
