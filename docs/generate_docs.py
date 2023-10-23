@@ -244,7 +244,7 @@ generator.write_to_path(p / "api-reference.rst")
 for category, endpoints in endpoints_by_category(ossapi.Ossapi).items():
     generator = Generator()
     generator.process_category(category, endpoints)
-    generator.write_to_path(p / "endpoints" / f"{category}.rst")
+    generator.write_to_path(p  / f"{category}.rst")
 
 generator = Generator()
 generator.write_header("Endpoints")
@@ -253,4 +253,4 @@ generator.write(".. toctree::\n\n")
 for category in endpoints_by_category(ossapi.Ossapi):
     generator.write(f"    {category}\n")
 
-generator.write_to_path(p / "endpoints" / "index.rst")
+generator.write_to_path(p / "endpoints.rst")
