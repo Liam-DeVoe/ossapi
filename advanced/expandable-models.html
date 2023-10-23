@@ -2,10 +2,11 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Foreign Keys" href="foreign-keys.html" /><link rel="prev" title="Pagination" href="pagination.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Overview: module code - ossapi v3.4.0 documentation</title>
+        <title>Expandable Models - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -154,20 +155,20 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">ossapi</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/index.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/index.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/foreign-keys.html">Foreign Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/serializing-models.html">Serializing Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/async.html">Async</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/domains.html">Domains</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Advanced</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../endpoints/index.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -214,7 +215,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -228,21 +230,53 @@
           </label>
         </div>
         <article role="main">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="ossapi/enums.html">ossapi.enums</a></li>
-<li><a href="ossapi/mod.html">ossapi.mod</a></li>
-<li><a href="ossapi/models.html">ossapi.models</a></li>
-<li><a href="ossapi/ossapiv2.html">ossapi.ossapiv2</a></li>
-<li><a href="ossapi/ossapiv2_async.html">ossapi.ossapiv2_async</a></li>
-<li><a href="ossapi/replay.html">ossapi.replay</a></li>
+          <section id="expandable-models">
+<h1>Expandable Models<a class="headerlink" href="#expandable-models" title="Permalink to this heading">#</a></h1>
+<p>A common pattern in the osu! api is to have a “compact” variant of a model with less attributes, for performance reasons. For instance, <a class="reference internal" href="../api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserCompact</span></code></a> and <a class="reference internal" href="../api-reference.html#ossapi.models.User" title="ossapi.models.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a>. It is also common to want to “expand” a compact model into its full representation to access these additional attributes. To do so, use the <code class="docutils literal notranslate"><span class="pre">expand</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compact_user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;tybug&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># `statistics` is only available on `User` not `UserCompact`,</span>
+<span class="c1"># so expansion is necessary</span>
+<span class="n">full_user</span> <span class="o">=</span> <span class="n">compact_user</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">full_user</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">ranked_score</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Expanding a model requires an api call, so it is not free. Use only when necessary.</p>
+</div>
+<p>Here is the full list of expandable models:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserCompact</span></code></a> can expand into <a class="reference internal" href="../api-reference.html#ossapi.models.User" title="ossapi.models.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a> (see <a class="reference internal" href="../api-reference.html#ossapi.models.UserCompact.expand" title="ossapi.models.UserCompact.expand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UserCompact#expand</span></code></a>)</p></li>
+<li><p><a class="reference internal" href="../api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeatmapCompact</span></code></a> can expand into <a class="reference internal" href="../api-reference.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><code class="xref py py-class docutils literal notranslate"><span class="pre">Beatmap</span></code></a> (see <a class="reference internal" href="../api-reference.html#ossapi.models.BeatmapCompact.expand" title="ossapi.models.BeatmapCompact.expand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BeatmapCompact#expand</span></code></a>)</p></li>
+<li><p><a class="reference internal" href="../api-reference.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeatmapsetCompact</span></code></a> can expand into <a class="reference internal" href="../api-reference.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Beatmapset</span></code></a> (see <a class="reference internal" href="../api-reference.html#ossapi.models.Beatmapset.expand" title="ossapi.models.Beatmapset.expand"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Beatmapset#expand</span></code></a>)</p></li>
 </ul>
+</section>
+
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="foreign-keys.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Foreign Keys</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="pagination.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Pagination</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

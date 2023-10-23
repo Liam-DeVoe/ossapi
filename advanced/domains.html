@@ -2,10 +2,11 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Endpoints" href="../endpoints/index.html" /><link rel="prev" title="Async" href="async.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Overview: module code - ossapi v3.4.0 documentation</title>
+        <title>Domains - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -154,20 +155,20 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">ossapi</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/index.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/index.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/foreign-keys.html">Foreign Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/serializing-models.html">Serializing Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/async.html">Async</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/domains.html">Domains</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Advanced</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Domains</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../endpoints/index.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -214,7 +215,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -222,27 +224,77 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="ossapi/enums.html">ossapi.enums</a></li>
-<li><a href="ossapi/mod.html">ossapi.mod</a></li>
-<li><a href="ossapi/models.html">ossapi.models</a></li>
-<li><a href="ossapi/ossapiv2.html">ossapi.ossapiv2</a></li>
-<li><a href="ossapi/ossapiv2_async.html">ossapi.ossapiv2_async</a></li>
-<li><a href="ossapi/replay.html">ossapi.replay</a></li>
-</ul>
+          <section id="domains">
+<h1>Domains<a class="headerlink" href="#domains" title="Permalink to this heading">#</a></h1>
+<section id="lazer-domain">
+<h2>Lazer Domain<a class="headerlink" href="#lazer-domain" title="Permalink to this heading">#</a></h2>
+<p>It is possible to retrieve information from <a class="reference external" href="https://lazer.ppy.sh/home">lazer.ppy.sh</a> via the api. For instance, a user’s top lazer scores, or the lazer leaderboard. To do so, specify the <code class="docutils literal notranslate"><span class="pre">domain</span></code> argument to <a class="reference internal" href="../api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
+
+<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;lazer&quot;</span><span class="p">)</span>
+<span class="c1"># or</span>
+<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">LAZER</span><span class="p">)</span>
+
+<span class="c1"># best score on the lazer server (lazer + osu scores combined)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">api_lazer</span><span class="o">.</span><span class="n">user_scores</span><span class="p">(</span><span class="mi">12092800</span><span class="p">,</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This works with both the client credentials and authorization code grant, with the normal caveats of the two grants. E.g., you cannot send chat messages with the client credentials grant when in the lazer domain, just like you cannot in the normal domain. See <span class="xref std std-doc">Grants</span> for more about the differences between the two grants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The lazer and osu domains share credentials, so your same oauth application from osu.ppy.sh will work in the lazer domain.</p>
+</div>
+</section>
+<section id="other-domains">
+<h2>Other Domains<a class="headerlink" href="#other-domains" title="Permalink to this heading">#</a></h2>
+<p>The standard domain is <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code> and retrieves information from <a class="reference external" href="https://osu.ppy.sh/home">osu.ppy.sh</a>. This is the default domain used by ossapi.</p>
+<p>There is a third domain, besides <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.LAZER</span></code> and <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code>: <code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.DEV</span></code>. This corresponds to <a class="reference external" href="https://dev.ppy.sh/home">dev.ppy.sh</a>, the dev server. Use this domain to retrieve information from the dev server:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
+<span class="c1"># pearline06 as of 2023</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="s2">&quot;performance&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The dev domains has separate authentication from the osu/lazer domains. If you want to access the dev server’s api, you will need to create an account and oauth client on the dev server. As of 2023, this is only possible by running lazer locally in debug mode and creating an account from the client.</p>
+</div>
+</section>
+</section>
+
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../endpoints/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Endpoints</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="async.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Async</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -264,8 +316,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Domains</a><ul>
+<li><a class="reference internal" href="#lazer-domain">Lazer Domain</a></li>
+<li><a class="reference internal" href="#other-domains">Other Domains</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

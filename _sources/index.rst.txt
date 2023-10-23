@@ -17,8 +17,8 @@ ossapi can be installed from pip:
 Links
 -----
 
-| Github: https://github.com/circleguard/ossapi
-| Documentation: https://circleguard.github.io/ossapi/
+| Github: https://github.com/tybug/ossapi
+| Documentation: https://tybug.github.io/ossapi/
 | Discord: https://discord.gg/VNnkTjm
 
 Pages
@@ -27,34 +27,9 @@ Pages
 Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc:`Endpoints <endpoints>` for documentation of all endpoints.
 
 .. toctree::
-    :hidden:
 
     self
-
-.. toctree::
-    :caption: Quickstart
-
-    creating-a-client
-    grants
-
-.. toctree::
-    :caption: Advanced
-
-    pagination
-    expandable-models
-    foreign-keys
-    serializing-models
-    async
-    domains
-
-.. toctree::
-    :maxdepth: 3
-    :caption: Endpoints
-
-    endpoints
-
-.. toctree::
-    :caption: Appendix
-    :hidden:
-
-    appendix
+    quickstart/index
+    advanced/index
+    endpoints/index
+    api-reference

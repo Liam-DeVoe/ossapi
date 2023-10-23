@@ -2,10 +2,11 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Expandable Models" href="expandable-models.html" /><link rel="prev" title="Advanced" href="index.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Overview: module code - ossapi v3.4.0 documentation</title>
+        <title>Pagination - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -154,20 +155,20 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">ossapi</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/index.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/index.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/foreign-keys.html">Foreign Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/serializing-models.html">Serializing Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/async.html">Async</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/domains.html">Domains</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Advanced</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../endpoints/index.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -214,7 +215,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -222,27 +224,72 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="ossapi/enums.html">ossapi.enums</a></li>
-<li><a href="ossapi/mod.html">ossapi.mod</a></li>
-<li><a href="ossapi/models.html">ossapi.models</a></li>
-<li><a href="ossapi/ossapiv2.html">ossapi.ossapiv2</a></li>
-<li><a href="ossapi/ossapiv2_async.html">ossapi.ossapiv2_async</a></li>
-<li><a href="ossapi/replay.html">ossapi.replay</a></li>
-</ul>
+          <section id="pagination">
+<h1>Pagination<a class="headerlink" href="#pagination" title="Permalink to this heading">#</a></h1>
+<p>Some endpoints in the osu! api are paginated. These endpoints return models with either a <code class="docutils literal notranslate"><span class="pre">cursor</span></code> or <code class="docutils literal notranslate"><span class="pre">cursor_string</span></code> attribute, depending on the endpoint. To access the next page, pass along this attribute to the api call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">cursor</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 50</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 100</span>
+</pre></div>
+</div>
+<section id="skipping-pages">
+<h2>Skipping Pages<a class="headerlink" href="#skipping-pages" title="Permalink to this heading">#</a></h2>
+<p>If you know exactly what page you want, you can skip to it by constructing your own <code class="docutils literal notranslate"><span class="pre">Cursor</span></code> with the <code class="docutils literal notranslate"><span class="pre">page</span></code> attribute:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">19</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 950</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-for-the-last-page">
+<h2>Checking for the Last Page<a class="headerlink" href="#checking-for-the-last-page" title="Permalink to this heading">#</a></h2>
+<p>If there are no more pages, the <code class="docutils literal notranslate"><span class="pre">cursor</span></code> (or <code class="docutils literal notranslate"><span class="pre">cursor_string</span></code>) object of the response will be <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">199</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">cursor</span><span class="p">)</span> <span class="c1"># Cursor(page=200)</span>
+
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> <span class="c1"># there are only 200 rankings pages</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">cursor</span><span class="p">)</span> <span class="c1"># None</span>
+</pre></div>
+</div>
+</section>
+</section>
+
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="expandable-models.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Expandable Models</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Advanced</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -264,8 +311,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Pagination</a><ul>
+<li><a class="reference internal" href="#skipping-pages">Skipping Pages</a></li>
+<li><a class="reference internal" href="#checking-for-the-last-page">Checking for the Last Page</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

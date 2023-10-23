@@ -2,10 +2,11 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Domains" href="domains.html" /><link rel="prev" title="Serializing Models" href="serializing-models.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Overview: module code - ossapi v3.4.0 documentation</title>
+        <title>Async - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -154,20 +155,20 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">ossapi</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/index.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced/index.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/foreign-keys.html">Foreign Keys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/serializing-models.html">Serializing Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/async.html">Async</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced/domains.html">Domains</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Advanced</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Async</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../endpoints/index.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -214,7 +215,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -228,21 +230,54 @@
           </label>
         </div>
         <article role="main">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="ossapi/enums.html">ossapi.enums</a></li>
-<li><a href="ossapi/mod.html">ossapi.mod</a></li>
-<li><a href="ossapi/models.html">ossapi.models</a></li>
-<li><a href="ossapi/ossapiv2.html">ossapi.ossapiv2</a></li>
-<li><a href="ossapi/ossapiv2_async.html">ossapi.ossapiv2_async</a></li>
-<li><a href="ossapi/replay.html">ossapi.replay</a></li>
-</ul>
+          <section id="async">
+<h1>Async<a class="headerlink" href="#async" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use <a class="reference internal" href="../api-reference.html#ossapi.ossapiv2_async.OssapiAsync" title="ossapi.ossapiv2_async.OssapiAsync"><code class="xref py py-class docutils literal notranslate"><span class="pre">OssapiAsync</span></code></a>, you must install the async requirements with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ossapi[async]</span></code>.</p>
+</div>
+<p>ossapi provides <a class="reference internal" href="../api-reference.html#ossapi.ossapiv2_async.OssapiAsync" title="ossapi.ossapiv2_async.OssapiAsync"><code class="xref py py-class docutils literal notranslate"><span class="pre">OssapiAsync</span></code></a>, an async equivalent of <a class="reference internal" href="../api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>. The interfaces are identical, except you must <code class="docutils literal notranslate"><span class="pre">await</span></code> any endpoint calls:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">OssapiAsync</span>
+
+<span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">OssapiAsync</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="s2">&quot;tybug&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>It is possible that the async version may lag behind the sync version in terms of features, as I generally focus on the sync version first. If you run into any issues using the async version, please open an issue! I likely just forgot to copy some improvement from the sync version.</p>
+</section>
+
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="domains.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Domains</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="serializing-models.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Serializing Models</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
