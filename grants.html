@@ -270,7 +270,11 @@
 <p class="admonition-title">Note</p>
 <p>Scopes are only relevant for the authorization code grant, because the scope for client credentials is always <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>. Client credentials will not be able to access any endpoint which requires a scope other than <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>.</p>
 </div>
-<p>You can see which endpoints require what scopes on the <a class="reference external" href="https://osu.ppy.sh/docs/index.html">osu! api docs</a>.</p>
+<p>Endpoints which require a scope other than <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a> will say so. For instance, endpoints which send chat messages will have the following note:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint requires the <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.CHAT_WRITE" title="ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a> scope.</p>
+</div>
 </section>
 </section>
 

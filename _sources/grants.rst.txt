@@ -46,4 +46,8 @@ Some endpoints require a scope other than the default :data:`Scope.PUBLIC <ossap
 .. note::
     Scopes are only relevant for the authorization code grant, because the scope for client credentials is always :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>`. Client credentials will not be able to access any endpoint which requires a scope other than :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>`.
 
-You can see which endpoints require what scopes on the `osu! api docs <https://osu.ppy.sh/docs/index.html>`__.
+Endpoints which require a scope other than :data:`Scope.PUBLIC <ossapi.ossapiv2.Scope.PUBLIC>` will say so. For instance, endpoints which send chat messages will have the following note:
+
+.. note::
+
+    This endpoint requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.

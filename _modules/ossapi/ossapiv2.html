@@ -1200,7 +1200,12 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` for type &quot;</span>
                         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ignoring unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` from &quot;</span>
+                <span class="c1"># this is an INFO log in spirit, but can be spammy with Union</span>
+                <span class="c1"># type resolution where the first union case hits nonfatal</span>
+                <span class="c1"># errors like this before a fatal error causes it to backtrack.</span>
+                <span class="c1"># In practice, it makes no difference for developing ossapi,</span>
+                <span class="c1"># as tests and local development are all done in strict mode.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ignoring unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` from &quot;</span>
                     <span class="sa">f</span><span class="s2">&quot;api response for type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># every model gets a special `_api` parameter, which is the</span>
