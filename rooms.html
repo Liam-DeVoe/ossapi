@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Advanced" href="advanced.html" /><link rel="prev" title="Creating a Client" href="creating-a-client.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Scores" href="scores.html" /><link rel="prev" title="Rankings" href="rankings.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Grant Types - ossapi v3.4.0 documentation</title>
+        <title>Rooms - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -157,9 +157,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Grant Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grants.html">Grant Types</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -171,7 +171,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a></li>
@@ -187,7 +187,7 @@
 <li class="toctree-l2"><a class="reference internal" href="news.html">News</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oauth.html">Oauth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rankings.html">Rankings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Rooms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spotlights.html">Spotlights</a></li>
@@ -230,48 +230,84 @@
           </label>
         </div>
         <article role="main">
-          <section id="grant-types">
-<h1>Grant Types<a class="headerlink" href="#grant-types" title="Permalink to this heading">#</a></h1>
-<p>Authenticating with the osu! api comes in two flavors: the <strong>Client Credentials</strong> grant and the <strong>Authorization Code</strong> grant. Client credentials gives you access to most of the api, but you won’t be able to do anything that requires a user, like posting to the forums or sending a pm.</p>
-<p>The authorization code grant does not have any such restrictions on the endpoints you can access. However, using the authorization code grant requires manual user interaction the first time you authenticate, in order to authorizate your OAuth application. The client credentials grant, in contrast, authenticates automatically and silently.</p>
-<p>In short, if you are writing a simple script or bot, or need the script to run in a headless environment, use the client credentials grant. If you need access to any endpoint which requires a user, use the authorization code grant.</p>
-<section id="specifying-a-grant">
-<h2>Specifying a Grant<a class="headerlink" href="#specifying-a-grant" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> determines the grant type to use based on the parameters you instantiate it with. If you pass just the client id and secret, as in the previous example, it will use the client credentials grant. If you additionally pass the callback url, it will use the authorization code grant.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span>
+          <section id="rooms">
+<h1>Rooms<a class="headerlink" href="#rooms" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.multiplayer_scores">
+<span class="sig-name descname"><span class="pre">multiplayer_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">playlist_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>Get scores on a playlist item in a room.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The room to get the scores from.</p></li>
+<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.MultiplayerScores" title="ossapi.models.MultiplayerScores"><em>MultiplayerScores</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-scores">Get Scores</a> endpoint.</p>
+</dd></dl>
 
-<span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">callback_url</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="c1"># will authenticate with authorization code grant and open a</span>
-<span class="c1"># browser window for you to authorize the client</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">callback_url</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can also use the <code class="docutils literal notranslate"><span class="pre">grant</span></code> parameter to force a particular grant. See <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> for details.</p>
-</div>
-</section>
-<section id="scopes">
-<h2>Scopes<a class="headerlink" href="#scopes" title="Permalink to this heading">#</a></h2>
-<p>Some endpoints require a scope other than the default <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>. For instance, the <a class="reference internal" href="friends.html#ossapi.ossapiv2.Ossapi.friends" title="ossapi.ossapiv2.Ossapi.friends"><code class="xref py py-meth docutils literal notranslate"><span class="pre">friends()</span></code></a> endpoint requires the <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.FRIENDS_READ" title="ossapi.ossapiv2.Scope.FRIENDS_READ"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code></a> scope. To be able to access this endpoint, specify the relevant scope when you instantiate <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Scope</span>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room">
+<span class="sig-name descname"><span class="pre">room</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a room.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsroom">Get Room</a> endpoint.</p>
+</dd></dl>
 
-<span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">callback_url</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">Scope</span><span class="o">.</span><span class="n">FRIENDS_READ</span><span class="p">]</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">callback_url</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scopes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">friends</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Scopes are only relevant for the authorization code grant, because the scope for client credentials is always <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>. Client credentials will not be able to access any endpoint which requires a scope other than <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Scope.PUBLIC" title="ossapi.ossapiv2.Scope.PUBLIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.PUBLIC</span></code></a>.</p>
-</div>
-<p>You can see which endpoints require what scopes on the <a class="reference external" href="https://osu.ppy.sh/docs/index.html">osu! api docs</a>.</p>
-</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room_leaderboard">
+<span class="sig-name descname"><span class="pre">room_leaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room_leaderboard" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the leaderboard of a room.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.RoomLeaderboard" title="ossapi.models.RoomLeaderboard"><em>RoomLeaderboard</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsroomleaderboard">Get Room Leaderboard</a> endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.rooms">
+<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">season_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.rooms" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the list of current rooms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RoomSearchMode" title="ossapi.enums.RoomSearchMode"><em>RoomSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
+<li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
+<li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
+<li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsmode">Get Rooms</a> endpoint.</p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -279,23 +315,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="advanced.html">
+          <a class="next-page" href="scores.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Advanced</div>
+                <div class="title">Scores</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="creating-a-client.html">
+          <a class="prev-page" href="rankings.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Creating a Client</div>
+                <div class="title">Rankings</div>
                 
               </div>
             </a>
@@ -332,9 +368,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Grant Types</a><ul>
-<li><a class="reference internal" href="#specifying-a-grant">Specifying a Grant</a></li>
-<li><a class="reference internal" href="#scopes">Scopes</a></li>
+<li><a class="reference internal" href="#">Rooms</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores"><code class="docutils literal notranslate"><span class="pre">multiplayer_scores()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room"><code class="docutils literal notranslate"><span class="pre">room()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room_leaderboard"><code class="docutils literal notranslate"><span class="pre">room_leaderboard()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.rooms"><code class="docutils literal notranslate"><span class="pre">rooms()</span></code></a></li>
 </ul>
 </li>
 </ul>

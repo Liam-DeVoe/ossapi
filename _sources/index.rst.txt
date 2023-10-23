@@ -29,7 +29,7 @@ Check out :doc:`Creating a Client <creating-a-client>` for a quickstart, or :doc
 .. toctree::
 
     self
-    quickstart/index
-    advanced/index
-    endpoints/index
+    quickstart
+    advanced
+    endpoints
     api-reference

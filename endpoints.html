@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Enums" href="appendix.html" /><link rel="prev" title="Domains" href="domains.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Beatmap Packs" href="beatmap%20packs.html" /><link rel="prev" title="Domains" href="domains.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Beatmap Packs - ossapi v3.4.0 documentation</title>
+        <title>Endpoints - ossapi v3.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -155,57 +155,47 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grants.html">Grant Types</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grants.html">Grant Types</a></li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pagination.html">Pagination</a></li>
-<li class="toctree-l1"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="async.html">Async</a></li>
-<li class="toctree-l1"><a class="reference internal" href="domains.html">Domains</a></li>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Endpoints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat.html">Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html">Forums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="friends.html">Friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matches.html">Matches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="me.html">Me</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html">Oauth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rankings.html">Rankings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spotlights.html">Spotlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiki.html">Wiki</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Endpoints</span></p>
-<ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Beatmap Packs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#beatmaps">Beatmaps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#beatmapsets">Beatmapsets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#changelog">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#chat">Chat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#comments">Comments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#events">Events</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#forums">Forums</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#friends">Friends</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#home">Home</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#matches">Matches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#me">Me</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#news">News</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#oauth">Oauth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#rankings">Rankings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#rooms">Rooms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#scores">Scores</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#seasonal-backgrounds">Seasonal Backgrounds</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#spotlights">Spotlights</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#users">Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#wiki">Wiki</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Enums</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.models">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.ossapiv2">Ossapi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.ossapiv2_async">OssapiAsync</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-0">Scope</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-1">Grant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-2">Domain</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html#module-ossapi.replay">Replay</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a></li>
 </ul>
 
 </div>
@@ -234,1187 +224,132 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <p><br /> <br /> All functions on this page are methods of the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a> class.</p>
-<section id="beatmap-packs">
-<h1>Beatmap Packs<a class="headerlink" href="#beatmap-packs" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_pack">
-<span class="sig-name descname"><span class="pre">beatmap_pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_pack" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a beatmap pack. If you want to retrieve a list of beatmap packs, see
-see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="ossapi.ossapiv2.Ossapi.beatmap_packs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_packs()</span></code></a>.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-pack">Beatmap Pack</a>
-endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>pack</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapPack" title="ossapi.models.BeatmapPack"><em>BeatmapPack</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_packs">
-<span class="sig-name descname"><span class="pre">beatmap_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a list of beatmap packs. If you want to retrieve a specific pack,
-see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_pack" title="ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapPackType" title="ossapi.enums.BeatmapPackType"><em>BeatmapPackType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+          <section id="endpoints">
+<h1>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_packs"><code class="docutils literal notranslate"><span class="pre">beatmap_packs()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapPacks" title="ossapi.models.BeatmapPacks"><em>BeatmapPacks</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-packs">Beatmap Packs</a>
-endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="beatmaps">
-<h1>Beatmaps<a class="headerlink" href="#beatmaps" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap">
-<span class="sig-name descname"><span class="pre">beatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checksum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a beatmap from an id, checksum, or filename.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – The id of the beatmap.</p></li>
-<li><p><strong>checksum</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The md5 hash of the beatmap.</p></li>
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The filename of the beatmap.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="beatmaps.html">Beatmaps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap"><code class="docutils literal notranslate"><span class="pre">beatmap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap_attributes"><code class="docutils literal notranslate"><span class="pre">beatmap_attributes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_scores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap_user_score"><code class="docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap_user_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html#ossapi.ossapiv2.Ossapi.beatmaps"><code class="docutils literal notranslate"><span class="pre">beatmaps()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Combines the
-<a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap">Get Beatmap</a> and
-<a class="reference external" href="https://osu.ppy.sh/docs/index.html#lookup-beatmap">Lookup Beatmap</a>
-endpoints.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_attributes">
-<span class="sig-name descname"><span class="pre">beatmap_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_attributes" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the difficult attributes of a beatmap. Used for pp calculation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The beatmap to get the difficulty attributes of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods to calculate difficulty attributes with.</p></li>
-<li><p><strong>ruleset</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The ruleset (gamemode) to calculate difficulty attributes of.</p></li>
-<li><p><strong>ruleset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Alternative parameter to ruleset which takes an integer (ruleset id)
-instead of a string (ruleset name).</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.beatmapset"><code class="docutils literal notranslate"><span class="pre">beatmapset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_posts()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_votes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.beatmapset_discussions"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.beatmapset_events"><code class="docutils literal notranslate"><span class="pre">beatmapset_events()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmapsets.html#ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.DifficultyAttributes" title="ossapi.models.DifficultyAttributes"><em>DifficultyAttributes</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-attributes">Get Beatmap Attributes</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_scores">
-<span class="sig-name descname"><span class="pre">beatmap_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the top scores of a beatmap.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap to get scores of.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode to get scores of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to order the scores. Defaults to ordering by score.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – How many results to return. Defaults to 50. Must be between 1 and
-100.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#ossapi.ossapiv2.Ossapi.changelog_build"><code class="docutils literal notranslate"><span class="pre">changelog_build()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#ossapi.ossapiv2.Ossapi.changelog_build_lookup"><code class="docutils literal notranslate"><span class="pre">changelog_build_lookup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#ossapi.ossapiv2.Ossapi.changelog_listing"><code class="docutils literal notranslate"><span class="pre">changelog_listing()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapScores" title="ossapi.models.BeatmapScores"><em>BeatmapScores</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmap-scores">Get Beatmap Scores</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_user_score">
-<span class="sig-name descname"><span class="pre">beatmap_user_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a user’s best score on a beatmap. If you want to retrieve all
-scores, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores" title="ossapi.ossapiv2.Ossapi.beatmap_user_scores"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the score was set on.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the score.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods the score was set with.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chat.html">Chat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chat.html#ossapi.ossapiv2.Ossapi.send_announcement"><code class="docutils literal notranslate"><span class="pre">send_announcement()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat.html#ossapi.ossapiv2.Ossapi.send_pm"><code class="docutils literal notranslate"><span class="pre">send_pm()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapUserScore" title="ossapi.models.BeatmapUserScore"><em>BeatmapUserScore</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-score">User Beatmap Score</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_user_scores">
-<span class="sig-name descname"><span class="pre">beatmap_user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Get all of a user’s scores on a beatmap. If you only want the top user
-score, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score" title="ossapi.ossapiv2.Ossapi.beatmap_user_score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the scores were set on.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the scores.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#ossapi.ossapiv2.Ossapi.comment"><code class="docutils literal notranslate"><span class="pre">comment()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#ossapi.ossapiv2.Ossapi.comments"><code class="docutils literal notranslate"><span class="pre">comments()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements to <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-scores">User Beatmap Scores</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmaps">
-<span class="sig-name descname"><span class="pre">beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmaps" title="Permalink to this definition">#</a></dt>
-<dd><p>Batch get beatmaps by id. If you only want to retrieve a single beatmap,
-or want to retrieve beatmaps by something other than id (eg checksum),
-see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="ossapi.ossapiv2.Ossapi.beatmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmaps">Get Beatmaps</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="beatmapsets">
-<h1>Beatmapsets<a class="headerlink" href="#beatmapsets" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset">
-<span class="sig-name descname"><span class="pre">beatmapset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a beatmapset from a beatmapset id or a beatmap id.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – The beatmapset to get.</p></li>
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Get the beatmapset associated with this beatmap.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="events.html">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="events.html#ossapi.ossapiv2.Ossapi.events"><code class="docutils literal notranslate"><span class="pre">events()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><em>Beatmapset</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Combines the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetsbeatmapset">Get Beatmapset</a> and
-<a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetslookup">Beatmapset Lookup</a> endpoints.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts">
-<span class="sig-name descname"><span class="pre">beatmapset_discussion_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the posts of a beatmapset discussion.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The beatmapset discussion to get the posts of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
-you are a gmt/admin.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forums.html">Forums</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forums.html#ossapi.ossapiv2.Ossapi.forum_create_topic"><code class="docutils literal notranslate"><span class="pre">forum_create_topic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html#ossapi.ossapiv2.Ossapi.forum_edit_post"><code class="docutils literal notranslate"><span class="pre">forum_edit_post()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html#ossapi.ossapiv2.Ossapi.forum_edit_topic"><code class="docutils literal notranslate"><span class="pre">forum_edit_topic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html#ossapi.ossapiv2.Ossapi.forum_reply"><code class="docutils literal notranslate"><span class="pre">forum_reply()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html#ossapi.ossapiv2.Ossapi.forum_topic"><code class="docutils literal notranslate"><span class="pre">forum_topic()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionPosts" title="ossapi.models.BeatmapsetDiscussionPosts"><em>BeatmapsetDiscussionPosts</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes">
-<span class="sig-name descname"><span class="pre">beatmapset_discussion_votes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes" title="Permalink to this definition">#</a></dt>
-<dd><p>Get beatmapset discussion votes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by a beatmapset discussion.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of votes to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>receiver_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by the user receiving the votes.</p></li>
-<li><p><strong>vote</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVote" title="ossapi.enums.BeatmapsetDiscussionVote"><em>BeatmapsetDiscussionVote</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Specify to return either only upvotes or only downvotes.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetDiscussionVoteSort" title="ossapi.enums.BeatmapsetDiscussionVoteSort"><em>BeatmapsetDiscussionVoteSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the votes.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by the user giving the votes.</p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
-you are a gmt/admin.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="friends.html">Friends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="friends.html#ossapi.ossapiv2.Ossapi.friends"><code class="docutils literal notranslate"><span class="pre">friends()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussionVotes" title="ossapi.models.BeatmapsetDiscussionVotes"><em>BeatmapsetDiscussionVotes</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussions">
-<span class="sig-name descname"><span class="pre">beatmapset_discussions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_unresolved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions" title="Permalink to this definition">#</a></dt>
-<dd><p>Get beatmapset discussions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmapset.</p></li>
-<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmap.</p></li>
-<li><p><strong>beatmapset_status</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetStatus" title="ossapi.enums.BeatmapsetStatus"><em>BeatmapsetStatus</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter by a category of beatmapsets.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of discussions to return.</p></li>
-<li><p><strong>message_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.MessageType" title="ossapi.enums.MessageType"><em>MessageType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by a discussion message type.</p></li>
-<li><p><strong>only_unresolved</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only show unresolved issues. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the discussions.</p></li>
-<li><p><strong>user</strong> – Filter by poster id.</p></li>
-<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
-you are a gmt/admin.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Home</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="home.html#ossapi.ossapiv2.Ossapi.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetDiscussions" title="ossapi.models.BeatmapsetDiscussions"><em>BeatmapsetDiscussions</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_events">
-<span class="sig-name descname"><span class="pre">beatmapset_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_events" title="Permalink to this definition">#</a></dt>
-<dd><p>Get beatmapset events. Equivalent to the events search page on the
-website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets/events">https://osu.ppy.sh/beatmapsets/events</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for events.</p></li>
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by event author.</p></li>
-<li><p><strong>types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetEventType" title="ossapi.enums.BeatmapsetEventType"><em>BeatmapsetEventType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by event type.</p></li>
-<li><p><strong>min_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
-<li><p><strong>max_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matches.html">Matches</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matches.html#ossapi.ossapiv2.Ossapi.match"><code class="docutils literal notranslate"><span class="pre">match()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="matches.html#ossapi.ossapiv2.Ossapi.matches"><code class="docutils literal notranslate"><span class="pre">matches()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ModdingHistoryEventsBundle" title="ossapi.models.ModdingHistoryEventsBundle"><em>ModdingHistoryEventsBundle</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetsevents">Beatmapset Events</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search_beatmapsets">
-<span class="sig-name descname"><span class="pre">search_beatmapsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchMode.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchCategory.HAS_LEADERBOARD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchExplicitContent.HIDE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchGenre.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchLanguage.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_storyboard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recommended_difficulty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_converts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_followed_mappers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_spotlights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_featured_artists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets" title="Permalink to this definition">#</a></dt>
-<dd><p>Search beatmapsets. Equivalent to the beatmapset search page on the
-website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets">https://osu.ppy.sh/beatmapsets</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The search query. Can include filters like <code class="docutils literal notranslate"><span class="pre">ranked&lt;2019</span></code>.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchMode" title="ossapi.enums.BeatmapsetSearchMode"><em>BeatmapsetSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by mode.</p></li>
-<li><p><strong>category</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchCategory" title="ossapi.enums.BeatmapsetSearchCategory"><em>BeatmapsetSearchCategory</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by category.</p></li>
-<li><p><strong>explicit_content</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchExplicitContent" title="ossapi.enums.BeatmapsetSearchExplicitContent"><em>BeatmapsetSearchExplicitContent</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Whether to include beatmaps with explicit content.</p></li>
-<li><p><strong>genre</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchGenre" title="ossapi.enums.BeatmapsetSearchGenre"><em>BeatmapsetSearchGenre</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by genre.</p></li>
-<li><p><strong>language</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchLanguage" title="ossapi.enums.BeatmapsetSearchLanguage"><em>BeatmapsetSearchLanguage</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by language.</p></li>
-<li><p><strong>force_video</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with videos.</p></li>
-<li><p><strong>force_storyboard</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with storyboards.</p></li>
-<li><p><strong>force_recommended_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to filter by recommended difficulty.</p></li>
-<li><p><strong>include_converts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to include converted beatmapsets.</p></li>
-<li><p><strong>force_followed_mappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by mappers you follow.</p></li>
-<li><p><strong>force_spotlights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets which have been in a spotlight.</p></li>
-<li><p><strong>force_featured_artists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by a featured artist.</p></li>
-<li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.BeatmapsetSearchSort" title="ossapi.enums.BeatmapsetSearchSort"><em>BeatmapsetSearchSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the beatmapsets.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="me.html">Me</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="me.html#ossapi.ossapiv2.Ossapi.get_me"><code class="docutils literal notranslate"><span class="pre">get_me()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.BeatmapsetSearchResult" title="ossapi.models.BeatmapsetSearchResult"><em>BeatmapsetSearchResult</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetssearchfilters">Search Beatmapsets</a>
-endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="changelog">
-<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build">
-<span class="sig-name descname"><span class="pre">changelog_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build" title="Permalink to this definition">#</a></dt>
-<dd><p>Get changelog build details.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
-<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="news.html#ossapi.ossapiv2.Ossapi.news_listing"><code class="docutils literal notranslate"><span class="pre">news_listing()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#ossapi.ossapiv2.Ossapi.news_post"><code class="docutils literal notranslate"><span class="pre">news_post()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Build" title="ossapi.models.Build"><em>Build</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-changelog-build">Get Changelog Build</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build_lookup">
-<span class="sig-name descname"><span class="pre">changelog_build_lookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">changelog,</span> <span class="pre">*,</span> <span class="pre">key=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup" title="Permalink to this definition">#</a></dt>
-<dd><p>Look up a changelog build by version, update stream name, or id.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
-<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
-by build id.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oauth.html">Oauth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html#ossapi.ossapiv2.Ossapi.revoke_token"><code class="docutils literal notranslate"><span class="pre">revoke_token()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Build" title="ossapi.models.Build"><em>Build</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#lookup-changelog-build">Lookup Changelog Build</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_listing">
-<span class="sig-name descname"><span class="pre">changelog_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">*,</span> <span class="pre">from_=None,</span> <span class="pre">to=None,</span> <span class="pre">max_id=None,</span> <span class="pre">stream=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_listing" title="Permalink to this definition">#</a></dt>
-<dd><p>Get list of changelogs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>from</strong> – Minimum build version.</p></li>
-<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
-<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="appendix.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
-<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rankings.html">Rankings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rankings.html#ossapi.ossapiv2.Ossapi.ranking"><code class="docutils literal notranslate"><span class="pre">ranking()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ChangelogListing" title="ossapi.models.ChangelogListing"><em>ChangelogListing</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-changelog-listing">Get Changelog Listing</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="chat">
-<h1>Chat<a class="headerlink" href="#chat" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.send_announcement">
-<span class="sig-name descname"><span class="pre">send_announcement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.send_announcement" title="Permalink to this definition">#</a></dt>
-<dd><p>Send an announcement message. You must be in the announce usergroup to
-use this endpoint (and if you don’t know what that is, then you aren’t
-in it).</p>
-<p>If you want to send a normal pm, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_pm" title="ossapi.ossapiv2.Ossapi.send_pm"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_pm()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>channel_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The name of the announce channel that will be created.</p></li>
-<li><p><strong>channel_description</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The description of the announce channel that will be created.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The message to send.</p></li>
-<li><p><strong>target_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em>]</em>) – The users to send the message to.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html#ossapi.ossapiv2.Ossapi.multiplayer_scores"><code class="docutils literal notranslate"><span class="pre">multiplayer_scores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html#ossapi.ossapiv2.Ossapi.room"><code class="docutils literal notranslate"><span class="pre">room()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html#ossapi.ossapiv2.Ossapi.room_leaderboard"><code class="docutils literal notranslate"><span class="pre">room_leaderboard()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html#ossapi.ossapiv2.Ossapi.rooms"><code class="docutils literal notranslate"><span class="pre">rooms()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ChatChannel" title="ossapi.models.ChatChannel"><em>ChatChannel</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-channel">Create Channel</a> endpoint.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>I don’t have an account in the announce usergroup, so I’ve never tested
-this endpoint. If it breaks for you, please open an issue on github or
-dm me on discord (tybug#8490)!</p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scores.html">Scores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scores.html#ossapi.ossapiv2.Ossapi.download_score"><code class="docutils literal notranslate"><span class="pre">download_score()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html#ossapi.ossapiv2.Ossapi.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html#ossapi.ossapiv2.Ossapi.seasonal_backgrounds"><code class="docutils literal notranslate"><span class="pre">seasonal_backgrounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spotlights.html">Spotlights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spotlights.html#ossapi.ossapiv2.Ossapi.spotlights"><code class="docutils literal notranslate"><span class="pre">spotlights()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.user"><code class="docutils literal notranslate"><span class="pre">user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.user_beatmaps"><code class="docutils literal notranslate"><span class="pre">user_beatmaps()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.user_kudosu"><code class="docutils literal notranslate"><span class="pre">user_kudosu()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.user_recent_activity"><code class="docutils literal notranslate"><span class="pre">user_recent_activity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.user_scores"><code class="docutils literal notranslate"><span class="pre">user_scores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#ossapi.ossapiv2.Ossapi.users"><code class="docutils literal notranslate"><span class="pre">users()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wiki.html">Wiki</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wiki.html#ossapi.ossapiv2.Ossapi.wiki_page"><code class="docutils literal notranslate"><span class="pre">wiki_page()</span></code></a></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE" title="ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE_MANAGE</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.send_pm">
-<span class="sig-name descname"><span class="pre">send_pm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.send_pm" title="Permalink to this definition">#</a></dt>
-<dd><p>Send a pm to a user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to send a message to.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The message to send.</p></li>
-<li><p><strong>is_action</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.CreatePMResponse" title="ossapi.models.CreatePMResponse"><em>CreatePMResponse</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-new-pm">Create New PM</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.CHAT_WRITE" title="ossapi.ossapiv2.Scope.CHAT_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.CHAT_WRITE</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-</section>
-<section id="comments">
-<h1>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.comment">
-<span class="sig-name descname"><span class="pre">comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.comment" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a comment and its replies (up to 2 levels deep).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>comment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The comment to get.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.CommentBundle" title="ossapi.models.CommentBundle"><em>CommentBundle</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-a-comment">Get a Comment</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.comments">
-<span class="sig-name descname"><span class="pre">comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commentable_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.comments" title="Permalink to this definition">#</a></dt>
-<dd><p>Get recent comments and their replies (up to 2 levels deep). If you only
-want to retrieve a single comment, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment" title="ossapi.ossapiv2.Ossapi.comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">comment()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>commentable_type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentableType" title="ossapi.enums.CommentableType"><em>CommentableType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The type of resource to get comments for.</p></li>
-<li><p><strong>commentable_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the resource to get comments for.</p></li>
-<li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>parent_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by id of the parent comment.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.CommentSort" title="ossapi.enums.CommentSort"><em>CommentSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the comments. Defaults to <code class="docutils literal notranslate"><span class="pre">new</span></code> for guest account and
-the user-specified default when authenticated.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.CommentBundle" title="ossapi.models.CommentBundle"><em>CommentBundle</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-comments">Get Comments</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="events">
-<h1>Events<a class="headerlink" href="#events" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.events">
-<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.events" title="Permalink to this definition">#</a></dt>
-<dd><p>Get most recent events, in order of creation time.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.EventsSort" title="ossapi.enums.EventsSort"><em>EventsSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort events by oldest or newest.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Events" title="ossapi.models.Events"><em>Events</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-events">Get Events</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="forums">
-<h1>Forums<a class="headerlink" href="#forums" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_create_topic">
-<span class="sig-name descname"><span class="pre">forum_create_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forum_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_create_topic" title="Permalink to this definition">#</a></dt>
-<dd><p><a class="reference external" href="https://osu.ppy.sh/docs/index.html#create-topic">https://osu.ppy.sh/docs/index.html#create-topic</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>forum_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – </p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
-<li><p><strong>poll</strong> (<a class="reference internal" href="appendix.html#ossapi.models.ForumPoll" title="ossapi.models.ForumPoll"><em>ForumPoll</em></a><em> | </em><em>None</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.CreateForumTopicResponse" title="ossapi.models.CreateForumTopicResponse"><em>CreateForumTopicResponse</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_edit_post">
-<span class="sig-name descname"><span class="pre">forum_edit_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_edit_post" title="Permalink to this definition">#</a></dt>
-<dd><p>Edit a forum post.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>post_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The post to edit.</p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The new content of the post.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ForumPost" title="ossapi.models.ForumPost"><em>ForumPost</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#edit-post">Edit Post</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_edit_topic">
-<span class="sig-name descname"><span class="pre">forum_edit_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_edit_topic" title="Permalink to this definition">#</a></dt>
-<dd><p>Edit a forum topic.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to edit.</p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The new title of the topic.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ForumTopic" title="ossapi.models.ForumTopic"><em>ForumTopic</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#edit-topic">Edit Topic</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_reply">
-<span class="sig-name descname"><span class="pre">forum_reply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_reply" title="Permalink to this definition">#</a></dt>
-<dd><p>Reply to a forum topic.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to reply to.</p></li>
-<li><p><strong>body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Content of the reply.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ForumPost" title="ossapi.models.ForumPost"><em>ForumPost</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#reply-topic">Reply Topic</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FORUM_WRITE" title="ossapi.ossapiv2.Scope.FORUM_WRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FORUM_WRITE</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.forum_topic">
-<span class="sig-name descname"><span class="pre">forum_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.forum_topic" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a forum topic and its posts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>topic_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The topic to get.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort" title="ossapi.enums.ForumTopicSort"><em>ForumTopicSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
-<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
-<a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort.NEW" title="ossapi.enums.ForumTopicSort.NEW"><code class="xref py py-data docutils literal notranslate"><span class="pre">ForumTopicSort.NEW</span></code></a>.
-Ignored otherwise.</p></li>
-<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – First post id to be returned when <code class="docutils literal notranslate"><span class="pre">sort</span></code> is
-<a class="reference internal" href="appendix.html#ossapi.enums.ForumTopicSort.OLD" title="ossapi.enums.ForumTopicSort.OLD"><code class="xref py py-data docutils literal notranslate"><span class="pre">ForumTopicSort.OLD</span></code></a>.
-Ignored otherwise.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.ForumTopicAndPosts" title="ossapi.models.ForumTopicAndPosts"><em>ForumTopicAndPosts</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-topic-and-posts">Get Topic and Posts</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="friends">
-<h1>Friends<a class="headerlink" href="#friends" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.friends">
-<span class="sig-name descname"><span class="pre">friends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.friends" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the friends of the authenticated user.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#friends">Get Friends</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.FRIENDS_READ" title="ossapi.ossapiv2.Scope.FRIENDS_READ"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.FRIENDS_READ</span></code></a> scope.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="home">
-<h1>Home<a class="headerlink" href="#home" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search" title="Permalink to this definition">#</a></dt>
-<dd><p>Search users and wiki pages. If you want to search beatmapsets, see
-<a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets" title="ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Search query.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.SearchMode" title="ossapi.enums.SearchMode"><em>SearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter results by type (wiki or player).</p></li>
-<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Search" title="ossapi.models.Search"><em>Search</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#search">Search</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="matches">
-<h1>Matches<a class="headerlink" href="#matches" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.match">
-<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.match" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a match (eg <a class="reference external" href="https://osu.ppy.sh/community/matches/97947404">https://osu.ppy.sh/community/matches/97947404</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>match_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Match" title="ossapi.models.Match"><em>Match</em></a>) – The match to get.</p></li>
-<li><p><strong>after</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>before</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.MatchResponse" title="ossapi.models.MatchResponse"><em>MatchResponse</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#matchesmatch">Get Match</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.matches">
-<span class="sig-name descname"><span class="pre">matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.matches" title="Permalink to this definition">#</a></dt>
-<dd><p>Get current matches. If you want to get a specific match, see
-<a class="reference internal" href="#ossapi.ossapiv2.Ossapi.match" title="ossapi.ossapiv2.Ossapi.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a>.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#matches">Get Matches</a> endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="appendix.html#ossapi.models.Matches" title="ossapi.models.Matches"><em>Matches</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="me">
-<h1>Me<a class="headerlink" href="#me" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.get_me">
-<span class="sig-name descname"><span class="pre">get_me</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.get_me" title="Permalink to this definition">#</a></dt>
-<dd><p>Get data about the authenticated user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Get data about the specified mode. Defaults to the user’s default
-mode.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.User" title="ossapi.models.User"><em>User</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-own-data">Get Own Data</a> endpoint.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires the <a class="reference internal" href="appendix.html#ossapi.ossapiv2.Scope.IDENTIFY" title="ossapi.ossapiv2.Scope.IDENTIFY"><code class="xref py py-data docutils literal notranslate"><span class="pre">Scope.IDENTIFY</span></code></a> scope.</p>
-</div>
-</dd></dl>
-
-</section>
-<section id="news">
-<h1>News<a class="headerlink" href="#news" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.news_listing">
-<span class="sig-name descname"><span class="pre">news_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.news_listing" title="Permalink to this definition">#</a></dt>
-<dd><p>Get news posts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of news posts to return.</p></li>
-<li><p><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by year the news post was created.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.NewsListing" title="ossapi.models.NewsListing"><em>NewsListing</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-news-listing">Get News Listing</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.news_post">
-<span class="sig-name descname"><span class="pre">news_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NewsPostKey.SLUG</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.news_post" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a news post by id or slug.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>news</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The id or slug of the news post.</p></li>
-<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.NewsPostKey" title="ossapi.enums.NewsPostKey"><em>NewsPostKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Whether to query by id or slug.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.NewsPost" title="ossapi.models.NewsPost"><em>NewsPost</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-news-post">Get News Post</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="oauth">
-<h1>Oauth<a class="headerlink" href="#oauth" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.revoke_token">
-<span class="sig-name descname"><span class="pre">revoke_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.revoke_token" title="Permalink to this definition">#</a></dt>
-<dd><p>Revoke the current token. This will remove any authentication and leave
-you unable to make any more api calls until you re-authenticate.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#revoke-current-token">Revoke Current Token</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="rankings">
-<h1>Rankings<a class="headerlink" href="#rankings" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.ranking">
-<span class="sig-name descname"><span class="pre">ranking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RankingFilter.ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spotlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.ranking" title="Permalink to this definition">#</a></dt>
-<dd><p>Get current rankings for the specified game mode. Can specify <code class="docutils literal notranslate"><span class="pre">type</span></code>
-to get different types of rankings (performance, score, country, etc).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode to get rankings for.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The type of ranking to get.</p></li>
-<li><p><strong>country</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by 2 letter country code. Only available for
-<code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
-<li><p><strong>cursor</strong> (<a class="reference internal" href="appendix.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>filter</strong> – Filter ranking by specified filter.</p></li>
-<li><p><strong>spotlight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the spotlight to return rankings for. Ranking for latest
-spotlight will be returned if not specified. Only available for
-<code class="docutils literal notranslate"><span class="pre">RankingType.SPOTLIGHT</span></code>.</p></li>
-<li><p><strong>variant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by game mode variant. Either <code class="docutils literal notranslate"><span class="pre">4k</span></code> or <code class="docutils literal notranslate"><span class="pre">7k</span></code> for
-mania. Only available for <code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
-<li><p><strong>filter_</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RankingFilter" title="ossapi.enums.RankingFilter"><em>RankingFilter</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Rankings" title="ossapi.models.Rankings"><em>Rankings</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-ranking">Get Ranking</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="rooms">
-<h1>Rooms<a class="headerlink" href="#rooms" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.multiplayer_scores">
-<span class="sig-name descname"><span class="pre">multiplayer_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">playlist_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Get scores on a playlist item in a room.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The room to get the scores from.</p></li>
-<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.MultiplayerScores" title="ossapi.models.MultiplayerScores"><em>MultiplayerScores</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-scores">Get Scores</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room">
-<span class="sig-name descname"><span class="pre">room</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a room.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsroom">Get Room</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.room_leaderboard">
-<span class="sig-name descname"><span class="pre">room_leaderboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.room_leaderboard" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the leaderboard of a room.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.RoomLeaderboard" title="ossapi.models.RoomLeaderboard"><em>RoomLeaderboard</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsroomleaderboard">Get Room Leaderboard</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.rooms">
-<span class="sig-name descname"><span class="pre">rooms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">season_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.rooms" title="Permalink to this definition">#</a></dt>
-<dd><p>Get the list of current rooms.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.RoomSearchMode" title="ossapi.enums.RoomSearchMode"><em>RoomSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
-<li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
-<li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
-<li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#roomsmode">Get Rooms</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="scores">
-<h1>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.download_score">
-<span class="sig-name descname"><span class="pre">download_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.download_score" title="Permalink to this definition">#</a></dt>
-<dd><p>Download the replay data of a score.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode of the score to download.</p></li>
-<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The score to download.</p></li>
-<li><p><strong>raw</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the raw string response from the api
-instead of a <a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Replay</span></code></a> object.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.replay.Replay" title="ossapi.replay.Replay"><em>Replay</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#scoresmodescoredownload">Download Score</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.score">
-<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.score" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a score.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode the score was set on.</p></li>
-<li><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The score to get.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#scoresmodescore">Get Score</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="seasonal-backgrounds">
-<h1>Seasonal Backgrounds<a class="headerlink" href="#seasonal-backgrounds" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.seasonal_backgrounds">
-<span class="sig-name descname"><span class="pre">seasonal_backgrounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.seasonal_backgrounds" title="Permalink to this definition">#</a></dt>
-<dd><p>Get current seasonal backgrounds.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#seasonal-backgrounds">Seasonal Backgrounds</a> endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="appendix.html#ossapi.models.SeasonalBackgrounds" title="ossapi.models.SeasonalBackgrounds"><em>SeasonalBackgrounds</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="spotlights">
-<h1>Spotlights<a class="headerlink" href="#spotlights" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.spotlights">
-<span class="sig-name descname"><span class="pre">spotlights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.spotlights" title="Permalink to this definition">#</a></dt>
-<dd><p>Get active spotlights.</p>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-spotlights">Get Spotlights</a> endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Spotlight" title="ossapi.models.Spotlight"><em>Spotlight</em></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="users">
-<h1>Users<a class="headerlink" href="#users" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user">
-<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a user by id or username.</p>
-<dl class="simple">
-<dt>user</dt><dd><p>The user id or username of the user to get.</p>
-</dd>
-<dt>mode</dt><dd><p>The mode of the user to get details from. Default mode of the user
-will be used if not specified.</p>
-</dd>
-<dt>key</dt><dd><p>Whether to query by id or username. Defaults to automatic detection
-if not passed.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user">Get User</a> endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>key</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserLookupKey" title="ossapi.enums.UserLookupKey"><em>UserLookupKey</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.User" title="ossapi.models.User"><em>User</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_beatmaps">
-<span class="sig-name descname"><span class="pre">user_beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_beatmaps" title="Permalink to this definition">#</a></dt>
-<dd><p>Get beatmaps of a user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get beatmaps of.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.UserBeatmapType" title="ossapi.enums.UserBeatmapType"><em>UserBeatmapType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The type of beatmaps to get.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of beatmaps to get.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><em>Beatmapset</em></a>] | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.BeatmapPlaycount" title="ossapi.models.BeatmapPlaycount"><em>BeatmapPlaycount</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Returns <a class="reference internal" href="appendix.html#ossapi.models.BeatmapPlaycount" title="ossapi.models.BeatmapPlaycount"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeatmapPlaycount</span></code></a> for
-<a class="reference internal" href="appendix.html#ossapi.enums.UserBeatmapType.MOST_PLAYED" title="ossapi.enums.UserBeatmapType.MOST_PLAYED"><code class="xref py py-data docutils literal notranslate"><span class="pre">UserBeatmapType.MOST_PLAYED</span></code></a>, and <a class="reference internal" href="appendix.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Beatmapset</span></code></a>
-otherwise.</p>
-<p>Implements <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-beatmaps">Get User Beatmaps</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_kudosu">
-<span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_kudosu" title="Permalink to this definition">#</a></dt>
-<dd><p>Get user kudosu history.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – User to get kudosu history of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of history events to return.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.KudosuHistory" title="ossapi.models.KudosuHistory"><em>KudosuHistory</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-kudosu">Get User Kudosu</a> endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_recent_activity">
-<span class="sig-name descname"><span class="pre">user_recent_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_recent_activity" title="Permalink to this definition">#</a></dt>
-<dd><p>Get recent activity of a user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user to get recent activity of.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Offset for pagination.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Event" title="ossapi.models.Event"><em>Event</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-recent-activity">Get User Recent Activity</a>
-endpoint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_scores">
-<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Get scores of a user.</p>
-<dl class="simple">
-<dt>user_id</dt><dd><p>The user to get scores of.</p>
-</dd>
-<dt>type</dt><dd><p>Type of score to get.</p>
-</dd>
-<dt>include_fails</dt><dd><p>Whether to include failed scores.</p>
-</dd>
-<dt>mode</dt><dd><p>Filter scores by game mode. Defaults to the user’s default mode.</p>
-</dd>
-<dt>limit</dt><dd><p>Maximum number of scores to return.</p>
-</dd>
-<dt>offset</dt><dd><p>Offset for pagination.</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-scores">Get User Scores</a> endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – </p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.ScoreType" title="ossapi.enums.ScoreType"><em>ScoreType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
-<li><p><strong>include_fails</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="appendix.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.users">
-<span class="sig-name descname"><span class="pre">users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.users" title="Permalink to this definition">#</a></dt>
-<dd><p>Batch get users by id. If you only want to retrieve a single user, or
-want to retrieve users by username instead of id, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user" title="ossapi.ossapiv2.Ossapi.user"><code class="xref py py-meth docutils literal notranslate"><span class="pre">user()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>user_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – The users to get.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="appendix.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-users">Get Users</a> endpoint.</p>
-</dd></dl>
-
-</section>
-<section id="wiki">
-<h1>Wiki<a class="headerlink" href="#wiki" title="Permalink to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.wiki_page">
-<span class="sig-name descname"><span class="pre">wiki_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.wiki_page" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a wiki page.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>locale</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – two letter language code of the wiki page.</p></li>
-<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The path name of the wiki page.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="appendix.html#ossapi.models.WikiPage" title="ossapi.models.WikiPage"><em>WikiPage</em></a></p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-wiki-page">Get Wiki Page</a> endpoint.</p>
-</dd></dl>
-
 </section>
 
         </article>
@@ -1422,12 +357,12 @@ want to retrieve users by username instead of id, see <a class="reference intern
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="appendix.html">
+          <a class="next-page" href="beatmap%20packs.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Enums</div>
+                <div class="title">Beatmap Packs</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1450,143 +385,21 @@ want to retrieve users by username instead of id, see <a class="reference intern
             
           </div>
           <div class="right-details">
-            
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/tybug/ossapi" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
           </div>
         </div>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Beatmap Packs</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_packs"><code class="docutils literal notranslate"><span class="pre">beatmap_packs()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#beatmaps">Beatmaps</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap"><code class="docutils literal notranslate"><span class="pre">beatmap()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_attributes"><code class="docutils literal notranslate"><span class="pre">beatmap_attributes()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_score"><code class="docutils literal notranslate"><span class="pre">beatmap_user_score()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_user_scores"><code class="docutils literal notranslate"><span class="pre">beatmap_user_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmaps"><code class="docutils literal notranslate"><span class="pre">beatmaps()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#beatmapsets">Beatmapsets</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset"><code class="docutils literal notranslate"><span class="pre">beatmapset()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_posts()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_votes()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussions()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_events"><code class="docutils literal notranslate"><span class="pre">beatmapset_events()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#changelog">Changelog</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build"><code class="docutils literal notranslate"><span class="pre">changelog_build()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup"><code class="docutils literal notranslate"><span class="pre">changelog_build_lookup()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_listing"><code class="docutils literal notranslate"><span class="pre">changelog_listing()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#chat">Chat</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_announcement"><code class="docutils literal notranslate"><span class="pre">send_announcement()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.send_pm"><code class="docutils literal notranslate"><span class="pre">send_pm()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#comments">Comments</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comment"><code class="docutils literal notranslate"><span class="pre">comment()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.comments"><code class="docutils literal notranslate"><span class="pre">comments()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#events">Events</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.events"><code class="docutils literal notranslate"><span class="pre">events()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#forums">Forums</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_create_topic"><code class="docutils literal notranslate"><span class="pre">forum_create_topic()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_edit_post"><code class="docutils literal notranslate"><span class="pre">forum_edit_post()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_edit_topic"><code class="docutils literal notranslate"><span class="pre">forum_edit_topic()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_reply"><code class="docutils literal notranslate"><span class="pre">forum_reply()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.forum_topic"><code class="docutils literal notranslate"><span class="pre">forum_topic()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#friends">Friends</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.friends"><code class="docutils literal notranslate"><span class="pre">friends()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#home">Home</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#matches">Matches</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.match"><code class="docutils literal notranslate"><span class="pre">match()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.matches"><code class="docutils literal notranslate"><span class="pre">matches()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#me">Me</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.get_me"><code class="docutils literal notranslate"><span class="pre">get_me()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#news">News</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.news_listing"><code class="docutils literal notranslate"><span class="pre">news_listing()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.news_post"><code class="docutils literal notranslate"><span class="pre">news_post()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#oauth">Oauth</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.revoke_token"><code class="docutils literal notranslate"><span class="pre">revoke_token()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rankings">Rankings</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.ranking"><code class="docutils literal notranslate"><span class="pre">ranking()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rooms">Rooms</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.multiplayer_scores"><code class="docutils literal notranslate"><span class="pre">multiplayer_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room"><code class="docutils literal notranslate"><span class="pre">room()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.room_leaderboard"><code class="docutils literal notranslate"><span class="pre">room_leaderboard()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.rooms"><code class="docutils literal notranslate"><span class="pre">rooms()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#scores">Scores</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.download_score"><code class="docutils literal notranslate"><span class="pre">download_score()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#seasonal-backgrounds">Seasonal Backgrounds</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.seasonal_backgrounds"><code class="docutils literal notranslate"><span class="pre">seasonal_backgrounds()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#spotlights">Spotlights</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.spotlights"><code class="docutils literal notranslate"><span class="pre">spotlights()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#users">Users</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user"><code class="docutils literal notranslate"><span class="pre">user()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_beatmaps"><code class="docutils literal notranslate"><span class="pre">user_beatmaps()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_kudosu"><code class="docutils literal notranslate"><span class="pre">user_kudosu()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_recent_activity"><code class="docutils literal notranslate"><span class="pre">user_recent_activity()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_scores"><code class="docutils literal notranslate"><span class="pre">user_scores()</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.users"><code class="docutils literal notranslate"><span class="pre">users()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#wiki">Wiki</a><ul>
-<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.wiki_page"><code class="docutils literal notranslate"><span class="pre">wiki_page()</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

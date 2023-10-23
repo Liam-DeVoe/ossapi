@@ -1,0 +1,478 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="Beatmaps" href="beatmaps.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Beatmapsets - ossapi v3.4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">ossapi v3.4.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">ossapi v3.4.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grants.html">Grant Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">Async</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Beatmapsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chat.html">Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forums.html">Forums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="friends.html">Friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html">Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matches.html">Matches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="me.html">Me</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth.html">Oauth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rankings.html">Rankings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spotlights.html">Spotlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiki.html">Wiki</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API Reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="beatmapsets">
+<h1>Beatmapsets<a class="headerlink" href="#beatmapsets" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset">
+<span class="sig-name descname"><span class="pre">beatmapset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a beatmapset from a beatmapset id or a beatmap id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – The beatmapset to get.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Get the beatmapset associated with this beatmap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Beatmapset" title="ossapi.models.Beatmapset"><em>Beatmapset</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Combines the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetsbeatmapset">Get Beatmapset</a> and
+<a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetslookup">Beatmapset Lookup</a> endpoints.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts">
+<span class="sig-name descname"><span class="pre">beatmapset_discussion_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the posts of a beatmapset discussion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The beatmapset discussion to get the posts of.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of posts to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the posts.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+you are a gmt/admin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetDiscussionPosts" title="ossapi.models.BeatmapsetDiscussionPosts"><em>BeatmapsetDiscussionPosts</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
+endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes">
+<span class="sig-name descname"><span class="pre">beatmapset_discussion_votes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_discussion_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vote</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes" title="Permalink to this definition">#</a></dt>
+<dd><p>Get beatmapset discussion votes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beatmapset_discussion_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by a beatmapset discussion.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of votes to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>receiver_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by the user receiving the votes.</p></li>
+<li><p><strong>vote</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetDiscussionVote" title="ossapi.enums.BeatmapsetDiscussionVote"><em>BeatmapsetDiscussionVote</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Specify to return either only upvotes or only downvotes.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetDiscussionVoteSort" title="ossapi.enums.BeatmapsetDiscussionVoteSort"><em>BeatmapsetDiscussionVoteSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the votes.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by the user giving the votes.</p></li>
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+you are a gmt/admin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetDiscussionVotes" title="ossapi.models.BeatmapsetDiscussionVotes"><em>BeatmapsetDiscussionVotes</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
+endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_discussions">
+<span class="sig-name descname"><span class="pre">beatmapset_discussions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmap_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_unresolved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_deleted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions" title="Permalink to this definition">#</a></dt>
+<dd><p>Get beatmapset discussions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beatmapset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmapset.</p></li>
+<li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><em>None</em>) – Filter by a beatmap.</p></li>
+<li><p><strong>beatmapset_status</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetStatus" title="ossapi.enums.BeatmapsetStatus"><em>BeatmapsetStatus</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter by a category of beatmapsets.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of discussions to return.</p></li>
+<li><p><strong>message_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.MessageType" title="ossapi.enums.MessageType"><em>MessageType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by a discussion message type.</p></li>
+<li><p><strong>only_unresolved</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only show unresolved issues. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for results.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapDiscussionPostSort" title="ossapi.enums.BeatmapDiscussionPostSort"><em>BeatmapDiscussionPostSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the discussions.</p></li>
+<li><p><strong>user</strong> – Filter by poster id.</p></li>
+<li><p><strong>with_deleted</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to include deleted posts. Currently has no effect even if
+you are a gmt/admin.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetDiscussions" title="ossapi.models.BeatmapsetDiscussions"><em>BeatmapsetDiscussions</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts">Get Beatmapset Discussion Posts</a>
+endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmapset_events">
+<span class="sig-name descname"><span class="pre">beatmapset_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmapset_events" title="Permalink to this definition">#</a></dt>
+<dd><p>Get beatmapset events. Equivalent to the events search page on the
+website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets/events">https://osu.ppy.sh/beatmapsets/events</a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of events to return.</p></li>
+<li><p><strong>page</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Pagination for events.</p></li>
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a><em> | </em><em>None</em>) – Filter by event author.</p></li>
+<li><p><strong>types</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetEventType" title="ossapi.enums.BeatmapsetEventType"><em>BeatmapsetEventType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Filter by event type.</p></li>
+<li><p><strong>min_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
+<li><p><strong>max_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><em>datetime</em></a><em> | </em><em>None</em>) – Filter by event date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.ModdingHistoryEventsBundle" title="ossapi.models.ModdingHistoryEventsBundle"><em>ModdingHistoryEventsBundle</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetsevents">Beatmapset Events</a> endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search_beatmapsets">
+<span class="sig-name descname"><span class="pre">search_beatmapsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchMode.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchCategory.HAS_LEADERBOARD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit_content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchExplicitContent.HIDE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchGenre.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BeatmapsetSearchLanguage.ANY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_storyboard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recommended_difficulty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_converts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_followed_mappers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_spotlights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_featured_artists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets" title="Permalink to this definition">#</a></dt>
+<dd><p>Search beatmapsets. Equivalent to the beatmapset search page on the
+website (<a class="reference external" href="https://osu.ppy.sh/beatmapsets">https://osu.ppy.sh/beatmapsets</a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The search query. Can include filters like <code class="docutils literal notranslate"><span class="pre">ranked&lt;2019</span></code>.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchMode" title="ossapi.enums.BeatmapsetSearchMode"><em>BeatmapsetSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by mode.</p></li>
+<li><p><strong>category</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchCategory" title="ossapi.enums.BeatmapsetSearchCategory"><em>BeatmapsetSearchCategory</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by category.</p></li>
+<li><p><strong>explicit_content</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchExplicitContent" title="ossapi.enums.BeatmapsetSearchExplicitContent"><em>BeatmapsetSearchExplicitContent</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Whether to include beatmaps with explicit content.</p></li>
+<li><p><strong>genre</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre" title="ossapi.enums.BeatmapsetSearchGenre"><em>BeatmapsetSearchGenre</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Filter by genre.</p></li>
+<li><p><strong>language</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchLanguage" title="ossapi.enums.BeatmapsetSearchLanguage"><em>BeatmapsetSearchLanguage</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filter by language.</p></li>
+<li><p><strong>force_video</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with videos.</p></li>
+<li><p><strong>force_storyboard</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets with storyboards.</p></li>
+<li><p><strong>force_recommended_difficulty</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to filter by recommended difficulty.</p></li>
+<li><p><strong>include_converts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to include converted beatmapsets.</p></li>
+<li><p><strong>force_followed_mappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by mappers you follow.</p></li>
+<li><p><strong>force_spotlights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets which have been in a spotlight.</p></li>
+<li><p><strong>force_featured_artists</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> to only return beatmapsets by a featured artist.</p></li>
+<li><p><strong>cursor</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapsetSearchSort" title="ossapi.enums.BeatmapsetSearchSort"><em>BeatmapsetSearchSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the beatmapsets.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetSearchResult" title="ossapi.models.BeatmapsetSearchResult"><em>BeatmapsetSearchResult</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#beatmapsetssearchfilters">Search Beatmapsets</a>
+endpoint.</p>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="changelog.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Changelog</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="beatmaps.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Beatmaps</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with 
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/tybug/ossapi" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Beatmapsets</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset"><code class="docutils literal notranslate"><span class="pre">beatmapset()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_posts"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_posts()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussion_votes"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussion_votes()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_discussions"><code class="docutils literal notranslate"><span class="pre">beatmapset_discussions()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmapset_events"><code class="docutils literal notranslate"><span class="pre">beatmapset_events()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmapsets"><code class="docutils literal notranslate"><span class="pre">search_beatmapsets()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

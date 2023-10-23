@@ -2,9 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Chat" href="chat.html" /><link rel="prev" title="Beatmapsets" href="beatmapsets.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 --><title>Search - ossapi v3.4.0 documentation</title><link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Changelog - ossapi v3.4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -132,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -146,13 +149,13 @@
   
   <span class="sidebar-brand-text">ossapi v3.4.0 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
@@ -168,11 +171,11 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chat.html">Chat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comments.html">Comments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
@@ -212,7 +215,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -220,31 +224,104 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
-</div>
-</noscript>
+          <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build">
+<span class="sig-name descname"><span class="pre">changelog_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build" title="Permalink to this definition">#</a></dt>
+<dd><p>Get changelog build details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
+<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Build" title="ossapi.models.Build"><em>Build</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-changelog-build">Get Changelog Build</a> endpoint.</p>
+</dd></dl>
 
-<div id="search-results"></div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_build_lookup">
+<span class="sig-name descname"><span class="pre">changelog_build_lookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">changelog,</span> <span class="pre">*,</span> <span class="pre">key=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup" title="Permalink to this definition">#</a></dt>
+<dd><p>Look up a changelog build by version, update stream name, or id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
+by build id.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Build" title="ossapi.models.Build"><em>Build</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#lookup-changelog-build">Lookup Changelog Build</a> endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.changelog_listing">
+<span class="sig-name descname"><span class="pre">changelog_listing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self,</span> <span class="pre">*,</span> <span class="pre">from_=None,</span> <span class="pre">to=None,</span> <span class="pre">max_id=None,</span> <span class="pre">stream=None,</span> <span class="pre">message_formats=[&lt;ChangelogMessageFormat.HTML:</span> <span class="pre">'html'&gt;,</span> <span class="pre">&lt;ChangelogMessageFormat.MARKDOWN:</span> <span class="pre">'markdown'&gt;]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.changelog_listing" title="Permalink to this definition">#</a></dt>
+<dd><p>Get list of changelogs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from</strong> – Minimum build version.</p></li>
+<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
+<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.ChangelogListing" title="ossapi.models.ChangelogListing"><em>ChangelogListing</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-changelog-listing">Get Changelog Listing</a> endpoint.</p>
+</dd></dl>
+
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="chat.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Chat</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="beatmapsets.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Beatmapsets</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -266,8 +343,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build"><code class="docutils literal notranslate"><span class="pre">changelog_build()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_build_lookup"><code class="docutils literal notranslate"><span class="pre">changelog_build_lookup()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.changelog_listing"><code class="docutils literal notranslate"><span class="pre">changelog_listing()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -276,8 +374,5 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>
