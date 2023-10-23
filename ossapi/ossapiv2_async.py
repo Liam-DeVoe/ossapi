@@ -219,7 +219,7 @@ def request(scope, *, requires_user=False, category):
                     "currently authorized with the client credentials grant."
                     "\n\n"
                     "For more details, see "
-                    "https://circleguard.github.io/ossapi/grants.html.")
+                    "https://tybug.github.io/ossapi/grants.html.")
 
             # we may need to edit this later so convert from tuple
             args = list(args)
@@ -723,7 +723,7 @@ class OssapiAsync:
 
         # aiohttp throws on unexpected encoding (non-json mimetype). Match
         # requests behavior by automatically detecting encoding.
-        # See https://github.com/circleguard/ossapi/issues/60.
+        # See https://github.com/tybug/ossapi/issues/60.
         json_ = await r.json(encoding=None)
         # occurs if a client gets revoked and the token hasn't officially
         # expired yet (so it doesn't error earlier up in the chain with
@@ -932,6 +932,31 @@ class OssapiAsync:
                 if is_high_model_type(type_):
                     entry = self._resolve_annotations(entry)
                 new_value.append(entry)
+            return new_value
+
+        if origin is Union:
+            # try each type in the union sequentially, taking the first which
+            # successfully deserializes the json.
+            new_value = None
+            # purely for debugging. errors for each arg are shown when we can't
+            # deserialize any of them.
+            fail_reasons = []
+            for arg in args:
+                try:
+                    import copy
+                    v = copy.deepcopy(value)
+                    # _instantiate_type implicitly mutates the passed value.
+                    # this is probably something we should change - but for now,
+                    # fix it here, as we may reuse `value`.
+                    new_value = self._instantiate_type(arg, v, obj,
+                        attr_name)
+                except Exception as e:
+                    fail_reasons.append(str(e))
+                    continue
+
+            if new_value is None:
+                raise ValueError(f"Failed to satisfy union: no type in {args} "
+                    f"satisfied {attr_name} (fail reasons: {fail_reasons})")
             return new_value
 
         # either we ourself are a model type (eg `Search`), or we are

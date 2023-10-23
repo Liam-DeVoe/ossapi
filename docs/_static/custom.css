@@ -3,3 +3,10 @@
 html {
     scroll-behavior: auto;
 }
+
+/* hide right side sidebar entries below a certain depth. This is for the "API Reference" page, which includes
+   every attribute on the sidebar. So not only is ProfilePage included but also ProfilePage.BEATMAPS,
+   ProfilePage.HISTORICAL, etc. It's too much clutter for anybody to read. */
+.toc-tree-container > .toc-tree > ul ul ul ul {
+    display: none;
+}

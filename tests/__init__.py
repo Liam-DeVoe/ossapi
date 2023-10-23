@@ -8,7 +8,7 @@ from ossapi import Ossapi, OssapiV1, Grant, Scope, Domain
 ALL_SCOPES = [Scope.CHAT_WRITE, Scope.FORUM_WRITE, Scope.FRIENDS_READ,
     Scope.IDENTIFY, Scope.PUBLIC]
 UNIT_TEST_MESSAGE = ("unit test from ossapi "
-    "(https://github.com/circleguard/ossapi/), please ignore")
+    "(https://github.com/tybug/ossapi/), please ignore")
 
 headless = os.environ.get("OSSAPI_TEST_HEADLESS", False)
 

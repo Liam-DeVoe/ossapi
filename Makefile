@@ -9,9 +9,11 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-docs: clean
-	./update_docs.sh
+docs:
+	make clean
+	python3 docs/generate_docs.py
 	make html
+	/bin/cp -R build/html/* .
 
 
 # Catch-all target: route all unknown targets to Sphinx using the new

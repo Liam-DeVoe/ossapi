@@ -39,7 +39,7 @@ def is_model(Class):
 def is_base_type(type_):
     return is_model(type_) or type_ in BASE_TYPES
 
-def type_to_string(type_,):
+def type_to_string(type_):
     if type_ is type(None):
         return "None"
 
@@ -70,24 +70,57 @@ def type_to_string(type_,):
     return str(type_)
 
 
+def get_members(Class):
+    members = inspect.getmembers(Class)
+    members = [m for m in members if not m[0].startswith("_")]
+    members = [m for m in members if m[0] not in IGNORE_MEMBERS]
+    return members
+
+def get_parameters(function):
+    params = list(inspect.signature(function).parameters)
+    params = [p for p in params if p != "self"]
+    return params
+
+def endpoints_by_category(api):
+    # category : list[(name, value)]
+    endpoints = defaultdict(list)
+    for name, value in get_members(api):
+        if not callable(value):
+            continue
+
+        # set by @request decorator. If missing, this function isn't a
+        # request/endpoint function
+        category = getattr(value, "__ossapi_category__", None)
+        if category is None:
+            continue
+
+        endpoints[category].append([name, value])
+
+    # sort category names alphabetically
+    endpoints = dict(sorted(endpoints.items()))
+    return endpoints
+
 class Generator:
     def __init__(self):
         self.result = ""
         self.processed = []
 
-    def add_header(self, name):
-        self.result += f"{name}\n"
-        self.result += "=" * len(name)
-        self.result += "\n\n"
+    def write(self, val):
+        self.result += val
+
+    def write_header(self, name, *, level="-"):
+        self.write(f"\n{name}\n")
+        self.write(level * len(name))
+        self.write("\n\n")
 
     def process_module(self, module, name):
-        self.add_header(name)
+        self.write_header(name)
 
         # necessary for type links to actually work. also necessary for source
         # code link (https://stackoverflow.com/a/53991465), so it's definitely
         # good practice for us to put
-        self.result += f".. module:: {module.__name__}"
-        self.result += "\n\n"
+        self.write(f".. module:: {module.__name__}")
+        self.write("\n\n")
 
         model_classes = vars(module).values()
         for ModelClass in model_classes:
@@ -107,13 +140,13 @@ class Generator:
 
         # custom handling for some models
         if ModelClass in [Mod]:
-            self.result += f"   .. autoclass:: {ModelClass.__name__}\n"
-            self.result += "\n\n"
+            self.write(f"   .. autoclass:: {ModelClass.__name__}\n")
+            self.write("\n\n")
             return
 
-        self.result += f".. py:class:: {ModelClass.__name__}\n\n"
+        self.write(f".. py:class:: {ModelClass.__name__}\n\n")
 
-        members = self.get_members(ModelClass)
+        members = get_members(ModelClass)
 
         for name, value in members:
             doc_value = unset
@@ -135,37 +168,34 @@ class Generator:
                             break
 
 
-            self.result += f"   .. py:attribute:: {name}\n"
+            self.write(f"   .. py:attribute:: {name}\n")
 
             type_str = type_to_string(type_)
-            self.result += f"      :type: {type_str}\n"
+            self.write(f"      :type: {type_str}\n")
             if doc_value is not unset:
                 if type_ is str:
                     # surround string types with quotes
                     doc_value = f"\"{doc_value}\""
-                self.result += f"      :value: {doc_value}\n"
+                self.write(f"      :value: {doc_value}\n")
 
             # leave a special note for when our naming deviates from the api
             if isinstance(value, Field):
                 note_text = (f"``{name}`` is returned in the osu! api as "
                     f"``{value.name}``.")
-                self.result += "\n"
-                self.result += f"   .. note::\n      {note_text}\n"
+                self.write("\n")
+                self.write(f"   .. note::\n      {note_text}\n")
 
-            self.result += "\n"
+            self.write("\n")
 
         self.processed.append(ModelClass)
 
-    def get_members(self, Class):
-        members = inspect.getmembers(Class)
-        members = [m for m in members if not m[0].startswith("_")]
-        members = [m for m in members if m[0] not in IGNORE_MEMBERS]
-        return members
-
-    def get_parameters(self, function):
-        params = list(inspect.signature(function).parameters)
-        params = [p for p in params if p != "self"]
-        return params
+    def process_class(self, class_name, file, *, members=True):
+        self.write_header(class_name)
+        self.write(f".. module:: ossapi.{file}\n\n")
+        self.write(f".. autoclass:: {class_name}\n")
+        if members:
+            self.write("   :members:")
+            self.write("\n   :undoc-members:")
 
     def write_to_path(self, path):
         with open(path, "w") as f:
@@ -173,72 +203,54 @@ class Generator:
                 ..
                    THIS FILE WAS AUTOGENERATED BY generate_docs.py.
                    DO NOT EDIT THIS FILE MANUALLY
-
             """))
             f.write(self.result)
 
     def process_endpoints(self, api):
-        # category : list[(name, value)]
-        endpoints = defaultdict(list)
-        for name, value in self.get_members(api):
-            if not callable(value):
-                continue
-
-            # set by @request decorator. If missing, this function isn't a
-            # request/endpoint function
-            category = getattr(value, "__ossapi_category__", None)
-            if category is None:
-                continue
-
-            endpoints[category].append([name, value])
-
-        # sort category names alphabetically
-        endpoints = dict(sorted(endpoints.items()))
-
+        endpoints = endpoints_by_category(api)
         for category, endpoint_values in endpoints.items():
-            self.add_header(string.capwords(category))
+            self.process_category(category, endpoint_values)
 
-            for name, value in endpoint_values:
-                self.result += f".. autofunction:: ossapi.ossapiv2.Ossapi.{name}"
+    def process_category(self, category, endpoint_values):
+        self.write_header(string.capwords(category))
 
-                scope = getattr(value, "__ossapi_scope__")
-                # endpoints implicitly require public scope, don't document it
-                if scope is not None and scope is not Scope.PUBLIC:
-                    self.result += ("\n\n .. note::\n    Requires the "
-                        f":data:`Scope.{scope.name} "
-                        f"<ossapi.ossapiv2.Scope.{scope.name}>` scope.")
+        for name, value in endpoint_values:
+            self.write(f".. autofunction:: ossapi.ossapiv2.Ossapi.{name}")
 
-                self.result += "\n\n"
+            scope = value.__ossapi_scope__
+            # endpoints implicitly require public scope, don't document it
+            if scope is not None and scope is not Scope.PUBLIC:
+                self.write("\n\n .. note::\n    Requires the "
+                    f":data:`Scope.{scope.name} "
+                    f"<ossapi.ossapiv2.Scope.{scope.name}>` scope.")
+
+            self.write("\n\n")
 
 
 
 p = Path(__file__).parent
 
 generator = Generator()
+generator.write_header("API Reference", level="=")
 generator.process_module(ossapi.enums, "Enums")
 generator.process_module(ossapi.models, "Models")
-generator.write_to_path(p / "appendix.rst")
+generator.process_class("Ossapi", "ossapiv2", members=False)
+generator.process_class("OssapiAsync", "ossapiv2_async", members=False)
+generator.process_class("Scope", "ossapiv2")
+generator.process_class("Grant", "ossapiv2")
+generator.process_class("Replay", "replay")
+generator.write_to_path(p / "api-reference.rst")
+
+for category, endpoints in endpoints_by_category(ossapi.Ossapi).items():
+    generator = Generator()
+    generator.process_category(category, endpoints)
+    generator.write_to_path(p / "endpoints" / f"{category}.rst")
 
 generator = Generator()
-generator.result += ("|br| |br| All functions on this page are methods of the "
-    ":class:`~ossapi.ossapiv2.Ossapi` class.\n\n")
-generator.process_endpoints(ossapi.Ossapi)
-generator.write_to_path(p / "endpoints.rst")
+generator.write_header("Endpoints")
+generator.write(".. toctree::\n\n")
 
-def write_class(file, class_name, *, members=True):
-    with open(p / "appendix.rst", "a") as f:
-        f.write("\n\n")
-        f.write(f"{class_name}\n")
-        f.write(f"{'=' * len(class_name)}\n\n")
-        f.write(f".. module:: ossapi.{file}\n\n")
-        f.write(f".. autoclass:: {class_name}\n")
-        if members:
-            f.write("   :members:")
-            f.write("\n   :undoc-members:")
+for category in endpoints_by_category(ossapi.Ossapi):
+    generator.write(f"    {category}\n")
 
-write_class("ossapiv2", "Ossapi", members=False)
-write_class("ossapiv2_async", "OssapiAsync", members=False)
-write_class("ossapiv2", "Scope")
-write_class("ossapiv2", "Grant")
-write_class("ossapiv2", "Domain")
-write_class("replay", "Replay")
+generator.write_to_path(p / "endpoints" / "index.rst")

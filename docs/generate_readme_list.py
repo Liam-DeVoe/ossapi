@@ -27,4 +27,4 @@ for category, names in endpoints.items():
     print(f"* {title}<a name=\"endpoints-{fragment}\"></a>")
 
     for name in names:
-        print(f"  * [`api.{name}`](https://circleguard.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.{name})")
+        print(f"  * [`api.{name}`](https://tybug.github.io/ossapi/endpoints.html#ossapi.ossapiv2.Ossapi.{name})")

@@ -23,4 +23,4 @@ dependencies = [
 async = ["aiohttp"]
 
 [project.urls]
-"Homepage" = "https://github.com/circleguard/ossapi"
+"Homepage" = "https://github.com/tybug/ossapi"
