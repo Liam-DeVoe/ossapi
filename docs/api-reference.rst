@@ -4577,6 +4577,14 @@ Scope
 .. autoclass:: Scope
    :members:
    :undoc-members:
+Domain
+------
+
+.. module:: ossapi.ossapiv2
+
+.. autoclass:: Domain
+   :members:
+   :undoc-members:
 Grant
 -----
 
