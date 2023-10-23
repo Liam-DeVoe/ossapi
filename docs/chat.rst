@@ -9,10 +9,10 @@ Chat
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_announcement
 
  .. note::
-    Requires the :data:`Scope.CHAT_WRITE_MANAGE <ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE>` scope.
+    This endpoint requires the :data:`Scope.CHAT_WRITE_MANAGE <ossapi.ossapiv2.Scope.CHAT_WRITE_MANAGE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.send_pm
 
  .. note::
-    Requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.
+    This endpoint requires the :data:`Scope.CHAT_WRITE <ossapi.ossapiv2.Scope.CHAT_WRITE>` scope.
 

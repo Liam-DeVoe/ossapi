@@ -969,7 +969,12 @@ class Ossapi:
                 if self.strict:
                     raise TypeError(f"unexpected parameter `{k}` for type "
                         f"{type_}")
-                self.log.info(f"ignoring unexpected parameter `{k}` from "
+                # this is an INFO log in spirit, but can be spammy with Union
+                # type resolution where the first union case hits nonfatal
+                # errors like this before a fatal error causes it to backtrack.
+                # In practice, it makes no difference for developing ossapi,
+                # as tests and local development are all done in strict mode.
+                self.log.debug(f"ignoring unexpected parameter `{k}` from "
                     f"api response for type {type_}")
 
         # every model gets a special `_api` parameter, which is the

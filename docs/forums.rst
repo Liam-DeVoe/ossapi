@@ -9,22 +9,22 @@ Forums
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_create_topic
 
  .. note::
-    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+    This endpoint requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_post
 
  .. note::
-    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+    This endpoint requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_edit_topic
 
  .. note::
-    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+    This endpoint requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_reply
 
  .. note::
-    Requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
+    This endpoint requires the :data:`Scope.FORUM_WRITE <ossapi.ossapiv2.Scope.FORUM_WRITE>` scope.
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.forum_topic
 

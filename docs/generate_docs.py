@@ -220,7 +220,7 @@ class Generator:
             scope = value.__ossapi_scope__
             # endpoints implicitly require public scope, don't document it
             if scope is not None and scope is not Scope.PUBLIC:
-                self.write("\n\n .. note::\n    Requires the "
+                self.write("\n\n .. note::\n    This endpoint requires the "
                     f":data:`Scope.{scope.name} "
                     f"<ossapi.ossapiv2.Scope.{scope.name}>` scope.")
 

@@ -9,5 +9,5 @@ Me
 .. autofunction:: ossapi.ossapiv2.Ossapi.get_me
 
  .. note::
-    Requires the :data:`Scope.IDENTIFY <ossapi.ossapiv2.Scope.IDENTIFY>` scope.
+    This endpoint requires the :data:`Scope.IDENTIFY <ossapi.ossapiv2.Scope.IDENTIFY>` scope.
 

@@ -9,5 +9,5 @@ Friends
 .. autofunction:: ossapi.ossapiv2.Ossapi.friends
 
  .. note::
-    Requires the :data:`Scope.FRIENDS_READ <ossapi.ossapiv2.Scope.FRIENDS_READ>` scope.
+    This endpoint requires the :data:`Scope.FRIENDS_READ <ossapi.ossapiv2.Scope.FRIENDS_READ>` scope.
 
