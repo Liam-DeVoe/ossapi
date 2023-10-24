@@ -103,11 +103,9 @@ print(scores[0].pp)
 
 ## Endpoints
 
-All endpoints for api v2.
-
-* Beatmap Packs<a name="endpoints-beatmap-packs"></a>
-  * [`api.beatmap_pack`](https://tybug.github.io/ossapi/beatmap packs.html#ossapi.ossapiv2.Ossapi.beatmap_pack)
-  * [`api.beatmap_packs`](https://tybug.github.io/ossapi/beatmap packs.html#ossapi.ossapiv2.Ossapi.beatmap_packs)
+All endpoints for api v2.* Beatmap Packs<a name="endpoints-beatmap-packs"></a>
+  * [`api.beatmap_pack`](https://tybug.github.io/ossapi/beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_pack)
+  * [`api.beatmap_packs`](https://tybug.github.io/ossapi/beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_packs)
 * Beatmaps<a name="endpoints-beatmaps"></a>
   * [`api.beatmap`](https://tybug.github.io/ossapi/beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap)
   * [`api.beatmap_attributes`](https://tybug.github.io/ossapi/beatmaps.html#ossapi.ossapiv2.Ossapi.beatmap_attributes)
@@ -165,7 +163,7 @@ All endpoints for api v2.
   * [`api.download_score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.download_score)
   * [`api.score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.score)
 * Seasonal Backgrounds<a name="endpoints-seasonal-backgrounds"></a>
-  * [`api.seasonal_backgrounds`](https://tybug.github.io/ossapi/seasonal backgrounds.html#ossapi.ossapiv2.Ossapi.seasonal_backgrounds)
+  * [`api.seasonal_backgrounds`](https://tybug.github.io/ossapi/seasonal%20backgrounds.html#ossapi.ossapiv2.Ossapi.seasonal_backgrounds)
 * Spotlights<a name="endpoints-spotlights"></a>
   * [`api.spotlights`](https://tybug.github.io/ossapi/spotlights.html#ossapi.ossapiv2.Ossapi.spotlights)
 * Users<a name="endpoints-users"></a>
