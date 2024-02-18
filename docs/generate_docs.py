@@ -7,6 +7,7 @@ from typing import List, Union
 from datetime import datetime
 from dataclasses import is_dataclass
 import textwrap
+from enum import IntFlag
 
 from typing_utils import get_type_hints, get_args, get_origin
 
@@ -151,6 +152,12 @@ class Generator:
         for name, value in members:
             doc_value = unset
             if is_enum_model(ModelClass):
+                # IntFlag inherits from int and so gets some additional members
+                # we don't want, including from_bytes which shows up on EnumType
+                # and not int for some reason. Probably some metaclass bs.
+                if issubclass(ModelClass, IntFlag):
+                    if (name, value) in get_members(int) or name == "from_bytes":
+                        continue
                 # retrieve the type of the actual backing value
                 type_ = type(value.value)
                 doc_value = value.value
