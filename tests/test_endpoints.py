@@ -69,7 +69,13 @@ class TestRanking(TestCase):
         api.ranking("osu", RankingType.PERFORMANCE, country="US")
         api.ranking("osu", type="country")
         api.ranking("osu", type="charts")
-        api.ranking("osu", type="score")
+
+        api.ranking("mania", "performance")
+        api.ranking("mania", "performance", variant="4k")
+        api.ranking("mania", "performance", variant="7k")
+
+        api.ranking("fruits", "performance")
+        api.ranking("taiko", "performance")
 
 class TestUserScores(TestCase):
     def test_deserialize(self):
@@ -298,9 +304,9 @@ class TestLazerUser(TestCase):
         self.assertEqual(pp_lazer, pp_exp_osu)
 
 
-# =====================
+# ==================
 # api_dev test cases
-# =====================
+# ==================
 
 class TestForum(TestCaseDevServer):
     def test_forum(self):
@@ -348,3 +354,13 @@ class TestForum(TestCaseDevServer):
             forum_id=85,
             poll=poll
         )
+
+
+# ==========================
+# provisional api test cases
+# ==========================
+
+class TestBeatmapScoresNonLegacy(TestCase):
+    def test_deserialize(self):
+        api._beatmap_scores_non_legacy(221777)
+        api._beatmap_scores_non_legacy(221777, legacy_only=True)

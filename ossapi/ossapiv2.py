@@ -33,7 +33,7 @@ from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
     BeatmapUserScores, DifficultyAttributes, Users, Beatmaps,
     CreateForumTopicResponse, ForumPoll, ForumPost, ForumTopic, Room,
     RoomLeaderboard, Matches, Match, MatchResponse, ChatChannel, Events,
-    BeatmapPack, BeatmapPacks)
+    BeatmapPack, BeatmapPacks, _NonLegacyBeatmapScores)
 from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
     UserBeatmapType, BeatmapDiscussionPostSort, UserLookupKey,
     BeatmapsetEventType, CommentableType, CommentSort, ForumTopicSort,
@@ -663,6 +663,14 @@ class Ossapi:
             raise ValueError(f"api returned an error of `{json_['error']}` for "
                 f"a request to {unquote(url)}")
 
+        # some endpoints only require authorization grant for some endpoints.
+        # e.g. normally api.match only requires client credentials grant, but for
+        # private matches like api.match(111632899), it will return this error.
+        if json_ == {"authentication": "basic"}:
+            raise ValueError("Permission denied for a request to "
+                f"{unquote(url)}. This request may require "
+                "Grant.AUTHORIZATION_CODE.")
+
     def _get(self, type_, url, params={}):
         return self._request(type_, "GET", url, params=params)
 
@@ -990,6 +998,12 @@ class Ossapi:
         for name, deserialize_type in field_deserialize_types.items():
             val.__annotations__[name] = deserialize_type
 
+        # modifying the type hints of an object dynamically invalidates its
+        # cache. Avoid looking up stale type hints if we had looked up its
+        # previous value before modifying it here.
+        if field_deserialize_types:
+            del self._type_hints_cache[type(val)]
+
         return val
 
     def _get_type_hints(self, obj):
@@ -1153,6 +1167,28 @@ class Ossapi:
         """
         params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
         return self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores",
+            params)
+
+    def _beatmap_scores_non_legacy(self,
+        beatmap_id: BeatmapIdT,
+        *,
+        mode: Optional[GameModeT] = None,
+        mods: Optional[ModT] = None,
+        type: Optional[RankingTypeT] = None,
+        limit: Optional[int] = None,
+        legacy_only: Optional[bool] = None
+    ) -> _NonLegacyBeatmapScores:
+        """
+        This is a provisional method. It may change or disappear in the future.
+        Feel free to use it, but don't expect ossapi to maintain backwards
+        compatability here.
+
+        I'll decide what to do about these provisional methods once the lazer
+        migration settles down.
+        """
+        params = {"mode": mode, "mods": mods, "type": type, "limit": limit,
+            "legacy_only": legacy_only}
+        return self._get(_NonLegacyBeatmapScores, f"/beatmaps/{beatmap_id}/solo-scores",
             params)
 
     @request(Scope.PUBLIC, category="beatmaps")

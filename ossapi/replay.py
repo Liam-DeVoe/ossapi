@@ -1,4 +1,4 @@
-from osrparse import GameMode as OsrparseGameMode
+from osrparse import GameMode as OsrparseGameMode, Replay as OsrparseReplay
 
 from ossapi.models import GameMode, User, Beatmap
 from ossapi.mod import Mod
@@ -11,7 +11,7 @@ game_mode_map = {
     OsrparseGameMode.MANIA: GameMode.MANIA,
 }
 
-class Replay:
+class Replay(OsrparseReplay):
     """
     A replay played by a player.
 
@@ -22,27 +22,32 @@ class Replay:
     and :meth:`.beatmap` to retrieve api-related objects.
     """
     def __init__(self, replay, api):
+        super().__init__(
+            mode=game_mode_map[replay.mode],
+            game_version=replay.game_version,
+            beatmap_hash=replay.beatmap_hash,
+            username=replay.username,
+            replay_hash=replay.replay_hash,
+            count_300=replay.count_300,
+            count_100=replay.count_100,
+            count_50=replay.count_50,
+            count_geki=replay.count_geki,
+            count_katu=replay.count_katu,
+            count_miss=replay.count_miss,
+            score=replay.score,
+            max_combo=replay.max_combo,
+            perfect=replay.perfect,
+            mods=Mod(replay.mods.value),
+            life_bar_graph=replay.life_bar_graph,
+            timestamp=replay.timestamp,
+            replay_data=replay.replay_data,
+            replay_id=replay.replay_id,
+            rng_seed=replay.rng_seed
+        )
+
+        self._osrparse_mode = replay.mode
+        self._osrparse_mods = replay.mods
         self._api = api
-        self.mode = game_mode_map[replay.mode]
-        self.game_version = replay.game_version
-        self.beatmap_hash = replay.beatmap_hash
-        self.username = replay.username
-        self.replay_hash = replay.replay_hash
-        self.count_300 = replay.count_300
-        self.count_100 = replay.count_100
-        self.count_50 = replay.count_50
-        self.count_geki = replay.count_geki
-        self.count_katu = replay.count_katu
-        self.count_miss = replay.count_miss
-        self.score = replay.score
-        self.max_combo = replay.max_combo
-        self.perfect = replay.perfect
-        self.mods = Mod(replay.mods.value)
-        self.life_bar_graph = replay.life_bar_graph
-        self.timestamp = replay.timestamp
-        self.replay_data = replay.replay_data
-        self.replay_id = replay.replay_id
-        self.rng_seed = replay.rng_seed
         self._beatmap = None
         self._user = None
 
@@ -77,3 +82,28 @@ class Replay:
             return self._user
         self._user = self._api.user(self.username, key=UserLookupKey.USERNAME)
         return self._user
+
+    def pack(self, *, dict_size=None, mode=None):
+        r = OsrparseReplay(
+            mode=self._osrparse_mode,
+            game_version=self.game_version,
+            beatmap_hash=self.beatmap_hash,
+            username=self.username,
+            replay_hash=self.replay_hash,
+            count_300=self.count_300,
+            count_100=self.count_100,
+            count_50=self.count_50,
+            count_geki=self.count_geki,
+            count_katu=self.count_katu,
+            count_miss=self.count_miss,
+            score=self.score,
+            max_combo=self.max_combo,
+            perfect=self.perfect,
+            mods=self._osrparse_mods,
+            life_bar_graph=self.life_bar_graph,
+            timestamp=self.timestamp,
+            replay_data=self.replay_data,
+            replay_id=self.replay_id,
+            rng_seed=self.rng_seed
+        )
+        return r.pack(dict_size=dict_size, mode=mode)

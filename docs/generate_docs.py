@@ -179,7 +179,7 @@ class Generator:
                 self.write(f"      :value: {doc_value}\n")
 
             # leave a special note for when our naming deviates from the api
-            if isinstance(value, Field):
+            if isinstance(value, Field) and value.name is not None:
                 note_text = (f"``{name}`` is returned in the osu! api as "
                     f"``{value.name}``.")
                 self.write("\n")

@@ -103,7 +103,9 @@ print(scores[0].pp)
 
 ## Endpoints
 
-All endpoints for api v2.* Beatmap Packs<a name="endpoints-beatmap-packs"></a>
+All endpoints for api v2.
+
+* Beatmap Packs<a name="endpoints-beatmap-packs"></a>
   * [`api.beatmap_pack`](https://tybug.github.io/ossapi/beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_pack)
   * [`api.beatmap_packs`](https://tybug.github.io/ossapi/beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_packs)
 * Beatmaps<a name="endpoints-beatmaps"></a>
