@@ -1705,6 +1705,9 @@ Models
    .. py:attribute:: active_tournament_banner
       :type: ProfileBanner | None
 
+   .. py:attribute:: active_tournament_banners
+      :type: list[ProfileBanner] | None
+
    .. py:attribute:: avatar_url
       :type: str
 
@@ -1828,6 +1831,9 @@ Models
    .. py:attribute:: scores_recent_count
       :type: int | None
 
+   .. py:attribute:: session_verified
+      :type: bool | None
+
    .. py:attribute:: statistics
       :type: UserStatistics | None
 
@@ -1859,6 +1865,9 @@ Models
 
    .. py:attribute:: active_tournament_banner
       :type: ProfileBanner | None
+
+   .. py:attribute:: active_tournament_banners
+      :type: list[ProfileBanner] | None
 
    .. py:attribute:: avatar_url
       :type: str
@@ -2036,6 +2045,9 @@ Models
 
    .. py:attribute:: scores_recent_count
       :type: int | None
+
+   .. py:attribute:: session_verified
+      :type: bool | None
 
    .. py:attribute:: statistics
       :type: UserStatistics | None
@@ -3418,9 +3430,6 @@ Models
 
 .. py:class:: UserSupportGiftEvent
 
-   .. py:attribute:: beatmap
-      :type: EventBeatmap
-
    .. py:attribute:: createdAt
       :type: ~datetime.datetime
 
@@ -3432,6 +3441,9 @@ Models
 
    .. py:attribute:: type
       :type: EventType
+
+   .. py:attribute:: user
+      :type: EventUser
 
 .. py:class:: UsernameChangeEvent
 
@@ -3769,14 +3781,14 @@ Models
 
 .. py:class:: Events
 
+   .. py:attribute:: cursor
+      :type: Cursor | None
+
    .. py:attribute:: cursor_string
       :type: str
 
    .. py:attribute:: events
       :type: list[Event]
-
-   .. note::
-      ``events`` is returned in the osu! api as ``None``.
 
 .. py:class:: BeatmapPack
 
@@ -4553,6 +4565,167 @@ Models
 
    .. py:attribute:: users
       :type: list[UserCompact]
+
+.. py:class:: _NonLegacyBeatmapScores
+
+   .. py:attribute:: scores
+      :type: list[_NonLegacyScore]
+
+   .. py:attribute:: userScore
+      :type: BeatmapUserScore | None
+
+.. py:class:: _NonLegacyMod
+
+.. py:class:: _NonLegacyStatistics
+
+   .. py:attribute:: combo_break
+      :type: int | None
+
+   .. py:attribute:: good
+      :type: int | None
+
+   .. py:attribute:: great
+      :type: int | None
+
+   .. py:attribute:: ignore_hit
+      :type: int | None
+
+   .. py:attribute:: ignore_miss
+      :type: int | None
+
+   .. py:attribute:: large_bonus
+      :type: int | None
+
+   .. py:attribute:: large_tick_hit
+      :type: int | None
+
+   .. py:attribute:: large_tick_miss
+      :type: int | None
+
+   .. py:attribute:: legacy_combo_increase
+      :type: int | None
+
+   .. py:attribute:: meh
+      :type: int | None
+
+   .. py:attribute:: miss
+      :type: int | None
+
+   .. py:attribute:: ok
+      :type: int | None
+
+   .. py:attribute:: perfect
+      :type: int | None
+
+   .. py:attribute:: slider_tail_hit
+      :type: int | None
+
+   .. py:attribute:: small_bonus
+      :type: int | None
+
+   .. py:attribute:: small_tick_hit
+      :type: int | None
+
+   .. py:attribute:: small_tick_miss
+      :type: int | None
+
+.. py:class:: _NonLegacyScore
+
+   .. py:attribute:: accuracy
+      :type: float
+
+   .. py:attribute:: beatmap_id
+      :type: int
+
+   .. py:attribute:: beatmapset
+      :type: BeatmapsetCompact | None
+
+   .. py:attribute:: best_id
+      :type: int | None
+
+   .. py:attribute:: build_id
+      :type: int | None
+
+   .. py:attribute:: current_user_attributes
+      :type: typing.Any
+
+   .. py:attribute:: ended_at
+      :type: ~datetime.datetime
+
+   .. py:attribute:: has_replay
+      :type: bool
+
+   .. py:attribute:: id
+      :type: int | None
+
+   .. py:attribute:: is_perfect_combo
+      :type: bool
+
+   .. py:attribute:: legacy_perfect
+      :type: bool
+
+   .. py:attribute:: legacy_score_id
+      :type: int
+
+   .. py:attribute:: legacy_total_score
+      :type: int
+
+   .. py:attribute:: match
+      :type: ScoreMatchInfo | None
+
+   .. py:attribute:: max_combo
+      :type: int
+
+   .. py:attribute:: maximum_statistics
+      :type: typing.Any
+
+   .. py:attribute:: mods
+      :type: _NonLegacyMod
+
+   .. py:attribute:: passed
+      :type: bool
+
+   .. py:attribute:: pp
+      :type: float | None
+
+   .. py:attribute:: preserve
+      :type: bool
+
+   .. py:attribute:: rank
+      :type: Grade
+
+   .. py:attribute:: rank_country
+      :type: int | None
+
+   .. py:attribute:: rank_global
+      :type: int | None
+
+   .. py:attribute:: ranked
+      :type: bool
+
+   .. py:attribute:: replay
+      :type: bool
+
+   .. py:attribute:: ruleset_id
+      :type: int
+
+   .. py:attribute:: started_at
+      :type: ~datetime.datetime | None
+
+   .. py:attribute:: statistics
+      :type: _NonLegacyStatistics
+
+   .. py:attribute:: total_score
+      :type: int
+
+   .. py:attribute:: type
+      :type: str
+
+   .. py:attribute:: user_id
+      :type: int
+
+   .. py:attribute:: weight
+      :type: Weight | None
 
 
 Ossapi
