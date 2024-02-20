@@ -229,7 +229,7 @@
         </div>
         <article role="main">
           <h1>Source code for ossapi.replay</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">osrparse</span> <span class="kn">import</span> <span class="n">GameMode</span> <span class="k">as</span> <span class="n">OsrparseGameMode</span>
+<span></span><span class="kn">from</span> <span class="nn">osrparse</span> <span class="kn">import</span> <span class="n">GameMode</span> <span class="k">as</span> <span class="n">OsrparseGameMode</span><span class="p">,</span> <span class="n">Replay</span> <span class="k">as</span> <span class="n">OsrparseReplay</span>
 
 <span class="kn">from</span> <span class="nn">ossapi.models</span> <span class="kn">import</span> <span class="n">GameMode</span><span class="p">,</span> <span class="n">User</span><span class="p">,</span> <span class="n">Beatmap</span>
 <span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
@@ -242,7 +242,7 @@
     <span class="n">OsrparseGameMode</span><span class="o">.</span><span class="n">MANIA</span><span class="p">:</span> <span class="n">GameMode</span><span class="o">.</span><span class="n">MANIA</span><span class="p">,</span>
 <span class="p">}</span>
 
-<div class="viewcode-block" id="Replay"><a class="viewcode-back" href="../../api-reference.html#ossapi.replay.Replay">[docs]</a><span class="k">class</span> <span class="nc">Replay</span><span class="p">:</span>
+<div class="viewcode-block" id="Replay"><a class="viewcode-back" href="../../api-reference.html#ossapi.replay.Replay">[docs]</a><span class="k">class</span> <span class="nc">Replay</span><span class="p">(</span><span class="n">OsrparseReplay</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A replay played by a player.</span>
 
@@ -253,27 +253,32 @@
 <span class="sd">    and :meth:`.beatmap` to retrieve api-related objects.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">replay</span><span class="p">,</span> <span class="n">api</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">game_mode_map</span><span class="p">[</span><span class="n">replay</span><span class="o">.</span><span class="n">mode</span><span class="p">],</span>
+            <span class="n">game_version</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">game_version</span><span class="p">,</span>
+            <span class="n">beatmap_hash</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">beatmap_hash</span><span class="p">,</span>
+            <span class="n">username</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+            <span class="n">replay_hash</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">replay_hash</span><span class="p">,</span>
+            <span class="n">count_300</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_300</span><span class="p">,</span>
+            <span class="n">count_100</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_100</span><span class="p">,</span>
+            <span class="n">count_50</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_50</span><span class="p">,</span>
+            <span class="n">count_geki</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_geki</span><span class="p">,</span>
+            <span class="n">count_katu</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_katu</span><span class="p">,</span>
+            <span class="n">count_miss</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">count_miss</span><span class="p">,</span>
+            <span class="n">score</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+            <span class="n">max_combo</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">max_combo</span><span class="p">,</span>
+            <span class="n">perfect</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">perfect</span><span class="p">,</span>
+            <span class="n">mods</span><span class="o">=</span><span class="n">Mod</span><span class="p">(</span><span class="n">replay</span><span class="o">.</span><span class="n">mods</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+            <span class="n">life_bar_graph</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">life_bar_graph</span><span class="p">,</span>
+            <span class="n">timestamp</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span>
+            <span class="n">replay_data</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">replay_data</span><span class="p">,</span>
+            <span class="n">replay_id</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">replay_id</span><span class="p">,</span>
+            <span class="n">rng_seed</span><span class="o">=</span><span class="n">replay</span><span class="o">.</span><span class="n">rng_seed</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_osrparse_mode</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_osrparse_mods</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">mods</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_api</span> <span class="o">=</span> <span class="n">api</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">game_mode_map</span><span class="p">[</span><span class="n">replay</span><span class="o">.</span><span class="n">mode</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">game_version</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">game_version</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beatmap_hash</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">beatmap_hash</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">username</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replay_hash</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">replay_hash</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_300</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_300</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_100</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_100</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_50</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_50</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_geki</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_geki</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_katu</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_katu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">count_miss</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">count_miss</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">score</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_combo</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">max_combo</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">perfect</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">perfect</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mods</span> <span class="o">=</span> <span class="n">Mod</span><span class="p">(</span><span class="n">replay</span><span class="o">.</span><span class="n">mods</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">life_bar_graph</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">life_bar_graph</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">timestamp</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replay_data</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">replay_data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replay_id</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">replay_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rng_seed</span> <span class="o">=</span> <span class="n">replay</span><span class="o">.</span><span class="n">rng_seed</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_beatmap</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_user</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -307,7 +312,32 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">UserLookupKey</span><span class="o">.</span><span class="n">USERNAME</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_user</span>
+
+<div class="viewcode-block" id="Replay.pack"><a class="viewcode-back" href="../../api-reference.html#ossapi.replay.Replay.pack">[docs]</a>    <span class="k">def</span> <span class="nf">pack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">dict_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">OsrparseReplay</span><span class="p">(</span>
+            <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_osrparse_mode</span><span class="p">,</span>
+            <span class="n">game_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">game_version</span><span class="p">,</span>
+            <span class="n">beatmap_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">beatmap_hash</span><span class="p">,</span>
+            <span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+            <span class="n">replay_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">replay_hash</span><span class="p">,</span>
+            <span class="n">count_300</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_300</span><span class="p">,</span>
+            <span class="n">count_100</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_100</span><span class="p">,</span>
+            <span class="n">count_50</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_50</span><span class="p">,</span>
+            <span class="n">count_geki</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_geki</span><span class="p">,</span>
+            <span class="n">count_katu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_katu</span><span class="p">,</span>
+            <span class="n">count_miss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">count_miss</span><span class="p">,</span>
+            <span class="n">score</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+            <span class="n">max_combo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_combo</span><span class="p">,</span>
+            <span class="n">perfect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">perfect</span><span class="p">,</span>
+            <span class="n">mods</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_osrparse_mods</span><span class="p">,</span>
+            <span class="n">life_bar_graph</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">life_bar_graph</span><span class="p">,</span>
+            <span class="n">timestamp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span>
+            <span class="n">replay_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">replay_data</span><span class="p">,</span>
+            <span class="n">replay_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">replay_id</span><span class="p">,</span>
+            <span class="n">rng_seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng_seed</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">dict_size</span><span class="o">=</span><span class="n">dict_size</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div></div>
 </pre></div>
         </article>
       </div>

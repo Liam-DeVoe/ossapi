@@ -333,6 +333,7 @@
     <span class="c1"># ---------------</span>
     <span class="n">account_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserAccountHistory</span><span class="p">]]</span>
     <span class="n">active_tournament_banner</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProfileBanner</span><span class="p">]</span>
+    <span class="n">active_tournament_banners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ProfileBanner</span><span class="p">]]</span>
     <span class="n">badges</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserBadge</span><span class="p">]]</span>
     <span class="n">beatmap_playcounts_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">blocks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]</span>
@@ -373,6 +374,7 @@
     <span class="n">unread_pm_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_achievements</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserAchievement</span><span class="p">]]</span>
     <span class="n">user_preferences</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserProfileCustomization</span><span class="p">]</span>
+    <span class="n">session_verified</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="UserCompact.expand"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.UserCompact.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
@@ -959,7 +961,7 @@
     <span class="n">user</span><span class="p">:</span> <span class="n">EventUser</span></div>
 
 <div class="viewcode-block" id="UserSupportGiftEvent"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.UserSupportGiftEvent">[docs]</a><span class="k">class</span> <span class="nc">UserSupportGiftEvent</span><span class="p">(</span><span class="n">Event</span><span class="p">):</span>
-    <span class="n">beatmap</span><span class="p">:</span> <span class="n">EventBeatmap</span></div>
+    <span class="n">user</span><span class="p">:</span> <span class="n">EventUser</span></div>
 
 <div class="viewcode-block" id="UsernameChangeEvent"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.UsernameChangeEvent">[docs]</a><span class="k">class</span> <span class="nc">UsernameChangeEvent</span><span class="p">(</span><span class="n">Event</span><span class="p">):</span>
     <span class="n">user</span><span class="p">:</span> <span class="n">EventUser</span></div>
@@ -1105,6 +1107,7 @@
     <span class="n">score_multiplier</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Events"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.Events">[docs]</a><span class="k">class</span> <span class="nc">Events</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">deserialize_type</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">_Event</span><span class="p">])</span></div>
 
@@ -1475,7 +1478,8 @@
     <span class="n">scoring_type</span><span class="p">:</span> <span class="n">ScoringType</span>
     <span class="n">team_type</span><span class="p">:</span> <span class="n">TeamType</span>
     <span class="n">mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
-    <span class="c1"># null for deleted beatmaps.</span>
+    <span class="c1"># null for deleted beatmaps,</span>
+    <span class="c1"># e.g. https://osu.ppy.sh/community/matches/103721175.</span>
     <span class="c1"># TODO doesn&#39;t match docs</span>
     <span class="n">beatmap</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapCompact</span><span class="p">]</span>
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
@@ -1501,6 +1505,92 @@
     <span class="n">first_event_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">latest_event_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">current_game_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+
+
+<span class="c1"># ==================</span>
+<span class="c1"># Provisional Models</span>
+<span class="c1"># ==================</span>
+
+<div class="viewcode-block" id="_NonLegacyBeatmapScores"><a class="viewcode-back" href="../../api-reference.html#ossapi.models._NonLegacyBeatmapScores">[docs]</a><span class="k">class</span> <span class="nc">_NonLegacyBeatmapScores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">_NonLegacyScore</span><span class="p">]</span>
+    <span class="n">userScore</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapUserScore</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="_NonLegacyMod"><a class="viewcode-back" href="../../api-reference.html#ossapi.models._NonLegacyMod">[docs]</a><span class="k">class</span> <span class="nc">_NonLegacyMod</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="c1"># returned in a new format. e.g.:</span>
+    <span class="c1"># &quot;mods&quot;: [</span>
+    <span class="c1">#      {</span>
+    <span class="c1">#          &quot;acronym&quot;: &quot;HR&quot;</span>
+    <span class="c1">#      },</span>
+    <span class="c1">#      {</span>
+    <span class="c1">#          &quot;acronym&quot;: &quot;HD&quot;</span>
+    <span class="c1">#      },</span>
+    <span class="c1">#      {</span>
+    <span class="c1">#          &quot;acronym&quot;: &quot;CL&quot;</span>
+    <span class="c1">#      }</span>
+    <span class="c1">#  ],</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="_NonLegacyStatistics"><a class="viewcode-back" href="../../api-reference.html#ossapi.models._NonLegacyStatistics">[docs]</a><span class="k">class</span> <span class="nc">_NonLegacyStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># these values simply aren&#39;t present if they are 0. oversight?</span>
+    <span class="n">miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">meh</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ok</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">good</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">great</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+    <span class="c1"># TODO: are these weird values returned by the api anywhere?</span>
+    <span class="c1"># e.g. legacy_combo_increase in particular.</span>
+    <span class="n">perfect</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_tick_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_tick_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_tick_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_tick_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_bonus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_bonus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ignore_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ignore_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">combo_break</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">slider_tail_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">legacy_combo_increase</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="_NonLegacyScore"><a class="viewcode-back" href="../../api-reference.html#ossapi.models._NonLegacyScore">[docs]</a><span class="k">class</span> <span class="nc">_NonLegacyScore</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">best_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">accuracy</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">max_combo</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">statistics</span><span class="p">:</span> <span class="n">_NonLegacyStatistics</span>
+    <span class="n">pp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">rank</span><span class="p">:</span> <span class="n">Grade</span>
+
+    <span class="n">passed</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">replay</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">maximum_statistics</span><span class="p">:</span> <span class="n">Any</span> <span class="c1"># TODO property typing</span>
+    <span class="n">mods</span><span class="p">:</span> <span class="n">_NonLegacyMod</span>
+    <span class="n">ruleset_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">started_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">ended_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">ranked</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">preserve</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">build_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">has_replay</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">is_perfect_combo</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="n">legacy_perfect</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">legacy_score_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">legacy_total_score</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="n">beatmapset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetCompact</span><span class="p">]</span>
+    <span class="n">rank_country</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">rank_global</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Weight</span><span class="p">]</span>
+    <span class="n">_user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+    <span class="n">match</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ScoreMatchInfo</span><span class="p">]</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span></div>
 </pre></div>
         </article>
       </div>

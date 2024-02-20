@@ -264,7 +264,7 @@
     <span class="n">BeatmapUserScores</span><span class="p">,</span> <span class="n">DifficultyAttributes</span><span class="p">,</span> <span class="n">Users</span><span class="p">,</span> <span class="n">Beatmaps</span><span class="p">,</span>
     <span class="n">CreateForumTopicResponse</span><span class="p">,</span> <span class="n">ForumPoll</span><span class="p">,</span> <span class="n">ForumPost</span><span class="p">,</span> <span class="n">ForumTopic</span><span class="p">,</span> <span class="n">Room</span><span class="p">,</span>
     <span class="n">RoomLeaderboard</span><span class="p">,</span> <span class="n">Matches</span><span class="p">,</span> <span class="n">Match</span><span class="p">,</span> <span class="n">MatchResponse</span><span class="p">,</span> <span class="n">ChatChannel</span><span class="p">,</span> <span class="n">Events</span><span class="p">,</span>
-    <span class="n">BeatmapPack</span><span class="p">,</span> <span class="n">BeatmapPacks</span><span class="p">)</span>
+    <span class="n">BeatmapPack</span><span class="p">,</span> <span class="n">BeatmapPacks</span><span class="p">,</span> <span class="n">_NonLegacyBeatmapScores</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span><span class="n">GameMode</span><span class="p">,</span> <span class="n">ScoreType</span><span class="p">,</span> <span class="n">RankingFilter</span><span class="p">,</span> <span class="n">RankingType</span><span class="p">,</span>
     <span class="n">UserBeatmapType</span><span class="p">,</span> <span class="n">BeatmapDiscussionPostSort</span><span class="p">,</span> <span class="n">UserLookupKey</span><span class="p">,</span>
     <span class="n">BeatmapsetEventType</span><span class="p">,</span> <span class="n">CommentableType</span><span class="p">,</span> <span class="n">CommentSort</span><span class="p">,</span> <span class="n">ForumTopicSort</span><span class="p">,</span>
@@ -894,6 +894,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;api returned an error of `</span><span class="si">{</span><span class="n">json_</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">` for &quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;a request to </span><span class="si">{</span><span class="n">unquote</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+        <span class="c1"># some endpoints only require authorization grant for some endpoints.</span>
+        <span class="c1"># e.g. normally api.match only requires client credentials grant, but for</span>
+        <span class="c1"># private matches like api.match(111632899), it will return this error.</span>
+        <span class="k">if</span> <span class="n">json_</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;authentication&quot;</span><span class="p">:</span> <span class="s2">&quot;basic&quot;</span><span class="p">}:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Permission denied for a request to &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unquote</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="s2">. This request may require &quot;</span>
+                <span class="s2">&quot;Grant.AUTHORIZATION_CODE.&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
@@ -1221,6 +1229,12 @@
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">deserialize_type</span> <span class="ow">in</span> <span class="n">field_deserialize_types</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">val</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">deserialize_type</span>
 
+        <span class="c1"># modifying the type hints of an object dynamically invalidates its</span>
+        <span class="c1"># cache. Avoid looking up stale type hints if we had looked up its</span>
+        <span class="c1"># previous value before modifying it here.</span>
+        <span class="k">if</span> <span class="n">field_deserialize_types</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)]</span>
+
         <span class="k">return</span> <span class="n">val</span>
 
     <span class="k">def</span> <span class="nf">_get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
@@ -1384,6 +1398,28 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_beatmap_scores_non_legacy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">BeatmapIdT</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_NonLegacyBeatmapScores</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is a provisional method. It may change or disappear in the future.</span>
+<span class="sd">        Feel free to use it, but don&#39;t expect ossapi to maintain backwards</span>
+<span class="sd">        compatability here.</span>
+
+<span class="sd">        I&#39;ll decide what to do about these provisional methods once the lazer</span>
+<span class="sd">        migration settles down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="n">legacy_only</span><span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">_NonLegacyBeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/solo-scores&quot;</span><span class="p">,</span>
             <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
