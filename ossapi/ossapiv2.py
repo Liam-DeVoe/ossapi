@@ -881,7 +881,6 @@ class Ossapi:
             return None
         value = self._instantiate(type_, value)
         if type(value)==BeatmapUserScore:
-            print(value)
             if value.position==None:
                 return None
         # we need to resolve the annotations of any nested model types before we
