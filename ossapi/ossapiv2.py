@@ -656,9 +656,6 @@ class Ossapi:
         return self._instantiate_type(type_, json_)
 
     def _check_response(self, json_, url):
-        # TODO this should just be `if "error" in json`, but for some reason
-        # `self.search_beatmaps` always returns an error in the response...
-        # open an issue on osu-web?
         if len(json_) == 1 and "error" in json_:
             if json_['error']!=None:
                 raise ValueError(f"api returned an error of `{json_['error']}` for "
