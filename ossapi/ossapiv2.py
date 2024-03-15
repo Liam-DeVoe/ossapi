@@ -656,6 +656,9 @@ class Ossapi:
         return self._instantiate_type(type_, json_)
 
     def _check_response(self, json_, url):
+        # TODO this should just be `if "error" in json`, but for some reason
+        # `self.search_beatmaps` always returns an error in the response...
+        # open an issue on osu-web?
         if len(json_) == 1 and "error" in json_:
             if json_['error']!=None:
                 raise ValueError(f"api returned an error of `{json_['error']}` for "
@@ -880,10 +883,15 @@ class Ossapi:
         if not is_model_type(type_) and not is_model_type(origin):
             return None
         value = self._instantiate(type_, value)
+        if type(value)==BeatmapUserScore:
+            print(value)
+            if value.position==None:
+                return None
         # we need to resolve the annotations of any nested model types before we
         # set the attribute. This recursion is well-defined because the base
         # case is when `value` has no model types, which will always happen
         # eventually.
+        
         return self._resolve_annotations(value)
 
     def _instantiate(self, type_, kwargs):
