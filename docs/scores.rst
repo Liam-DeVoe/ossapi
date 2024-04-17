@@ -10,3 +10,5 @@ Scores
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.score
 
+.. autofunction:: ossapi.ossapiv2.Ossapi.score_mode
+

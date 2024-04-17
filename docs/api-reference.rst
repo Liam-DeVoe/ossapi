@@ -1327,22 +1327,22 @@ Enums
 .. py:class:: Statistics
 
    .. py:attribute:: count_100
-      :type: int
+      :type: int | None
 
    .. py:attribute:: count_300
-      :type: int
+      :type: int | None
 
    .. py:attribute:: count_50
-      :type: int
+      :type: int | None
 
    .. py:attribute:: count_geki
-      :type: int
+      :type: int | None
 
    .. py:attribute:: count_katu
-      :type: int
+      :type: int | None
 
    .. py:attribute:: count_miss
-      :type: int
+      :type: int | None
 
 .. py:class:: Availability
 
@@ -2991,7 +2991,7 @@ Models
       :type: Cursor | None
 
    .. py:attribute:: cursor_string
-      :type: str
+      :type: str | None
 
 .. py:class:: Rankings
 
@@ -3574,7 +3574,7 @@ Models
 .. py:class:: MultiplayerScores
 
    .. py:attribute:: cursor_string
-      :type: str
+      :type: str | None
 
    .. py:attribute:: params
       :type: str
@@ -3649,7 +3649,7 @@ Models
       :type: Cursor | None
 
    .. py:attribute:: cursor_string
-      :type: str
+      :type: str | None
 
    .. py:attribute:: news_posts
       :type: list[NewsPost]
@@ -3785,7 +3785,7 @@ Models
       :type: Cursor | None
 
    .. py:attribute:: cursor_string
-      :type: str
+      :type: str | None
 
    .. py:attribute:: events
       :type: list[Event]
@@ -4478,7 +4478,7 @@ Models
       :type: Cursor | None
 
    .. py:attribute:: cursor_string
-      :type: str
+      :type: str | None
 
    .. py:attribute:: matches
       :type: list[Match]
