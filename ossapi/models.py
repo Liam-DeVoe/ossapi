@@ -78,6 +78,7 @@ class Cursor(BaseModel):
 # responsibility to check for a null cursor to see if there are any more
 # results.
 CursorT = Optional[Cursor]
+CursorStringT = Optional[str]
 
 class UserCompact(Model):
     """
@@ -497,7 +498,7 @@ class ForumTopicAndPosts(Model):
     search: ForumTopicSearch
     posts: List[ForumPost]
     topic: ForumTopic
-    cursor_string: Optional[str]
+    cursor_string: CursorStringT
 
 class CreateForumTopicResponse(Model):
     post: ForumPost
@@ -549,7 +550,7 @@ class Beatmaps(Model):
 
 class BeatmapPacks(Model):
     cursor: CursorT
-    cursor_string: str
+    cursor_string: CursorStringT
     beatmap_packs: List[BeatmapPack]
 
 class Rankings(Model):
@@ -626,7 +627,7 @@ class BeatmapsetDiscussionVote(Model):
     updated_at: Datetime
     # TODO is this field ever actually returned? not documented and can't find
     # a repro case.
-    cursor_string: Optional[str]
+    cursor_string: CursorStringT
 
     def user(self):
         return self._fk_user(self.user_id)
@@ -779,7 +780,7 @@ class ChangelogListing(Model):
     streams: List[UpdateStream]
 
 class MultiplayerScores(Model):
-    cursor_string: str
+    cursor_string: CursorStringT
     params: str
     scores: List[MultiplayerScore]
     total: Optional[int]
@@ -810,7 +811,7 @@ class MultiplayerScoresAround(Model):
 
 class NewsListing(Model):
     cursor: CursorT
-    cursor_string: str
+    cursor_string: CursorStringT
     news_posts: List[NewsPost]
     news_sidebar: NewsSidebar
     search: NewsSearch
@@ -877,7 +878,7 @@ class BeatmapDifficultyAttributes(Model):
 
 class Events(Model):
     cursor: CursorT
-    cursor_string: str
+    cursor_string: CursorStringT
     events: List[Event] = Field(deserialize_type=List[_Event])
 
 class BeatmapPack(Model):
@@ -1235,7 +1236,7 @@ class Matches(Model):
     matches: List[Match]
     cursor: CursorT
     params: Any
-    cursor_string: str
+    cursor_string: CursorStringT
 
 class MatchGame(Model):
     id: int

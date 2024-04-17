@@ -1,7 +1,7 @@
 import os
 from unittest import TestCase
 
-from ossapi import Ossapi, OssapiV1, Grant, Scope, Domain
+from ossapi import Ossapi, OssapiV1, Grant, Scope
 
 
 # technically all scopes except Scope.DELEGATE, since I don't own a bot account
@@ -28,8 +28,6 @@ def setup_api_v2():
     client_secret = get_env("OSU_API_CLIENT_SECRET")
     api_v2 = Ossapi(client_id, client_secret, strict=True,
         grant=Grant.CLIENT_CREDENTIALS)
-    api_v2_lazer = Ossapi(client_id, client_secret, strict=True,
-        grant=Grant.CLIENT_CREDENTIALS, domain=Domain.LAZER)
 
     if headless:
         api_v2_full = None
@@ -38,7 +36,7 @@ def setup_api_v2():
         api_v2_full = Ossapi(client_id, client_secret, redirect_uri,
             strict=True, grant=Grant.AUTHORIZATION_CODE, scopes=ALL_SCOPES)
 
-    return (api_v2, api_v2_full, api_v2_lazer)
+    return (api_v2, api_v2_full)
 
 def setup_api_v2_dev():
     if headless:
@@ -68,7 +66,7 @@ def setup_api_v2_dev():
         grant=Grant.AUTHORIZATION_CODE, scopes=ALL_SCOPES, domain="dev")
 
 api_v1 = setup_api_v1()
-api_v2, api_v2_full, api_v2_lazer = setup_api_v2()
+api_v2, api_v2_full = setup_api_v2()
 api_v2_dev = setup_api_v2_dev()
 
 

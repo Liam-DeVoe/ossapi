@@ -66,7 +66,7 @@ class TestFollowingForeignKeys(TestCase):
         self.assertEqual(user.id, 4693052)
 
     def test_score_fks(self):
-        score = api.score(GameMode.OSU, 3685255338)
+        score = api.score_mode(GameMode.OSU, 3685255338)
 
         user = score.user()
         self.assertIsInstance(user, UserCompact)

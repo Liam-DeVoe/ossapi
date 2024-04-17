@@ -7,7 +7,6 @@ If you need support or would like to contribute, feel free to ask in the `#ossap
 * [Installation](#installation)
 * [Quickstart](#quickstart)
 * [Async](#async)
-* [Lazer](#lazer)
 * [Endpoints](#endpoints)
   * [Beatmap Packs](#endpoints-beatmap-packs)
   * [Beatmaps](#endpoints-beatmaps)
@@ -30,6 +29,7 @@ If you need support or would like to contribute, feel free to ask in the `#ossap
   * [Spotlights](#endpoints-spotlights)
   * [Users](#endpoints-users)
   * [Wiki](#endpoints-wiki)
+* [Other domains](#other-domains)
 * [API v1 Usage](#api-v1-usage)
 
 
@@ -85,18 +85,18 @@ asyncio.run(main())
 
 [Read more about OssapiAsync on the docs.](https://tybug.github.io/ossapi/async.html)
 
-## Lazer
+## Other domains
 
-You can retrieve lazer-specific data (scores, leaderboards, etc) with ossapi:
+You can use ossapi to interact with the api of other deployments of the osu website, such as https://dev.ppy.sh.
 
 ```python
 from ossapi import Ossapi
 
-api_lazer = Ossapi(client_id, client_secret, domain="lazer")
-
-# best score on the lazer server (lazer + osu scores combined)
-scores = api_lazer.user_scores(12092800, "best")
-print(scores[0].pp)
+api = Ossapi(client_id, client_secret, domain="dev")
+# get the dev server pp leaderboards
+ranking = api.ranking("osu", "performance").ranking
+# pearline06, as of 2023
+print(ranking[0].user.username)
 ```
 
 [Read more about domains on the docs.](https://tybug.github.io/ossapi/domains.html)
@@ -164,6 +164,7 @@ All endpoints for api v2.
 * Scores<a name="endpoints-scores"></a>
   * [`api.download_score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.download_score)
   * [`api.score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.score)
+  * [`api.score_mode`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.score_mode)
 * Seasonal Backgrounds<a name="endpoints-seasonal-backgrounds"></a>
   * [`api.seasonal_backgrounds`](https://tybug.github.io/ossapi/seasonal%20backgrounds.html#ossapi.ossapiv2.Ossapi.seasonal_backgrounds)
 * Spotlights<a name="endpoints-spotlights"></a>

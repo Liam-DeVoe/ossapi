@@ -9,7 +9,6 @@ from tests import (
     TestCaseAuthorizationCode, TestCaseDevServer, UNIT_TEST_MESSAGE,
     api_v2 as api,
     api_v2_full as api_full,
-    api_v2_lazer as api_lazer,
     api_v2_dev as api_dev
 )
 
@@ -200,16 +199,30 @@ class TestBeatmaps(TestCase):
 class TestScore(TestCase):
     def test_deserialize(self):
         # downloadable
-        api.score(GameMode.OSU, 2243145877)
+        api.score(429915881)
         # downloadable, my score
-        api.score(GameMode.OSU, 3685255338)
+        api.score(1262758549)
         # not downloadable, my score
-        api.score(GameMode.OSU, 3772000814)
+        api.score(1312718771)
 
         # other gamemodes
-        api.score(GameMode.TAIKO, 176904666)
-        api.score(GameMode.MANIA, 524674141)
-        api.score(GameMode.CATCH, 211167989)
+        api.score(1874611010)
+        api.score(2238254261)
+        api.score(1958862711)
+
+class TestScoreMode(TestCase):
+    def test_deserialize(self):
+        # downloadable
+        api.score_mode(GameMode.OSU, 2243145877)
+        # downloadable, my score
+        api.score_mode(GameMode.OSU, 3685255338)
+        # not downloadable, my score
+        api.score_mode(GameMode.OSU, 3772000814)
+
+        # other gamemodes
+        api.score_mode(GameMode.TAIKO, 176904666)
+        api.score_mode(GameMode.MANIA, 524674142)
+        api.score_mode(GameMode.CATCH, 211167989)
 
 class TestFriends(TestCase):
     def test_access_denied(self):
@@ -278,30 +291,6 @@ class TestRooms(TestCaseAuthorizationCode):
     def test_deserialize(self):
         api_full.rooms()
         api_full.rooms(mode=RoomSearchMode.OWNED)
-
-
-# ====================
-# api_lazer test cases
-# ====================
-class TestLazerUser(TestCase):
-    def test_lazer_different_from_osu(self):
-        # make sure the lazer domain returns something different than the osu
-        # domain. ie, we're actually hitting a different db.
-
-        statistics = api.user("tybug").statistics
-        pp_osu = statistics.pp
-        pp_exp_osu = statistics.pp_exp
-
-        statistics = api_lazer.user("tybug").statistics
-        pp_lazer = statistics.pp
-        pp_exp_lazer = statistics.pp_exp
-
-        # pp_exp is 0 in lazer
-        self.assertEqual(pp_exp_lazer, 0)
-        # not necessarily an invariant, but happens to be true for my account
-        self.assertNotEqual(pp_osu, pp_lazer)
-        # this is the real invariant relating pp_exp and pp on the two domains.
-        self.assertEqual(pp_lazer, pp_exp_osu)
 
 
 # ==================

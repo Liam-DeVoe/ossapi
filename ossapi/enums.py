@@ -533,12 +533,15 @@ class Covers(Model):
     slimcover_2x: str = Field(name="slimcover@2x")
 
 class Statistics(Model):
-    count_50: int
-    count_100: int
-    count_300: int
-    count_geki: int
-    count_katu: int
-    count_miss: int
+    # I think any of these attributes can be null if the corresponding gamemode
+    # doesn't have the judgment as a possible judgement. eg taiko doesn't have 50s
+    # and catch doesn't have geki.
+    count_50: Optional[int]
+    count_100: Optional[int]
+    count_300: Optional[int]
+    count_geki: Optional[int]
+    count_katu: Optional[int]
+    count_miss: Optional[int]
 
 class Availability(Model):
     download_disabled: bool
