@@ -486,15 +486,13 @@
 <div class="viewcode-block" id="Domain"><a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Domain">[docs]</a><span class="k">class</span> <span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Different possible api domains. These correspond to different deployments of</span>
-<span class="sd">    the osu server: osu.ppy.sh, lazer.ppy.sh, and dev.ppy.sh respectively.</span>
+<span class="sd">    the osu server, such as osu.ppy.sh or dev.ppy.sh.</span>
 
 <span class="sd">    The default domain, and the one the vast majority of users want, is</span>
 <span class="sd">    :data:`Domain.OSU &lt;ossapi.ossapiv2.Domain.OSU&gt;`, and corresponds to the</span>
-<span class="sd">    main website. To retrieve information from the lazer website or the dev</span>
-<span class="sd">    website, use the corresponding domain.</span>
+<span class="sd">    main website.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">OSU</span> <span class="o">=</span> <span class="s2">&quot;osu&quot;</span>
-    <span class="n">LAZER</span> <span class="o">=</span> <span class="s2">&quot;lazer&quot;</span>
     <span class="n">DEV</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span></div>
 
 <span class="k">class</span> <span class="nc">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">OAuth2Session</span><span class="p">):</span>
@@ -573,10 +571,7 @@
 <span class="sd">        :data:`Domain.OSU &lt;ossapi.ossapiv2.Domain.OSU&gt;`, which corresponds to</span>
 <span class="sd">        osu.ppy.sh, the main website.</span>
 <span class="sd">        |br|</span>
-<span class="sd">        To retrieve information from lazer.ppy.sh - for instance, the</span>
-<span class="sd">        leaderboards on lazer, or a user&#39;s best score on lazer - specify</span>
-<span class="sd">        :data:`Domain.LAZER &lt;ossapi.ossapiv2.Domain.LAZER&gt;`. To retrieve</span>
-<span class="sd">        information from dev.ppy.sh, specify</span>
+<span class="sd">        To retrieve information from dev.ppy.sh, specify</span>
 <span class="sd">        :data:`Domain.DEV &lt;ossapi.ossapiv2.Domain.DEV&gt;`.</span>
 <span class="sd">        |br|</span>
 <span class="sd">        See :doc:`Domains &lt;domains&gt;` for more about domains.</span>
@@ -686,8 +681,6 @@
         <span class="c1"># for backwards compatability, only hash the domain when it&#39;s</span>
         <span class="c1"># non-default. This ensures keys from before and after domains were</span>
         <span class="c1"># introduced coincide.</span>
-        <span class="c1"># This intentionally treats Domain.OSU and Domain.LAZER as the same key,</span>
-        <span class="c1"># as those domains share account and oauth credentials.</span>
         <span class="k">if</span> <span class="n">domain</span> <span class="ow">is</span> <span class="n">Domain</span><span class="o">.</span><span class="n">DEV</span><span class="p">:</span>
             <span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 
@@ -2300,8 +2293,8 @@
     <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">match_id</span><span class="p">:</span> <span class="n">MatchIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">after</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">before</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">after_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">before_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatchResponse</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2317,7 +2310,7 @@
 <span class="sd">        Implements the `Get Match</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#matchesmatch&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;after&quot;</span><span class="p">:</span> <span class="n">after</span><span class="p">,</span> <span class="s2">&quot;before&quot;</span><span class="p">:</span> <span class="n">before</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;after&quot;</span><span class="p">:</span> <span class="n">after_id</span><span class="p">,</span> <span class="s2">&quot;before&quot;</span><span class="p">:</span> <span class="n">before_id</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">MatchResponse</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/matches/</span><span class="si">{</span><span class="n">match_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
 
@@ -2586,11 +2579,34 @@
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span>
         <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get a score.</span>
+<span class="sd">        Get a score. This corresponds to urls of the form https://osu.ppy.sh/scores/1312718771</span>
+<span class="sd">        (&quot;new id format&quot;).</span>
+
+<span class="sd">        If you have an old id which is per-gamemode, use api.score_mode.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        score_id</span>
+<span class="sd">            The score to get.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Get Score</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescore&gt;`__ endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a score, where the score id is specific to the gamemode. This</span>
+<span class="sd">        corresponds to urls of the form https://osu.ppy.sh/scores/osu/4459998279</span>
+<span class="sd">        (&quot;old id format&quot;).</span>
+
+<span class="sd">        If you have a new id which is global across gamemodes, use api.score.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2632,13 +2648,6 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescoredownload&gt;`__</span>
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="ow">is</span> <span class="n">Domain</span><span class="o">.</span><span class="n">LAZER</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Downloading scores using the lazer domain is not &quot;</span>
-                <span class="s2">&quot;currently supported, as lazer itself does not currently &quot;</span>
-                <span class="s2">&quot;support replay downloads. This may change in the future. To &quot;</span>
-                <span class="s2">&quot;download replays, use the osu domain (ie, a normal Ossapi &quot;</span>
-                <span class="s2">&quot;instance.)&quot;</span><span class="p">)</span>
-
         <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 

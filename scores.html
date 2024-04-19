@@ -256,8 +256,29 @@ endpoint.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.score">
-<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.score" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a score.</p>
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.score" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a score. This corresponds to urls of the form <a class="reference external" href="https://osu.ppy.sh/scores/1312718771">https://osu.ppy.sh/scores/1312718771</a>
+(“new id format”).</p>
+<p>If you have an old id which is per-gamemode, use api.score_mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>score_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The score to get.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#scoresmodescore">Get Score</a> endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.score_mode">
+<span class="sig-name descname"><span class="pre">score_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.score_mode" title="Permalink to this definition">#</a></dt>
+<dd><p>Get a score, where the score id is specific to the gamemode. This
+corresponds to urls of the form <a class="reference external" href="https://osu.ppy.sh/scores/osu/4459998279">https://osu.ppy.sh/scores/osu/4459998279</a>
+(“old id format”).</p>
+<p>If you have a new id which is global across gamemodes, use api.score.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -336,6 +357,7 @@ endpoint.</p>
 <li><a class="reference internal" href="#">Scores</a><ul>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.download_score"><code class="docutils literal notranslate"><span class="pre">download_score()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.score_mode"><code class="docutils literal notranslate"><span class="pre">score_mode()</span></code></a></li>
 </ul>
 </li>
 </ul>

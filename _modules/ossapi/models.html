@@ -309,6 +309,7 @@
 <span class="c1"># responsibility to check for a null cursor to see if there are any more</span>
 <span class="c1"># results.</span>
 <span class="n">CursorT</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Cursor</span><span class="p">]</span>
+<span class="n">CursorStringT</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
 <div class="viewcode-block" id="UserCompact"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.UserCompact">[docs]</a><span class="k">class</span> <span class="nc">UserCompact</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -728,7 +729,7 @@
     <span class="n">search</span><span class="p">:</span> <span class="n">ForumTopicSearch</span>
     <span class="n">posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ForumPost</span><span class="p">]</span>
     <span class="n">topic</span><span class="p">:</span> <span class="n">ForumTopic</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span></div>
 
 <div class="viewcode-block" id="CreateForumTopicResponse"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.CreateForumTopicResponse">[docs]</a><span class="k">class</span> <span class="nc">CreateForumTopicResponse</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">post</span><span class="p">:</span> <span class="n">ForumPost</span>
@@ -780,7 +781,7 @@
 
 <div class="viewcode-block" id="BeatmapPacks"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapPacks">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPacks</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
     <span class="n">beatmap_packs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPack</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Rankings"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.Rankings">[docs]</a><span class="k">class</span> <span class="nc">Rankings</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -857,7 +858,7 @@
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="c1"># TODO is this field ever actually returned? not documented and can&#39;t find</span>
     <span class="c1"># a repro case.</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
 
 <div class="viewcode-block" id="BeatmapsetDiscussionVote.user"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetDiscussionVote.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div></div>
@@ -1010,7 +1011,7 @@
     <span class="n">streams</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UpdateStream</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MultiplayerScores"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.MultiplayerScores">[docs]</a><span class="k">class</span> <span class="nc">MultiplayerScores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
     <span class="n">params</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
@@ -1041,7 +1042,7 @@
 
 <div class="viewcode-block" id="NewsListing"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.NewsListing">[docs]</a><span class="k">class</span> <span class="nc">NewsListing</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
     <span class="n">news_posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NewsPost</span><span class="p">]</span>
     <span class="n">news_sidebar</span><span class="p">:</span> <span class="n">NewsSidebar</span>
     <span class="n">search</span><span class="p">:</span> <span class="n">NewsSearch</span></div>
@@ -1108,7 +1109,7 @@
 
 <div class="viewcode-block" id="Events"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.Events">[docs]</a><span class="k">class</span> <span class="nc">Events</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
     <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">deserialize_type</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">_Event</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="BeatmapPack"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapPack">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPack</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -1466,7 +1467,7 @@
     <span class="n">matches</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Match</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
-    <span class="n">cursor_string</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span></div>
 
 <div class="viewcode-block" id="MatchGame"><a class="viewcode-back" href="../../api-reference.html#ossapi.models.MatchGame">[docs]</a><span class="k">class</span> <span class="nc">MatchGame</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>

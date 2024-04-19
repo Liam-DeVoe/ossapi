@@ -764,12 +764,15 @@
     <span class="n">slimcover_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;slimcover@2x&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Statistics"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Statistics">[docs]</a><span class="k">class</span> <span class="nc">Statistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">count_50</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_100</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_300</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_geki</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_katu</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">count_miss</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="c1"># I think any of these attributes can be null if the corresponding gamemode</span>
+    <span class="c1"># doesn&#39;t have the judgment as a possible judgement. eg taiko doesn&#39;t have 50s</span>
+    <span class="c1"># and catch doesn&#39;t have geki.</span>
+    <span class="n">count_50</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">count_100</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">count_300</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">count_geki</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">count_katu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">count_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Availability"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Availability">[docs]</a><span class="k">class</span> <span class="nc">Availability</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">download_disabled</span><span class="p">:</span> <span class="nb">bool</span>

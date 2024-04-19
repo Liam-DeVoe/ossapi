@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -224,7 +224,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -232,42 +232,22 @@
         <article role="main">
           <section id="domains">
 <h1>Domains<a class="headerlink" href="#domains" title="Permalink to this heading">#</a></h1>
-<section id="lazer-domain">
-<h2>Lazer Domain<a class="headerlink" href="#lazer-domain" title="Permalink to this heading">#</a></h2>
-<p>It is possible to retrieve information from <a class="reference external" href="https://lazer.ppy.sh/home">lazer.ppy.sh</a> via the api. For instance, a user’s top lazer scores, or the lazer leaderboard. To do so, specify the <code class="docutils literal notranslate"><span class="pre">domain</span></code> argument to <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
+<p>It is possible to use ossapi to interact with the api of other deployments of the osu website, such as <a class="reference external" href="https://dev.ppy.sh">dev.ppy.sh</a>. To do so, use the <code class="docutils literal notranslate"><span class="pre">domain</span></code> argument of <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Ossapi" title="ossapi.ossapiv2.Ossapi"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ossapi</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
 
-<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;lazer&quot;</span><span class="p">)</span>
+<span class="n">api_dev</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
 <span class="c1"># or</span>
-<span class="n">api_lazer</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">LAZER</span><span class="p">)</span>
+<span class="n">api_dev</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">DEV</span><span class="p">)</span>
 
-<span class="c1"># best score on the lazer server (lazer + osu scores combined)</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">api_lazer</span><span class="o">.</span><span class="n">user_scores</span><span class="p">(</span><span class="mi">12092800</span><span class="p">,</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pp</span><span class="p">)</span>
+<span class="c1"># top player on the dev server leaderboards. This is pearline06 as of 2023</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api_dev</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="s2">&quot;performance&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This works with both the client credentials and authorization code grant, with the normal caveats of the two grants. E.g., you cannot send chat messages with the client credentials grant when in the lazer domain, just like you cannot in the normal domain. See <a class="reference internal" href="grants.html"><span class="doc">Grants</span></a> for more about the differences between the two grants.</p>
+<p>This works with both the client credentials and authorization code grant, with the normal caveats of the two grants. E.g., you cannot send chat messages with the client credentials grant when in other domains, just like you cannot in the standard domain. See <a class="reference internal" href="grants.html"><span class="doc">Grants</span></a> for more about the differences between the two grants.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The lazer and osu domains share credentials, so your same oauth application from osu.ppy.sh will work in the lazer domain.</p>
+<p>The dev domains has separate authentication from the osu domain. If you want to access the dev server’s api, you will need to create an account and oauth client on the dev server. As of 2023, this is only possible by running lazer locally in debug mode and creating an account from the client.</p>
 </div>
-</section>
-<section id="other-domains">
-<h2>Other Domains<a class="headerlink" href="#other-domains" title="Permalink to this heading">#</a></h2>
-<p>The standard domain is <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Domain.OSU" title="ossapi.ossapiv2.Domain.OSU"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code></a> and retrieves information from <a class="reference external" href="https://osu.ppy.sh/home">osu.ppy.sh</a>. This is the default domain used by ossapi.</p>
-<p>There is a third domain, besides <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Domain.LAZER" title="ossapi.ossapiv2.Domain.LAZER"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.LAZER</span></code></a> and <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Domain.OSU" title="ossapi.ossapiv2.Domain.OSU"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.OSU</span></code></a>: <a class="reference internal" href="api-reference.html#ossapi.ossapiv2.Domain.DEV" title="ossapi.ossapiv2.Domain.DEV"><code class="xref py py-data docutils literal notranslate"><span class="pre">Domain.DEV</span></code></a>. This corresponds to <a class="reference external" href="https://dev.ppy.sh/home">dev.ppy.sh</a>, the dev server. Use this domain to retrieve information from the dev server:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ossapi</span> <span class="kn">import</span> <span class="n">Ossapi</span><span class="p">,</span> <span class="n">Domain</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">Ossapi</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">)</span>
-<span class="c1"># pearline06 as of 2023</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="s2">&quot;performance&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The dev domains has separate authentication from the osu/lazer domains. If you want to access the dev server’s api, you will need to create an account and oauth client on the dev server. As of 2023, this is only possible by running lazer locally in debug mode and creating an account from the client.</p>
-</div>
-</section>
 </section>
 
         </article>
@@ -316,28 +296,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Domains</a><ul>
-<li><a class="reference internal" href="#lazer-domain">Lazer Domain</a></li>
-<li><a class="reference internal" href="#other-domains">Other Domains</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
