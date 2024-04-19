@@ -2062,8 +2062,8 @@ class Ossapi:
     def match(self,
         match_id: MatchIdT,
         *,
-        after: Optional[int] = None,
-        before: Optional[int] = None,
+        after_id: Optional[int] = None,
+        before_id: Optional[int] = None,
         limit: Optional[int] = None
     ) -> MatchResponse:
         """
@@ -2079,7 +2079,7 @@ class Ossapi:
         Implements the `Get Match
         <https://osu.ppy.sh/docs/index.html#matchesmatch>`__ endpoint.
         """
-        params = {"after": after, "before": before, "limit": limit}
+        params = {"after": after_id, "before": before_id, "limit": limit}
         return self._get(MatchResponse, f"/matches/{match_id}", params=params)
 
 
