@@ -8,6 +8,8 @@ Scores
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.download_score
 
+.. autofunction:: ossapi.ossapiv2.Ossapi.download_score_mode
+
 .. autofunction:: ossapi.ossapiv2.Ossapi.score
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.score_mode

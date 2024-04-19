@@ -2622,8 +2622,56 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">_download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="c1"># if the response above succeeded, it will return a raw string</span>
+        <span class="c1"># instead of json. If it didn&#39;t succeed, it will return json with an</span>
+        <span class="c1"># error.</span>
+        <span class="c1"># So always try parsing as json to check if there&#39;s an error. If parsing</span>
+        <span class="c1"># fails, just assume the request succeeded and move on.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">json_</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">json_</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">raw</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">content</span>
+
+        <span class="n">replay</span> <span class="o">=</span> <span class="n">osrparse</span><span class="o">.</span><span class="n">Replay</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Replay</span><span class="p">(</span><span class="n">replay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+        <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Replay</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Download the replay data of a score.</span>
+
+<span class="sd">        This endpoint is for score ids which don&#39;t have a matching gamemode</span>
+<span class="sd">        (new id format). If you have an old score id, use api.download_score_mode.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        score_id</span>
+<span class="sd">            The score to download.</span>
+<span class="sd">        raw</span>
+<span class="sd">            If ``True``, will return the raw string response from the api</span>
+<span class="sd">            instead of a :class:`~ossapi.replay.Replay` object.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Download Score</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescoredownload&gt;`__</span>
+<span class="sd">        endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_score</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">)</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">download_score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span>
         <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2631,6 +2679,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Replay</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Download the replay data of a score.</span>
+
+<span class="sd">        This endpoint is for score ids which have a matching gamemode</span>
+<span class="sd">        (old id format). If you have a new score id, use api.download_score.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2649,24 +2700,7 @@
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-        <span class="c1"># if the response above succeeded, it will return a raw string</span>
-        <span class="c1"># instead of json. If it didn&#39;t succeed, it will return json with an</span>
-        <span class="c1"># error.</span>
-        <span class="c1"># So always try parsing as json to check if there&#39;s an error. If parsing</span>
-        <span class="c1"># fails, just assume the request succeeded and move on.</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">json_</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">json_</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-        <span class="k">if</span> <span class="n">raw</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">content</span>
-
-        <span class="n">replay</span> <span class="o">=</span> <span class="n">osrparse</span><span class="o">.</span><span class="n">Replay</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Replay</span><span class="p">(</span><span class="n">replay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_score</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">)</span>
 
 
     <span class="c1"># seasonal backgrounds</span>
