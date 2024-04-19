@@ -6,6 +6,7 @@ from enum import Enum
 from ossapi.models import Model
 from ossapi.mod import Mod
 
+
 class ModelEncoder(JSONEncoder):
     def default(self, o):
         if isinstance(o, datetime):
@@ -28,5 +29,4 @@ class ModelEncoder(JSONEncoder):
 
 
 def serialize_model(model, ensure_ascii=False, **kwargs):
-    return json.dumps(model, cls=ModelEncoder,  ensure_ascii=ensure_ascii,
-        **kwargs)
+    return json.dumps(model, cls=ModelEncoder, ensure_ascii=ensure_ascii, **kwargs)

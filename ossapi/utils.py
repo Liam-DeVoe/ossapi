@@ -5,6 +5,7 @@ from dataclasses import dataclass
 
 from typing_utils import issubtype, get_origin, get_args
 
+
 def is_high_model_type(type_):
     """
     Whether ``type_`` is both a model type and not a base model type.
@@ -14,6 +15,7 @@ def is_high_model_type(type_):
     """
     return is_model_type(type_) and not is_base_model_type(type_)
 
+
 def is_model_type(type_):
     """
     Whether ``type_`` is a subclass of ``Model``.
@@ -21,6 +23,7 @@ def is_model_type(type_):
     if not isinstance(type_, type):
         return False
     return issubclass(type_, Model)
+
 
 def is_base_model_type(type_):
     """
@@ -46,12 +49,14 @@ class Field:
         # deserialize type via passing this field.
         self.deserialize_type = deserialize_type
 
+
 class _Model:
     """
     Base class for all models in ``ossapi``. If you want a model which handles
     its own members and cleanup after instantion, subclass ``BaseModel``
     instead.
     """
+
     def override_types(self):
         """
         Sometimes, the types of attributes in models depends on the value of
@@ -99,6 +104,7 @@ class _Model:
         """
         return data
 
+
 class ModelMeta(type):
     def __new__(cls, name, bases, dct):
         model = super().__new__(cls, name, bases, dct)
@@ -121,10 +127,12 @@ class ModelMeta(type):
         # a repr for us.
         return dataclass(model, repr=False)
 
+
 class Model(_Model, metaclass=ModelMeta):
     """
     A dataclass-style model. Provides an ``_api`` attribute.
     """
+
     # This is the ``OssapiV2`` instance that loaded this model.
     # can't annotate with OssapiV2 or we get a circular import error, this is
     # good enough.
@@ -153,11 +161,12 @@ class Model(_Model, metaclass=ModelMeta):
         # don't print internal values
         blacklisted_keys = ["_api"]
         items = [
-            f"{k}={v!r}" for k, v in self.__dict__.items()
-            if k not in blacklisted_keys
+            f"{k}={v!r}" for k, v in self.__dict__.items() if k not in blacklisted_keys
         ]
         return "{}({})".format(type(self).__name__, ", ".join(items))
+
     __repr__ = __str__
+
 
 class BaseModel(_Model):
     """
@@ -175,10 +184,13 @@ class BaseModel(_Model):
     for instance). We don't need or want to do anything else with an enum after
     instantiating it, hence it's defined as a base type.
     """
+
     pass
+
 
 class EnumModel(BaseModel, Enum):
     pass
+
 
 class IntFlagModel(BaseModel, IntFlag):
     pass
@@ -189,7 +201,8 @@ class Datetime(datetime, BaseModel):
     Our replacement for the ``datetime`` object that deals with the various
     datetime formats the api returns.
     """
-    def __new__(cls, value): # pylint: disable=signature-differs
+
+    def __new__(cls, value):
         if value is None:
             raise ValueError("cannot instantiate a Datetime with a null value")
         # the api returns a bunch of different timestamps: two ISO 8601
@@ -229,9 +242,9 @@ class Datetime(datetime, BaseModel):
         return True
 
 
-
 # typing utils
 # ------------
+
 
 def is_optional(type_):
     """
@@ -270,10 +283,12 @@ def is_optional(type_):
 
     return issubtype(type(None), type_) and not issubtype(Any, type_)
 
+
 def is_primitive_type(type_):
     if not isinstance(type_, type):
         return False
     return type_ in [int, float, str, bool]
+
 
 def convert_primitive_type(value, type_):
     # In the json we receive, eg ``pp`` can have a value of ``15833``, which is

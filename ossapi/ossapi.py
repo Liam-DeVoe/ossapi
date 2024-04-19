@@ -12,15 +12,19 @@ from ossapi.mod import Mod
 # log level below debug
 TRACE = 5
 
+
 class APIException(Exception):
     """An error involving the osu! api."""
+
 
 class InvalidKeyException(APIException):
     def __init__(self):
         super().__init__("Please provide a valid api key")
 
+
 class ReplayUnavailableException(APIException):
     pass
+
 
 class OssapiV1:
     """
@@ -61,8 +65,10 @@ class OssapiV1:
         try:
             r = requests.get(url, params=params, timeout=self.TIMEOUT)
         except RequestException as e:
-            self.log.warning(f"Request exception: {e}. Likely a network issue; "
-                "sleeping for 5 seconds then retrying")
+            self.log.warning(
+                f"Request exception: {e}. Likely a network issue; "
+                "sleeping for 5 seconds then retrying"
+            )
             time.sleep(5)
             return self._get(endpoint, params, type_, list_, _beatmap_id)
 
@@ -71,8 +77,10 @@ class OssapiV1:
         try:
             data = r.json()
         except JSONDecodeError:
-            self.log.warning("the api returned invalid json. Likely a "
-                "temporary issue, waiting and retrying")
+            self.log.warning(
+                "the api returned invalid json. Likely a "
+                "temporary issue, waiting and retrying"
+            )
             time.sleep(3)
             return self._get(endpoint, params, type_, list_, _beatmap_id)
 
@@ -81,8 +89,7 @@ class OssapiV1:
         if "error" in data:
             error = data["error"]
             if error == "Replay not available.":
-                raise ReplayUnavailableException("Could not find any replay "
-                    "data")
+                raise ReplayUnavailableException("Could not find any replay data")
             if error == "Requesting too fast! Slow your operation, cap'n!":
                 self._enforce_ratelimit()
                 return self._get(endpoint, params, type_, list_, _beatmap_id)
@@ -90,8 +97,7 @@ class OssapiV1:
                 raise ReplayUnavailableException("Replay retrieval failed")
             if error == "Please provide a valid API key.":
                 raise InvalidKeyException()
-            raise APIException("Unknown error when requesting a "
-                f"replay: {error}.")
+            raise APIException(f"Unknown error when requesting a replay: {error}.")
 
         if list_:
             ret = []
@@ -118,53 +124,91 @@ class OssapiV1:
         self.log.info("Ratelimited, sleeping for %s seconds.", sleep_seconds)
         time.sleep(sleep_seconds)
 
-    def get_beatmaps(self, since=None, beatmapset_id=None, beatmap_id=None,
-        user=None, user_type=None, mode=None, include_converts=None,
-        beatmap_hash=None, limit=None, mods=None
+    def get_beatmaps(
+        self,
+        since=None,
+        beatmapset_id=None,
+        beatmap_id=None,
+        user=None,
+        user_type=None,
+        mode=None,
+        include_converts=None,
+        beatmap_hash=None,
+        limit=None,
+        mods=None,
     ) -> List["Beatmap"]:
-        params = {"since": since, "s": beatmapset_id, "b": beatmap_id,
-            "u": user, "type": user_type, "m": mode, "a": include_converts,
-            "h": beatmap_hash, "limit": limit, "mods": mods}
+        params = {
+            "since": since,
+            "s": beatmapset_id,
+            "b": beatmap_id,
+            "u": user,
+            "type": user_type,
+            "m": mode,
+            "a": include_converts,
+            "h": beatmap_hash,
+            "limit": limit,
+            "mods": mods,
+        }
         return self._get("get_beatmaps", params, Beatmap, list_=True)
 
     def get_match(self, match_id) -> "MatchInfo":
         params = {"mp": match_id}
         return self._get("get_match", params, MatchInfo)
 
-    def get_scores(self, beatmap_id, user=None, mode=None, mods=None,
-        user_type=None, limit=None
+    def get_scores(
+        self, beatmap_id, user=None, mode=None, mods=None, user_type=None, limit=None
     ) -> List["Score"]:
-        params = {"b": beatmap_id, "u": user, "m": mode, "mods": mods,
-            "type": user_type, "limit": limit}
-        return self._get("get_scores", params, Score, list_=True,
-            _beatmap_id=beatmap_id)
+        params = {
+            "b": beatmap_id,
+            "u": user,
+            "m": mode,
+            "mods": mods,
+            "type": user_type,
+            "limit": limit,
+        }
+        return self._get(
+            "get_scores", params, Score, list_=True, _beatmap_id=beatmap_id
+        )
 
-    def get_replay(self, beatmap_id=None, user=None, mode=None, score_id=None,
-        user_type=None, mods=None
+    def get_replay(
+        self,
+        beatmap_id=None,
+        user=None,
+        mode=None,
+        score_id=None,
+        user_type=None,
+        mods=None,
     ) -> str:
-        params = {"b": beatmap_id, "u": user, "m": mode, "s": score_id,
-            "type": user_type, "mods": mods}
+        params = {
+            "b": beatmap_id,
+            "u": user,
+            "m": mode,
+            "s": score_id,
+            "type": user_type,
+            "mods": mods,
+        }
         r = self._get("get_replay", params, Replay)
         return r.content
 
-    def get_user(self, user, mode=None, user_type=None, event_days=None) \
-        -> "User":
-        params = {"u": user, "m": mode, "type": user_type,
-            "event_days": event_days}
+    def get_user(self, user, mode=None, user_type=None, event_days=None) -> "User":
+        params = {"u": user, "m": mode, "type": user_type, "event_days": event_days}
         users = self._get("get_user", params, User, list_=True)
         # api returns a list of users even though we never get more than one
         # user, just extract it manually
         return users[0] if users else users
 
-    def get_user_best(self, user, mode=None, limit=None, user_type=None) \
-        -> List["Score"]:
+    def get_user_best(
+        self, user, mode=None, limit=None, user_type=None
+    ) -> List["Score"]:
         params = {"u": user, "m": mode, "limit": limit, "type": user_type}
         return self._get("get_user_best", params, Score, list_=True)
 
-    def get_user_recent(self, user, mode=None, limit=None, user_type=None) \
-        -> List["Score"]:
+    def get_user_recent(
+        self, user, mode=None, limit=None, user_type=None
+    ) -> List["Score"]:
         params = {"u": user, "m": mode, "limit": limit, "type": user_type}
         return self._get("get_user_recent", params, Score, list_=True)
+
 
 # ideally we'd use the ossapiv2 machinery (dataclasses + annotations) for these
 # models instead of this manual drudgery. Unfortunately said machinery requires
@@ -174,6 +218,7 @@ class OssapiV1:
 # Should be a 'write once and forget about it' kind of thing anyway since v1 is
 # extremely stable, but would be nice to migrate over to v2's way of doing
 # things at some point.
+
 
 class Model:
     def __init__(self, data):
@@ -215,7 +260,6 @@ class Model:
         if attr == "1":
             return True
         return False
-
 
     def _mod(self, attr):
         attr = self._data[attr]
@@ -269,6 +313,7 @@ class Beatmap(Model):
         self.download_unavailable = self._bool("download_unavailable")
         self.audio_unavailable = self._bool("audio_unavailable")
 
+
 class User(Model):
     def __init__(self, data):
         super().__init__(data)
@@ -300,6 +345,7 @@ class User(Model):
             event = Event(event)
             self.events.append(event)
 
+
 class Event(Model):
     def __init__(self, data):
         super().__init__(data)
@@ -309,6 +355,7 @@ class Event(Model):
         self.beatmapset_id = self._int("beatmapset_id")
         self.date = self._date("date")
         self.epic_factor = self._int("epicfactor")
+
 
 class Score(Model):
     def __init__(self, data):
@@ -332,8 +379,10 @@ class Score(Model):
         self.rank = self._get("rank")
         # get_user_recent doesn't provide pp or replay_available at all
         self.pp = self._float("pp") if "pp" in data else None
-        self.replay_available = (self._bool("replay_available") if
-            "replay_available" in data else None)
+        self.replay_available = (
+            self._bool("replay_available") if "replay_available" in data else None
+        )
+
 
 class Replay(Model):
     def __init__(self, data):
@@ -361,6 +410,7 @@ class Match(Model):
         self.name = self._get("name")
         self.start_time = self._date("start_time")
         self.end_time = self._date("end_time")
+
 
 class MatchGame(Model):
     def __init__(self, data):

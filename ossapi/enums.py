@@ -1,10 +1,11 @@
 from typing import Optional, List, Any
 
-from ossapi.utils import (EnumModel, Datetime, Model, Field, IntFlagModel)
+from ossapi.utils import EnumModel, Datetime, Model, Field, IntFlagModel
 
 # ================
 # Documented Enums
 # ================
+
 
 class ProfilePage(EnumModel):
     ME = "me"
@@ -15,11 +16,13 @@ class ProfilePage(EnumModel):
     TOP_RANKS = "top_ranks"
     MEDALS = "medals"
 
+
 class GameMode(EnumModel):
-    OSU   = "osu"
+    OSU = "osu"
     TAIKO = "taiko"
     CATCH = "fruits"
     MANIA = "mania"
+
 
 class PlayStyles(IntFlagModel):
     MOUSE = 1
@@ -49,6 +52,7 @@ class PlayStyles(IntFlagModel):
         if value == "touch":
             return PlayStyles.TOUCH
         return super()._missing_(value)
+
 
 class RankStatus(EnumModel):
     GRAVEYARD = -2
@@ -82,12 +86,14 @@ class RankStatus(EnumModel):
             return cls(4)
         return super()._missing_(value)
 
+
 class UserAccountHistoryType(EnumModel):
     NOTE = "note"
     RESTRICTION = "restriction"
     SILENCE = "silence"
     # TODO undocumented
     TOURNAMENT_BAN = "tournament_ban"
+
 
 class MessageType(EnumModel):
     HYPE = "hype"
@@ -97,14 +103,15 @@ class MessageType(EnumModel):
     REVIEW = "review"
     SUGGESTION = "suggestion"
 
+
 class BeatmapsetEventType(EnumModel):
-    APPROVE =  "approve"
+    APPROVE = "approve"
     BEATMAP_OWNER_CHANGE = "beatmap_owner_change"
-    DISCUSSION_DELETE =  "discussion_delete"
-    DISCUSSION_LOCK =  "discussion_lock"
-    DISCUSSION_POST_DELETE =  "discussion_post_delete"
-    DISCUSSION_POST_RESTORE =  "discussion_post_restore"
-    DISCUSSION_RESTORE =  "discussion_restore"
+    DISCUSSION_DELETE = "discussion_delete"
+    DISCUSSION_LOCK = "discussion_lock"
+    DISCUSSION_POST_DELETE = "discussion_post_delete"
+    DISCUSSION_POST_RESTORE = "discussion_post_restore"
+    DISCUSSION_RESTORE = "discussion_restore"
     DISCUSSION_UNLOCK = "discussion_unlock"
     DISQUALIFY = "disqualify"
     DISQUALIFY_LEGACY = "disqualify_legacy"
@@ -127,30 +134,36 @@ class BeatmapsetEventType(EnumModel):
     REMOVE_FROM_LOVED = "remove_from_loved"
     NSFW_TOGGLE = "nsfw_toggle"
 
+
 class BeatmapsetDownload(EnumModel):
     ALL = "all"
     NO_VIDEO = "no_video"
     DIRECT = "direct"
+
 
 class UserListFilters(EnumModel):
     ALL = "all"
     ONLINE = "online"
     OFFLINE = "offline"
 
+
 class UserListSorts(EnumModel):
     LAST_VISIT = "last_visit"
     RANK = "rank"
     USERNAME = "username"
+
 
 class UserListViews(EnumModel):
     CARD = "card"
     LIST = "list"
     BRICK = "brick"
 
+
 class KudosuAction(EnumModel):
     GIVE = "vote.give"
     RESET = "vote.reset"
     REVOKE = "vote.revoke"
+
 
 class EventType(EnumModel):
     ACHIEVEMENT = "achievement"
@@ -167,6 +180,7 @@ class EventType(EnumModel):
     USER_SUPPORT_GIFT = "userSupportGift"
     USERNAME_CHANGE = "usernameChange"
 
+
 # used for `EventType.BEATMAPSET_APPROVE`
 class BeatmapsetApproval(EnumModel):
     RANKED = "ranked"
@@ -174,18 +188,22 @@ class BeatmapsetApproval(EnumModel):
     QUALIFIED = "qualified"
     LOVED = "loved"
 
+
 class ForumTopicType(EnumModel):
     NORMAL = "normal"
     STICKY = "sticky"
     ANNOUNCEMENT = "announcement"
 
+
 class ChangelogMessageFormat(EnumModel):
     HTML = "html"
     MARKDOWN = "markdown"
 
+
 # ==================
 # Undocumented Enums
 # ==================
+
 
 class UserRelationType(EnumModel):
     # undocumented
@@ -193,6 +211,7 @@ class UserRelationType(EnumModel):
     # UserRelationTransformer.php#L20
     FRIEND = "friend"
     BLOCK = "block"
+
 
 class Grade(EnumModel):
     SSH = "XH"
@@ -205,6 +224,7 @@ class Grade(EnumModel):
     D = "D"
     F = "F"
 
+
 class RoomType(EnumModel):
     # https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d43
     # 0a2/resources/js/interfaces/room-json.ts#L10
@@ -212,12 +232,14 @@ class RoomType(EnumModel):
     HEAD_TO_HEAD = "head_to_head"
     TEAM_VERSUS = "team_versus"
 
+
 class RoomCategory(EnumModel):
     # https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d
     # 430a2/resources/js/interfaces/room-json.ts#L7
     NORMAL = "normal"
     SPOTLIGHT = "spotlight"
     FEATURED_ARTIST = "featured_artist"
+
 
 class MatchEventType(EnumModel):
     # https://github.dev/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2
@@ -239,6 +261,7 @@ class ScoringType(EnumModel):
     COMBO = "combo"
     SCORE_V2 = "scorev2"
 
+
 class TeamType(EnumModel):
     # https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d43
     # 0a2/app/Models/LegacyMatch/Game.php#L47
@@ -246,6 +269,7 @@ class TeamType(EnumModel):
     TAG_COOP = "tag-coop"
     TEAM_VS = "team-vs"
     TAG_TEAM_VS = "tag-team-vs"
+
 
 class Variant(EnumModel):
     # can't start a python identifier with an integer
@@ -257,14 +281,17 @@ class Variant(EnumModel):
 # Parameter Enums
 # ===============
 
+
 class ScoreType(EnumModel):
     BEST = "best"
     FIRSTS = "firsts"
     RECENT = "recent"
 
+
 class RankingFilter(EnumModel):
     ALL = "all"
     FRIENDS = "friends"
+
 
 class RankingType(EnumModel):
     CHARTS = "charts"
@@ -272,9 +299,11 @@ class RankingType(EnumModel):
     PERFORMANCE = "performance"
     SCORE = "score"
 
+
 class UserLookupKey(EnumModel):
     ID = "id"
     USERNAME = "username"
+
 
 class UserBeatmapType(EnumModel):
     FAVOURITE = "favourite"
@@ -286,9 +315,11 @@ class UserBeatmapType(EnumModel):
     GUEST = "guest"
     NOMINATED = "nominated"
 
+
 class BeatmapDiscussionPostSort(EnumModel):
     NEW = "id_desc"
     OLD = "id_asc"
+
 
 class BeatmapsetStatus(EnumModel):
     ALL = "all"
@@ -296,6 +327,7 @@ class BeatmapsetStatus(EnumModel):
     QUALIFIED = "qualified"
     DISQUALIFIED = "disqualified"
     NEVER_QUALIFIED = "never_qualified"
+
 
 class ChannelType(EnumModel):
     PUBLIC = "PUBLIC"
@@ -307,36 +339,44 @@ class ChannelType(EnumModel):
     GROUP = "GROUP"
     ANNOUNCE = "ANNOUNCE"
 
+
 class CommentableType(EnumModel):
     NEWS_POST = "news_post"
     CHANGELOG = "build"
     BEATMAPSET = "beatmapset"
+
 
 class CommentSort(EnumModel):
     NEW = "new"
     OLD = "old"
     TOP = "top"
 
+
 class ForumTopicSort(EnumModel):
     NEW = "id_desc"
     OLD = "id_asc"
+
 
 class SearchMode(EnumModel):
     ALL = "all"
     USERS = "user"
     WIKI = "wiki_page"
 
+
 class MultiplayerScoresSort(EnumModel):
     NEW = "score_desc"
     OLD = "score_asc"
+
 
 class BeatmapsetDiscussionVote(EnumModel):
     UPVOTE = 1
     DOWNVOTE = -1
 
+
 class BeatmapsetDiscussionVoteSort(EnumModel):
     NEW = "id_desc"
     OLD = "id_asc"
+
 
 class BeatmapsetSearchCategory(EnumModel):
     ANY = "any"
@@ -350,6 +390,7 @@ class BeatmapsetSearchCategory(EnumModel):
     GRAVEYARD = "graveyard"
     MY_MAPS = "mine"
 
+
 class BeatmapsetSearchMode(EnumModel):
     # made up value. this is the default option and doesn't cause a value to
     # appear in the query string.
@@ -359,9 +400,11 @@ class BeatmapsetSearchMode(EnumModel):
     CATCH = 2
     MANIA = 3
 
+
 class BeatmapsetSearchExplicitContent(EnumModel):
     HIDE = "hide"
     SHOW = "show"
+
 
 class BeatmapsetSearchGenre(EnumModel):
     # default option, made up value
@@ -380,6 +423,7 @@ class BeatmapsetSearchGenre(EnumModel):
     FOLK = 13
     JAZZ = 14
 
+
 class BeatmapsetSearchLanguage(EnumModel):
     # default option, made up value
     ANY = 0
@@ -397,6 +441,7 @@ class BeatmapsetSearchLanguage(EnumModel):
     RUSSIAN = 12
     POLISH = 13
     OTHER = 14
+
 
 class BeatmapsetSearchSort(EnumModel):
     TITLE_DESCENDING = "title_desc"
@@ -425,6 +470,7 @@ class NewsPostKey(EnumModel):
     SLUG = "slug"
     ID = "id"
 
+
 # `RoomType` is already taken as a model name (and more appropriate elsewhere)
 class RoomSearchMode(EnumModel):
     ACTIVE = "active"
@@ -433,9 +479,11 @@ class RoomSearchMode(EnumModel):
     PARTICIPATED = "participated"
     OWNED = "owned"
 
+
 class EventsSort(EnumModel):
     NEW = "id_desc"
     OLD = "id_asc"
+
 
 class BeatmapPackType(EnumModel):
     STANDARD = "standard"
@@ -451,9 +499,11 @@ class BeatmapPackType(EnumModel):
 # Documented Models
 # =================
 
+
 class Failtimes(Model):
     exit: Optional[List[int]]
     fail: Optional[List[int]]
+
 
 class Ranking(Model):
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/CountryTransformer.php#L30
@@ -461,6 +511,7 @@ class Ranking(Model):
     play_count: int
     ranked_score: int
     performance: int
+
 
 class Country(Model):
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/CountryTransformer.php#L10
@@ -471,6 +522,7 @@ class Country(Model):
     # ---------------
     display: Optional[int]
     ranking: Optional[Ranking]
+
 
 class Cover(Model):
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserCompactTransformer.php#L158
@@ -485,6 +537,7 @@ class ProfileBanner(Model):
     tournament_id: int
     image: str
     image_2x: str = Field(name="image@2x")
+
 
 class UserAccountHistory(Model):
     description: Optional[str]
@@ -502,9 +555,11 @@ class UserBadge(Model):
     image_2x_url: str = Field(name="image@2x_url")
     url: str
 
+
 class GroupDescription(Model):
     html: str
     markdown: str
+
 
 class UserGroup(Model):
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserGroupTransformer.php#L10
@@ -519,10 +574,12 @@ class UserGroup(Model):
     has_listing: bool
     has_playmodes: bool
 
+
 class Covers(Model):
     """
     https://osu.ppy.sh/docs/index.html#beatmapsetcompact-covers
     """
+
     cover: str
     cover_2x: str = Field(name="cover@2x")
     card: str
@@ -531,6 +588,7 @@ class Covers(Model):
     list_2x: str = Field(name="list@2x")
     slimcover: str
     slimcover_2x: str = Field(name="slimcover@2x")
+
 
 class Statistics(Model):
     # I think any of these attributes can be null if the corresponding gamemode
@@ -543,17 +601,21 @@ class Statistics(Model):
     count_katu: Optional[int]
     count_miss: Optional[int]
 
+
 class Availability(Model):
     download_disabled: bool
     more_information: Optional[str]
+
 
 class Hype(Model):
     current: int
     required: int
 
+
 class Nominations(Model):
     current: int
     required: int
+
 
 class Nomination(Model):
     beatmapset_id: int
@@ -561,19 +623,23 @@ class Nomination(Model):
     reset: bool
     user_id: int
 
+
 class Kudosu(Model):
     total: int
     available: int
 
+
 class KudosuGiver(Model):
     url: str
     username: str
+
 
 class KudosuPost(Model):
     url: Optional[str]
     # will be "[deleted beatmap]" for deleted beatmaps. See
     # https://osu.ppy.sh/docs/index.html#kudosuhistory
     title: str
+
 
 class KudosuVote(Model):
     user_id: int
@@ -582,18 +648,22 @@ class KudosuVote(Model):
     def user(self):
         return self._fk_user(self.user_id)
 
+
 class EventUser(Model):
     username: str
     url: str
     previousUsername: Optional[str]
 
+
 class EventBeatmap(Model):
     title: str
     url: str
 
+
 class EventBeatmapset(Model):
     title: str
     url: str
+
 
 class EventAchivement(Model):
     icon_url: str
@@ -608,6 +678,7 @@ class EventAchivement(Model):
     mode: Optional[GameMode]
     instructions: Optional[Any]
 
+
 class GithubUser(Model):
     display_name: str
     github_username: Optional[str]
@@ -620,6 +691,7 @@ class GithubUser(Model):
     def user(self):
         return self._fk_user(self.user_id)
 
+
 class ChangelogSearch(Model):
     from_: Optional[str] = Field(name="from")
     limit: int
@@ -627,30 +699,37 @@ class ChangelogSearch(Model):
     stream: Optional[str]
     to: Optional[str]
 
+
 class NewsSearch(Model):
     limit: int
     sort: str
     # undocumented
     year: Optional[int]
 
+
 class ForumPostBody(Model):
     html: str
     raw: str
+
 
 class ForumPollText(Model):
     bbcode: str
     html: str
 
+
 class ForumPollTitle(Model):
     bbcode: str
     html: str
 
+
 class ReviewsConfig(Model):
     max_blocks: int
+
 
 class RankHighest(Model):
     rank: int
     updated_at: Datetime
+
 
 class BeatmapPackUserCompletionData(Model):
     beatmapset_ids: List[int]
@@ -661,11 +740,13 @@ class BeatmapPackUserCompletionData(Model):
 # Undocumented Models
 # ===================
 
+
 class UserMonthlyPlaycount(Model):
     # undocumented
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserMonthlyPlaycountTransformer.php
     start_date: Datetime
     count: int
+
 
 class UserPage(Model):
     # undocumented (and not a class on osu-web)
@@ -673,11 +754,13 @@ class UserPage(Model):
     html: str
     raw: str
 
+
 class UserLevel(Model):
     # undocumented (and not a class on osu-web)
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserStatisticsTransformer.php#L27
     current: int
     progress: int
+
 
 class UserGradeCounts(Model):
     # undocumented (and not a class on osu-web)
@@ -688,17 +771,20 @@ class UserGradeCounts(Model):
     sh: int
     a: int
 
+
 class UserReplaysWatchedCount(Model):
     # undocumented
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserReplaysWatchedCountTransformer.php
     start_date: Datetime
     count: int
 
+
 class UserAchievement(Model):
     # undocumented
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/UserAchievementTransformer.php#L10
     achieved_at: Datetime
     achievement_id: int
+
 
 class UserProfileCustomization(Model):
     # undocumented
@@ -717,11 +803,13 @@ class UserProfileCustomization(Model):
     user_list_sort: Optional[UserListSorts]
     user_list_view: Optional[UserListViews]
 
+
 class RankHistory(Model):
     # undocumented
     # https://github.com/ppy/osu-web/blob/master/app/Transformers/RankHistoryTransformer.php
     mode: GameMode
     data: List[int]
+
 
 class Weight(Model):
     percentage: float

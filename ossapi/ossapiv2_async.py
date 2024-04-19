@@ -25,37 +25,111 @@ import sys
 
 from requests_oauthlib import OAuth2Session
 from requests_oauthlib.oauth2_session import TokenUpdated
-from oauthlib.oauth2 import (BackendApplicationClient, TokenExpiredError,
-    AccessDeniedError, InsecureTransportError, is_secure_transport, OAuth2Error)
+from oauthlib.oauth2 import (
+    BackendApplicationClient,
+    TokenExpiredError,
+    AccessDeniedError,
+    InsecureTransportError,
+    is_secure_transport,
+    OAuth2Error,
+)
 from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
 from oauthlib.oauth2.rfc6749.tokens import OAuth2Token
 import osrparse
 from typing_utils import issubtype, get_type_hints, get_origin, get_args
 
 import ossapi
-from ossapi.models import (Beatmap, BeatmapCompact, BeatmapUserScore,
-    ForumTopicAndPosts, Search, CommentBundle, Cursor, Score,
-    BeatmapsetSearchResult, ModdingHistoryEventsBundle, User, Rankings,
-    BeatmapScores, KudosuHistory, Beatmapset, BeatmapPlaycount, Spotlight,
-    Spotlights, WikiPage, _Event, Event, BeatmapsetDiscussionPosts, Build,
-    ChangelogListing, MultiplayerScores,
-    BeatmapsetDiscussionVotes, CreatePMResponse, BeatmapsetDiscussions,
-    UserCompact, NewsListing, NewsPost, SeasonalBackgrounds, BeatmapsetCompact,
-    BeatmapUserScores, DifficultyAttributes, Users, Beatmaps,
-    CreateForumTopicResponse, ForumPoll, ForumPost, ForumTopic, Room,
-    RoomLeaderboard, Matches, Match, MatchResponse, ChatChannel, Events,
-    BeatmapPack, BeatmapPacks)
-from ossapi.enums import (GameMode, ScoreType, RankingFilter, RankingType,
-    UserBeatmapType, BeatmapDiscussionPostSort, UserLookupKey,
-    BeatmapsetEventType, CommentableType, CommentSort, ForumTopicSort,
-    SearchMode, MultiplayerScoresSort, BeatmapsetDiscussionVote,
-    BeatmapsetDiscussionVoteSort, BeatmapsetStatus, MessageType,
-    BeatmapsetSearchCategory, BeatmapsetSearchMode,
-    BeatmapsetSearchExplicitContent, BeatmapsetSearchGenre,
-    BeatmapsetSearchLanguage, NewsPostKey, BeatmapsetSearchSort, RoomSearchMode,
-    ChangelogMessageFormat, EventsSort, BeatmapPackType)
-from ossapi.utils import (is_primitive_type, is_optional, is_base_model_type,
-    is_model_type, is_high_model_type, Field, convert_primitive_type)
+from ossapi.models import (
+    Beatmap,
+    BeatmapCompact,
+    BeatmapUserScore,
+    ForumTopicAndPosts,
+    Search,
+    CommentBundle,
+    Cursor,
+    Score,
+    BeatmapsetSearchResult,
+    ModdingHistoryEventsBundle,
+    User,
+    Rankings,
+    BeatmapScores,
+    KudosuHistory,
+    Beatmapset,
+    BeatmapPlaycount,
+    Spotlight,
+    Spotlights,
+    WikiPage,
+    _Event,
+    Event,
+    BeatmapsetDiscussionPosts,
+    Build,
+    ChangelogListing,
+    MultiplayerScores,
+    BeatmapsetDiscussionVotes,
+    CreatePMResponse,
+    BeatmapsetDiscussions,
+    UserCompact,
+    NewsListing,
+    NewsPost,
+    SeasonalBackgrounds,
+    BeatmapsetCompact,
+    BeatmapUserScores,
+    DifficultyAttributes,
+    Users,
+    Beatmaps,
+    CreateForumTopicResponse,
+    ForumPoll,
+    ForumPost,
+    ForumTopic,
+    Room,
+    RoomLeaderboard,
+    Matches,
+    Match,
+    MatchResponse,
+    ChatChannel,
+    Events,
+    BeatmapPack,
+    BeatmapPacks,
+)
+from ossapi.enums import (
+    GameMode,
+    ScoreType,
+    RankingFilter,
+    RankingType,
+    UserBeatmapType,
+    BeatmapDiscussionPostSort,
+    UserLookupKey,
+    BeatmapsetEventType,
+    CommentableType,
+    CommentSort,
+    ForumTopicSort,
+    SearchMode,
+    MultiplayerScoresSort,
+    BeatmapsetDiscussionVote,
+    BeatmapsetDiscussionVoteSort,
+    BeatmapsetStatus,
+    MessageType,
+    BeatmapsetSearchCategory,
+    BeatmapsetSearchMode,
+    BeatmapsetSearchExplicitContent,
+    BeatmapsetSearchGenre,
+    BeatmapsetSearchLanguage,
+    NewsPostKey,
+    BeatmapsetSearchSort,
+    RoomSearchMode,
+    ChangelogMessageFormat,
+    EventsSort,
+    BeatmapPackType,
+)
+from ossapi.utils import (
+    is_primitive_type,
+    is_optional,
+    is_base_model_type,
+    is_model_type,
+    is_high_model_type,
+    Field,
+    convert_primitive_type,
+)
 from ossapi.mod import Mod
 from ossapi.replay import Replay
 
@@ -85,9 +159,10 @@ class Oauth2SessionAsync(OAuth2Session):
         withhold_token=False,
         client_id=None,
         client_secret=None,
-        **kwargs
+        **kwargs,
     ):
         import aiohttp
+
         if not is_secure_transport(url):
             raise InsecureTransportError()
         if self.token and not withhold_token:
@@ -116,9 +191,8 @@ class Oauth2SessionAsync(OAuth2Session):
                 else:
                     raise
 
-        return await session.request(
-            method, url, headers=headers, data=data, **kwargs
-        )
+        return await session.request(method, url, headers=headers, data=data, **kwargs)
+
 
 # our `request` function below relies on the ordering of these types. The
 # base type must come first, with any auxiliary types that the base type accepts
@@ -163,6 +237,7 @@ BeatmapsetIdT = Union[int, BeatmapCompact, BeatmapsetCompact]
 RoomIdT = Union[int, Room]
 MatchIdT = Union[int, Match]
 
+
 def request(scope, *, requires_user=False, category):
     """
     Handles various validation and preparation tasks for any endpoint request
@@ -195,6 +270,7 @@ def request(scope, *, requires_user=False, category):
         What category of endpoints this endpoint belongs to. Used for grouping
         in the docs.
     """
+
     def decorator(function):
         instantiate = {}
         for name, type_ in function.__annotations__.items():
@@ -209,17 +285,21 @@ def request(scope, *, requires_user=False, category):
         def wrapper(*args, **kwargs):
             self = args[0]
             if scope is not None and scope not in self.scopes:
-                raise InsufficientScopeError(f"A scope of {scope} is required "
+                raise InsufficientScopeError(
+                    f"A scope of {scope} is required "
                     "for this endpoint. Your client's current scopes are "
-                    f"{self.scopes}")
+                    f"{self.scopes}"
+                )
 
             if requires_user and self.grant is Grant.CLIENT_CREDENTIALS:
-                raise AccessDeniedError("To access this endpoint you must be "
+                raise AccessDeniedError(
+                    "To access this endpoint you must be "
                     "authorized using the authorization code grant. You are "
                     "currently authorized with the client credentials grant."
                     "\n\n"
                     "For more details, see "
-                    "https://tybug.github.io/ossapi/grants.html.")
+                    "https://tybug.github.io/ossapi/grants.html."
+                )
 
             # we may need to edit this later so convert from tuple
             args = list(args)
@@ -285,6 +365,7 @@ def request(scope, *, requires_user=False, category):
         wrapper.__ossapi_scope__ = scope
 
         return wrapper
+
     return decorator
 
 
@@ -299,19 +380,24 @@ class ReauthenticationRequired(Exception):
     with the user. That method should be used here to handle the
     reauthentication.
     """
+
     pass
+
 
 class Grant(Enum):
     """
     The grant types used by the api.
     """
+
     CLIENT_CREDENTIALS = "client"
     AUTHORIZATION_CODE = "authorization"
+
 
 class Scope(Enum):
     """
     The OAuth scopes used by the api.
     """
+
     CHAT_WRITE = "chat.write"
     CHAT_WRITE_MANAGE = "chat.write_manage"
     CHAT_READ = "chat.read"
@@ -320,6 +406,7 @@ class Scope(Enum):
     FRIENDS_READ = "friends.read"
     IDENTIFY = "identify"
     PUBLIC = "public"
+
 
 class Domain(Enum):
     """
@@ -330,8 +417,10 @@ class Domain(Enum):
     :data:`Domain.OSU <ossapi.ossapiv2.Domain.OSU>`, and corresponds to the
     main website.
     """
+
     OSU = "osu"
     DEV = "dev"
+
 
 class OssapiAsync:
     """
@@ -408,11 +497,13 @@ class OssapiAsync:
         |br|
         See :doc:`Domains <domains>` for more about domains.
     """
+
     TOKEN_URL = "https://{domain}.ppy.sh/oauth/token"
     AUTH_CODE_URL = "https://{domain}.ppy.sh/oauth/authorize"
     BASE_URL = "https://{domain}.ppy.sh/api/v2"
 
-    def __init__(self,
+    def __init__(
+        self,
         client_id: int,
         client_secret: str,
         redirect_uri: Optional[str] = None,
@@ -424,11 +515,12 @@ class OssapiAsync:
         token_key: Optional[str] = None,
         access_token: Optional[str] = None,
         refresh_token: Optional[str] = None,
-        domain: Union[str, Domain] = Domain.OSU
+        domain: Union[str, Domain] = Domain.OSU,
     ):
         if not grant:
-            grant = (Grant.AUTHORIZATION_CODE if redirect_uri else
-                Grant.CLIENT_CREDENTIALS)
+            grant = (
+                Grant.AUTHORIZATION_CODE if redirect_uri else Grant.CLIENT_CREDENTIALS
+            )
         grant = Grant(grant)
 
         domain = Domain(domain)
@@ -446,13 +538,18 @@ class OssapiAsync:
         self.domain = domain
 
         self.log = logging.getLogger(__name__)
-        self.token_key = token_key or self.gen_token_key(self.grant,
-            self.client_id, self.client_secret, self.scopes, self.domain.value)
+        self.token_key = token_key or self.gen_token_key(
+            self.grant,
+            self.client_id,
+            self.client_secret,
+            self.scopes,
+            self.domain.value,
+        )
         self._type_hints_cache = {}
 
         # support saving tokens when being run from pyinstaller
-        if hasattr(sys, '_MEIPASS') and not token_directory:
-            token_directory = sys._MEIPASS # pylint: disable=no-member
+        if hasattr(sys, "_MEIPASS") and not token_directory:
+            token_directory = sys._MEIPASS  # pylint: disable=no-member
 
         self.token_directory = (
             Path(token_directory) if token_directory else Path(__file__).parent
@@ -461,12 +558,16 @@ class OssapiAsync:
 
         if self.grant is Grant.CLIENT_CREDENTIALS:
             if self.scopes != [Scope.PUBLIC]:
-                raise ValueError(f"`scopes` must be ['public'] if the "
-                    f"client credentials grant is used. Got {self.scopes}")
+                raise ValueError(
+                    f"`scopes` must be ['public'] if the "
+                    f"client credentials grant is used. Got {self.scopes}"
+                )
 
         if self.grant is Grant.AUTHORIZATION_CODE and not self.redirect_uri:
-            raise ValueError("`redirect_uri` must be passed if the "
-                "authorization code grant is used.")
+            raise ValueError(
+                "`redirect_uri` must be passed if the "
+                "authorization code grant is used."
+            )
 
         # whether the consumer passed a token to ossapi to bypass authentication
         self.access_token_passed = False
@@ -478,7 +579,7 @@ class OssapiAsync:
             params = {
                 "token_type": "Bearer",
                 "access_token": access_token,
-                "refresh_token": refresh_token
+                "refresh_token": refresh_token,
             }
             token = OAuth2Token(params)
             self.access_token_passed = True
@@ -486,9 +587,7 @@ class OssapiAsync:
         self.session = self.authenticate(token=token)
 
     @staticmethod
-    def gen_token_key(grant, client_id, client_secret, scopes,
-        domain=Domain.OSU
-    ):
+    def gen_token_key(grant, client_id, client_secret, scopes, domain=Domain.OSU):
         """
         The unique key / hash for the given set of parameters. This is intended
         to provide a way to allow multiple OssapiV2's to live at the same time,
@@ -553,14 +652,17 @@ class OssapiAsync:
             if self.grant is Grant.AUTHORIZATION_CODE:
                 auto_refresh_kwargs = {
                     "client_id": self.client_id,
-                    "client_secret": self.client_secret
+                    "client_secret": self.client_secret,
                 }
-                return Oauth2SessionAsync(self.client_id, token=token,
+                return Oauth2SessionAsync(
+                    self.client_id,
+                    token=token,
                     redirect_uri=self.redirect_uri,
                     auto_refresh_url=self.token_url,
                     auto_refresh_kwargs=auto_refresh_kwargs,
                     token_updater=self._save_token,
-                    scope=[scope.value for scope in self.scopes])
+                    scope=[scope.value for scope in self.scopes],
+                )
 
         # otherwise, authorize from scratch
         return self._new_grant()
@@ -569,8 +671,9 @@ class OssapiAsync:
         if self.grant is Grant.CLIENT_CREDENTIALS:
             return self._new_client_grant(self.client_id, self.client_secret)
 
-        return self._new_authorization_grant(self.client_id, self.client_secret,
-            self.redirect_uri, self.scopes)
+        return self._new_authorization_grant(
+            self.client_id, self.client_secret, self.redirect_uri, self.scopes
+        )
 
     def _new_client_grant(self, client_id, client_secret):
         """
@@ -579,32 +682,30 @@ class OssapiAsync:
         self.log.info("initializing client credentials grant")
         client = BackendApplicationClient(client_id=client_id, scope=["public"])
         session = Oauth2SessionAsync(client=client)
-        token = session.fetch_token(token_url=self.token_url,
-            client_id=client_id, client_secret=client_secret)
+        token = session.fetch_token(
+            token_url=self.token_url, client_id=client_id, client_secret=client_secret
+        )
 
         self._save_token(token)
         return session
 
-    def _new_authorization_grant(self, client_id, client_secret, redirect_uri,
-        scopes):
+    def _new_authorization_grant(self, client_id, client_secret, redirect_uri, scopes):
         """
         Authenticates with the api from scratch on the authorization code grant.
         """
         self.log.info("initializing authorization code")
 
-        auto_refresh_kwargs = {
-            "client_id": client_id,
-            "client_secret": client_secret
-        }
-        session = Oauth2SessionAsync(client_id, redirect_uri=redirect_uri,
+        auto_refresh_kwargs = {"client_id": client_id, "client_secret": client_secret}
+        session = Oauth2SessionAsync(
+            client_id,
+            redirect_uri=redirect_uri,
             auto_refresh_url=self.token_url,
             auto_refresh_kwargs=auto_refresh_kwargs,
             token_updater=self._save_token,
-            scope=[scope.value for scope in scopes])
-
-        authorization_url, _state = (
-            session.authorization_url(self.auth_code_url)
+            scope=[scope.value for scope in scopes],
         )
+
+        authorization_url, _state = session.authorization_url(self.auth_code_url)
         webbrowser.open(authorization_url)
 
         # open up a temporary socket so we can receive the GET request to the
@@ -619,17 +720,20 @@ class OssapiAsync:
         connection.send(b"HTTP/1.0 200 OK\n")
         connection.send(b"Content-Type: text/html\n")
         connection.send(b"\n")
-        connection.send(b"""<html><body>
+        connection.send(
+            b"""<html><body>
             <h2>Ossapi has received your authentication.</h2> You
             may now close this tab safely.
             </body></html>
-        """)
+        """
+        )
         connection.close()
         serversocket.close()
 
         code = data.split("code=")[1].split("&state=")[0]
-        token = session.fetch_token(self.token_url, client_id=client_id,
-            client_secret=client_secret, code=code)
+        token = session.fetch_token(
+            self.token_url, client_id=client_id, client_secret=client_secret, code=code
+        )
         self._save_token(token)
 
         return session
@@ -664,21 +768,28 @@ class OssapiAsync:
         aiohttp_session = ClientSession()
 
         async def make_request():
-            return await self.session.request_async(method,
-                f"{self.base_url}{url}", session=aiohttp_session,
-                params=params, data=data)
+            return await self.session.request_async(
+                method,
+                f"{self.base_url}{url}",
+                session=aiohttp_session,
+                params=params,
+                data=data,
+            )
 
         async def reauthenticate_and_retry():
             # don't automatically re-authenticate if the user passed an access
             # token. They should handle re-authentication with the user
             # manually (since they may have a bespoke system, like a website).
             if self.access_token_passed:
-                self.log.info("refresh token is invalid. raising for consumer "
-                    "to handle since access token was passed originally.")
+                self.log.info(
+                    "refresh token is invalid. raising for consumer "
+                    "to handle since access token was passed originally."
+                )
                 raise ReauthenticationRequired()
 
-            self.log.info("refresh token invalid, re-authenticating (grant: "
-                f"{self.grant})")
+            self.log.info(
+                f"refresh token invalid, re-authenticating (grant: {self.grant})"
+            )
             # don't use .authenticate, that falls back to cached tokens. go
             # straight to authenticating from scratch.
             self.session = self._new_grant()
@@ -696,8 +807,7 @@ class OssapiAsync:
             # grant token, just request a new one.
             if self.grant is not Grant.CLIENT_CREDENTIALS:
                 raise
-            self.session = self._new_client_grant(self.client_id,
-                self.client_secret)
+            self.session = self._new_client_grant(self.client_id, self.client_secret)
             # redo the request now that we have a valid token
             r = await make_request()
         except OAuth2Error as e:
@@ -742,8 +852,10 @@ class OssapiAsync:
         # `self.search_beatmaps` always returns an error in the response...
         # open an issue on osu-web?
         if len(json_) == 1 and "error" in json_:
-            raise ValueError(f"api returned an error of `{json_['error']}` for "
-                f"a request to {unquote(url)}")
+            raise ValueError(
+                f"api returned an error of `{json_['error']}` for "
+                f"a request to {unquote(url)}"
+            )
 
     async def _get(self, type_, url, params={}):
         return await self._request(type_, "GET", url, params=params)
@@ -883,9 +995,13 @@ class OssapiAsync:
             if not self.strict and value is None:
                 return
             if not isinstance(value, type_):
-                raise TypeError(f"expected type {type_} for value {value}, got "
+                raise TypeError(
+                    f"expected type {type_} for value {value}, got "
                     f"type {type(value)}"
-                    f" (for attribute: {attr_name})" if attr_name else "")
+                    f" (for attribute: {attr_name})"
+                    if attr_name
+                    else ""
+                )
 
         if is_primitive_type(type_):
             value = convert_primitive_type(value, type_)
@@ -896,8 +1012,7 @@ class OssapiAsync:
             self.log.debug(f"instantiating base type {type_}")
             return type_(value)
 
-        if origin is list and (is_model_type(args[0]) or
-            isinstance(args[0], TypeVar)):
+        if origin is list and (is_model_type(args[0]) or isinstance(args[0], TypeVar)):
             assert len(args) == 1
             # check if the list has been instantiated generically; if so,
             # use the concrete type backing the generic type.
@@ -937,19 +1052,21 @@ class OssapiAsync:
             for arg in args:
                 try:
                     import copy
+
                     v = copy.deepcopy(value)
                     # _instantiate_type implicitly mutates the passed value.
                     # this is probably something we should change - but for now,
                     # fix it here, as we may reuse `value`.
-                    new_value = self._instantiate_type(arg, v, obj,
-                        attr_name)
+                    new_value = self._instantiate_type(arg, v, obj, attr_name)
                 except Exception as e:
                     fail_reasons.append(str(e))
                     continue
 
             if new_value is None:
-                raise ValueError(f"Failed to satisfy union: no type in {args} "
-                    f"satisfied {attr_name} (fail reasons: {fail_reasons})")
+                raise ValueError(
+                    f"Failed to satisfy union: no type in {args} "
+                    f"satisfied {attr_name} (fail reasons: {fail_reasons})"
+                )
             return new_value
 
         # either we ourself are a model type (eg `Search`), or we are
@@ -1044,15 +1161,16 @@ class OssapiAsync:
                 kwargs_[k] = v
             else:
                 if self.strict:
-                    raise TypeError(f"unexpected parameter `{k}` for type "
-                        f"{type_}")
+                    raise TypeError(f"unexpected parameter `{k}` for type {type_}")
                 # this is an INFO log in spirit, but can be spammy with Union
                 # type resolution where the first union case hits nonfatal
                 # errors like this before a fatal error causes it to backtrack.
                 # In practice, it makes no difference for developing ossapi,
                 # as tests and local development are all done in strict mode.
-                self.log.debug(f"ignoring unexpected parameter `{k}` from "
-                    f"api response for type {type_}")
+                self.log.debug(
+                    f"ignoring unexpected parameter `{k}` from "
+                    f"api response for type {type_}"
+                )
 
         # every model gets a special `_api` parameter, which is the
         # `OssapiV2` instance which loaded it (aka us).
@@ -1061,8 +1179,7 @@ class OssapiAsync:
         try:
             val = type_(**kwargs_)
         except TypeError as e:
-            raise TypeError(f"type error while instantiating class {type_}: "
-                f"{e}") from e
+            raise TypeError(f"type error while instantiating class {type_}: {e}") from e
 
         return val
 
@@ -1079,19 +1196,18 @@ class OssapiAsync:
     def _clear_type_hints_cache(self):
         self._type_hints_cache = {}
 
-
     # =========
     # Endpoints
     # =========
-
 
     # /beatmaps/packs
     # ---------------
 
     @request(Scope.PUBLIC, category="beatmap packs")
-    async def beatmap_packs(self,
+    async def beatmap_packs(
+        self,
         type: Optional[BeatmapPackTypeT] = None,
-        cursor_string: Optional[str] = None
+        cursor_string: Optional[str] = None,
     ) -> BeatmapPacks:
         """
         Get a list of beatmap packs. If you want to retrieve a specific pack,
@@ -1112,9 +1228,7 @@ class OssapiAsync:
         return await self._get(BeatmapPacks, "/beatmaps/packs", params)
 
     @request(Scope.PUBLIC, category="beatmap packs")
-    async def beatmap_pack(self,
-        pack: str
-    ) -> BeatmapPack:
+    async def beatmap_pack(self, pack: str) -> BeatmapPack:
         """
         Get a beatmap pack. If you want to retrieve a list of beatmap packs, see
         see :meth:`beatmap_packs`.
@@ -1127,17 +1241,17 @@ class OssapiAsync:
         """
         return await self._get(BeatmapPack, f"/beatmaps/packs/{pack}")
 
-
     # /beatmaps
     # ---------
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmap_user_score(self,
+    async def beatmap_user_score(
+        self,
         beatmap_id: BeatmapIdT,
         user_id: UserIdT,
         *,
         mode: Optional[GameModeT] = None,
-        mods: Optional[ModT] = None
+        mods: Optional[ModT] = None,
     ) -> BeatmapUserScore:
         """
         Get a user's best score on a beatmap. If you want to retrieve all
@@ -1161,15 +1275,17 @@ class OssapiAsync:
         endpoint.
         """
         params = {"mode": mode, "mods": mods}
-        return await self._get(BeatmapUserScore,
-            f"/beatmaps/{beatmap_id}/scores/users/{user_id}", params)
+        return await self._get(
+            BeatmapUserScore, f"/beatmaps/{beatmap_id}/scores/users/{user_id}", params
+        )
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmap_user_scores(self,
+    async def beatmap_user_scores(
+        self,
         beatmap_id: BeatmapIdT,
         user_id: UserIdT,
         *,
-        mode: Optional[GameModeT] = None
+        mode: Optional[GameModeT] = None,
     ) -> List[Score]:
         """
         Get all of a user's scores on a beatmap. If you only want the top user
@@ -1191,18 +1307,22 @@ class OssapiAsync:
         endpoint.
         """
         params = {"mode": mode}
-        scores = await self._get(BeatmapUserScores,
-            f"/beatmaps/{beatmap_id}/scores/users/{user_id}/all", params)
+        scores = await self._get(
+            BeatmapUserScores,
+            f"/beatmaps/{beatmap_id}/scores/users/{user_id}/all",
+            params,
+        )
         return scores.scores
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmap_scores(self,
+    async def beatmap_scores(
+        self,
         beatmap_id: BeatmapIdT,
         *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
         type: Optional[RankingTypeT] = None,
-        limit: Optional[int] = None
+        limit: Optional[int] = None,
     ) -> BeatmapScores:
         """
         Get the top scores of a beatmap.
@@ -1227,11 +1347,11 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmap-scores>`__ endpoint.
         """
         params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
-        return await self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores",
-            params)
+        return await self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores", params)
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmap(self,
+    async def beatmap(
+        self,
         beatmap_id: Optional[BeatmapIdT] = None,
         *,
         checksum: Optional[str] = None,
@@ -1257,15 +1377,14 @@ class OssapiAsync:
         endpoints.
         """
         if not (beatmap_id or checksum or filename):
-            raise ValueError("at least one of beatmap_id, checksum, or "
-                "filename must be passed")
+            raise ValueError(
+                "at least one of beatmap_id, checksum, or filename must be passed"
+            )
         params = {"checksum": checksum, "filename": filename, "id": beatmap_id}
         return await self._get(Beatmap, "/beatmaps/lookup", params)
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmaps(self,
-        beatmap_ids: List[BeatmapIdT]
-    ) -> List[Beatmap]:
+    async def beatmaps(self, beatmap_ids: List[BeatmapIdT]) -> List[Beatmap]:
         """
         Batch get beatmaps by id. If you only want to retrieve a single beatmap,
         or want to retrieve beatmaps by something other than id (eg checksum),
@@ -1286,12 +1405,13 @@ class OssapiAsync:
         return beatmaps.beatmaps
 
     @request(Scope.PUBLIC, category="beatmaps")
-    async def beatmap_attributes(self,
+    async def beatmap_attributes(
+        self,
         beatmap_id: int,
         *,
         mods: Optional[ModT] = None,
         ruleset: Optional[GameModeT] = None,
-        ruleset_id: Optional[int] = None
+        ruleset_id: Optional[int] = None,
     ) -> DifficultyAttributes:
         """
         Get the difficult attributes of a beatmap. Used for pp calculation.
@@ -1314,22 +1434,23 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmap-attributes>`__ endpoint.
         """
         data = {"mods": mods, "ruleset": ruleset, "ruleset_id": ruleset_id}
-        return await self._post(DifficultyAttributes,
-            f"/beatmaps/{beatmap_id}/attributes", data=data)
-
+        return await self._post(
+            DifficultyAttributes, f"/beatmaps/{beatmap_id}/attributes", data=data
+        )
 
     # /beatmapsets
     # ------------
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def beatmapset_discussion_posts(self,
+    async def beatmapset_discussion_posts(
+        self,
         beatmapset_discussion_id: Optional[int] = None,
         *,
         limit: Optional[int] = None,
         page: Optional[int] = None,
         sort: Optional[BeatmapDiscussionPostSortT] = None,
         user_id: Optional[UserIdT] = None,
-        with_deleted: Optional[bool] = None
+        with_deleted: Optional[bool] = None,
     ) -> BeatmapsetDiscussionPosts:
         """
         Get the posts of a beatmapset discussion.
@@ -1356,14 +1477,21 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts>`__
         endpoint.
         """
-        params = {"beatmapset_discussion_id": beatmapset_discussion_id,
-            "limit": limit, "page": page, "sort": sort, "user": user_id,
-            "with_deleted": with_deleted}
-        return await self._get(BeatmapsetDiscussionPosts,
-            "/beatmapsets/discussions/posts", params)
+        params = {
+            "beatmapset_discussion_id": beatmapset_discussion_id,
+            "limit": limit,
+            "page": page,
+            "sort": sort,
+            "user": user_id,
+            "with_deleted": with_deleted,
+        }
+        return await self._get(
+            BeatmapsetDiscussionPosts, "/beatmapsets/discussions/posts", params
+        )
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def beatmapset_discussion_votes(self,
+    async def beatmapset_discussion_votes(
+        self,
         *,
         beatmapset_discussion_id: Optional[int] = None,
         limit: Optional[int] = None,
@@ -1372,7 +1500,7 @@ class OssapiAsync:
         vote: Optional[BeatmapsetDiscussionVoteT] = None,
         sort: Optional[BeatmapsetDiscussionVoteSortT] = None,
         user_id: Optional[UserIdT] = None,
-        with_deleted: Optional[bool] = None
+        with_deleted: Optional[bool] = None,
     ) -> BeatmapsetDiscussionVotes:
         """
         Get beatmapset discussion votes.
@@ -1403,15 +1531,23 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts>`__
         endpoint.
         """
-        params = {"beatmapset_discussion_id": beatmapset_discussion_id,
-            "limit": limit, "page": page, "receiver": receiver_id,
-            "score": vote, "sort": sort, "user": user_id,
-            "with_deleted": with_deleted}
-        return await self._get(BeatmapsetDiscussionVotes,
-            "/beatmapsets/discussions/votes", params)
+        params = {
+            "beatmapset_discussion_id": beatmapset_discussion_id,
+            "limit": limit,
+            "page": page,
+            "receiver": receiver_id,
+            "score": vote,
+            "sort": sort,
+            "user": user_id,
+            "with_deleted": with_deleted,
+        }
+        return await self._get(
+            BeatmapsetDiscussionVotes, "/beatmapsets/discussions/votes", params
+        )
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def beatmapset_discussions(self,
+    async def beatmapset_discussions(
+        self,
         *,
         beatmapset_id: Optional[BeatmapsetIdT] = None,
         beatmap_id: Optional[BeatmapIdT] = None,
@@ -1457,23 +1593,30 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmapset-discussion-posts>`__
         endpoint.
         """
-        params = {"beatmapset_id": beatmapset_id, "beatmap_id": beatmap_id,
-            "beatmapset_status": beatmapset_status, "limit": limit,
-            "message_types": message_types, "only_unresolved": only_unresolved,
-            "page": page, "sort": sort, "user": user_id,
-            "with_deleted": with_deleted}
-        return await self._get(BeatmapsetDiscussions,
-            "/beatmapsets/discussions", params)
+        params = {
+            "beatmapset_id": beatmapset_id,
+            "beatmap_id": beatmap_id,
+            "beatmapset_status": beatmapset_status,
+            "limit": limit,
+            "message_types": message_types,
+            "only_unresolved": only_unresolved,
+            "page": page,
+            "sort": sort,
+            "user": user_id,
+            "with_deleted": with_deleted,
+        }
+        return await self._get(
+            BeatmapsetDiscussions, "/beatmapsets/discussions", params
+        )
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def search_beatmapsets(self,
+    async def search_beatmapsets(
+        self,
         query: Optional[str] = None,
         *,
         mode: BeatmapsetSearchModeT = BeatmapsetSearchMode.ANY,
-        category: BeatmapsetSearchCategoryT =
-            BeatmapsetSearchCategory.HAS_LEADERBOARD,
-        explicit_content: BeatmapsetSearchExplicitContentT =
-            BeatmapsetSearchExplicitContent.HIDE,
+        category: BeatmapsetSearchCategoryT = BeatmapsetSearchCategory.HAS_LEADERBOARD,
+        explicit_content: BeatmapsetSearchExplicitContentT = BeatmapsetSearchExplicitContent.HIDE,
         genre: BeatmapsetSearchGenreT = BeatmapsetSearchGenre.ANY,
         language: BeatmapsetSearchLanguageT = BeatmapsetSearchLanguage.ANY,
         # "Extra"
@@ -1486,7 +1629,7 @@ class OssapiAsync:
         force_spotlights: bool = False,
         force_featured_artists: bool = False,
         cursor: Optional[Cursor] = None,
-        sort: Optional[BeatmapsetSearchSortT] = None
+        sort: Optional[BeatmapsetSearchSortT] = None,
     ) -> BeatmapsetSearchResult:
         """
         Search beatmapsets. Equivalent to the beatmapset search page on the
@@ -1560,9 +1703,18 @@ class OssapiAsync:
             generals.append("featured_artists")
         general = ".".join(generals)
 
-        params = {"cursor": cursor, "q": query, "s": category, "m": mode,
-            "g": genre, "l": language, "nsfw": explicit_content, "e": extra,
-            "c": general, "sort": sort}
+        params = {
+            "cursor": cursor,
+            "q": query,
+            "s": category,
+            "m": mode,
+            "g": genre,
+            "l": language,
+            "nsfw": explicit_content,
+            "e": extra,
+            "c": general,
+            "sort": sort,
+        }
 
         # BeatmapsetSearchGenre.ANY is the default and doesn't have a correct
         # corresponding value
@@ -1576,10 +1728,11 @@ class OssapiAsync:
         return await self._get(BeatmapsetSearchResult, "/beatmapsets/search/", params)
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def beatmapset(self,
+    async def beatmapset(
+        self,
         beatmapset_id: Optional[BeatmapsetIdT] = None,
         *,
-        beatmap_id: Optional[BeatmapIdT] = None
+        beatmap_id: Optional[BeatmapIdT] = None,
     ) -> Beatmapset:
         """
         Get a beatmapset from a beatmapset id or a beatmap id.
@@ -1599,22 +1752,24 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#beatmapsetslookup>`__ endpoints.
         """
         if not bool(beatmap_id) ^ bool(beatmapset_id):
-            raise ValueError("exactly one of beatmap_id and beatmapset_id must "
-                "be passed.")
+            raise ValueError(
+                "exactly one of beatmap_id and beatmapset_id must be passed."
+            )
         if beatmap_id:
             params = {"beatmap_id": beatmap_id}
             return await self._get(Beatmapset, "/beatmapsets/lookup", params)
         return await self._get(Beatmapset, f"/beatmapsets/{beatmapset_id}")
 
     @request(Scope.PUBLIC, category="beatmapsets")
-    async def beatmapset_events(self,
+    async def beatmapset_events(
+        self,
         *,
         limit: Optional[int] = None,
         page: Optional[int] = None,
         user_id: Optional[UserIdT] = None,
         types: Optional[List[BeatmapsetEventTypeT]] = None,
         min_date: Optional[datetime] = None,
-        max_date: Optional[datetime] = None
+        max_date: Optional[datetime] = None,
     ) -> ModdingHistoryEventsBundle:
         """
         Get beatmapset events. Equivalent to the events search page on the
@@ -1641,20 +1796,23 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#beatmapsetsevents>`__ endpoint.
         """
         # limit is 5-50
-        params = {"limit": limit, "page": page, "user": user_id,
-            "min_date": min_date, "max_date": max_date, "types": types}
-        return await self._get(ModdingHistoryEventsBundle, "/beatmapsets/events",
-            params)
-
+        params = {
+            "limit": limit,
+            "page": page,
+            "user": user_id,
+            "min_date": min_date,
+            "max_date": max_date,
+            "types": types,
+        }
+        return await self._get(
+            ModdingHistoryEventsBundle, "/beatmapsets/events", params
+        )
 
     # /changelog
     # ----------
 
     @request(scope=None, category="changelog")
-    async def changelog_build(self,
-        stream: str,
-        build: str
-    ) -> Build:
+    async def changelog_build(self, stream: str, build: str) -> Build:
         """
         Get changelog build details.
 
@@ -1673,14 +1831,17 @@ class OssapiAsync:
         return await self._get(Build, f"/changelog/{stream}/{build}")
 
     @request(scope=None, category="changelog")
-    async def changelog_listing(self,
+    async def changelog_listing(
+        self,
         *,
         from_: Optional[str] = None,
         to: Optional[str] = None,
         max_id: Optional[int] = None,
         stream: Optional[str] = None,
-        message_formats: List[ChangelogMessageFormat] =
-            [ChangelogMessageFormat.HTML, ChangelogMessageFormat.MARKDOWN]
+        message_formats: List[ChangelogMessageFormat] = [
+            ChangelogMessageFormat.HTML,
+            ChangelogMessageFormat.MARKDOWN,
+        ],
     ) -> ChangelogListing:
         """
         Get list of changelogs.
@@ -1703,19 +1864,27 @@ class OssapiAsync:
         Implements the `Get Changelog Listing
         <https://osu.ppy.sh/docs/index.html#get-changelog-listing>`__ endpoint.
         """
-        params = {"from": from_, "to": to, "max_id": max_id, "stream": stream,
-            "message_formats": message_formats}
+        params = {
+            "from": from_,
+            "to": to,
+            "max_id": max_id,
+            "stream": stream,
+            "message_formats": message_formats,
+        }
         return await self._get(ChangelogListing, "/changelog", params)
 
     # TODO can almost certainly be combined with changelog_build endpoint, in
     # line with other get/lookup endpoint combinations (beatmap, beatmapset)
     @request(scope=None, category="changelog")
-    async def changelog_build_lookup(self,
+    async def changelog_build_lookup(
+        self,
         changelog: str,
         *,
         key: Optional[str] = None,
-        message_formats: List[ChangelogMessageFormat] =
-            [ChangelogMessageFormat.HTML, ChangelogMessageFormat.MARKDOWN]
+        message_formats: List[ChangelogMessageFormat] = [
+            ChangelogMessageFormat.HTML,
+            ChangelogMessageFormat.MARKDOWN,
+        ],
     ) -> Build:
         """
         Look up a changelog build by version, update stream name, or id.
@@ -1739,16 +1908,12 @@ class OssapiAsync:
         params = {"key": key, "message_formats": message_formats}
         return await self._get(Build, f"/changelog/{changelog}", params)
 
-
     # /chat
     # -----
 
     @request(Scope.CHAT_WRITE, category="chat")
-    async def send_pm(self,
-        user_id: UserIdT,
-        message: str,
-        *,
-        is_action: Optional[bool] = False
+    async def send_pm(
+        self, user_id: UserIdT, message: str, *, is_action: Optional[bool] = False
     ) -> CreatePMResponse:
         """
         Send a pm to a user.
@@ -1766,14 +1931,14 @@ class OssapiAsync:
         Implements the `Create New PM
         <https://osu.ppy.sh/docs/index.html#create-new-pm>`__ endpoint.
         """
-        data = {"target_id": user_id, "message": message,
-            "is_action": is_action}
+        data = {"target_id": user_id, "message": message, "is_action": is_action}
         return await self._post(CreatePMResponse, "/chat/new", data=data)
 
     # this method requires a user in the announce group, so I've never tested
     # it.
     @request(Scope.CHAT_WRITE_MANAGE, category="chat")
-    async def send_announcement(self,
+    async def send_announcement(
+        self,
         channel_name: str,
         channel_description: str,
         message: str,
@@ -1815,22 +1980,22 @@ class OssapiAsync:
             "channel.description": channel_description,
             "message": message,
             "target_ids": target_ids,
-            "type": "ANNOUNCE"
+            "type": "ANNOUNCE",
         }
         return await self._post(ChatChannel, "/chat/channels", data=data)
-
 
     # /comments
     # ---------
 
     @request(Scope.PUBLIC, category="comments")
-    async def comments(self,
+    async def comments(
+        self,
         *,
         commentable_type: Optional[CommentableTypeT] = None,
         commentable_id: Optional[int] = None,
         cursor: Optional[Cursor] = None,
         parent_id: Optional[int] = None,
-        sort: Optional[CommentSortT] = None
+        sort: Optional[CommentSortT] = None,
     ) -> CommentBundle:
         """
         Get comments and their replies (up to 2 levels deep). If you only want
@@ -1855,15 +2020,17 @@ class OssapiAsync:
         Implements the `Get Comments
         <https://osu.ppy.sh/docs/index.html#get-comments>`__ endpoint.
         """
-        params = {"commentable_type": commentable_type,
-            "commentable_id": commentable_id, "cursor": cursor,
-            "parent_id": parent_id, "sort": sort}
+        params = {
+            "commentable_type": commentable_type,
+            "commentable_id": commentable_id,
+            "cursor": cursor,
+            "parent_id": parent_id,
+            "sort": sort,
+        }
         return await self._get(CommentBundle, "/comments", params)
 
     @request(scope=None, category="comments")
-    async def comment(self,
-        comment_id: int
-    ) -> CommentBundle:
+    async def comment(self, comment_id: int) -> CommentBundle:
         """
         Get a comment and its replies (up to 2 levels deep).
 
@@ -1879,15 +2046,12 @@ class OssapiAsync:
         """
         return await self._get(CommentBundle, f"/comments/{comment_id}")
 
-
     # /events
     # -------
 
     @request(Scope.PUBLIC, category="events")
-    async def events(self,
-        *,
-        sort: Optional[EventsSortT] = None,
-        cursor_string: Optional[str] = None
+    async def events(
+        self, *, sort: Optional[EventsSortT] = None, cursor_string: Optional[str] = None
     ) -> Events:
         """
         Get most recent events, in order of creation time.
@@ -1907,18 +2071,18 @@ class OssapiAsync:
         params = {"cursor_string": cursor_string, "sort": sort}
         return await self._get(Events, "/events", params)
 
-
     # /forums
     # -------
 
     @request(Scope.FORUM_WRITE, category="forums")
-    async def forum_create_topic(self,
-       forum_id: int,
-       title: str,
-       body: str,
-       *,
-       poll: Optional[ForumPoll] = None,
-   ) -> CreateForumTopicResponse:
+    async def forum_create_topic(
+        self,
+        forum_id: int,
+        title: str,
+        body: str,
+        *,
+        poll: Optional[ForumPoll] = None,
+    ) -> CreateForumTopicResponse:
         """
         https://osu.ppy.sh/docs/index.html#create-topic
         """
@@ -1999,14 +2163,15 @@ class OssapiAsync:
         return await self._put(ForumPost, f"/forums/posts/{post_id}", data)
 
     @request(Scope.PUBLIC, category="forums")
-    async def forum_topic(self,
+    async def forum_topic(
+        self,
         topic_id: int,
         *,
         cursor_string: Optional[str] = None,
         sort: Optional[ForumTopicSortT] = None,
         limit: Optional[int] = None,
         start: Optional[int] = None,
-        end: Optional[int] = None
+        end: Optional[int] = None,
     ) -> ForumTopicAndPosts:
         """
         Get a forum topic and its posts.
@@ -2035,11 +2200,14 @@ class OssapiAsync:
         Implements the `Get Topic and Posts
         <https://osu.ppy.sh/docs/index.html#get-topic-and-posts>`__ endpoint.
         """
-        params = {"cursor_string": cursor_string, "sort": sort, "limit": limit,
-            "start": start, "end": end}
-        return await self._get(ForumTopicAndPosts, f"/forums/topics/{topic_id}",
-            params)
-
+        params = {
+            "cursor_string": cursor_string,
+            "sort": sort,
+            "limit": limit,
+            "start": start,
+            "end": end,
+        }
+        return await self._get(ForumTopicAndPosts, f"/forums/topics/{topic_id}", params)
 
     # /friends
     # --------
@@ -2056,16 +2224,16 @@ class OssapiAsync:
         """
         return await self._get(List[UserCompact], "/friends")
 
-
     # / ("home")
     # ----------
 
     @request(Scope.PUBLIC, category="home")
-    async def search(self,
+    async def search(
+        self,
         query: str,
         *,
         mode: Optional[SearchModeT] = None,
-        page: Optional[int] = None
+        page: Optional[int] = None,
     ) -> Search:
         """
         Search users and wiki pages. If you want to search beatmapsets, see
@@ -2088,7 +2256,6 @@ class OssapiAsync:
         params = {"mode": mode, "query": query, "page": page}
         return await self._get(Search, "/search", params)
 
-
     # /matches
     # --------
 
@@ -2106,12 +2273,13 @@ class OssapiAsync:
         return await self._get(Matches, "/matches")
 
     @request(Scope.PUBLIC, category="matches")
-    def match(self,
+    def match(
+        self,
         match_id: MatchIdT,
         *,
         after_id: Optional[int] = None,
         before_id: Optional[int] = None,
-        limit: Optional[int] = None
+        limit: Optional[int] = None,
     ) -> MatchResponse:
         """
         Get a match (eg https://osu.ppy.sh/community/matches/97947404).
@@ -2129,14 +2297,11 @@ class OssapiAsync:
         params = {"after": after_id, "before": before_id, "limit": limit}
         return self._get(MatchResponse, f"/matches/{match_id}", params=params)
 
-
     # /me
     # ---
 
     @request(Scope.IDENTIFY, category="me")
-    async def get_me(self,
-        mode: Optional[GameModeT] = None
-    ):
+    async def get_me(self, mode: Optional[GameModeT] = None):
         """
         Get data about the authenticated user.
 
@@ -2153,16 +2318,16 @@ class OssapiAsync:
         """
         return await self._get(User, f"/me/{mode.value if mode else ''}")
 
-
     # /news
     # -----
 
     @request(scope=None, category="news")
-    async def news_listing(self,
+    async def news_listing(
+        self,
         *,
         limit: Optional[int] = None,
         year: Optional[int] = None,
-        cursor_string: Optional[str] = None
+        cursor_string: Optional[str] = None,
     ) -> NewsListing:
         """
         Get news posts.
@@ -2185,10 +2350,8 @@ class OssapiAsync:
         return await self._get(NewsListing, "/news", params=params)
 
     @request(scope=None, category="news")
-    async def news_post(self,
-        news: str,
-        *,
-        key: Optional[NewsPostKeyT] = NewsPostKey.SLUG
+    async def news_post(
+        self, news: str, *, key: Optional[NewsPostKeyT] = NewsPostKey.SLUG
     ) -> NewsPost:
         """
         Get a news post by id or slug.
@@ -2211,7 +2374,6 @@ class OssapiAsync:
         params = {"key": key}
         return await self._get(NewsPost, f"/news/{news}", params=params)
 
-
     # /oauth
     # ------
 
@@ -2229,12 +2391,12 @@ class OssapiAsync:
         self.session.delete(f"{self.base_url}/oauth/tokens/current")
         self.remove_token(self.token_key, self.token_directory)
 
-
     # /rankings
     # ---------
 
     @request(Scope.PUBLIC, category="rankings")
-    async def ranking(self,
+    async def ranking(
+        self,
         mode: GameModeT,
         type: RankingTypeT,
         *,
@@ -2242,7 +2404,7 @@ class OssapiAsync:
         cursor: Optional[Cursor] = None,
         filter_: RankingFilterT = RankingFilter.ALL,
         spotlight: Optional[int] = None,
-        variant: Optional[str] = None
+        variant: Optional[str] = None,
     ) -> Rankings:
         """
         Get current rankings for the specified game mode. Can specify ``type``
@@ -2274,11 +2436,16 @@ class OssapiAsync:
         Implements the `Get Ranking
         <https://osu.ppy.sh/docs/index.html#get-ranking>`__ endpoint.
         """
-        params = {"country": country, "cursor": cursor, "filter": filter_,
-            "spotlight": spotlight, "variant": variant}
-        return await self._get(Rankings, f"/rankings/{mode.value}/{type.value}",
-            params=params)
-
+        params = {
+            "country": country,
+            "cursor": cursor,
+            "filter": filter_,
+            "spotlight": spotlight,
+            "variant": variant,
+        }
+        return await self._get(
+            Rankings, f"/rankings/{mode.value}/{type.value}", params=params
+        )
 
     # /rooms
     # ------
@@ -2286,13 +2453,14 @@ class OssapiAsync:
     # TODO add test for this once I figure out values for room_id and
     # playlist_id that actually produce a response lol
     @request(Scope.PUBLIC, category="rooms")
-    async def multiplayer_scores(self,
+    async def multiplayer_scores(
+        self,
         room_id: int,
         playlist_id: int,
         *,
         limit: Optional[int] = None,
         sort: Optional[MultiplayerScoresSortT] = None,
-        cursor_string: Optional[str] = None
+        cursor_string: Optional[str] = None,
     ) -> MultiplayerScores:
         """
         Get scores on a playlist item in a room.
@@ -2316,8 +2484,11 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-scores>`__ endpoint.
         """
         params = {"limit": limit, "sort": sort, "cursor_string": cursor_string}
-        return await self._get(MultiplayerScores,
-            f"/rooms/{room_id}/playlist/{playlist_id}/scores", params=params)
+        return await self._get(
+            MultiplayerScores,
+            f"/rooms/{room_id}/playlist/{playlist_id}/scores",
+            params=params,
+        )
 
     @request(Scope.PUBLIC, category="rooms")
     async def room(self, room_id: RoomIdT) -> Room:
@@ -2354,7 +2525,8 @@ class OssapiAsync:
         return await self._get(RoomLeaderboard, f"/rooms/{room_id}/leaderboard")
 
     @request(Scope.PUBLIC, requires_user=True, category="rooms")
-    async def rooms(self,
+    async def rooms(
+        self,
         *,
         limit: Optional[int] = None,
         mode: Optional[RoomSearchModeT] = None,
@@ -2362,7 +2534,7 @@ class OssapiAsync:
         # TODO enumify
         sort: Optional[str] = None,
         # TODO enumify
-        type_group: Optional[str] = None
+        type_group: Optional[str] = None,
     ) -> List[Room]:
         """
         Get the list of current rooms.
@@ -2385,18 +2557,20 @@ class OssapiAsync:
         Implements the `Get Rooms
         <https://osu.ppy.sh/docs/index.html#roomsmode>`__ endpoint.
         """
-        params = {"limit": limit, "mode": mode, "season_id": season_id,
-            "sort": sort, "type_group": type_group}
+        params = {
+            "limit": limit,
+            "mode": mode,
+            "season_id": season_id,
+            "sort": sort,
+            "type_group": type_group,
+        }
         return await self._get(List[Room], "/rooms", params=params)
-
 
     # /scores
     # -------
 
     @request(Scope.PUBLIC, category="scores")
-    def score(self,
-        score_id: int
-    ) -> Score:
+    def score(self, score_id: int) -> Score:
         """
         Get a score. This corresponds to urls of the form https://osu.ppy.sh/scores/1312718771
         ("new id format").
@@ -2440,6 +2614,7 @@ class OssapiAsync:
 
     async def _download_score(self, *, url, raw):
         from aiohttp import ClientSession, ContentTypeError
+
         aiohttp_session = ClientSession()
         r = await self.session.request_async("GET", url, session=aiohttp_session)
 
@@ -2467,11 +2642,7 @@ class OssapiAsync:
         return Replay(replay, self)
 
     @request(Scope.PUBLIC, requires_user=True, category="scores")
-    async def download_score(self,
-        score_id: int,
-        *,
-        raw: bool = False
-    ) -> Replay:
+    async def download_score(self, score_id: int, *, raw: bool = False) -> Replay:
         """
         Download the replay data of a score.
 
@@ -2496,11 +2667,8 @@ class OssapiAsync:
         return await self._download_score(url=url, raw=raw)
 
     @request(Scope.PUBLIC, requires_user=True, category="scores")
-    async def download_score_mode(self,
-        mode: GameModeT,
-        score_id: int,
-        *,
-        raw: bool = False
+    async def download_score_mode(
+        self, mode: GameModeT, score_id: int, *, raw: bool = False
     ) -> Replay:
         """
         Download the replay data of a score.
@@ -2527,7 +2695,6 @@ class OssapiAsync:
         url = f"{self.base_url}/scores/{mode.value}/{score_id}/download"
         return await self._download_score(url=url, raw=raw)
 
-
     # seasonal backgrounds
     # --------------------
 
@@ -2542,7 +2709,6 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#seasonal-backgrounds>`__ endpoint.
         """
         return await self._get(SeasonalBackgrounds, "/seasonal-backgrounds")
-
 
     # /spotlights
     # -----------
@@ -2560,16 +2726,16 @@ class OssapiAsync:
         spotlights = await self._get(Spotlights, "/spotlights")
         return spotlights.spotlights
 
-
     # /users
     # ------
 
     @request(Scope.PUBLIC, category="users")
-    async def user_kudosu(self,
+    async def user_kudosu(
+        self,
         user_id: UserIdT,
         *,
         limit: Optional[int] = None,
-        offset: Optional[int] = None
+        offset: Optional[int] = None,
     ) -> List[KudosuHistory]:
         """
         Get user kudosu history.
@@ -2589,18 +2755,18 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-user-kudosu>`__ endpoint.
         """
         params = {"limit": limit, "offset": offset}
-        return await self._get(List[KudosuHistory], f"/users/{user_id}/kudosu",
-            params)
+        return await self._get(List[KudosuHistory], f"/users/{user_id}/kudosu", params)
 
     @request(Scope.PUBLIC, category="users")
-    async def user_scores(self,
+    async def user_scores(
+        self,
         user_id: UserIdT,
         type: ScoreTypeT,
         *,
         include_fails: Optional[bool] = None,
         mode: Optional[GameModeT] = None,
         limit: Optional[int] = None,
-        offset: Optional[int] = None
+        offset: Optional[int] = None,
     ) -> List[Score]:
         """
         Get scores of a user.
@@ -2631,18 +2797,24 @@ class OssapiAsync:
         if include_fails is True:
             include_fails = 1
 
-        params = {"include_fails": include_fails, "mode": mode, "limit": limit,
-            "offset": offset}
-        return await self._get(List[Score], f"/users/{user_id}/scores/{type.value}",
-            params)
+        params = {
+            "include_fails": include_fails,
+            "mode": mode,
+            "limit": limit,
+            "offset": offset,
+        }
+        return await self._get(
+            List[Score], f"/users/{user_id}/scores/{type.value}", params
+        )
 
     @request(Scope.PUBLIC, category="users")
-    async def user_beatmaps(self,
+    async def user_beatmaps(
+        self,
         user_id: UserIdT,
         type: UserBeatmapTypeT,
         *,
         limit: Optional[int] = None,
-        offset: Optional[int] = None
+        offset: Optional[int] = None,
     ) -> Union[List[Beatmapset], List[BeatmapPlaycount]]:
         """
         Get beatmaps of a user.
@@ -2674,15 +2846,17 @@ class OssapiAsync:
         if type is UserBeatmapType.MOST_PLAYED:
             return_type = List[BeatmapPlaycount]
 
-        return await self._get(return_type,
-            f"/users/{user_id}/beatmapsets/{type.value}", params)
+        return await self._get(
+            return_type, f"/users/{user_id}/beatmapsets/{type.value}", params
+        )
 
     @request(Scope.PUBLIC, category="users")
-    async def user_recent_activity(self,
+    async def user_recent_activity(
+        self,
         user_id: UserIdT,
         *,
         limit: Optional[int] = None,
-        offset: Optional[int] = None
+        offset: Optional[int] = None,
     ) -> List[Event]:
         """
         Get recent activity of a user.
@@ -2703,15 +2877,17 @@ class OssapiAsync:
         endpoint.
         """
         params = {"limit": limit, "offset": offset}
-        return await self._get(List[_Event], f"/users/{user_id}/recent_activity/",
-            params)
+        return await self._get(
+            List[_Event], f"/users/{user_id}/recent_activity/", params
+        )
 
     @request(Scope.PUBLIC, category="users")
-    async def user(self,
+    async def user(
+        self,
         user: Union[UserIdT, str],
         *,
         mode: Optional[GameModeT] = None,
-        key: Optional[UserLookupKeyT] = None
+        key: Optional[UserLookupKeyT] = None,
     ) -> User:
         """
         Get a user by id or username.
@@ -2731,13 +2907,12 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-user>`__ endpoint.
         """
         params = {"key": key}
-        return await self._get(User, f"/users/{user}/{mode.value if mode else ''}",
-            params)
+        return await self._get(
+            User, f"/users/{user}/{mode.value if mode else ''}", params
+        )
 
     @request(Scope.PUBLIC, category="users")
-    async def users(self,
-        user_ids: List[int]
-    ) -> List[UserCompact]:
+    async def users(self, user_ids: List[int]) -> List[UserCompact]:
         """
         Batch get users by id. If you only want to retrieve a single user, or
         want to retrieve users by username instead of id, see :meth:`user`.
@@ -2760,10 +2935,7 @@ class OssapiAsync:
     # -----
 
     @request(scope=None, category="wiki")
-    async def wiki_page(self,
-        locale: str,
-        path: str
-    ) -> WikiPage:
+    async def wiki_page(self, locale: str, path: str) -> WikiPage:
         """
         Get a wiki page.
 

@@ -5,11 +5,12 @@ from ossapi.mod import Mod
 from ossapi.enums import UserLookupKey
 
 game_mode_map = {
-    OsrparseGameMode.STD:   GameMode.OSU,
+    OsrparseGameMode.STD: GameMode.OSU,
     OsrparseGameMode.TAIKO: GameMode.TAIKO,
-    OsrparseGameMode.CTB:   GameMode.CATCH,
+    OsrparseGameMode.CTB: GameMode.CATCH,
     OsrparseGameMode.MANIA: GameMode.MANIA,
 }
+
 
 class Replay(OsrparseReplay):
     """
@@ -21,6 +22,7 @@ class Replay(OsrparseReplay):
     It converts some attributes to more appropriate types and adds :meth:`.user`
     and :meth:`.beatmap` to retrieve api-related objects.
     """
+
     def __init__(self, replay, api):
         super().__init__(
             mode=game_mode_map[replay.mode],
@@ -42,7 +44,7 @@ class Replay(OsrparseReplay):
             timestamp=replay.timestamp,
             replay_data=replay.replay_data,
             replay_id=replay.replay_id,
-            rng_seed=replay.rng_seed
+            rng_seed=replay.rng_seed,
         )
 
         self._osrparse_mode = replay.mode
@@ -104,6 +106,6 @@ class Replay(OsrparseReplay):
             timestamp=self.timestamp,
             replay_data=self.replay_data,
             replay_id=self.replay_id,
-            rng_seed=self.rng_seed
+            rng_seed=self.rng_seed,
         )
         return r.pack(dict_size=dict_size, mode=mode)

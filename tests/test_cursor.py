@@ -4,6 +4,7 @@ from ossapi import RankingType, Cursor
 
 from tests import api_v2 as api
 
+
 class TestCursor(TestCase):
     def test_nullable_cursor(self):
         cursor = Cursor(page=199)
