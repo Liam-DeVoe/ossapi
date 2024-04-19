@@ -2106,7 +2106,13 @@ class OssapiAsync:
         return await self._get(Matches, "/matches")
 
     @request(Scope.PUBLIC, category="matches")
-    async def match(self, match_id: MatchIdT) -> MatchResponse:
+    def match(self,
+        match_id: MatchIdT,
+        *,
+        after_id: Optional[int] = None,
+        before_id: Optional[int] = None,
+        limit: Optional[int] = None
+    ) -> MatchResponse:
         """
         Get a match (eg https://osu.ppy.sh/community/matches/97947404).
 
@@ -2120,7 +2126,8 @@ class OssapiAsync:
         Implements the `Get Match
         <https://osu.ppy.sh/docs/index.html#matchesmatch>`__ endpoint.
         """
-        return await self._get(MatchResponse, f"/matches/{match_id}")
+        params = {"after": after_id, "before": before_id, "limit": limit}
+        return self._get(MatchResponse, f"/matches/{match_id}", params=params)
 
 
     # /me
@@ -2431,39 +2438,10 @@ class OssapiAsync:
         """
         return self._get(Score, f"/scores/{mode.value}/{score_id}")
 
-    @request(Scope.PUBLIC, requires_user=True, category="scores")
-    async def download_score(self,
-        mode: GameModeT,
-        score_id: int,
-        *,
-        raw: bool = False
-    ) -> Replay:
-        """
-        Download the replay data of a score.
-
-        Parameters
-        ----------
-        mode
-            The mode of the score to download.
-        score_id
-            The score to download.
-        raw
-            If ``True``, will return the raw string response from the api
-            instead of a :class:`~ossapi.replay.Replay` object.
-
-        Notes
-        -----
-        Implements the `Download Score
-        <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
-        endpoint.
-        """
+    async def _download_score(self, *, url, raw):
         from aiohttp import ClientSession, ContentTypeError
-
-        url = f"{self.base_url}/scores/{mode.value}/{score_id}/download"
-
         aiohttp_session = ClientSession()
-        r = await self.session.request_async("GET", url,
-            session=aiohttp_session)
+        r = await self.session.request_async("GET", url, session=aiohttp_session)
 
         # if the response above succeeded, it will return a raw string
         # instead of json. If it didn't succeed, it will return json with an
@@ -2487,6 +2465,67 @@ class OssapiAsync:
 
         replay = osrparse.Replay.from_string(content)
         return Replay(replay, self)
+
+    @request(Scope.PUBLIC, requires_user=True, category="scores")
+    async def download_score(self,
+        score_id: int,
+        *,
+        raw: bool = False
+    ) -> Replay:
+        """
+        Download the replay data of a score.
+
+        This endpoint is for score ids which don't have a matching gamemode
+        (new id format). If you have an old score id, use api.download_score_mode.
+
+        Parameters
+        ----------
+        score_id
+            The score to download.
+        raw
+            If ``True``, will return the raw string response from the api
+            instead of a :class:`~ossapi.replay.Replay` object.
+
+        Notes
+        -----
+        Implements the `Download Score
+        <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
+        endpoint.
+        """
+        url = f"{self.base_url}/scores/{score_id}/download"
+        return await self._download_score(url=url, raw=raw)
+
+    @request(Scope.PUBLIC, requires_user=True, category="scores")
+    async def download_score_mode(self,
+        mode: GameModeT,
+        score_id: int,
+        *,
+        raw: bool = False
+    ) -> Replay:
+        """
+        Download the replay data of a score.
+
+        This endpoint is for score ids which have a matching gamemode
+        (old id format). If you have a new score id, use api.download_score.
+
+        Parameters
+        ----------
+        mode
+            The mode of the score to download.
+        score_id
+            The score to download.
+        raw
+            If ``True``, will return the raw string response from the api
+            instead of a :class:`~ossapi.replay.Replay` object.
+
+        Notes
+        -----
+        Implements the `Download Score
+        <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
+        endpoint.
+        """
+        url = f"{self.base_url}/scores/{mode.value}/{score_id}/download"
+        return await self._download_score(url=url, raw=raw)
 
 
     # seasonal backgrounds

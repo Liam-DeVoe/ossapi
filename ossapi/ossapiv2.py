@@ -2391,8 +2391,56 @@ class Ossapi:
         """
         return self._get(Score, f"/scores/{mode.value}/{score_id}")
 
+    def _download_score(self, *, url, raw):
+        r = self.session.get(url)
+        # if the response above succeeded, it will return a raw string
+        # instead of json. If it didn't succeed, it will return json with an
+        # error.
+        # So always try parsing as json to check if there's an error. If parsing
+        # fails, just assume the request succeeded and move on.
+        try:
+            json_ = r.json()
+            self._check_response(json_, url)
+        except json.JSONDecodeError:
+            pass
+
+        if raw:
+            return r.content
+
+        replay = osrparse.Replay.from_string(r.content)
+        return Replay(replay, self)
+
     @request(Scope.PUBLIC, requires_user=True, category="scores")
     def download_score(self,
+        score_id: int,
+        *,
+        raw: bool = False
+    ) -> Replay:
+        """
+        Download the replay data of a score.
+
+        This endpoint is for score ids which don't have a matching gamemode
+        (new id format). If you have an old score id, use api.download_score_mode.
+
+        Parameters
+        ----------
+        score_id
+            The score to download.
+        raw
+            If ``True``, will return the raw string response from the api
+            instead of a :class:`~ossapi.replay.Replay` object.
+
+        Notes
+        -----
+        Implements the `Download Score
+        <https://osu.ppy.sh/docs/index.html#scoresmodescoredownload>`__
+        endpoint.
+        """
+        url = f"{self.base_url}/scores/{score_id}/download"
+        return self._download_score(url=url, raw=raw)
+
+    @request(Scope.PUBLIC, requires_user=True, category="scores")
+    def download_score_mode(self,
         mode: GameModeT,
         score_id: int,
         *,
@@ -2400,6 +2448,9 @@ class Ossapi:
     ) -> Replay:
         """
         Download the replay data of a score.
+
+        This endpoint is for score ids which have a matching gamemode
+        (old id format). If you have a new score id, use api.download_score.
 
         Parameters
         ----------
@@ -2418,24 +2469,7 @@ class Ossapi:
         endpoint.
         """
         url = f"{self.base_url}/scores/{mode.value}/{score_id}/download"
-        r = self.session.get(url)
-
-        # if the response above succeeded, it will return a raw string
-        # instead of json. If it didn't succeed, it will return json with an
-        # error.
-        # So always try parsing as json to check if there's an error. If parsing
-        # fails, just assume the request succeeded and move on.
-        try:
-            json_ = r.json()
-            self._check_response(json_, url)
-        except json.JSONDecodeError:
-            pass
-
-        if raw:
-            return r.content
-
-        replay = osrparse.Replay.from_string(r.content)
-        return Replay(replay, self)
+        return self._download_score(url=url, raw=raw)
 
 
     # seasonal backgrounds
