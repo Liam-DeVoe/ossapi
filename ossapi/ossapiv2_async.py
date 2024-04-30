@@ -2789,16 +2789,9 @@ class OssapiAsync:
         Implements the `Get User Scores
         <https://osu.ppy.sh/docs/index.html#get-user-scores>`__ endpoint.
         """
-        # `include_fails` is actually a string in the api spec. We'll still
-        # require a bool to be passed, and just do the conversion behind the
-        # scenes.
-        if include_fails is False:
-            include_fails = 0
-        if include_fails is True:
-            include_fails = 1
-
         params = {
-            "include_fails": include_fails,
+            # `include_fails` is actually 0/1 in the api spec, not a bool.
+            "include_fails": None if include_fails is None else int(include_fails),
             "mode": mode,
             "limit": limit,
             "offset": offset,

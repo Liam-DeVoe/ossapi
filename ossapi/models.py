@@ -436,6 +436,9 @@ class BeatmapUserScore(Model):
     position: int
     score: Score
 
+class _NonLegacyBeatmapUserScore(Model):
+    position: int
+    score: _NonLegacyScore
 
 class BeatmapUserScores(Model):
     scores: List[Score]
@@ -443,7 +446,7 @@ class BeatmapUserScores(Model):
 
 class BeatmapScores(Model):
     scores: List[Score]
-    userScore: Optional[BeatmapUserScore]
+    user_score: Optional[BeatmapUserScore] = Field(name="userScore")
 
 
 class CommentableMeta(Model):
@@ -1437,7 +1440,7 @@ class MatchResponse(Model):
 
 class _NonLegacyBeatmapScores(Model):
     scores: List[_NonLegacyScore]
-    userScore: Optional[BeatmapUserScore]
+    user_score: Optional[_NonLegacyBeatmapUserScore] = Field(name="userScore")
 
 
 class _NonLegacyMod(BaseModel):
@@ -1518,3 +1521,6 @@ class _NonLegacyScore(Model):
     _user: Optional[UserCompact] = Field(name="user")
     match: Optional[ScoreMatchInfo]
     type: str
+
+    def user(self) -> Union[UserCompact, User]:
+        return self._fk_user(self.user_id, existing=self._user)

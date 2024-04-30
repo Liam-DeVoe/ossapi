@@ -1141,6 +1141,7 @@ class Ossapi:
         self,
         type: Optional[BeatmapPackTypeT] = None,
         cursor_string: Optional[str] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapPacks:
         """
         Get a list of beatmap packs. If you want to retrieve a specific pack,
@@ -1150,6 +1151,9 @@ class Ossapi:
         ----------
         cursor_string
             Cursor for pagination.
+        legacy_only
+            Whether to exclude lazer scores for user completion data. Defaults
+            to False.
 
         Notes
         -----
@@ -1157,7 +1161,11 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#get-beatmap-packs>`__
         endpoint.
         """
-        params = {"type": type, "cursor_string": cursor_string}
+        params = {
+            "type": type,
+            "cursor_string": cursor_string,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return self._get(BeatmapPacks, "/beatmaps/packs", params)
 
     @request(Scope.PUBLIC, category="beatmap packs")
@@ -1185,6 +1193,7 @@ class Ossapi:
         *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapUserScore:
         """
         Get a user's best score on a beatmap. If you want to retrieve all
@@ -1200,6 +1209,8 @@ class Ossapi:
             The mode the scores were set on.
         mods
             The mods the score was set with.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
@@ -1207,7 +1218,11 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-score>`__
         endpoint.
         """
-        params = {"mode": mode, "mods": mods}
+        params = {
+            "mode": mode,
+            "mods": mods,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return self._get(
             BeatmapUserScore, f"/beatmaps/{beatmap_id}/scores/users/{user_id}", params
         )
@@ -1219,6 +1234,7 @@ class Ossapi:
         user_id: UserIdT,
         *,
         mode: Optional[GameModeT] = None,
+        legacy_only: Optional[bool] = None,
     ) -> List[Score]:
         """
         Get all of a user's scores on a beatmap. If you only want the top user
@@ -1232,6 +1248,8 @@ class Ossapi:
             The user who set the scores.
         mode
             The mode the scores were set on.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
@@ -1239,7 +1257,10 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-scores>`__
         endpoint.
         """
-        params = {"mode": mode}
+        params = {
+            "mode": mode,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         scores = self._get(
             BeatmapUserScores,
             f"/beatmaps/{beatmap_id}/scores/users/{user_id}/all",
@@ -1256,6 +1277,7 @@ class Ossapi:
         mods: Optional[ModT] = None,
         type: Optional[RankingTypeT] = None,
         limit: Optional[int] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapScores:
         """
         Get the top scores of a beatmap.
@@ -1273,13 +1295,21 @@ class Ossapi:
         limit
             How many results to return. Defaults to 50. Must be between 1 and
             100.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
         Implements the `Get Beatmap Scores
         <https://osu.ppy.sh/docs/index.html#get-beatmap-scores>`__ endpoint.
         """
-        params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
+        params = {
+            "mode": mode,
+            "mods": mods,
+            "type": type,
+            "limit": limit,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores", params)
 
     def _beatmap_scores_non_legacy(
@@ -1290,7 +1320,6 @@ class Ossapi:
         mods: Optional[ModT] = None,
         type: Optional[RankingTypeT] = None,
         limit: Optional[int] = None,
-        legacy_only: Optional[bool] = None,
     ) -> _NonLegacyBeatmapScores:
         """
         This is a provisional method. It may change or disappear in the future.
@@ -1305,7 +1334,6 @@ class Ossapi:
             "mods": mods,
             "type": type,
             "limit": limit,
-            "legacy_only": legacy_only,
         }
         return self._get(
             _NonLegacyBeatmapScores, f"/beatmaps/{beatmap_id}/solo-scores", params
@@ -2714,6 +2742,7 @@ class Ossapi:
         mode: Optional[GameModeT] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        legacy_only: Optional[bool] = None,
     ) -> List[Score]:
         """
         Get scores of a user.
@@ -2730,25 +2759,21 @@ class Ossapi:
             Maximum number of scores to return.
         offset
             Offset for pagination.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
         Implements the `Get User Scores
         <https://osu.ppy.sh/docs/index.html#get-user-scores>`__ endpoint.
         """
-        # `include_fails` is actually a string in the api spec. We'll still
-        # require a bool to be passed, and just do the conversion behind the
-        # scenes.
-        if include_fails is False:
-            include_fails = 0
-        if include_fails is True:
-            include_fails = 1
 
         params = {
-            "include_fails": include_fails,
+            "include_fails": None if include_fails is None else int(include_fails),
             "mode": mode,
             "limit": limit,
             "offset": offset,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
         }
         return self._get(List[Score], f"/users/{user_id}/scores/{type.value}", params)
 
