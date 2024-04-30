@@ -3020,16 +3020,9 @@
 <span class="sd">        Implements the `Get User Scores</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-user-scores&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># `include_fails` is actually a string in the api spec. We&#39;ll still</span>
-        <span class="c1"># require a bool to be passed, and just do the conversion behind the</span>
-        <span class="c1"># scenes.</span>
-        <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">include_fails</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">include_fails</span> <span class="o">=</span> <span class="mi">1</span>
-
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;include_fails&quot;</span><span class="p">:</span> <span class="n">include_fails</span><span class="p">,</span>
+            <span class="c1"># `include_fails` is actually 0/1 in the api spec, not a bool.</span>
+            <span class="s2">&quot;include_fails&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">include_fails</span><span class="p">),</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
             <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
             <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>

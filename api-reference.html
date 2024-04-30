@@ -4301,6 +4301,21 @@ by an internal ModCombination, instead of exposing ModCombination to users.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="ossapi.models._NonLegacyBeatmapUserScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_NonLegacyBeatmapUserScore</span></span><a class="reference internal" href="_modules/ossapi/models.html#_NonLegacyBeatmapUserScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.models._NonLegacyBeatmapUserScore" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.models._NonLegacyBeatmapUserScore.position">
+<span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ossapi.models._NonLegacyBeatmapUserScore.position" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.models._NonLegacyBeatmapUserScore.score">
+<span class="sig-name descname"><span class="pre">score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ossapi.models._NonLegacyScore" title="ossapi.models._NonLegacyScore"><span class="pre">_NonLegacyScore</span></a></em><a class="headerlink" href="#ossapi.models._NonLegacyBeatmapUserScore.score" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="ossapi.models.BeatmapUserScores">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BeatmapUserScores</span></span><a class="reference internal" href="_modules/ossapi/models.html#BeatmapUserScores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.models.BeatmapUserScores" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py attribute">
@@ -4319,10 +4334,14 @@ by an internal ModCombination, instead of exposing ModCombination to users.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="ossapi.models.BeatmapScores.userScore">
-<span class="sig-name descname"><span class="pre">userScore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ossapi.models.BeatmapUserScore" title="ossapi.models.BeatmapUserScore"><span class="pre">BeatmapUserScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ossapi.models.BeatmapScores.userScore" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.models.BeatmapScores.user_score">
+<span class="sig-name descname"><span class="pre">user_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ossapi.models.BeatmapUserScore" title="ossapi.models.BeatmapUserScore"><span class="pre">BeatmapUserScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ossapi.models.BeatmapScores.user_score" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">user_score</span></code> is returned in the osu! api as <code class="docutils literal notranslate"><span class="pre">userScore</span></code>.</p>
+</div>
 </dd></dl>
 
 <dl class="py class">
@@ -7747,10 +7766,14 @@ by an internal ModCombination, instead of exposing ModCombination to users.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="ossapi.models._NonLegacyBeatmapScores.userScore">
-<span class="sig-name descname"><span class="pre">userScore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ossapi.models.BeatmapUserScore" title="ossapi.models.BeatmapUserScore"><span class="pre">BeatmapUserScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ossapi.models._NonLegacyBeatmapScores.userScore" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="ossapi.models._NonLegacyBeatmapScores.user_score">
+<span class="sig-name descname"><span class="pre">user_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapUserScore" title="ossapi.models._NonLegacyBeatmapUserScore"><span class="pre">_NonLegacyBeatmapUserScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ossapi.models._NonLegacyBeatmapScores.user_score" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">user_score</span></code> is returned in the osu! api as <code class="docutils literal notranslate"><span class="pre">userScore</span></code>.</p>
+</div>
 </dd></dl>
 
 <dl class="py class">
@@ -7999,6 +8022,11 @@ by an internal ModCombination, instead of exposing ModCombination to users.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="ossapi.models._NonLegacyScore.type">
 <span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ossapi.models._NonLegacyScore.type" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ossapi.models._NonLegacyScore.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">function</span></em><a class="reference internal" href="_modules/ossapi/models.html#_NonLegacyScore.user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ossapi.models._NonLegacyScore.user" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -9353,13 +9381,18 @@ valid <code class="docutils literal notranslate"><span class="pre">.osr</span></
 <li><a class="reference internal" href="#ossapi.models.BeatmapUserScore.score"><code class="docutils literal notranslate"><span class="pre">BeatmapUserScore.score</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapUserScore"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapUserScore</span></code></a><ul>
+<li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapUserScore.position"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapUserScore.position</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapUserScore.score"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapUserScore.score</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ossapi.models.BeatmapUserScores"><code class="docutils literal notranslate"><span class="pre">BeatmapUserScores</span></code></a><ul>
 <li><a class="reference internal" href="#ossapi.models.BeatmapUserScores.scores"><code class="docutils literal notranslate"><span class="pre">BeatmapUserScores.scores</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ossapi.models.BeatmapScores"><code class="docutils literal notranslate"><span class="pre">BeatmapScores</span></code></a><ul>
 <li><a class="reference internal" href="#ossapi.models.BeatmapScores.scores"><code class="docutils literal notranslate"><span class="pre">BeatmapScores.scores</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.models.BeatmapScores.userScore"><code class="docutils literal notranslate"><span class="pre">BeatmapScores.userScore</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.models.BeatmapScores.user_score"><code class="docutils literal notranslate"><span class="pre">BeatmapScores.user_score</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ossapi.models.CommentableMeta"><code class="docutils literal notranslate"><span class="pre">CommentableMeta</span></code></a><ul>
@@ -10237,7 +10270,7 @@ valid <code class="docutils literal notranslate"><span class="pre">.osr</span></
 </li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapScores"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapScores</span></code></a><ul>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapScores.scores"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapScores.scores</span></code></a></li>
-<li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapScores.userScore"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapScores.userScore</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.models._NonLegacyBeatmapScores.user_score"><code class="docutils literal notranslate"><span class="pre">_NonLegacyBeatmapScores.user_score</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyMod"><code class="docutils literal notranslate"><span class="pre">_NonLegacyMod</span></code></a></li>
@@ -10292,6 +10325,7 @@ valid <code class="docutils literal notranslate"><span class="pre">.osr</span></
 <li><a class="reference internal" href="#ossapi.models._NonLegacyScore.statistics"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.statistics</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyScore.total_score"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.total_score</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyScore.type"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.type</span></code></a></li>
+<li><a class="reference internal" href="#ossapi.models._NonLegacyScore.user"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.user</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyScore.user_id"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.user_id</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.models._NonLegacyScore.weight"><code class="docutils literal notranslate"><span class="pre">_NonLegacyScore.weight</span></code></a></li>
 </ul>

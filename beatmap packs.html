@@ -252,13 +252,15 @@ endpoint.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.beatmap_packs">
-<span class="sig-name descname"><span class="pre">beatmap_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">beatmap_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legacy_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.beatmap_packs" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a list of beatmap packs. If you want to retrieve a specific pack,
 see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_pack" title="ossapi.ossapiv2.Ossapi.beatmap_pack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap_pack()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>legacy_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to exclude lazer scores for user completion data. Defaults
+to False.</p></li>
 <li><p><strong>type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.BeatmapPackType" title="ossapi.enums.BeatmapPackType"><em>BeatmapPackType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>

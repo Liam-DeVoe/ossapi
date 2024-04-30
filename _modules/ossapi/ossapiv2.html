@@ -1372,6 +1372,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapPacks</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a list of beatmap packs. If you want to retrieve a specific pack,</span>
@@ -1381,6 +1382,9 @@
 <span class="sd">        ----------</span>
 <span class="sd">        cursor_string</span>
 <span class="sd">            Cursor for pagination.</span>
+<span class="sd">        legacy_only</span>
+<span class="sd">            Whether to exclude lazer scores for user completion data. Defaults</span>
+<span class="sd">            to False.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
@@ -1388,7 +1392,11 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-beatmap-packs&gt;`__</span>
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+            <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
+        <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapPacks</span><span class="p">,</span> <span class="s2">&quot;/beatmaps/packs&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmap packs&quot;</span><span class="p">)</span>
@@ -1416,6 +1424,7 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapUserScore</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a user&#39;s best score on a beatmap. If you want to retrieve all</span>
@@ -1431,6 +1440,8 @@
 <span class="sd">            The mode the scores were set on.</span>
 <span class="sd">        mods</span>
 <span class="sd">            The mods the score was set with.</span>
+<span class="sd">        legacy_only</span>
+<span class="sd">            Whether to exclude lazer scores. Defaults to False.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
@@ -1438,7 +1449,11 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-score&gt;`__</span>
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
+            <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
+        <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
             <span class="n">BeatmapUserScore</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span>
         <span class="p">)</span>
@@ -1450,6 +1465,7 @@
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get all of a user&#39;s scores on a beatmap. If you only want the top user</span>
@@ -1463,6 +1479,8 @@
 <span class="sd">            The user who set the scores.</span>
 <span class="sd">        mode</span>
 <span class="sd">            The mode the scores were set on.</span>
+<span class="sd">        legacy_only</span>
+<span class="sd">            Whether to exclude lazer scores. Defaults to False.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
@@ -1470,7 +1488,10 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-scores&gt;`__</span>
 <span class="sd">        endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
+        <span class="p">}</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
             <span class="n">BeatmapUserScores</span><span class="p">,</span>
             <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/all&quot;</span><span class="p">,</span>
@@ -1487,6 +1508,7 @@
         <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapScores</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the top scores of a beatmap.</span>
@@ -1504,13 +1526,21 @@
 <span class="sd">        limit</span>
 <span class="sd">            How many results to return. Defaults to 50. Must be between 1 and</span>
 <span class="sd">            100.</span>
+<span class="sd">        legacy_only</span>
+<span class="sd">            Whether to exclude lazer scores. Defaults to False.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get Beatmap Scores</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-beatmap-scores&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
+            <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
+        <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_beatmap_scores_non_legacy</span><span class="p">(</span>
@@ -1521,7 +1551,6 @@
         <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_NonLegacyBeatmapScores</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is a provisional method. It may change or disappear in the future.</span>
@@ -1536,7 +1565,6 @@
             <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
             <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
-            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="n">legacy_only</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
             <span class="n">_NonLegacyBeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/solo-scores&quot;</span><span class="p">,</span> <span class="n">params</span>
@@ -2945,6 +2973,7 @@
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get scores of a user.</span>
@@ -2961,25 +2990,21 @@
 <span class="sd">            Maximum number of scores to return.</span>
 <span class="sd">        offset</span>
 <span class="sd">            Offset for pagination.</span>
+<span class="sd">        legacy_only</span>
+<span class="sd">            Whether to exclude lazer scores. Defaults to False.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get User Scores</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-user-scores&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># `include_fails` is actually a string in the api spec. We&#39;ll still</span>
-        <span class="c1"># require a bool to be passed, and just do the conversion behind the</span>
-        <span class="c1"># scenes.</span>
-        <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">include_fails</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">include_fails</span> <span class="o">=</span> <span class="mi">1</span>
 
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;include_fails&quot;</span><span class="p">:</span> <span class="n">include_fails</span><span class="p">,</span>
+            <span class="s2">&quot;include_fails&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">include_fails</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">include_fails</span><span class="p">),</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
             <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
             <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+            <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 

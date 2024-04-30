@@ -2600,6 +2600,14 @@ Models
    .. py:attribute:: score
       :type: Score
 
+.. py:class:: _NonLegacyBeatmapUserScore
+
+   .. py:attribute:: position
+      :type: int
+
+   .. py:attribute:: score
+      :type: _NonLegacyScore
+
 .. py:class:: BeatmapUserScores
 
    .. py:attribute:: scores
@@ -2610,8 +2618,11 @@ Models
    .. py:attribute:: scores
       :type: list[Score]
 
-   .. py:attribute:: userScore
+   .. py:attribute:: user_score
       :type: BeatmapUserScore | None
+
+   .. note::
+      ``user_score`` is returned in the osu! api as ``userScore``.
 
 .. py:class:: CommentableMeta
 
@@ -4571,8 +4582,11 @@ Models
    .. py:attribute:: scores
       :type: list[_NonLegacyScore]
 
-   .. py:attribute:: userScore
-      :type: BeatmapUserScore | None
+   .. py:attribute:: user_score
+      :type: _NonLegacyBeatmapUserScore | None
+
+   .. note::
+      ``user_score`` is returned in the osu! api as ``userScore``.
 
 .. py:class:: _NonLegacyMod
 
@@ -4720,6 +4734,9 @@ Models
 
    .. py:attribute:: type
       :type: str
+
+   .. py:attribute:: user
+      :type: function
 
    .. py:attribute:: user_id
       :type: int

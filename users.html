@@ -329,7 +329,7 @@ endpoint.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_scores">
-<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legacy_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Permalink to this definition">#</a></dt>
 <dd><p>Get scores of a user.</p>
 <dl class="simple">
 <dt>user_id</dt><dd><p>The user to get scores of.</p>
@@ -344,6 +344,8 @@ endpoint.</p>
 </dd>
 <dt>offset</dt><dd><p>Offset for pagination.</p>
 </dd>
+<dt>legacy_only</dt><dd><p>Whether to exclude lazer scores. Defaults to False.</p>
+</dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-user-scores">Get User Scores</a> endpoint.</p>
@@ -356,6 +358,7 @@ endpoint.</p>
 <li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
 <li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
 <li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>legacy_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
