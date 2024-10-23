@@ -612,9 +612,15 @@ class Hype(Model):
     required: int
 
 
+class NominationsRequired(Model):
+    main_ruleset: int
+    non_main_ruleset: int
+
+
 class Nominations(Model):
     current: int
-    required: int
+    required_meta: NominationsRequired
+    eligible_main_rulesets: Optional[List[GameMode]]
 
 
 class Nomination(Model):

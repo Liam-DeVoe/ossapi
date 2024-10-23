@@ -99,7 +99,7 @@ class ModCombination(BaseModel):
         return mod.value
 
     def short_name(self):
-        """
+        r"""
         The acronym-ized names of the component mods.
 
         Returns
@@ -133,7 +133,7 @@ class ModCombination(BaseModel):
         return "".join(mod.short_name() for mod in component_mods)
 
     def long_name(self):
-        """
+        r"""
         The spelled out names of the component mods.
 
         Returns
@@ -190,7 +190,7 @@ class ModCombination(BaseModel):
         return bool(self.value & other.value)
 
     def decompose(self, clean=False):
-        """
+        r"""
         Decomposes this mod into its base component mods, which are
         :class:`~.ModCombination`\s with a ``value`` of a power of two.
 

@@ -1770,6 +1770,7 @@ class OssapiAsync:
         types: Optional[List[BeatmapsetEventTypeT]] = None,
         min_date: Optional[datetime] = None,
         max_date: Optional[datetime] = None,
+        beatmapset_id: Optional[BeatmapsetIdT] = None,
     ) -> ModdingHistoryEventsBundle:
         """
         Get beatmapset events. Equivalent to the events search page on the
@@ -1789,6 +1790,8 @@ class OssapiAsync:
             Filter by event date.
         max_date
             Filter by event date.
+        beatmapset_id
+            Filter by a beatmapset.
 
         Notes
         -----
@@ -1803,6 +1806,7 @@ class OssapiAsync:
             "min_date": min_date,
             "max_date": max_date,
             "types": types,
+            "beatmapset_id": beatmapset_id,
         }
         return await self._get(
             ModdingHistoryEventsBundle, "/beatmapsets/events", params

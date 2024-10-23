@@ -436,9 +436,11 @@ class BeatmapUserScore(Model):
     position: int
     score: Score
 
+
 class _NonLegacyBeatmapUserScore(Model):
     position: int
     score: _NonLegacyScore
+
 
 class BeatmapUserScores(Model):
     scores: List[Score]

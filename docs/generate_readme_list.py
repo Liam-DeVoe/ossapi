@@ -24,9 +24,11 @@ for category, names in endpoints.items():
     else:
         title = string.capwords(category)
 
-    print(f"* {title}<a name=\"endpoints-{fragment}\"></a>")
+    print(f'* {title}<a name="endpoints-{fragment}"></a>')
 
     # markdown doesn't link spaces in links?
     category_url = category.replace(" ", "%20")
     for name in names:
-        print(f"  * [`api.{name}`](https://tybug.github.io/ossapi/{category_url}.html#ossapi.ossapiv2.Ossapi.{name})")
+        print(
+            f"  * [`api.{name}`](https://tybug.github.io/ossapi/{category_url}.html#ossapi.ossapiv2.Ossapi.{name})"
+        )

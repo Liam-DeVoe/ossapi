@@ -239,9 +239,9 @@ class TestScore(TestCase):
         api.score(1312718771)
 
         # other gamemodes
-        api.score(1874611010)
-        api.score(2238254261)
-        api.score(1958862711)
+        api.score(1874611010)  # taiko
+        api.score(2238254261)  # mania
+        api.score(1958862712)  # catch
 
 
 class TestScoreMode(TestCase):
@@ -256,7 +256,7 @@ class TestScoreMode(TestCase):
         # other gamemodes
         api.score_mode(GameMode.TAIKO, 176904666)
         api.score_mode(GameMode.MANIA, 524674142)
-        api.score_mode(GameMode.CATCH, 211167989)
+        api.score_mode(GameMode.CATCH, 211167987)
 
 
 class TestFriends(TestCase):
