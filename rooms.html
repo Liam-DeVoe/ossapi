@@ -239,11 +239,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The room to get the scores from.</p></li>
-<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
-<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
+<li><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The room to get the scores from.</p></li>
+<li><p><strong>playlist_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The playlist to get the scores from.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of scores to get.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.MultiplayerScoresSort" title="ossapi.enums.MultiplayerScoresSort"><em>MultiplayerScoresSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the scores.</p></li>
+<li><p><strong>cursor_string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -260,7 +260,7 @@
 <dd><p>Get a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a></p>
@@ -276,7 +276,7 @@
 <dd><p>Get the leaderboard of a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
+<dd class="field-odd"><p><strong>room_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>) – The room to get the leaderboard of.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.RoomLeaderboard" title="ossapi.models.RoomLeaderboard"><em>RoomLeaderboard</em></a></p>
@@ -293,15 +293,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
-<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RoomSearchMode" title="ossapi.enums.RoomSearchMode"><em>RoomSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
-<li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
-<li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
-<li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
+<li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of results.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RoomSearchMode" title="ossapi.enums.RoomSearchMode"><em>RoomSearchMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Mode to filter rooms by. Defaults to all rooms.</p></li>
+<li><p><strong>season_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Season id to return rooms from.</p></li>
+<li><p><strong>sort</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Sort order. One of “ended” or “created”.</p></li>
+<li><p><strong>type_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – “playlists” (default) or “realtime”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a>[<a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a>[<a class="reference internal" href="api-reference.html#ossapi.models.Room" title="ossapi.models.Room"><em>Room</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>

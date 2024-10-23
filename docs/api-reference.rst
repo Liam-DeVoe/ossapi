@@ -1360,13 +1360,24 @@ Enums
    .. py:attribute:: required
       :type: int
 
+.. py:class:: NominationsRequired
+
+   .. py:attribute:: main_ruleset
+      :type: int
+
+   .. py:attribute:: non_main_ruleset
+      :type: int
+
 .. py:class:: Nominations
 
    .. py:attribute:: current
       :type: int
 
-   .. py:attribute:: required
-      :type: int
+   .. py:attribute:: eligible_main_rulesets
+      :type: list[GameMode] | None
+
+   .. py:attribute:: required_meta
+      :type: NominationsRequired
 
 .. py:class:: Nomination
 

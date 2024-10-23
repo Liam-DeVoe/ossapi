@@ -239,8 +239,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
-<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The changelog stream name (eg <code class="docutils literal notranslate"><span class="pre">stable40</span></code>).</p></li>
+<li><p><strong>build</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The changelog build name (eg <code class="docutils literal notranslate"><span class="pre">20230121.1</span></code>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -258,10 +258,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
-<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
+<li><p><strong>changelog</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Build version, update stream name, or build id.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Unset to query by build version or stream name, or <code class="docutils literal notranslate"><span class="pre">id</span></code> to query
 by build id.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -280,11 +280,11 @@ by build id.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>from</strong> – Minimum build version.</p></li>
-<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
-<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
-<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
-<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
-<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
+<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Maximum build version.</p></li>
+<li><p><strong>max_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Maximum build id.</p></li>
+<li><p><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Filter changelogs by stream.</p></li>
+<li><p><strong>message_formats</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.enums.ChangelogMessageFormat" title="ossapi.enums.ChangelogMessageFormat"><em>ChangelogMessageFormat</em></a><em>]</em>) – Format to return text of changelog entries in.</p></li>
+<li><p><strong>from_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

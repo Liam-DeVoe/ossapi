@@ -238,7 +238,7 @@
 <dd><p>Get a comment and its replies (up to 2 levels deep).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>comment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – The comment to get.</p>
+<dd class="field-odd"><p><strong>comment_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The comment to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="api-reference.html#ossapi.models.CommentBundle" title="ossapi.models.CommentBundle"><em>CommentBundle</em></a></p>
@@ -256,11 +256,11 @@ want to retrieve a single comment, see <a class="reference internal" href="#ossa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>commentable_type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.CommentableType" title="ossapi.enums.CommentableType"><em>CommentableType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – The type of resource to get comments for.</p></li>
-<li><p><strong>commentable_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the resource to get comments for.</p></li>
+<li><p><strong>commentable_type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.CommentableType" title="ossapi.enums.CommentableType"><em>CommentableType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – The type of resource to get comments for.</p></li>
+<li><p><strong>commentable_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – The id of the resource to get comments for.</p></li>
 <li><p><strong>cursor</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
-<li><p><strong>parent_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – Filter by id of the parent comment.</p></li>
-<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.CommentSort" title="ossapi.enums.CommentSort"><em>CommentSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the comments. Defaults to <code class="docutils literal notranslate"><span class="pre">new</span></code> for guest account and
+<li><p><strong>parent_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Filter by id of the parent comment.</p></li>
+<li><p><strong>sort</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.CommentSort" title="ossapi.enums.CommentSort"><em>CommentSort</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – How to sort the comments. Defaults to <code class="docutils literal notranslate"><span class="pre">new</span></code> for guest account and
 the user-specified default when authenticated.</p></li>
 </ul>
 </dd>

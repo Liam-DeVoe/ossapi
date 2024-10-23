@@ -240,18 +240,18 @@ to get different types of rankings (performance, score, country, etc).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The mode to get rankings for.</p></li>
-<li><p><strong>type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The type of ranking to get.</p></li>
-<li><p><strong>country</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by 2 letter country code. Only available for
+<li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The mode to get rankings for.</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The type of ranking to get.</p></li>
+<li><p><strong>country</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by 2 letter country code. Only available for
 <code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
 <li><p><strong>cursor</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Cursor" title="ossapi.models.Cursor"><em>Cursor</em></a><em> | </em><em>None</em>) – Cursor for pagination.</p></li>
 <li><p><strong>filter</strong> – Filter ranking by specified filter.</p></li>
-<li><p><strong>spotlight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><em>None</em>) – The id of the spotlight to return rankings for. Ranking for latest
+<li><p><strong>spotlight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – The id of the spotlight to return rankings for. Ranking for latest
 spotlight will be returned if not specified. Only available for
 <code class="docutils literal notranslate"><span class="pre">RankingType.SPOTLIGHT</span></code>.</p></li>
-<li><p><strong>variant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by game mode variant. Either <code class="docutils literal notranslate"><span class="pre">4k</span></code> or <code class="docutils literal notranslate"><span class="pre">7k</span></code> for
+<li><p><strong>variant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – Filter ranking by game mode variant. Either <code class="docutils literal notranslate"><span class="pre">4k</span></code> or <code class="docutils literal notranslate"><span class="pre">7k</span></code> for
 mania. Only available for <code class="docutils literal notranslate"><span class="pre">RankingType.PERFORMANCE</span></code>.</p></li>
-<li><p><strong>filter_</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RankingFilter" title="ossapi.enums.RankingFilter"><em>RankingFilter</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – </p></li>
+<li><p><strong>filter_</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RankingFilter" title="ossapi.enums.RankingFilter"><em>RankingFilter</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

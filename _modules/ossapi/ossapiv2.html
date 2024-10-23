@@ -1988,6 +1988,7 @@
         <span class="n">types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetEventTypeT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">min_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">max_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">beatmapset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModdingHistoryEventsBundle</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get beatmapset events. Equivalent to the events search page on the</span>
@@ -2007,6 +2008,8 @@
 <span class="sd">            Filter by event date.</span>
 <span class="sd">        max_date</span>
 <span class="sd">            Filter by event date.</span>
+<span class="sd">        beatmapset_id</span>
+<span class="sd">            Filter by a beatmapset.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
@@ -2021,6 +2024,7 @@
             <span class="s2">&quot;min_date&quot;</span><span class="p">:</span> <span class="n">min_date</span><span class="p">,</span>
             <span class="s2">&quot;max_date&quot;</span><span class="p">:</span> <span class="n">max_date</span><span class="p">,</span>
             <span class="s2">&quot;types&quot;</span><span class="p">:</span> <span class="n">types</span><span class="p">,</span>
+            <span class="s2">&quot;beatmapset_id&quot;</span><span class="p">:</span> <span class="n">beatmapset_id</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">ModdingHistoryEventsBundle</span><span class="p">,</span> <span class="s2">&quot;/beatmapsets/events&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 

@@ -843,9 +843,15 @@
     <span class="n">required</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
+<div class="viewcode-block" id="NominationsRequired"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NominationsRequired">[docs]</a><span class="k">class</span> <span class="nc">NominationsRequired</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">main_ruleset</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">non_main_ruleset</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
 <div class="viewcode-block" id="Nominations"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nominations">[docs]</a><span class="k">class</span> <span class="nc">Nominations</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">current</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">required</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">required_meta</span><span class="p">:</span> <span class="n">NominationsRequired</span>
+    <span class="n">eligible_main_rulesets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">GameMode</span><span class="p">]]</span></div>
 
 
 <div class="viewcode-block" id="Nomination"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nomination">[docs]</a><span class="k">class</span> <span class="nc">Nomination</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
