@@ -35,19 +35,19 @@ def is_base_model_type(type_):
 
 
 class Field:
-    def __init__(self, *, name=None, deserialize_type=None):
+    def __init__(self, *, name=None, type=None):
         self.name = name
 
         # We use annotations for two distinct purposes: deserialization, and
-        # type hints. If the deserialize type does not match the runtime type,
-        # these two annotations are in conflict.
+        # user-facing type hints. If the deserialize type does not match the
+        # runtime type, these two annotations need to be different.
         #
         # For instance, events should deserialize as _Event, but have a runtime
         # type of Event.
         #
         # This field allows setting the runtime type via annotations and the
         # deserialize type via passing this field.
-        self.deserialize_type = deserialize_type
+        self.type = type
 
 
 class _Model:
@@ -57,7 +57,8 @@ class _Model:
     instead.
     """
 
-    def override_types(self):
+    @staticmethod
+    def override_attributes(data, api):
         """
         Sometimes, the types of attributes in models depends on the value of
         other fields in that model. By overriding this method, models can return
@@ -66,29 +67,13 @@ class _Model:
         instead.
 
         This method should return a mapping of ``attribute_name`` to
-        ``intended_type``.
-        """
-        return {}
-
-    @classmethod
-    def override_class(cls, _data):
-        """
-        This method addressess a shortcoming in ``override_types`` in order to
-        achieve full coverage of the intended feature of overriding types.
-
-        The model that we want to override types for may be at the very top of
-        the hierarchy, meaning we can't go any higher and find a model for which
-        we can override ``override_types`` to customize this class' type.
-
-        A possible solution for this is to create a wrapper class one step above
-        it; however, this is both dirty and may not work (I haven't actually
-        tried it). So this method provides a way for a model to override its
-        *own* type (ie class) at run-time.
+        ``intended_type``. You can also return a class to use exactly the
+        attributes of that class.
         """
         return None
 
-    @classmethod
-    def preprocess_data(cls, data):
+    @staticmethod
+    def preprocess_data(data, api):
         """
         A hook that allows model classes to modify data from the api before it
         is used to instantiate the model.
@@ -120,12 +105,7 @@ class ModelMeta(type):
                 continue
             setattr(model, name, None)
 
-        # @dataclass will automatically define a str/repr if it can't find one
-        # we defined ourselves. We *do* define one on Model, but I guess because
-        # we're doing weird stuff with metaclasses it can't find it sometimes?
-        # not sure. but we can fix it by telling @dataclass to never generate
-        # a repr for us.
-        return dataclass(model, repr=False)
+        return model
 
 
 class Model(_Model, metaclass=ModelMeta):
@@ -133,10 +113,21 @@ class Model(_Model, metaclass=ModelMeta):
     A dataclass-style model. Provides an ``_api`` attribute.
     """
 
-    # This is the ``OssapiV2`` instance that loaded this model.
-    # can't annotate with OssapiV2 or we get a circular import error, this is
-    # good enough.
-    _api: Any
+    def __init__(self, **kwargs):
+        self._ossapi_data = kwargs
+
+    def __getattribute__(self, key):
+        data = super().__getattribute__("_ossapi_data")
+        if key == "_ossapi_data":
+            return data
+        if key in data:
+            return data[key]
+        return super().__getattribute__(key)
+
+    def __setattr__(self, key, value):
+        if key == "_ossapi_data":
+            return super().__setattr__(key, value)
+        self._ossapi_data[key] = value
 
     def _foreign_key(self, fk, func, existing):
         if existing:
@@ -161,9 +152,18 @@ class Model(_Model, metaclass=ModelMeta):
         # don't print internal values
         blacklisted_keys = ["_api"]
         items = [
-            f"{k}={v!r}" for k, v in self.__dict__.items() if k not in blacklisted_keys
+            f"{k}={v!r}"
+            for k, v in self._ossapi_data.items()
+            if k not in blacklisted_keys
         ]
         return "{}({})".format(type(self).__name__, ", ".join(items))
+
+    def __eq__(self, other):
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return all(
+            getattr(self, key) == getattr(other, key) for key in self._ossapi_data
+        )
 
     __repr__ = __str__
 

@@ -1,6 +1,6 @@
 [project]
 name = "ossapi"
-version = "4.0.0"
+version = "5.0.0b1"
 description = "Complete python wrapper for osu! api v2 and v1."
 readme = "README.md"
 keywords = ["osu!", "wrapper", "api", "python"]

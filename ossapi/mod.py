@@ -1,5 +1,6 @@
 from ossapi.utils import BaseModel
 
+# fmt: off
 int_to_mod = {
     0          : ["NM",       "NoMod"],
     1 << 0     : ["NF",      "NoFail"],

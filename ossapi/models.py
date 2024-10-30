@@ -66,6 +66,8 @@ from ossapi.enums import (
     ForumPollText,
     ForumPollTitle,
     BeatmapPackUserCompletionData,
+    RoomPlaylistItemStats,
+    RoomDifficultyRange,
 )
 from ossapi.utils import Datetime, Model, BaseModel, Field
 
@@ -219,6 +221,8 @@ class User(UserCompact):
     playstyle: Optional[PlayStyles]
     post_count: int
     profile_order: List[ProfilePage]
+    profile_hue: Optional[int]
+    daily_challenge_user_stats: DailyChallengeUserStats
     title: Optional[str]
     title_url: Optional[str]
     twitter: Optional[str]
@@ -246,7 +250,7 @@ class BeatmapCompact(Model):
 
     # optional fields
     # ---------------
-    _beatmapset: Optional[BeatmapsetCompact] = Field(name="beatmapset")
+    _beatmapset: Field(name="beatmapset", type=Optional[BeatmapsetCompact])
     checksum: Optional[str]
     failtimes: Optional[Failtimes]
     max_combo: Optional[int]
@@ -287,11 +291,11 @@ class Beatmap(BeatmapCompact):
     # beatmapset owner.
     # This is optional as a workaround until
     # https://github.com/ppy/osu-web/issues/9784 is resolved.
-    owner: Optional[UserCompact] = Field(name="user")
+    owner: Field(name="user", type=Optional[UserCompact])
 
     # overridden fields
     # -----------------
-    _beatmapset: Optional[Beatmapset] = Field(name="beatmapset")
+    _beatmapset: Field(name="beatmapset", type=Optional[Beatmapset])
 
     def expand(self) -> Beatmap:
         return self
@@ -346,7 +350,7 @@ class BeatmapsetCompact(Model):
     recent_favourites: Optional[Any]
     related_users: Optional[Any]
     track_id: Optional[int]
-    _user: Optional[UserCompact] = Field(name="user")
+    _user: Field(name="user", type=Optional[UserCompact])
 
     def expand(self) -> Beatmapset:
         return self._fk_beatmapset(self.id)
@@ -380,14 +384,10 @@ class Beatmapset(BeatmapsetCompact):
 class ScoreMatchInfo(Model):
     slot: int
     team: str
-    pass_: bool = Field(name="pass")
+    pass_: Field(name="pass", type=bool)
 
 
-class Score(Model):
-    """
-    https://osu.ppy.sh/docs/index.html#score
-    """
-
+class _LegacyScore(Model):
     # can be null for match scores, eg the scores
     # in https://osu.ppy.sh/community/matches/97947404
     id: Optional[int]
@@ -407,21 +407,79 @@ class Score(Model):
     replay: bool
     passed: bool
     current_user_attributes: Any
+    beatmap: Optional[Beatmap]
+    beatmapset: Optional[BeatmapsetCompact]
+    rank_country: Optional[int]
+    rank_global: Optional[int]
+    weight: Optional[Weight]
+    _user: Field(name="user", type=Optional[UserCompact])
+    match: Optional[ScoreMatchInfo]
+    type: str
+
+
+class Score(Model):
+    """
+    https://osu.ppy.sh/docs/index.html#score with x-api-version >= 20220705
+    """
+
+    id: Optional[int]
+    best_id: Optional[int]
+    user_id: int
+    accuracy: float
+    max_combo: int
+    statistics: Statistics
+    pp: Optional[float]
+    rank: Grade
+
+    passed: bool
+    current_user_attributes: Any
+    classic_total_score: int
+    processed: bool
+    replay: bool
+    maximum_statistics: Any  # TODO property typing
+    mods: List[NonLegacyMod]
+    ruleset_id: int
+    started_at: Optional[Datetime]
+    ended_at: Optional[Datetime]
+    ranked: bool
+    preserve: bool
+    beatmap_id: int
+    build_id: Optional[int]
+    has_replay: bool
+    is_perfect_combo: bool
+    total_score: int
+    total_score_without_mods: Optional[int]
+
+    legacy_perfect: bool
+    legacy_score_id: Optional[int]
+    legacy_total_score: int
 
     beatmap: Optional[Beatmap]
     beatmapset: Optional[BeatmapsetCompact]
     rank_country: Optional[int]
     rank_global: Optional[int]
     weight: Optional[Weight]
-    _user: Optional[UserCompact] = Field(name="user")
+    _user: Field(name="user", type=Optional[UserCompact])
     match: Optional[ScoreMatchInfo]
     type: str
 
-    @classmethod
-    def preprocess_data(cls, data):
+    @staticmethod
+    def override_attributes(data, api):
+        if api.api_version < 20220705:
+            return _LegacyScore
+        # there are rare cases where a legacy score is returned even when using a
+        # modern api version. Legacy matches is the only exception I'm aware of currently.
+        #
+        # check a few attributes to be reasonably certain that we are in this case,
+        # and then switch to _LegacyScore.
+        if "mode" in data and "created_at" in data and "legacy_perfect" not in data:
+            return _LegacyScore
+
+    @staticmethod
+    def preprocess_data(data, api):
         # scores from matches (api.match) return perfect as an int instead of a
         # bool (same as api v1). Convert to a bool here.
-        if isinstance(data["perfect"], int):
+        if "perfect" in data and isinstance(data["perfect"], int):
             data["perfect"] = bool(data["perfect"])
         return data
 
@@ -437,18 +495,13 @@ class BeatmapUserScore(Model):
     score: Score
 
 
-class _NonLegacyBeatmapUserScore(Model):
-    position: int
-    score: _NonLegacyScore
-
-
 class BeatmapUserScores(Model):
     scores: List[Score]
 
 
 class BeatmapScores(Model):
     scores: List[Score]
-    user_score: Optional[BeatmapUserScore] = Field(name="userScore")
+    user_score: Field(name="userScore", type=Optional[BeatmapUserScore])
 
 
 class CommentableMeta(Model):
@@ -603,8 +656,8 @@ class WikiPage(Model):
 
 
 class Search(Model):
-    users: Optional[SearchResult[UserCompact]] = Field(name="user")
-    wiki_pages: Optional[SearchResult[WikiPage]] = Field(name="wiki_page")
+    users: Field(name="user", type=Optional[SearchResult[UserCompact]])
+    wiki_pages: Field(name="wiki_page", type=Optional[SearchResult[WikiPage]])
 
 
 class Spotlight(Model):
@@ -642,7 +695,7 @@ class Rankings(Model):
     cursor: CursorT
     ranking: Union[List[UserStatistics], List[CountryStatistics]]
     spotlight: Optional[Spotlight]
-    total: int
+    total: Optional[int]
 
 
 class BeatmapsetDiscussionPost(Model):
@@ -688,8 +741,8 @@ class BeatmapsetDiscussion(Model):
     kudosu_denied: bool
     starting_post: Optional[BeatmapsetDiscussionPost]
     posts: Optional[List[BeatmapsetDiscussionPost]]
-    _beatmap: Optional[BeatmapCompact] = Field(name="beatmap")
-    _beatmapset: Optional[BeatmapsetCompact] = Field(name="beatmapset")
+    _beatmap: Field(name="beatmap", type=Optional[BeatmapCompact])
+    _beatmapset: Field(name="beatmapset", type=Optional[BeatmapsetCompact])
 
     def user(self) -> User:
         return self._fk_user(self.user_id)
@@ -735,7 +788,7 @@ class KudosuHistory(Model):
 
 class BeatmapPlaycount(Model):
     beatmap_id: int
-    _beatmap: Optional[BeatmapCompact] = Field(name="beatmap")
+    _beatmap: Field(name="beatmap", type=Optional[BeatmapCompact])
     beatmapset: Optional[BeatmapsetCompact]
     count: int
 
@@ -746,8 +799,8 @@ class BeatmapPlaycount(Model):
 # we use this class to determine which event dataclass to instantiate and
 # return, based on the value of the ``type`` parameter.
 class _Event(Model):
-    @classmethod
-    def override_class(cls, data):
+    @staticmethod
+    def override_attributes(data, api):
         mapping = {
             EventType.ACHIEVEMENT: AchievementEvent,
             EventType.BEATMAP_PLAYCOUNT: BeatmapPlaycountEvent,
@@ -998,7 +1051,7 @@ class BeatmapDifficultyAttributes(Model):
 class Events(Model):
     cursor: CursorT
     cursor_string: CursorStringT
-    events: List[Event] = Field(deserialize_type=List[_Event])
+    events: Field(type=List[_Event])
 
 
 class BeatmapPack(Model):
@@ -1132,6 +1185,7 @@ class BeatmapsetEventCommentNominate(Model):
 
 
 class BeatmapsetEventCommentWithNominators(BeatmapsetEventCommentNoPost):
+    beatmap_ids: Optional[List[int]]
     nominator_ids: Optional[List[int]]
 
 
@@ -1148,14 +1202,15 @@ class BeatmapsetEvent(Model):
 
     id: int
     type: BeatmapsetEventType
-    comment: str
+    comment: Any
     created_at: Datetime
 
     user_id: Optional[int]
     beatmapset: Optional[BeatmapsetCompact]
     discussion: Optional[BeatmapsetDiscussion]
 
-    def override_types(self):
+    @staticmethod
+    def override_attributes(data, api):
         mapping = {
             BeatmapsetEventType.BEATMAP_OWNER_CHANGE: BeatmapsetEventCommentOwnerChange,
             BeatmapsetEventType.DISCUSSION_DELETE: BeatmapsetEventCommentNoPost,
@@ -1191,7 +1246,7 @@ class BeatmapsetEvent(Model):
             BeatmapsetEventType.REMOVE_FROM_LOVED: BeatmapsetEventCommentLovedRemoval,
             BeatmapsetEventType.NSFW_TOGGLE: BeatmapsetEventCommentChange[bool],
         }
-        type_ = BeatmapsetEventType(self.type)
+        type_ = BeatmapsetEventType(data["type"])
         return {"comment": mapping[type_]}
 
     def user(self) -> Optional[User]:
@@ -1292,14 +1347,15 @@ class UserStatistics(Model):
     level: UserLevel
     maximum_combo: int
     play_count: int
-    play_time: int
-    pp: float
+    play_time: Optional[int]
+    pp: Optional[float]
     pp_exp: float
     global_rank: Optional[int]
     global_rank_exp: Optional[float]
     # deprecated, replaced by global_rank and country_rank
     rank: Optional[Any]
     ranked_score: int
+    rank_change_since_30_days: Optional[int]
     replays_watched_by_others: int
     total_hits: int
     total_score: int
@@ -1338,7 +1394,7 @@ class RoomPlaylistItem(Model):
     beatmap: BeatmapCompact
 
 
-class Room(Model):
+class _Room1(Model):
     id: int
     name: str
     category: RoomCategory
@@ -1356,6 +1412,36 @@ class Room(Model):
     host: UserCompact
     playlist: List[RoomPlaylistItem]
     recent_participants: List[UserCompact]
+
+
+class Room(Model):
+    id: int
+    name: str
+    category: RoomCategory
+    type: RoomType
+    user_id: int
+    starts_at: Datetime
+    ends_at: Datetime
+    max_attempts: Optional[int]
+    participant_count: int
+    channel_id: int
+    active: bool
+    has_password: bool
+    queue_mode: str
+    auto_skip: bool
+    host: UserCompact
+    playlist: List[RoomPlaylistItem]
+
+    # new from _Room1
+    playlist_item_stats: RoomPlaylistItemStats
+    current_playlist_item: Optional[RoomPlaylistItem]
+    difficulty_range: RoomDifficultyRange
+    recent_participants: List[UserCompact]
+
+    @staticmethod
+    def override_attributes(data, api):
+        if api.api_version < 20220217:
+            return _Room1
 
 
 class RoomLeaderboardScore(Model):
@@ -1435,94 +1521,19 @@ class MatchResponse(Model):
     current_game_id: Optional[int]
 
 
-# ==================
-# Provisional Models
-# ==================
-
-
-class _NonLegacyBeatmapScores(Model):
-    scores: List[_NonLegacyScore]
-    user_score: Optional[_NonLegacyBeatmapUserScore] = Field(name="userScore")
-
-
-class _NonLegacyMod(BaseModel):
-    # returned in a new format. e.g.:
-    # "mods": [
-    #      {
-    #          "acronym": "HR"
-    #      },
-    #      {
-    #          "acronym": "HD"
-    #      },
-    #      {
-    #          "acronym": "CL"
-    #      }
-    #  ],
-    def __init__(self, value):
-        self.value = value
-
-
-class _NonLegacyStatistics(Model):
-    # these values simply aren't present if they are 0. oversight?
-    miss: Optional[int]
-    meh: Optional[int]
-    ok: Optional[int]
-    good: Optional[int]
-    great: Optional[int]
-
-    # TODO: are these weird values returned by the api anywhere?
-    # e.g. legacy_combo_increase in particular.
-    perfect: Optional[int]
-    small_tick_miss: Optional[int]
-    small_tick_hit: Optional[int]
-    large_tick_miss: Optional[int]
-    large_tick_hit: Optional[int]
-    small_bonus: Optional[int]
-    large_bonus: Optional[int]
-    ignore_miss: Optional[int]
-    ignore_hit: Optional[int]
-    combo_break: Optional[int]
-    slider_tail_hit: Optional[int]
-    legacy_combo_increase: Optional[int]
-
-
-class _NonLegacyScore(Model):
-    id: Optional[int]
-    best_id: Optional[int]
+class DailyChallengeUserStats(Model):
+    daily_streak_best: int
+    daily_streak_current: int
+    last_update: Datetime
+    last_weekly_streak: Datetime
+    playcount: int
+    top_10p_placements: int
+    top_50p_placements: int
     user_id: int
-    accuracy: float
-    max_combo: int
-    statistics: _NonLegacyStatistics
-    pp: Optional[float]
-    rank: Grade
+    weekly_streak_best: int
+    weekly_streak_current: int
 
-    passed: bool
-    current_user_attributes: Any
-    replay: bool
-    maximum_statistics: Any  # TODO property typing
-    mods: _NonLegacyMod
-    ruleset_id: int
-    started_at: Optional[Datetime]
-    ended_at: Datetime
-    ranked: bool
-    preserve: bool
-    beatmap_id: int
-    build_id: Optional[int]
-    has_replay: bool
-    is_perfect_combo: bool
-    total_score: int
 
-    legacy_perfect: bool
-    legacy_score_id: int
-    legacy_total_score: int
-
-    beatmapset: Optional[BeatmapsetCompact]
-    rank_country: Optional[int]
-    rank_global: Optional[int]
-    weight: Optional[Weight]
-    _user: Optional[UserCompact] = Field(name="user")
-    match: Optional[ScoreMatchInfo]
-    type: str
-
-    def user(self) -> Union[UserCompact, User]:
-        return self._fk_user(self.user_id, existing=self._user)
+class NonLegacyMod(Model):
+    acronym: str
+    settings: Any

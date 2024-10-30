@@ -31,7 +31,7 @@ import ossapi
 unset = object()
 
 IGNORE_MODELS = [EnumModel, Model, BaseModel, IntFlagModel, _Event, Datetime]
-IGNORE_MEMBERS = ["override_class", "override_types", "preprocess_data"]
+IGNORE_MEMBERS = ["override_class", "override_attributes", "preprocess_data"]
 BASE_TYPES = [int, str, float, bool, datetime]
 
 

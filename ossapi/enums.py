@@ -239,6 +239,7 @@ class RoomCategory(EnumModel):
     NORMAL = "normal"
     SPOTLIGHT = "spotlight"
     FEATURED_ARTIST = "featured_artist"
+    DAILY_CHALLENGE = "daily_challenge"
 
 
 class MatchEventType(EnumModel):
@@ -536,7 +537,7 @@ class ProfileBanner(Model):
     id: int
     tournament_id: int
     image: str
-    image_2x: str = Field(name="image@2x")
+    image_2x: Field(name="image@2x", type=str)
 
 
 class UserAccountHistory(Model):
@@ -552,7 +553,7 @@ class UserBadge(Model):
     awarded_at: Datetime
     description: str
     image_url: str
-    image_2x_url: str = Field(name="image@2x_url")
+    image_2x_url: Field(name="image@2x_url", type=str)
     url: str
 
 
@@ -581,16 +582,16 @@ class Covers(Model):
     """
 
     cover: str
-    cover_2x: str = Field(name="cover@2x")
+    cover_2x: Field(name="cover@2x", type=str)
     card: str
-    card_2x: str = Field(name="card@2x")
+    card_2x: Field(name="card@2x", type=str)
     list: str
-    list_2x: str = Field(name="list@2x")
+    list_2x: Field(name="list@2x", type=str)
     slimcover: str
-    slimcover_2x: str = Field(name="slimcover@2x")
+    slimcover_2x: Field(name="slimcover@2x", type=str)
 
 
-class Statistics(Model):
+class _LegacyStatistics(Model):
     # I think any of these attributes can be null if the corresponding gamemode
     # doesn't have the judgment as a possible judgement. eg taiko doesn't have 50s
     # and catch doesn't have geki.
@@ -600,6 +601,46 @@ class Statistics(Model):
     count_geki: Optional[int]
     count_katu: Optional[int]
     count_miss: Optional[int]
+
+
+class Statistics(Model):
+    # these values simply aren't present if they are 0. oversight?
+    miss: Optional[int]
+    meh: Optional[int]
+    ok: Optional[int]
+    good: Optional[int]
+    great: Optional[int]
+
+    # TODO: are these weird values returned by the api anywhere?
+    # e.g. legacy_combo_increase in particular.
+    perfect: Optional[int]
+    small_tick_miss: Optional[int]
+    small_tick_hit: Optional[int]
+    large_tick_miss: Optional[int]
+    large_tick_hit: Optional[int]
+    small_bonus: Optional[int]
+    large_bonus: Optional[int]
+    ignore_miss: Optional[int]
+    ignore_hit: Optional[int]
+    combo_break: Optional[int]
+    slider_tail_hit: Optional[int]
+    legacy_combo_increase: Optional[int]
+
+    @staticmethod
+    def override_attributes(data, api):
+        if api.api_version < 20220705:
+            return _LegacyStatistics
+
+        # see note in Score.override_attributes for when this exception of legacy
+        # statistics even on new api versions can occur.
+        if (
+            any(
+                f"count_{v}" in data
+                for v in ["50", "100", "300", "geki", "katu", "miss"]
+            )
+            and "great" not in data
+        ):
+            return _LegacyStatistics
 
 
 class Availability(Model):
@@ -699,7 +740,7 @@ class GithubUser(Model):
 
 
 class ChangelogSearch(Model):
-    from_: Optional[str] = Field(name="from")
+    from_: Field(name="from", type=Optional[str])
     limit: int
     max_id: Optional[int]
     stream: Optional[str]
@@ -820,3 +861,14 @@ class RankHistory(Model):
 class Weight(Model):
     percentage: float
     pp: float
+
+
+class RoomPlaylistItemStats(Model):
+    count_active: int
+    count_total: int
+    ruleset_ids: List[int]
+
+
+class RoomDifficultyRange(Model):
+    min: float
+    max: float

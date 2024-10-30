@@ -37,6 +37,13 @@ def setup_api_v2():
     api_v2 = Ossapi(
         client_id, client_secret, strict=True, grant=Grant.CLIENT_CREDENTIALS
     )
+    api_v2_old = Ossapi(
+        client_id,
+        client_secret,
+        strict=True,
+        grant=Grant.CLIENT_CREDENTIALS,
+        api_version=20200101,
+    )
 
     if headless:
         api_v2_full = None
@@ -51,7 +58,7 @@ def setup_api_v2():
             scopes=ALL_SCOPES,
         )
 
-    return (api_v2, api_v2_full)
+    return (api_v2, api_v2_old, api_v2_full)
 
 
 def setup_api_v2_dev():
@@ -91,8 +98,9 @@ def setup_api_v2_dev():
     )
 
 
+# TODO write a pytest plugin that runs all v2 tests with different version headers
 api_v1 = setup_api_v1()
-api_v2, api_v2_full = setup_api_v2()
+api_v2, api_v2_old, api_v2_full = setup_api_v2()
 api_v2_dev = setup_api_v2_dev()
 
 

@@ -9,7 +9,7 @@ class TestMethodTypeConversion(TestCase):
     def test_beatmap_as_parameter(self):
         # make sure we can pass the full model in place of an id
         beatmap = api.beatmap(221777)
-        self.assertEqual(api.beatmap_scores(beatmap), api.beatmap_scores(beatmap.id))
+        assert api.beatmap_scores(beatmap) == api.beatmap_scores(beatmap.id)
 
     def test_room_as_parameter(self):
         room1 = api.room(257524)

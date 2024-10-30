@@ -77,7 +77,6 @@ from ossapi.models import (
     Events,
     BeatmapPack,
     BeatmapPacks,
-    _NonLegacyBeatmapScores,
 )
 from ossapi.enums import (
     GameMode,
@@ -117,6 +116,7 @@ from ossapi.utils import (
     is_high_model_type,
     Field,
     convert_primitive_type,
+    _Model,
 )
 from ossapi.mod import Mod
 from ossapi.replay import Replay
@@ -353,10 +353,13 @@ class Domain(Enum):
 
 
 class Oauth2SessionOssapi(OAuth2Session):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, api_version, **kwargs):
         super().__init__(*args, **kwargs)
 
-        headers = {"User-Agent": f"ossapi (v{ossapi.__version__})"}
+        headers = {
+            "User-Agent": f"ossapi (v{ossapi.__version__})",
+            "x-api-version": str(api_version),
+        }
         self.headers.update(headers)
 
 
@@ -453,13 +456,13 @@ class Ossapi:
         access_token: Optional[str] = None,
         refresh_token: Optional[str] = None,
         domain: Union[str, Domain] = Domain.OSU,
+        api_version: int | str = 20241024,
     ):
         if not grant:
             grant = (
                 Grant.AUTHORIZATION_CODE if redirect_uri else Grant.CLIENT_CREDENTIALS
             )
         grant = Grant(grant)
-
         domain = Domain(domain)
 
         self.token_url = self.TOKEN_URL.format(domain=domain.value)
@@ -473,6 +476,7 @@ class Ossapi:
         self.scopes = [Scope(scope) for scope in scopes]
         self.strict = strict
         self.domain = domain
+        self.api_version = int(api_version)
 
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(
@@ -584,7 +588,9 @@ class Ossapi:
                     token = pickle.load(f)
 
             if self.grant is Grant.CLIENT_CREDENTIALS:
-                return Oauth2SessionOssapi(self.client_id, token=token)
+                return Oauth2SessionOssapi(
+                    self.client_id, token=token, api_version=self.api_version
+                )
 
             if self.grant is Grant.AUTHORIZATION_CODE:
                 auto_refresh_kwargs = {
@@ -599,6 +605,7 @@ class Ossapi:
                     auto_refresh_kwargs=auto_refresh_kwargs,
                     token_updater=self._save_token,
                     scope=[scope.value for scope in self.scopes],
+                    api_version=self.api_version,
                 )
 
         # otherwise, authorize from scratch
@@ -618,7 +625,7 @@ class Ossapi:
         """
         self.log.info("initializing client credentials grant")
         client = BackendApplicationClient(client_id=client_id, scope=["public"])
-        session = Oauth2SessionOssapi(client=client)
+        session = Oauth2SessionOssapi(client=client, api_version=self.api_version)
         token = session.fetch_token(
             token_url=self.token_url, client_id=client_id, client_secret=client_secret
         )
@@ -856,17 +863,14 @@ class Ossapi:
         # why we pass `type(obj)` instead of just `obj`, which would only
         # return annotations for attributes defined in `obj` and not its
         # inherited attributes.
-        annotations = self._get_type_hints(type(obj))
-        override_annotations = obj.override_types()
-        annotations = {**annotations, **override_annotations}
-        self.log.debug(f"resolving annotations for type {type(obj)}")
-        for attr, value in obj.__dict__.items():
-            # we use this attribute later if we encounter an attribute which
-            # has been instantiated generically, but we don't need to do
-            # anything with it now.
-            if attr == "__orig_class__":
+        _kwargs, type_hints = self._processed_type_hints(
+            type(obj), obj._ossapi_data, use_field_types=True
+        )
+        self.log.debug(f"resolving type hints for type {type(obj)}")
+        for attr, value in obj._ossapi_data.items():
+            if attr in {"_api", "__orig_class__"}:
                 continue
-            type_ = annotations[attr]
+            type_ = type_hints[attr]
             # when we instantiate types, we explicitly fill in optional
             # attributes with `None`. We want to skip these, but only if the
             # attribute is actually annotated as optional, otherwise we would be
@@ -874,12 +878,12 @@ class Ossapi:
             # prevent that error from being caught.
             if value is None and is_optional(type_):
                 continue
-            self.log.debug(f"resolving attribute {attr}")
+            self.log.debug(f"resolving attribute {attr} (with type {type_})")
 
             value = self._instantiate_type(type_, value, obj, attr_name=attr)
             if value is None:
                 continue
-            setattr(obj, attr, value)
+            obj._ossapi_data[attr] = value
         self.log.debug(f"resolved annotations for type {type(obj)}")
         return obj
 
@@ -997,60 +1001,60 @@ class Ossapi:
         # eventually.
         return self._resolve_annotations(value)
 
-    def _instantiate(self, type_, kwargs):
+    def _processed_type_hints(
+        self, type_, kwargs, *, use_field_names=False, use_field_types=False
+    ):
+        kwargs = type_.preprocess_data(kwargs, self)
+        override = type_.override_attributes(kwargs, self)
+        if override is None:
+            override = {}
+
+        if isinstance(override, type):
+            type_hints = self._get_type_hints(override)
+        else:
+            # we need a special case to handle when `type_` is a
+            # `_GenericAlias`. I don't fully understand why this exception is
+            # necessary, and it's likely the result of some error on my part in our
+            # type handling code. Nevertheless, until I dig more deeply into it,
+            # we need to extract the type to use for the init signature and the type
+            # hints from a `_GenericAlias` if we see one, as standard methods
+            # won't work.
+            try:
+                type_hints = self._get_type_hints(type_)
+            except TypeError:
+                assert type(type_) is _GenericAlias
+                type_hints = self._get_type_hints(get_origin(type_))
+
+            type_hints = {**type_hints, **override}
+
+        # name : Field
+        fields = self._fields(type_hints)
+
+        if use_field_names:
+            field_names = {
+                field.name: name
+                for name, field in fields.items()
+                if field.name is not None
+            }
+            # make a copy so we can modify while iterating
+            for name in list(kwargs):
+                value = kwargs.pop(name)
+                if name in field_names:
+                    name = field_names[name]
+                kwargs[name] = value
+
+        if use_field_types:
+            for name, value in type_hints.copy().items():
+                if isinstance(value, Field) and value.type is not None:
+                    type_hints[name] = value.type
+
+        return kwargs, type_hints
+
+    def _instantiate(self, type_: _Model, kwargs):
         self.log.debug(f"instantiating type {type_}")
-
-        kwargs = type_.preprocess_data(kwargs)
-        override_type = type_.override_class(kwargs)
-
-        type_ = override_type or type_
-        signature_type = type_
-
-        # we need a special case to handle when `type_` is a
-        # `_GenericAlias`. I don't fully understand why this exception is
-        # necessary, and it's likely the result of some error on my part in our
-        # type handling code. Nevertheless, until I dig more deeply into it,
-        # we need to extract the type to use for the init signature and the type
-        # hints from a `_GenericAlias` if we see one, as standard methods
-        # won't work.
-        try:
-            type_hints = self._get_type_hints(type_)
-        except TypeError:
-            assert type(type_) is _GenericAlias
-
-            signature_type = get_origin(type_)
-            type_hints = self._get_type_hints(signature_type)
-
-        # field override name to existing attribute name
-        field_names = {}
-        # existing attribute name to field deserialize type
-        field_deserialize_types = {}
-        # process Field attributes.
-        for name in type_hints:
-            # any inherited attributes will be present in the annotations
-            # (type_hints) but not actually an attribute of the type. Just skip
-            # them for now. TODO I'm pretty sure this is going to cause issues
-            # if we ever have a field on a model and then another model
-            # inheriting from it; the inheriting model won't have the field
-            # picked up here and the override name won't come into play.
-            # probably just traverse the mro?
-            if not hasattr(type_, name):
-                continue
-            value = getattr(type_, name)
-            if not isinstance(value, Field):
-                continue
-
-            if value.name is not None:
-                field_names[value.name] = name
-            if value.deserialize_type is not None:
-                field_deserialize_types[name] = value.deserialize_type
-
-        # make a copy so we can modify while iterating
-        for key in list(kwargs):
-            value = kwargs.pop(key)
-            if key in field_names:
-                key = field_names[key]
-            kwargs[key] = value
+        kwargs, type_hints = self._processed_type_hints(
+            type_, kwargs, use_field_names=True
+        )
 
         # if we've annotated a class with `Optional[X]`, and the api response
         # didn't return a value for that attribute, pass `None` for that
@@ -1075,15 +1079,14 @@ class Ossapi:
         # going the route of PRAW, which returns dynamic results for all api
         # queries. I think a statically typed solution is better for the osu!
         # api, which promises at least some level of stability in its api.
-        parameters = list(inspect.signature(signature_type.__init__).parameters)
         kwargs_ = {}
 
         for k, v in kwargs.items():
-            if k in parameters:
+            if k in type_hints:
                 kwargs_[k] = v
             else:
                 if self.strict:
-                    raise TypeError(f"unexpected parameter `{k}` for type " f"{type_}")
+                    raise TypeError(f"unexpected parameter `{k}` for type {type_}")
                 # this is an INFO log in spirit, but can be spammy with Union
                 # type resolution where the first union case hits nonfatal
                 # errors like this before a fatal error causes it to backtrack.
@@ -1101,30 +1104,32 @@ class Ossapi:
         try:
             val = type_(**kwargs_)
         except TypeError as e:
-            raise TypeError(
-                f"type error while instantiating class {type_}: " f"{e}"
-            ) from e
-
-        for name, deserialize_type in field_deserialize_types.items():
-            val.__annotations__[name] = deserialize_type
-
-        # modifying the type hints of an object dynamically invalidates its
-        # cache. Avoid looking up stale type hints if we had looked up its
-        # previous value before modifying it here.
-        if field_deserialize_types:
-            del self._type_hints_cache[type(val)]
+            raise TypeError(f"type error while instantiating class {type_}: {e}") from e
 
         return val
 
     def _get_type_hints(self, obj):
         # type hints are expensive to compute. Our models should never change
         # their type hints, so cache them.
-        if obj in self._type_hints_cache:
-            return self._type_hints_cache[obj]
+
+        # TODO I'm unconvinced this is sound anymore after I changed how we do
+        # type hinting, especially with fields. double check this and what the
+        # performance hit actually is after my changes.
+
+        # if obj in self._type_hints_cache:
+        #     return self._type_hints_cache[obj]
 
         type_hints = get_type_hints(obj)
         self._type_hints_cache[obj] = type_hints
         return type_hints
+
+    def _fields(self, type_hints) -> dict[str, Field]:
+        fields = {}
+        for k, v in type_hints.items():
+            if not isinstance(v, Field):
+                continue
+            fields[k] = v
+        return fields
 
     def _clear_type_hints_cache(self):
         self._type_hints_cache = {}
@@ -1311,33 +1316,6 @@ class Ossapi:
             "legacy_only": None if legacy_only is None else int(legacy_only),
         }
         return self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores", params)
-
-    def _beatmap_scores_non_legacy(
-        self,
-        beatmap_id: BeatmapIdT,
-        *,
-        mode: Optional[GameModeT] = None,
-        mods: Optional[ModT] = None,
-        type: Optional[RankingTypeT] = None,
-        limit: Optional[int] = None,
-    ) -> _NonLegacyBeatmapScores:
-        """
-        This is a provisional method. It may change or disappear in the future.
-        Feel free to use it, but don't expect ossapi to maintain backwards
-        compatability here.
-
-        I'll decide what to do about these provisional methods once the lazer
-        migration settles down.
-        """
-        params = {
-            "mode": mode,
-            "mods": mods,
-            "type": type,
-            "limit": limit,
-        }
-        return self._get(
-            _NonLegacyBeatmapScores, f"/beatmaps/{beatmap_id}/solo-scores", params
-        )
 
     @request(Scope.PUBLIC, category="beatmaps")
     def beatmap(
@@ -2880,6 +2858,23 @@ class Ossapi:
         """
         params = {"key": key}
         return self._get(User, f"/users/{user}/{mode.value if mode else ''}", params)
+
+    @request(Scope.PUBLIC, category="users")
+    def users_lookup(self, users: List[Union[UserIdT, str]]):
+        """
+        Batch get users by id or username. If you only want to retrieve a single
+        user, or want to retrieve users by username instead of id, see :meth:`user`.
+
+        If you want to batch retrieve users by id (instead of username), use :meth:`users`,
+        which returns more data than :meth:`users_lookup`.
+
+        Parameters
+        ---------
+        users
+            The user ids or usernames to get.
+        """
+        params = {"ids": users}
+        return self._get(Users, "/users/lookup", params).users
 
     @request(Scope.PUBLIC, category="users")
     def users(self, user_ids: List[int]) -> List[UserCompact]:

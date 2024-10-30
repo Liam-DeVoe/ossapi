@@ -18,6 +18,7 @@ from tests import (
     UNIT_TEST_MESSAGE,
     api_v2 as api,
     api_v2_full as api_full,
+    api_v2_old as api_old,
     api_v2_dev as api_dev,
 )
 
@@ -231,17 +232,18 @@ class TestBeatmaps(TestCase):
 
 class TestScore(TestCase):
     def test_deserialize(self):
-        # downloadable
-        api.score(429915881)
-        # downloadable, my score
-        api.score(1262758549)
-        # not downloadable, my score
-        api.score(1312718771)
+        for api_ in [api, api_old]:
+            # downloadable
+            api_.score(429915881)
+            # downloadable, my score
+            api_.score(1262758549)
+            # not downloadable, my score
+            api_.score(1312718771)
 
-        # other gamemodes
-        api.score(1874611010)  # taiko
-        api.score(2238254261)  # mania
-        api.score(1958862712)  # catch
+            # other gamemodes
+            api_.score(1874611010)  # taiko
+            api_.score(2238254261)  # mania
+            api_.score(1958862712)  # catch
 
 
 class TestScoreMode(TestCase):
@@ -277,10 +279,11 @@ class TestMatches(TestCase):
 
 class TestMatch(TestCase):
     def test_deserialize(self):
-        # https://osu.ppy.sh/community/matches/97947404, tournament match
-        api.match(97947404)
-        # https://osu.ppy.sh/community/matches/103721175, deleted beatmap
-        api.match(103721175)
+        for api_ in [api, api_old]:
+            # https://osu.ppy.sh/community/matches/97947404, tournament match
+            api_.match(97947404)
+            # https://osu.ppy.sh/community/matches/103721175, deleted beatmap
+            api_.match(103721175)
 
 
 class TestComments(TestCase):
@@ -401,14 +404,3 @@ class TestForum(TestCaseDevServer):
             forum_id=85,
             poll=poll,
         )
-
-
-# ==========================
-# provisional api test cases
-# ==========================
-
-
-class TestBeatmapScoresNonLegacy(TestCase):
-    def test_deserialize(self):
-        api._beatmap_scores_non_legacy(221777)
-        api._beatmap_scores_non_legacy(221777, legacy_only=True)

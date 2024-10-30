@@ -129,16 +129,20 @@ from ossapi.utils import (
     is_high_model_type,
     Field,
     convert_primitive_type,
+    _Model,
 )
 from ossapi.mod import Mod
 from ossapi.replay import Replay
 
 
 class Oauth2SessionAsync(OAuth2Session):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, api_version, **kwargs):
         super().__init__(*args, **kwargs)
 
-        headers = {"User-Agent": f"ossapi (v{ossapi.__version__})"}
+        headers = {
+            "User-Agent": f"ossapi (v{ossapi.__version__})",
+            "x-api-version": str(api_version),
+        }
         self.headers.update(headers)
 
     # this method is shamelessly copied from `OAuth2Session.request`, modified
@@ -204,6 +208,8 @@ class Oauth2SessionAsync(OAuth2Session):
 # details).
 GameModeT = Union[GameMode, str]
 ScoreTypeT = Union[ScoreType, str]
+# XXX this cannot be recursively typed without breaking our runtime type hint
+# inspection.
 ModT = Union[Mod, str, int, List[Union[Mod, str, int]]]
 RankingFilterT = Union[RankingFilter, str]
 RankingTypeT = Union[RankingType, str]
@@ -374,6 +380,7 @@ class ReauthenticationRequired(Exception):
     Indicates that either the user has revoked this application from their
     account, or osu-web itself has invalidated the refresh token associated with
     this application.
+
     This exception is only raised when a manual access_token is passed to
     Ossapi, to bypass Ossapi's default authentication methods. The expectation
     is that in these cases, the consumer has their own way of authenticating
@@ -516,13 +523,13 @@ class OssapiAsync:
         access_token: Optional[str] = None,
         refresh_token: Optional[str] = None,
         domain: Union[str, Domain] = Domain.OSU,
+        api_version: int | str = 20241024,
     ):
         if not grant:
             grant = (
                 Grant.AUTHORIZATION_CODE if redirect_uri else Grant.CLIENT_CREDENTIALS
             )
         grant = Grant(grant)
-
         domain = Domain(domain)
 
         self.token_url = self.TOKEN_URL.format(domain=domain.value)
@@ -536,6 +543,7 @@ class OssapiAsync:
         self.scopes = [Scope(scope) for scope in scopes]
         self.strict = strict
         self.domain = domain
+        self.api_version = int(api_version)
 
         self.log = logging.getLogger(__name__)
         self.token_key = token_key or self.gen_token_key(
@@ -647,7 +655,9 @@ class OssapiAsync:
                     token = pickle.load(f)
 
             if self.grant is Grant.CLIENT_CREDENTIALS:
-                return Oauth2SessionAsync(self.client_id, token=token)
+                return Oauth2SessionAsync(
+                    self.client_id, token=token, api_version=self.api_version
+                )
 
             if self.grant is Grant.AUTHORIZATION_CODE:
                 auto_refresh_kwargs = {
@@ -662,6 +672,7 @@ class OssapiAsync:
                     auto_refresh_kwargs=auto_refresh_kwargs,
                     token_updater=self._save_token,
                     scope=[scope.value for scope in self.scopes],
+                    api_version=self.api_version,
                 )
 
         # otherwise, authorize from scratch
@@ -681,7 +692,7 @@ class OssapiAsync:
         """
         self.log.info("initializing client credentials grant")
         client = BackendApplicationClient(client_id=client_id, scope=["public"])
-        session = Oauth2SessionAsync(client=client)
+        session = Oauth2SessionAsync(client=client, api_version=self.api_version)
         token = session.fetch_token(
             token_url=self.token_url, client_id=client_id, client_secret=client_secret
         )
@@ -857,6 +868,16 @@ class OssapiAsync:
                 f"a request to {unquote(url)}"
             )
 
+        # some endpoints only require authorization grant for some endpoints.
+        # e.g. normally api.match only requires client credentials grant, but for
+        # private matches like api.match(111632899), it will return this error.
+        if json_ == {"authentication": "basic"}:
+            raise ValueError(
+                "Permission denied for a request to "
+                f"{unquote(url)}. This request may require "
+                "Grant.AUTHORIZATION_CODE."
+            )
+
     async def _get(self, type_, url, params={}):
         return await self._request(type_, "GET", url, params=params)
 
@@ -868,10 +889,7 @@ class OssapiAsync:
 
     def _format_params(self, params):
         for key, value in params.copy().items():
-            # requests ignores None values, but aiohttp doesn't. Make compliant.
-            if value is None:
-                del params[key]
-            elif isinstance(value, list):
+            if isinstance(value, list):
                 # we need to pass multiple values for this key, so make its
                 # value a list https://stackoverflow.com/a/62042144
                 params[f"{key}[]"] = []
@@ -941,17 +959,14 @@ class OssapiAsync:
         # why we pass `type(obj)` instead of just `obj`, which would only
         # return annotations for attributes defined in `obj` and not its
         # inherited attributes.
-        annotations = self._get_type_hints(type(obj))
-        override_annotations = obj.override_types()
-        annotations = {**annotations, **override_annotations}
-        self.log.debug(f"resolving annotations for type {type(obj)}")
-        for attr, value in obj.__dict__.items():
-            # we use this attribute later if we encounter an attribute which
-            # has been instantiated generically, but we don't need to do
-            # anything with it now.
-            if attr == "__orig_class__":
+        _kwargs, type_hints = self._processed_type_hints(
+            type(obj), obj._ossapi_data, use_field_types=True
+        )
+        self.log.debug(f"resolving type hints for type {type(obj)}")
+        for attr, value in obj._ossapi_data.items():
+            if attr in {"_api", "__orig_class__"}:
                 continue
-            type_ = annotations[attr]
+            type_ = type_hints[attr]
             # when we instantiate types, we explicitly fill in optional
             # attributes with `None`. We want to skip these, but only if the
             # attribute is actually annotated as optional, otherwise we would be
@@ -959,12 +974,12 @@ class OssapiAsync:
             # prevent that error from being caught.
             if value is None and is_optional(type_):
                 continue
-            self.log.debug(f"resolving attribute {attr}")
+            self.log.debug(f"resolving attribute {attr} (with type {type_})")
 
             value = self._instantiate_type(type_, value, obj, attr_name=attr)
-            if not value:
+            if value is None:
                 continue
-            setattr(obj, attr, value)
+            obj._ossapi_data[attr] = value
         self.log.debug(f"resolved annotations for type {type(obj)}")
         return obj
 
@@ -1082,53 +1097,60 @@ class OssapiAsync:
         # eventually.
         return self._resolve_annotations(value)
 
-    def _instantiate(self, type_, kwargs):
+    def _processed_type_hints(
+        self, type_, kwargs, *, use_field_names=False, use_field_types=False
+    ):
+        kwargs = type_.preprocess_data(kwargs, self)
+        override = type_.override_attributes(kwargs, self)
+        if override is None:
+            override = {}
+
+        if isinstance(override, type):
+            type_hints = self._get_type_hints(override)
+        else:
+            # we need a special case to handle when `type_` is a
+            # `_GenericAlias`. I don't fully understand why this exception is
+            # necessary, and it's likely the result of some error on my part in our
+            # type handling code. Nevertheless, until I dig more deeply into it,
+            # we need to extract the type to use for the init signature and the type
+            # hints from a `_GenericAlias` if we see one, as standard methods
+            # won't work.
+            try:
+                type_hints = self._get_type_hints(type_)
+            except TypeError:
+                assert type(type_) is _GenericAlias
+                type_hints = self._get_type_hints(get_origin(type_))
+
+            type_hints = {**type_hints, **override}
+
+        # name : Field
+        fields = self._fields(type_hints)
+
+        if use_field_names:
+            field_names = {
+                field.name: name
+                for name, field in fields.items()
+                if field.name is not None
+            }
+            # make a copy so we can modify while iterating
+            for name in list(kwargs):
+                value = kwargs.pop(name)
+                if name in field_names:
+                    name = field_names[name]
+                kwargs[name] = value
+
+        if use_field_types:
+            for name, value in type_hints.copy().items():
+                if isinstance(value, Field) and value.type is not None:
+                    type_hints[name] = value.type
+
+        return kwargs, type_hints
+
+    def _instantiate(self, type_: _Model, kwargs):
         self.log.debug(f"instantiating type {type_}")
-
-        kwargs = type_.preprocess_data(kwargs)
-        override_type = type_.override_class(kwargs)
-
-        type_ = override_type or type_
-        signature_type = type_
-
-        # we need a special case to handle when `type_` is a
-        # `_GenericAlias`. I don't fully understand why this exception is
-        # necessary, and it's likely the result of some error on my part in our
-        # type handling code. Nevertheless, until I dig more deeply into it,
-        # we need to extract the type to use for the init signature and the type
-        # hints from a `_GenericAlias` if we see one, as standard methods
-        # won't work.
-        try:
-            type_hints = self._get_type_hints(type_)
-        except TypeError:
-            assert type(type_) is _GenericAlias
-
-            signature_type = get_origin(type_)
-            type_hints = self._get_type_hints(signature_type)
-
-        field_names = {}
-        for name in type_hints:
-            # any inherited attributes will be present in the annotations
-            # (type_hints) but not actually an attribute of the type. Just skip
-            # them for now. TODO I'm pretty sure this is going to cause issues
-            # if we ever have a field on a model and then another model
-            # inheriting from it; the inheriting model won't have the field
-            # picked up here and the override name won't come into play.
-            # probably just traverse the mro?
-            if not hasattr(type_, name):
-                continue
-            value = getattr(type_, name)
-            if not isinstance(value, Field):
-                continue
-            if value.name:
-                field_names[value.name] = name
-
-        # make a copy so we can modify while iterating
-        for key in list(kwargs):
-            value = kwargs.pop(key)
-            if key in field_names:
-                key = field_names[key]
-            kwargs[key] = value
+        kwargs, type_hints = self._processed_type_hints(
+            type_, kwargs, use_field_names=True
+        )
 
         # if we've annotated a class with `Optional[X]`, and the api response
         # didn't return a value for that attribute, pass `None` for that
@@ -1153,11 +1175,10 @@ class OssapiAsync:
         # going the route of PRAW, which returns dynamic results for all api
         # queries. I think a statically typed solution is better for the osu!
         # api, which promises at least some level of stability in its api.
-        parameters = list(inspect.signature(signature_type.__init__).parameters)
         kwargs_ = {}
 
         for k, v in kwargs.items():
-            if k in parameters:
+            if k in type_hints:
                 kwargs_[k] = v
             else:
                 if self.strict:
@@ -1186,12 +1207,25 @@ class OssapiAsync:
     def _get_type_hints(self, obj):
         # type hints are expensive to compute. Our models should never change
         # their type hints, so cache them.
-        if obj in self._type_hints_cache:
-            return self._type_hints_cache[obj]
+
+        # TODO I'm unconvinced this is sound anymore after I changed how we do
+        # type hinting, especially with fields. double check this and what the
+        # performance hit actually is after my changes.
+
+        # if obj in self._type_hints_cache:
+        #     return self._type_hints_cache[obj]
 
         type_hints = get_type_hints(obj)
         self._type_hints_cache[obj] = type_hints
         return type_hints
+
+    def _fields(self, type_hints) -> dict[str, Field]:
+        fields = {}
+        for k, v in type_hints.items():
+            if not isinstance(v, Field):
+                continue
+            fields[k] = v
+        return fields
 
     def _clear_type_hints_cache(self):
         self._type_hints_cache = {}
@@ -1208,6 +1242,7 @@ class OssapiAsync:
         self,
         type: Optional[BeatmapPackTypeT] = None,
         cursor_string: Optional[str] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapPacks:
         """
         Get a list of beatmap packs. If you want to retrieve a specific pack,
@@ -1217,6 +1252,9 @@ class OssapiAsync:
         ----------
         cursor_string
             Cursor for pagination.
+        legacy_only
+            Whether to exclude lazer scores for user completion data. Defaults
+            to False.
 
         Notes
         -----
@@ -1224,7 +1262,11 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-beatmap-packs>`__
         endpoint.
         """
-        params = {"type": type, "cursor_string": cursor_string}
+        params = {
+            "type": type,
+            "cursor_string": cursor_string,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return await self._get(BeatmapPacks, "/beatmaps/packs", params)
 
     @request(Scope.PUBLIC, category="beatmap packs")
@@ -1252,6 +1294,7 @@ class OssapiAsync:
         *,
         mode: Optional[GameModeT] = None,
         mods: Optional[ModT] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapUserScore:
         """
         Get a user's best score on a beatmap. If you want to retrieve all
@@ -1267,6 +1310,8 @@ class OssapiAsync:
             The mode the scores were set on.
         mods
             The mods the score was set with.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
@@ -1274,7 +1319,11 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-score>`__
         endpoint.
         """
-        params = {"mode": mode, "mods": mods}
+        params = {
+            "mode": mode,
+            "mods": mods,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return await self._get(
             BeatmapUserScore, f"/beatmaps/{beatmap_id}/scores/users/{user_id}", params
         )
@@ -1286,6 +1335,7 @@ class OssapiAsync:
         user_id: UserIdT,
         *,
         mode: Optional[GameModeT] = None,
+        legacy_only: Optional[bool] = None,
     ) -> List[Score]:
         """
         Get all of a user's scores on a beatmap. If you only want the top user
@@ -1299,6 +1349,8 @@ class OssapiAsync:
             The user who set the scores.
         mode
             The mode the scores were set on.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
@@ -1306,7 +1358,10 @@ class OssapiAsync:
         <https://osu.ppy.sh/docs/index.html#get-a-user-beatmap-scores>`__
         endpoint.
         """
-        params = {"mode": mode}
+        params = {
+            "mode": mode,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         scores = await self._get(
             BeatmapUserScores,
             f"/beatmaps/{beatmap_id}/scores/users/{user_id}/all",
@@ -1323,6 +1378,7 @@ class OssapiAsync:
         mods: Optional[ModT] = None,
         type: Optional[RankingTypeT] = None,
         limit: Optional[int] = None,
+        legacy_only: Optional[bool] = None,
     ) -> BeatmapScores:
         """
         Get the top scores of a beatmap.
@@ -1340,13 +1396,21 @@ class OssapiAsync:
         limit
             How many results to return. Defaults to 50. Must be between 1 and
             100.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
         Implements the `Get Beatmap Scores
         <https://osu.ppy.sh/docs/index.html#get-beatmap-scores>`__ endpoint.
         """
-        params = {"mode": mode, "mods": mods, "type": type, "limit": limit}
+        params = {
+            "mode": mode,
+            "mods": mods,
+            "type": type,
+            "limit": limit,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
+        }
         return await self._get(BeatmapScores, f"/beatmaps/{beatmap_id}/scores", params)
 
     @request(Scope.PUBLIC, category="beatmaps")
@@ -2771,6 +2835,7 @@ class OssapiAsync:
         mode: Optional[GameModeT] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        legacy_only: Optional[bool] = None,
     ) -> List[Score]:
         """
         Get scores of a user.
@@ -2787,18 +2852,21 @@ class OssapiAsync:
             Maximum number of scores to return.
         offset
             Offset for pagination.
+        legacy_only
+            Whether to exclude lazer scores. Defaults to False.
 
         Notes
         -----
         Implements the `Get User Scores
         <https://osu.ppy.sh/docs/index.html#get-user-scores>`__ endpoint.
         """
+
         params = {
-            # `include_fails` is actually 0/1 in the api spec, not a bool.
             "include_fails": None if include_fails is None else int(include_fails),
             "mode": mode,
             "limit": limit,
             "offset": offset,
+            "legacy_only": None if legacy_only is None else int(legacy_only),
         }
         return await self._get(
             List[Score], f"/users/{user_id}/scores/{type.value}", params
@@ -2907,6 +2975,24 @@ class OssapiAsync:
         return await self._get(
             User, f"/users/{user}/{mode.value if mode else ''}", params
         )
+
+    @request(Scope.PUBLIC, category="users")
+    async def users_lookup(self, users: List[Union[UserIdT, str]]):
+        """
+        Batch get users by id or username. If you only want to retrieve a single
+        user, or want to retrieve users by username instead of id, see :meth:`user`.
+
+        If you want to batch retrieve users by id (instead of username), use :meth:`users`,
+        which returns more data than :meth:`users_lookup`.
+
+        Parameters
+        ---------
+        users
+            The user ids or usernames to get.
+        """
+        params = {"ids": users}
+        users = await self._get(Users, "/users/lookup", params)
+        return users.users
 
     @request(Scope.PUBLIC, category="users")
     async def users(self, user_ids: List[int]) -> List[UserCompact]:
