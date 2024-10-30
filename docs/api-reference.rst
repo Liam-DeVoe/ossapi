@@ -496,6 +496,10 @@ Enums
 
 .. py:class:: RoomCategory
 
+   .. py:attribute:: DAILY_CHALLENGE
+      :type: str
+      :value: "daily_challenge"
+
    .. py:attribute:: FEATURED_ARTIST
       :type: str
       :value: "featured_artist"
@@ -1198,10 +1202,7 @@ Enums
       :type: str
 
    .. py:attribute:: image_2x
-      :type: str
-
-   .. note::
-      ``image_2x`` is returned in the osu! api as ``image@2x``.
+      :type: <ossapi.utils.Field object at 0x1029b7c50>
 
    .. py:attribute:: tournament_id
       :type: int
@@ -1235,10 +1236,7 @@ Enums
       :type: str
 
    .. py:attribute:: image_2x_url
-      :type: str
-
-   .. note::
-      ``image_2x_url`` is returned in the osu! api as ``image@2x_url``.
+      :type: <ossapi.utils.Field object at 0x1029b72c0>
 
    .. py:attribute:: image_url
       :type: str
@@ -1292,39 +1290,27 @@ Enums
       :type: str
 
    .. py:attribute:: card_2x
-      :type: str
-
-   .. note::
-      ``card_2x`` is returned in the osu! api as ``card@2x``.
+      :type: <ossapi.utils.Field object at 0x1029cc080>
 
    .. py:attribute:: cover
       :type: str
 
    .. py:attribute:: cover_2x
-      :type: str
-
-   .. note::
-      ``cover_2x`` is returned in the osu! api as ``cover@2x``.
+      :type: <ossapi.utils.Field object at 0x1029b7ec0>
 
    .. py:attribute:: list
       :type: str
 
    .. py:attribute:: list_2x
-      :type: str
-
-   .. note::
-      ``list_2x`` is returned in the osu! api as ``list@2x``.
+      :type: <ossapi.utils.Field object at 0x1029cc0b0>
 
    .. py:attribute:: slimcover
       :type: str
 
    .. py:attribute:: slimcover_2x
-      :type: str
+      :type: <ossapi.utils.Field object at 0x1029cc0e0>
 
-   .. note::
-      ``slimcover_2x`` is returned in the osu! api as ``slimcover@2x``.
-
-.. py:class:: Statistics
+.. py:class:: _LegacyStatistics
 
    .. py:attribute:: count_100
       :type: int | None
@@ -1342,6 +1328,59 @@ Enums
       :type: int | None
 
    .. py:attribute:: count_miss
+      :type: int | None
+
+.. py:class:: Statistics
+
+   .. py:attribute:: combo_break
+      :type: int | None
+
+   .. py:attribute:: good
+      :type: int | None
+
+   .. py:attribute:: great
+      :type: int | None
+
+   .. py:attribute:: ignore_hit
+      :type: int | None
+
+   .. py:attribute:: ignore_miss
+      :type: int | None
+
+   .. py:attribute:: large_bonus
+      :type: int | None
+
+   .. py:attribute:: large_tick_hit
+      :type: int | None
+
+   .. py:attribute:: large_tick_miss
+      :type: int | None
+
+   .. py:attribute:: legacy_combo_increase
+      :type: int | None
+
+   .. py:attribute:: meh
+      :type: int | None
+
+   .. py:attribute:: miss
+      :type: int | None
+
+   .. py:attribute:: ok
+      :type: int | None
+
+   .. py:attribute:: perfect
+      :type: int | None
+
+   .. py:attribute:: slider_tail_hit
+      :type: int | None
+
+   .. py:attribute:: small_bonus
+      :type: int | None
+
+   .. py:attribute:: small_tick_hit
+      :type: int | None
+
+   .. py:attribute:: small_tick_miss
       :type: int | None
 
 .. py:class:: Availability
@@ -1513,10 +1552,7 @@ Enums
 .. py:class:: ChangelogSearch
 
    .. py:attribute:: from_
-      :type: str | None
-
-   .. note::
-      ``from_`` is returned in the osu! api as ``from``.
+      :type: <ossapi.utils.Field object at 0x1029cc3b0>
 
    .. py:attribute:: limit
       :type: int
@@ -1695,6 +1731,25 @@ Enums
       :type: float
 
    .. py:attribute:: pp
+      :type: float
+
+.. py:class:: RoomPlaylistItemStats
+
+   .. py:attribute:: count_active
+      :type: int
+
+   .. py:attribute:: count_total
+      :type: int
+
+   .. py:attribute:: ruleset_ids
+      :type: list[int]
+
+.. py:class:: RoomDifficultyRange
+
+   .. py:attribute:: max
+      :type: float
+
+   .. py:attribute:: min
       :type: float
 
 
@@ -1907,6 +1962,9 @@ Models
    .. py:attribute:: cover_url
       :type: str
 
+   .. py:attribute:: daily_challenge_user_stats
+      :type: DailyChallengeUserStats
+
    .. py:attribute:: default_group
       :type: str | None
 
@@ -2023,6 +2081,9 @@ Models
 
    .. py:attribute:: profile_colour
       :type: str | None
+
+   .. py:attribute:: profile_hue
+      :type: int | None
 
    .. py:attribute:: profile_order
       :type: list[ProfilePage]
@@ -2212,10 +2273,7 @@ Models
       :type: int
 
    .. py:attribute:: owner
-      :type: UserCompact | None
-
-   .. note::
-      ``owner`` is returned in the osu! api as ``user``.
+      :type: <ossapi.utils.Field object at 0x102aa5cd0>
 
    .. py:attribute:: passcount
       :type: int
@@ -2512,10 +2570,7 @@ Models
 .. py:class:: ScoreMatchInfo
 
    .. py:attribute:: pass_
-      :type: bool
-
-   .. note::
-      ``pass_`` is returned in the osu! api as ``pass``.
+      :type: <ossapi.utils.Field object at 0x102aa5eb0>
 
    .. py:attribute:: slot
       :type: int
@@ -2523,7 +2578,7 @@ Models
    .. py:attribute:: team
       :type: str
 
-.. py:class:: Score
+.. py:class:: _LegacyScore
 
    .. py:attribute:: accuracy
       :type: float
@@ -2542,9 +2597,6 @@ Models
 
    .. py:attribute:: current_user_attributes
       :type: typing.Any
-
-   .. py:attribute:: download
-      :type: function
 
    .. py:attribute:: id
       :type: int | None
@@ -2594,6 +2646,119 @@ Models
    .. py:attribute:: type
       :type: str
 
+   .. py:attribute:: user_id
+      :type: int
+
+   .. py:attribute:: weight
+      :type: Weight | None
+
+.. py:class:: Score
+
+   .. py:attribute:: accuracy
+      :type: float
+
+   .. py:attribute:: beatmap
+      :type: Beatmap | None
+
+   .. py:attribute:: beatmap_id
+      :type: int
+
+   .. py:attribute:: beatmapset
+      :type: BeatmapsetCompact | None
+
+   .. py:attribute:: best_id
+      :type: int | None
+
+   .. py:attribute:: build_id
+      :type: int | None
+
+   .. py:attribute:: classic_total_score
+      :type: int
+
+   .. py:attribute:: current_user_attributes
+      :type: typing.Any
+
+   .. py:attribute:: download
+      :type: function
+
+   .. py:attribute:: ended_at
+      :type: ~datetime.datetime | None
+
+   .. py:attribute:: has_replay
+      :type: bool
+
+   .. py:attribute:: id
+      :type: int | None
+
+   .. py:attribute:: is_perfect_combo
+      :type: bool
+
+   .. py:attribute:: legacy_perfect
+      :type: bool
+
+   .. py:attribute:: legacy_score_id
+      :type: int | None
+
+   .. py:attribute:: legacy_total_score
+      :type: int
+
+   .. py:attribute:: match
+      :type: ScoreMatchInfo | None
+
+   .. py:attribute:: max_combo
+      :type: int
+
+   .. py:attribute:: maximum_statistics
+      :type: typing.Any
+
+   .. py:attribute:: mods
+      :type: list[NonLegacyMod]
+
+   .. py:attribute:: passed
+      :type: bool
+
+   .. py:attribute:: pp
+      :type: float | None
+
+   .. py:attribute:: preserve
+      :type: bool
+
+   .. py:attribute:: processed
+      :type: bool
+
+   .. py:attribute:: rank
+      :type: Grade
+
+   .. py:attribute:: rank_country
+      :type: int | None
+
+   .. py:attribute:: rank_global
+      :type: int | None
+
+   .. py:attribute:: ranked
+      :type: bool
+
+   .. py:attribute:: replay
+      :type: bool
+
+   .. py:attribute:: ruleset_id
+      :type: int
+
+   .. py:attribute:: started_at
+      :type: ~datetime.datetime | None
+
+   .. py:attribute:: statistics
+      :type: Statistics
+
+   .. py:attribute:: total_score
+      :type: int
+
+   .. py:attribute:: total_score_without_mods
+      :type: int | None
+
+   .. py:attribute:: type
+      :type: str
+
    .. py:attribute:: user
       :type: function
 
@@ -2611,14 +2776,6 @@ Models
    .. py:attribute:: score
       :type: Score
 
-.. py:class:: _NonLegacyBeatmapUserScore
-
-   .. py:attribute:: position
-      :type: int
-
-   .. py:attribute:: score
-      :type: _NonLegacyScore
-
 .. py:class:: BeatmapUserScores
 
    .. py:attribute:: scores
@@ -2630,10 +2787,7 @@ Models
       :type: list[Score]
 
    .. py:attribute:: user_score
-      :type: BeatmapUserScore | None
-
-   .. note::
-      ``user_score`` is returned in the osu! api as ``userScore``.
+      :type: <ossapi.utils.Field object at 0x102aa5f10>
 
 .. py:class:: CommentableMeta
 
@@ -2955,16 +3109,10 @@ Models
 .. py:class:: Search
 
    .. py:attribute:: users
-      :type: ossapi.models.SearchResult[ossapi.models.UserCompact] | None
-
-   .. note::
-      ``users`` is returned in the osu! api as ``user``.
+      :type: <ossapi.utils.Field object at 0x10186e540>
 
    .. py:attribute:: wiki_pages
-      :type: ossapi.models.SearchResult[ossapi.models.WikiPage] | None
-
-   .. note::
-      ``wiki_pages`` is returned in the osu! api as ``wiki_page``.
+      :type: <ossapi.utils.Field object at 0x102aa6000>
 
 .. py:class:: Spotlight
 
@@ -3030,7 +3178,7 @@ Models
       :type: Spotlight | None
 
    .. py:attribute:: total
-      :type: int
+      :type: int | None
 
 .. py:class:: BeatmapsetDiscussionPost
 
@@ -3810,7 +3958,7 @@ Models
       :type: str | None
 
    .. py:attribute:: events
-      :type: list[Event]
+      :type: <ossapi.utils.Field object at 0x102a8ad50>
 
 .. py:class:: BeatmapPack
 
@@ -4053,6 +4201,9 @@ Models
    .. py:attribute:: beatmap_discussion_post_id
       :type: None
 
+   .. py:attribute:: beatmap_ids
+      :type: list[int] | None
+
    .. py:attribute:: nominator_ids
       :type: list[int] | None
 
@@ -4076,7 +4227,7 @@ Models
       :type: BeatmapsetCompact | None
 
    .. py:attribute:: comment
-      :type: str
+      :type: typing.Any
 
    .. py:attribute:: created_at
       :type: ~datetime.datetime
@@ -4278,16 +4429,19 @@ Models
       :type: int
 
    .. py:attribute:: play_time
-      :type: int
+      :type: int | None
 
    .. py:attribute:: pp
-      :type: float
+      :type: float | None
 
    .. py:attribute:: pp_exp
       :type: float
 
    .. py:attribute:: rank
       :type: typing.Any | None
+
+   .. py:attribute:: rank_change_since_30_days
+      :type: int | None
 
    .. py:attribute:: ranked_score
       :type: int
@@ -4364,7 +4518,7 @@ Models
    .. py:attribute:: ruleset_id
       :type: int
 
-.. py:class:: Room
+.. py:class:: _Room1
 
    .. py:attribute:: active
       :type: bool
@@ -4401,6 +4555,68 @@ Models
 
    .. py:attribute:: playlist
       :type: list[RoomPlaylistItem]
+
+   .. py:attribute:: queue_mode
+      :type: str
+
+   .. py:attribute:: recent_participants
+      :type: list[UserCompact]
+
+   .. py:attribute:: starts_at
+      :type: ~datetime.datetime
+
+   .. py:attribute:: type
+      :type: RoomType
+
+   .. py:attribute:: user_id
+      :type: int
+
+.. py:class:: Room
+
+   .. py:attribute:: active
+      :type: bool
+
+   .. py:attribute:: auto_skip
+      :type: bool
+
+   .. py:attribute:: category
+      :type: RoomCategory
+
+   .. py:attribute:: channel_id
+      :type: int
+
+   .. py:attribute:: current_playlist_item
+      :type: RoomPlaylistItem | None
+
+   .. py:attribute:: difficulty_range
+      :type: RoomDifficultyRange
+
+   .. py:attribute:: ends_at
+      :type: ~datetime.datetime
+
+   .. py:attribute:: has_password
+      :type: bool
+
+   .. py:attribute:: host
+      :type: UserCompact
+
+   .. py:attribute:: id
+      :type: int
+
+   .. py:attribute:: max_attempts
+      :type: int | None
+
+   .. py:attribute:: name
+      :type: str
+
+   .. py:attribute:: participant_count
+      :type: int
+
+   .. py:attribute:: playlist
+      :type: list[RoomPlaylistItem]
+
+   .. py:attribute:: playlist_item_stats
+      :type: RoomPlaylistItemStats
 
    .. py:attribute:: queue_mode
       :type: str
@@ -4588,172 +4804,45 @@ Models
    .. py:attribute:: users
       :type: list[UserCompact]
 
-.. py:class:: _NonLegacyBeatmapScores
+.. py:class:: DailyChallengeUserStats
 
-   .. py:attribute:: scores
-      :type: list[_NonLegacyScore]
-
-   .. py:attribute:: user_score
-      :type: _NonLegacyBeatmapUserScore | None
-
-   .. note::
-      ``user_score`` is returned in the osu! api as ``userScore``.
-
-.. py:class:: _NonLegacyMod
-
-.. py:class:: _NonLegacyStatistics
-
-   .. py:attribute:: combo_break
-      :type: int | None
-
-   .. py:attribute:: good
-      :type: int | None
-
-   .. py:attribute:: great
-      :type: int | None
-
-   .. py:attribute:: ignore_hit
-      :type: int | None
-
-   .. py:attribute:: ignore_miss
-      :type: int | None
-
-   .. py:attribute:: large_bonus
-      :type: int | None
-
-   .. py:attribute:: large_tick_hit
-      :type: int | None
-
-   .. py:attribute:: large_tick_miss
-      :type: int | None
-
-   .. py:attribute:: legacy_combo_increase
-      :type: int | None
-
-   .. py:attribute:: meh
-      :type: int | None
-
-   .. py:attribute:: miss
-      :type: int | None
-
-   .. py:attribute:: ok
-      :type: int | None
-
-   .. py:attribute:: perfect
-      :type: int | None
-
-   .. py:attribute:: slider_tail_hit
-      :type: int | None
-
-   .. py:attribute:: small_bonus
-      :type: int | None
-
-   .. py:attribute:: small_tick_hit
-      :type: int | None
-
-   .. py:attribute:: small_tick_miss
-      :type: int | None
-
-.. py:class:: _NonLegacyScore
-
-   .. py:attribute:: accuracy
-      :type: float
-
-   .. py:attribute:: beatmap_id
+   .. py:attribute:: daily_streak_best
       :type: int
 
-   .. py:attribute:: beatmapset
-      :type: BeatmapsetCompact | None
+   .. py:attribute:: daily_streak_current
+      :type: int
 
-   .. py:attribute:: best_id
-      :type: int | None
-
-   .. py:attribute:: build_id
-      :type: int | None
-
-   .. py:attribute:: current_user_attributes
-      :type: typing.Any
-
-   .. py:attribute:: ended_at
+   .. py:attribute:: last_update
       :type: ~datetime.datetime
 
-   .. py:attribute:: has_replay
-      :type: bool
+   .. py:attribute:: last_weekly_streak
+      :type: ~datetime.datetime
 
-   .. py:attribute:: id
-      :type: int | None
-
-   .. py:attribute:: is_perfect_combo
-      :type: bool
-
-   .. py:attribute:: legacy_perfect
-      :type: bool
-
-   .. py:attribute:: legacy_score_id
+   .. py:attribute:: playcount
       :type: int
 
-   .. py:attribute:: legacy_total_score
+   .. py:attribute:: top_10p_placements
       :type: int
 
-   .. py:attribute:: match
-      :type: ScoreMatchInfo | None
-
-   .. py:attribute:: max_combo
+   .. py:attribute:: top_50p_placements
       :type: int
-
-   .. py:attribute:: maximum_statistics
-      :type: typing.Any
-
-   .. py:attribute:: mods
-      :type: _NonLegacyMod
-
-   .. py:attribute:: passed
-      :type: bool
-
-   .. py:attribute:: pp
-      :type: float | None
-
-   .. py:attribute:: preserve
-      :type: bool
-
-   .. py:attribute:: rank
-      :type: Grade
-
-   .. py:attribute:: rank_country
-      :type: int | None
-
-   .. py:attribute:: rank_global
-      :type: int | None
-
-   .. py:attribute:: ranked
-      :type: bool
-
-   .. py:attribute:: replay
-      :type: bool
-
-   .. py:attribute:: ruleset_id
-      :type: int
-
-   .. py:attribute:: started_at
-      :type: ~datetime.datetime | None
-
-   .. py:attribute:: statistics
-      :type: _NonLegacyStatistics
-
-   .. py:attribute:: total_score
-      :type: int
-
-   .. py:attribute:: type
-      :type: str
-
-   .. py:attribute:: user
-      :type: function
 
    .. py:attribute:: user_id
       :type: int
 
-   .. py:attribute:: weight
-      :type: Weight | None
+   .. py:attribute:: weekly_streak_best
+      :type: int
+
+   .. py:attribute:: weekly_streak_current
+      :type: int
+
+.. py:class:: NonLegacyMod
+
+   .. py:attribute:: acronym
+      :type: str
+
+   .. py:attribute:: settings
+      :type: typing.Any
 
 
 Ossapi

@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 --><title>Index - ossapi v3.4.0 documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 --><title>Index - ossapi v5.0.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=781848f9" />
     
     
 
@@ -67,7 +67,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -82,22 +82,63 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
@@ -111,6 +152,8 @@
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
 
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
 
 
 <div class="page">
@@ -122,13 +165,14 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ossapi v3.4.0 documentation</div></a>
+      <a href="index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
           <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
@@ -145,7 +189,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.4.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -155,12 +199,12 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">ossapi</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Quickstart</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
@@ -169,7 +213,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Endpoints</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a></li>
@@ -216,7 +260,8 @@
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
@@ -226,7 +271,7 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
@@ -236,17 +281,13 @@
   <h2>_</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapScores">_NonLegacyBeatmapScores (class in ossapi.models)</a>
-</li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapUserScore">_NonLegacyBeatmapUserScore (class in ossapi.models)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore">_LegacyScore (class in ossapi.models)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyMod">_NonLegacyMod (class in ossapi.models)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics">_LegacyStatistics (class in ossapi.enums)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore">_NonLegacyScore (class in ossapi.models)</a>
-</li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics">_NonLegacyStatistics (class in ossapi.models)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1">_Room1 (class in ossapi.models)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -266,7 +307,7 @@
           <li><a href="api-reference.html#ossapi.models.UserCompact.account_history">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.accuracy">accuracy (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.accuracy">accuracy (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Beatmap.accuracy">(Beatmap attribute)</a>
@@ -290,12 +331,20 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.AchievementEvent">AchievementEvent (class in ossapi.models)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.RoomPlaylistItemMod.acronym">acronym (RoomPlaylistItemMod attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.NonLegacyMod.acronym">acronym (NonLegacyMod attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.RoomPlaylistItemMod.acronym">(RoomPlaylistItemMod attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.KudosuHistory.action">action (KudosuHistory attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.active">active (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.active">active (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.active">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.enums.RoomSearchMode.ACTIVE">ACTIVE (RoomSearchMode attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.User.active_tournament_banner">active_tournament_banner (User attribute)</a>
@@ -338,10 +387,10 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.KudosuHistory.amount">amount (KudosuHistory attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre.ANIME">ANIME (BeatmapsetSearchGenre attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre.ANIME">ANIME (BeatmapsetSearchGenre attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.ChannelType.ANNOUNCE">ANNOUNCE (ChannelType attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ForumTopicType.ANNOUNCEMENT">ANNOUNCEMENT (ForumTopicType attribute)</a>
@@ -410,8 +459,12 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.ossapiv2.Grant.AUTHORIZATION_CODE">AUTHORIZATION_CODE (Grant attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.auto_skip">auto_skip (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.auto_skip">auto_skip (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.auto_skip">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.Beatmapset.availability">availability (Beatmapset attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Availability">Availability (class in ossapi.enums)</a>
@@ -452,9 +505,11 @@
           <li><a href="api-reference.html#ossapi.enums.ForumPollTitle.bbcode">(ForumPollTitle attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.BeatmapPlaycount.beatmap">beatmap (BeatmapPlaycount attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.beatmap">beatmap (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.BeatmapPlaycount.beatmap">(BeatmapPlaycount attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.BeatmapPlaycountEvent.beatmap">(BeatmapPlaycountEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussion.beatmap">(BeatmapsetDiscussion attribute)</a>
@@ -526,11 +581,9 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapsetEventCommentWithSourceUser.beatmap_discussion_post_id">(BeatmapsetEventCommentWithSourceUser attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.beatmap_id">beatmap_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.BeatmapPlaycount.beatmap_id">beatmap_id (BeatmapPlaycount attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.BeatmapPlaycount.beatmap_id">(BeatmapPlaycount attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussion.beatmap_id">(BeatmapsetDiscussion attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapsetEventCommentOwnerChange.beatmap_id">(BeatmapsetEventCommentOwnerChange attribute)</a>
@@ -541,7 +594,11 @@
 </li>
           <li><a href="api-reference.html#ossapi.models.RoomPlaylistItem.beatmap_id">(RoomPlaylistItem attribute)</a>
 </li>
+          <li><a href="api-reference.html#ossapi.models.Score.beatmap_id">(Score attribute)</a>
+</li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.models.BeatmapsetEventCommentWithNominators.beatmap_ids">beatmap_ids (BeatmapsetEventCommentWithNominators attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetEventType.BEATMAP_OWNER_CHANGE">BEATMAP_OWNER_CHANGE (BeatmapsetEventType attribute)</a>
 </li>
         <li><a href="beatmap%20packs.html#ossapi.ossapiv2.Ossapi.beatmap_pack">beatmap_pack() (in module ossapi.ossapiv2.Ossapi)</a>
@@ -602,7 +659,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapScores">BeatmapScores (class in ossapi.models)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.beatmapset">beatmapset (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.beatmapset">beatmapset (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Beatmap.beatmapset">(Beatmap attribute)</a>
@@ -774,7 +831,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.ScoreType.BEST">BEST (ScoreType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.best_id">best_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.best_id">best_id (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Score.best_id">(Score attribute)</a>
@@ -800,7 +857,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.Build">Build (class in ossapi.models)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.build_id">build_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.build_id">build_id (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.ChangelogListing.builds">builds (ChangelogListing attribute)</a>
 </li>
@@ -834,9 +891,11 @@
           <li><a href="api-reference.html#ossapi.enums.GameMode.CATCH">(GameMode attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.ChangelogEntry.category">category (ChangelogEntry attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.category">category (_Room1 attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.ChangelogEntry.category">(ChangelogEntry attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.Room.category">(Room attribute)</a>
 </li>
         </ul></li>
@@ -860,9 +919,11 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.CreatePMResponse.channel">channel (CreatePMResponse attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.ChatChannel.channel_id">channel_id (ChatChannel attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.channel_id">channel_id (_Room1 attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.ChatChannel.channel_id">(ChatChannel attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.ChatMessage.channel_id">(ChatMessage attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.Room.channel_id">(Room attribute)</a>
@@ -892,6 +953,8 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchLanguage.CHINESE">CHINESE (BeatmapsetSearchLanguage attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models.Score.classic_total_score">classic_total_score (Score attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre.CLASSICAL">CLASSICAL (BeatmapsetSearchGenre attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.ossapiv2.Grant.CLIENT_CREDENTIALS">CLIENT_CREDENTIALS (Grant attribute)</a>
@@ -908,7 +971,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.ScoringType.COMBO">COMBO (ScoringType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.combo_break">combo_break (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.combo_break">combo_break (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetEvent.comment">comment (BeatmapsetEvent attribute)</a>
 </li>
@@ -972,31 +1035,33 @@
           <li><a href="api-reference.html#ossapi.enums.UserReplaysWatchedCount.count">(UserReplaysWatchedCount attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_100">count_100 (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_100">count_100 (_LegacyStatistics attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.count_100">(UserStatistics attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_300">count_300 (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_300">count_300 (_LegacyStatistics attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.count_300">(UserStatistics attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_50">count_50 (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_50">count_50 (_LegacyStatistics attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.count_50">(UserStatistics attribute)</a>
 </li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.enums.RoomPlaylistItemStats.count_active">count_active (RoomPlaylistItemStats attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.count_circles">count_circles (Beatmap attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_geki">count_geki (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_geki">count_geki (_LegacyStatistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_katu">count_katu (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_katu">count_katu (_LegacyStatistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.Statistics.count_miss">count_miss (Statistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums._LegacyStatistics.count_miss">count_miss (_LegacyStatistics attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.count_miss">(UserStatistics attribute)</a>
@@ -1005,6 +1070,8 @@
         <li><a href="api-reference.html#ossapi.models.Beatmap.count_sliders">count_sliders (Beatmap attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.count_spinners">count_spinners (Beatmap attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.enums.RoomPlaylistItemStats.count_total">count_total (RoomPlaylistItemStats attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Country">Country (class in ossapi.enums)</a>
 </li>
@@ -1024,14 +1091,14 @@
           <li><a href="api-reference.html#ossapi.models.UserCompact.country_code">(UserCompact attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.models.StatisticsVariant.country_rank">country_rank (StatisticsVariant attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.country_rank">(UserStatistics attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.models.CountryStatistics">CountryStatistics (class in ossapi.models)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Cover">Cover (class in ossapi.enums)</a>
@@ -1056,9 +1123,11 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.Covers">Covers (class in ossapi.enums)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.AchievementEvent.created_at">created_at (AchievementEvent attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.created_at">created_at (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.AchievementEvent.created_at">(AchievementEvent attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.BeatmapPlaycountEvent.created_at">(BeatmapPlaycountEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapsetApproveEvent.created_at">(BeatmapsetApproveEvent attribute)</a>
@@ -1096,8 +1165,6 @@
           <li><a href="api-reference.html#ossapi.models.RankEvent.created_at">(RankEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.RankLostEvent.created_at">(RankLostEvent attribute)</a>
-</li>
-          <li><a href="api-reference.html#ossapi.models.Score.created_at">(Score attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.UsernameChangeEvent.created_at">(UsernameChangeEvent attribute)</a>
 </li>
@@ -1166,7 +1233,9 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapsetCompact.current_nominations">(BeatmapsetCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.current_user_attributes">current_user_attributes (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Room.current_playlist_item">current_playlist_item (Room attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.current_user_attributes">current_user_attributes (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Beatmapset.current_user_attributes">(Beatmapset attribute)</a>
@@ -1246,6 +1315,16 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.enums.Grade.D">D (Grade attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.enums.RoomCategory.DAILY_CHALLENGE">DAILY_CHALLENGE (RoomCategory attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.User.daily_challenge_user_stats">daily_challenge_user_stats (User attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.daily_streak_best">daily_streak_best (DailyChallengeUserStats attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.daily_streak_current">daily_streak_current (DailyChallengeUserStats attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats">DailyChallengeUserStats (class in ossapi.models)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.RankHistory.data">data (RankHistory attribute)</a>
 
         <ul>
@@ -1314,7 +1393,11 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchSort.DIFFICULTY_ASCENDING">DIFFICULTY_ASCENDING (BeatmapsetSearchSort attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchSort.DIFFICULTY_DESCENDING">DIFFICULTY_DESCENDING (BeatmapsetSearchSort attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.Room.difficulty_range">difficulty_range (Room attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.difficulty_rating">difficulty_rating (Beatmap attribute)</a>
 
@@ -1322,8 +1405,6 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapCompact.difficulty_rating">(BeatmapCompact attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.models.DifficultyAttributes">DifficultyAttributes (class in ossapi.models)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetDownload.DIRECT">DIRECT (BeatmapsetDownload attribute)</a>
@@ -1434,15 +1515,17 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.RoomSearchMode.ENDED">ENDED (RoomSearchMode attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.ended_at">ended_at (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.ForumPollModel.ended_at">ended_at (ForumPollModel attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.ForumPollModel.ended_at">(ForumPollModel attribute)</a>
+          <li><a href="api-reference.html#ossapi.models.Score.ended_at">(Score attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.Room.ends_at">ends_at (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.ends_at">ends_at (_Room1 attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.ends_at">(Room attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.SeasonalBackgrounds.ends_at">(SeasonalBackgrounds attribute)</a>
 </li>
         </ul></li>
@@ -1450,10 +1533,10 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetSearchResult.error">error (BeatmapsetSearchResult attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Event">Event (class in ossapi.models)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api-reference.html#ossapi.models.Event">Event (class in ossapi.models)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.EventAchivement">EventAchivement (class in ossapi.enums)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.EventBeatmap">EventBeatmap (class in ossapi.enums)</a>
@@ -1688,7 +1771,7 @@
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.good">good (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.good">good (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Grade">Grade (class in ossapi.enums)</a>
 </li>
@@ -1710,7 +1793,7 @@
           <li><a href="api-reference.html#ossapi.models.UserCompact.graveyard_beatmapset_count">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.great">great (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.great">great (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapDifficultyAttributes.great_hit_window">great_hit_window (BeatmapDifficultyAttributes attribute)</a>
 </li>
@@ -1756,11 +1839,15 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.CommentBundle.has_more_id">has_more_id (CommentBundle attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.has_password">has_password (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.has_password">has_password (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.has_password">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.enums.UserGroup.has_playmodes">has_playmodes (UserGroup attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.has_replay">has_replay (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.has_replay">has_replay (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.User.has_supported">has_supported (User attribute)</a>
 </li>
@@ -1788,8 +1875,12 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.hit_length">hit_length (Beatmap attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.host">host (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.host">host (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.host">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.enums.MatchEventType.HOST_CHANGED">HOST_CHANGED (MatchEventType attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ChangelogMessageFormat.HTML">HTML (ChangelogMessageFormat attribute)</a>
@@ -1828,9 +1919,11 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.EventAchivement.icon_url">icon_url (EventAchivement attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.id">id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.id">id (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models._Room1.id">(_Room1 attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.AchievementEvent.id">(AchievementEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.Beatmap.id">(Beatmap attribute)</a>
@@ -1942,9 +2035,9 @@
 </li>
         <li><a href="api-reference.html#ossapi.ossapiv2.Scope.IDENTIFY">IDENTIFY (Scope attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.ignore_hit">ignore_hit (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.ignore_hit">ignore_hit (Statistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.ignore_miss">ignore_miss (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.ignore_miss">ignore_miss (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfileBanner.image">image (ProfileBanner attribute)</a>
 </li>
@@ -1994,7 +2087,7 @@
           <li><a href="api-reference.html#ossapi.models.UserCompact.is_online">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.is_perfect_combo">is_perfect_combo (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.is_perfect_combo">is_perfect_combo (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.UserGroup.is_probationary">is_probationary (UserGroup attribute)</a>
 </li>
@@ -2108,11 +2201,11 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetEventType.LANGUAGE_EDIT">LANGUAGE_EDIT (BeatmapsetEventType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.large_bonus">large_bonus (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.large_bonus">large_bonus (Statistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.large_tick_hit">large_tick_hit (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.large_tick_hit">large_tick_hit (Statistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.large_tick_miss">large_tick_miss (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.large_tick_miss">large_tick_miss (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussionPost.last_editor">last_editor (BeatmapsetDiscussionPost attribute)</a>
 </li>
@@ -2125,6 +2218,8 @@
         <li><a href="api-reference.html#ossapi.models.ForumTopic.last_post_id">last_post_id (ForumTopic attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.ChatChannel.last_read_id">last_read_id (ChatChannel attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.last_update">last_update (DailyChallengeUserStats attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.last_updated">last_updated (Beatmap attribute)</a>
 
@@ -2142,6 +2237,8 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.ForumPollModel.last_vote_at">last_vote_at (ForumPollModel attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.last_weekly_streak">last_weekly_streak (DailyChallengeUserStats attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.UpdateStream.latest_build">latest_build (UpdateStream attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.MatchResponse.latest_event_id">latest_event_id (MatchResponse attribute)</a>
@@ -2150,19 +2247,19 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.RoomLeaderboard.leaderboard">leaderboard (RoomLeaderboard attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.legacy_combo_increase">legacy_combo_increase (_NonLegacyStatistics attribute)</a>
-</li>
-        <li><a href="api-reference.html#ossapi.models.Comment.legacy_name">legacy_name (Comment attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.legacy_combo_increase">legacy_combo_increase (Statistics attribute)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.legacy_perfect">legacy_perfect (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Comment.legacy_name">legacy_name (Comment attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.legacy_score_id">legacy_score_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.legacy_perfect">legacy_perfect (Score attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.Score.legacy_score_id">legacy_score_id (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmapset.legacy_thread_url">legacy_thread_url (Beatmapset attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.legacy_total_score">legacy_total_score (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.legacy_total_score">legacy_total_score (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.UserAccountHistory.length">length (UserAccountHistory attribute)</a>
 </li>
@@ -2246,7 +2343,7 @@
           <li><a href="api-reference.html#ossapi.models.WikiPage.markdown">(WikiPage attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.match">match (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.match">match (_LegacyScore attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Match">Match (class in ossapi.models)</a>
 </li>
@@ -2278,8 +2375,14 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.MatchResponse">MatchResponse (class in ossapi.models)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.max_attempts">max_attempts (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.RoomDifficultyRange.max">max (RoomDifficultyRange attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models._Room1.max_attempts">max_attempts (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.max_attempts">(Room attribute)</a>
+</li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussionReview.max_blocks">max_blocks (BeatmapsetDiscussionReview attribute)</a>
 
         <ul>
@@ -2288,7 +2391,7 @@
           <li><a href="api-reference.html#ossapi.models.User.max_blocks">(User attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.max_combo">max_combo (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.max_combo">max_combo (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Beatmap.max_combo">(Beatmap attribute)</a>
@@ -2312,13 +2415,13 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.UserStatistics.maximum_combo">maximum_combo (UserStatistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.maximum_statistics">maximum_statistics (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.maximum_statistics">maximum_statistics (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfilePage.ME">ME (ProfilePage attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfilePage.MEDALS">MEDALS (ProfilePage attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.meh">meh (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.meh">meh (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussionPost.message">message (BeatmapsetDiscussionPost attribute)</a>
 
@@ -2348,15 +2451,19 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre.METAL">METAL (BeatmapsetSearchGenre attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.miss">miss (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.RoomDifficultyRange.min">min (RoomDifficultyRange attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.miss">miss (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Mod">Mod (class in ossapi.models)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.ModdingHistoryEventsBundle">ModdingHistoryEventsBundle (class in ossapi.models)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Beatmap.mode">mode (Beatmap attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.mode">mode (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.Beatmap.mode">(Beatmap attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.BeatmapCompact.mode">(BeatmapCompact attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.enums.EventAchivement.mode">(EventAchivement attribute)</a>
@@ -2369,17 +2476,15 @@
 </li>
           <li><a href="api-reference.html#ossapi.models.RankLostEvent.mode">(RankLostEvent attribute)</a>
 </li>
-          <li><a href="api-reference.html#ossapi.models.Score.mode">(Score attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.StatisticsVariant.mode">(StatisticsVariant attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.Beatmap.mode_int">mode_int (Beatmap attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.mode_int">mode_int (_LegacyScore attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.MatchGame.mode_int">(MatchGame attribute)</a>
+          <li><a href="api-reference.html#ossapi.models.Beatmap.mode_int">(Beatmap attribute)</a>
 </li>
-          <li><a href="api-reference.html#ossapi.models.Score.mode_int">(Score attribute)</a>
+          <li><a href="api-reference.html#ossapi.models.MatchGame.mode_int">(MatchGame attribute)</a>
 </li>
         </ul></li>
         <li><a href="api-reference.html#ossapi.models.Spotlight.mode_specific">mode_specific (Spotlight attribute)</a>
@@ -2390,7 +2495,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetEventCommentNominate.modes">modes (BeatmapsetEventCommentNominate attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.mods">mods (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.mods">mods (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.MatchGame.mods">(MatchGame attribute)</a>
@@ -2451,9 +2556,11 @@
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models.BeatmapPack.name">name (BeatmapPack attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.name">name (_Room1 attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.BeatmapPack.name">(BeatmapPack attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.ChatChannel.name">(ChatChannel attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.enums.Country.name">(Country attribute)</a>
@@ -2571,6 +2678,8 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.NominationsRequired.non_main_ruleset">non_main_ruleset (NominationsRequired attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models.NonLegacyMod">NonLegacyMod (class in ossapi.models)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.ForumTopicType.NORMAL">NORMAL (ForumTopicType attribute)</a>
 
         <ul>
@@ -2607,7 +2716,7 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapsetCompact.offset">(BeatmapsetCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.ok">ok (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.ok">ok (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapDiscussionPostSort.OLD">OLD (BeatmapDiscussionPostSort attribute)</a>
 
@@ -2744,9 +2853,11 @@
           <li><a href="api-reference.html#ossapi.models.Comment.parent_id">(Comment attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.Room.participant_count">participant_count (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.participant_count">participant_count (_Room1 attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.participant_count">(Room attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.Spotlight.participant_count">(Spotlight attribute)</a>
 </li>
         </ul></li>
@@ -2756,7 +2867,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.passcount">passcount (Beatmap attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.passed">passed (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.passed">passed (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.MultiplayerScore.passed">(MultiplayerScore attribute)</a>
@@ -2782,10 +2893,10 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.Weight.percentage">percentage (Weight attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.perfect">perfect (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.perfect">perfect (_LegacyScore attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.Score.perfect">(Score attribute)</a>
+          <li><a href="api-reference.html#ossapi.enums.Statistics.perfect">(Statistics attribute)</a>
 </li>
         </ul></li>
         <li><a href="api-reference.html#ossapi.models.CountryStatistics.performance">performance (CountryStatistics attribute)</a>
@@ -2817,7 +2928,11 @@
         <li><a href="api-reference.html#ossapi.models.UserStatistics.play_time">play_time (UserStatistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmap.playcount">playcount (Beatmap attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.playcount">(DailyChallengeUserStats attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.RoomPlaylistItem.played_at">played_at (RoomPlaylistItem attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.MatchEventType.PLAYER_JOINED">PLAYER_JOINED (MatchEventType attribute)</a>
@@ -2826,9 +2941,15 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.MatchEventType.PLAYER_LEFT">PLAYER_LEFT (MatchEventType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.playlist">playlist (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.playlist">playlist (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.playlist">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.MultiplayerScore.playlist_item_id">playlist_item_id (MultiplayerScore attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.Room.playlist_item_stats">playlist_item_stats (Room attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.RoomPlaylistItem.playlist_order">playlist_order (RoomPlaylistItem attribute)</a>
 </li>
@@ -2836,10 +2957,10 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.User.playmode">playmode (User attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.UserGroup.playmodes">playmodes (UserGroup attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api-reference.html#ossapi.enums.UserGroup.playmodes">playmodes (UserGroup attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchSort.PLAYS_ASCENDING">PLAYS_ASCENDING (BeatmapsetSearchSort attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchSort.PLAYS_DESCENDING">PLAYS_DESCENDING (BeatmapsetSearchSort attribute)</a>
@@ -2862,11 +2983,9 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchGenre.POP">POP (BeatmapsetSearchGenre attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapUserScore.position">position (_NonLegacyBeatmapUserScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.BeatmapUserScore.position">position (BeatmapUserScore attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.BeatmapUserScore.position">(BeatmapUserScore attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.MultiplayerScore.position">(MultiplayerScore attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.RoomLeaderboardUserScore.position">(RoomLeaderboardUserScore attribute)</a>
@@ -2892,7 +3011,7 @@
           <li><a href="api-reference.html#ossapi.models.ForumTopicAndPosts.posts">(ForumTopicAndPosts attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.pp">pp (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.pp">pp (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.RoomLeaderboardScore.pp">(RoomLeaderboardScore attribute)</a>
@@ -2914,7 +3033,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.CreatePMResponse.presence">presence (CreatePMResponse attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.preserve">preserve (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Score.preserve">preserve (Score attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.NewsPost.preview">preview (NewsPost attribute)</a>
 </li>
@@ -2938,12 +3057,16 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.MessageType.PROBLEM">PROBLEM (MessageType attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models.Score.processed">processed (Score attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.User.profile_colour">profile_colour (User attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.UserCompact.profile_colour">(UserCompact attribute)</a>
 </li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.models.User.profile_hue">profile_hue (User attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.User.profile_order">profile_order (User attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfileBanner">ProfileBanner (class in ossapi.enums)</a>
@@ -2982,8 +3105,12 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetEventType.QUALIFY">QUALIFY (BeatmapsetEventType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.queue_mode">queue_mode (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.queue_mode">queue_mode (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.queue_mode">(Room attribute)</a>
 </li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -2992,7 +3119,7 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.rank">rank (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.rank">rank (_LegacyScore attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetEventType.RANK">RANK (BeatmapsetEventType attribute)</a>
 
@@ -3014,13 +3141,15 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.UserStatistics.rank">rank (UserStatistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.rank_country">rank_country (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.UserStatistics.rank_change_since_30_days">rank_change_since_30_days (UserStatistics attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.rank_country">rank_country (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Score.rank_country">(Score attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.rank_global">rank_global (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.rank_global">rank_global (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.Score.rank_global">(Score attribute)</a>
@@ -3036,11 +3165,9 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.enums.EventType.RANK_LOST">RANK_LOST (EventType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.ranked">ranked (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.Beatmap.ranked">ranked (Beatmap attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.Beatmap.ranked">(Beatmap attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.Beatmapset.ranked">(Beatmapset attribute)</a>
 </li>
         </ul></li>
@@ -3053,9 +3180,11 @@
 </li>
           <li><a href="api-reference.html#ossapi.enums.RankStatus.RANKED">(RankStatus attribute)</a>
 </li>
-          <li><a href="api-reference.html#ossapi.enums.UserBeatmapType.RANKED">(UserBeatmapType attribute)</a>
-</li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.models.Score.ranked">ranked (Score attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.enums.UserBeatmapType.RANKED">RANKED (UserBeatmapType attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.User.ranked_and_approved_beatmapset_count">ranked_and_approved_beatmapset_count (User attribute)</a>
 
         <ul>
@@ -3132,10 +3261,10 @@
           <li><a href="api-reference.html#ossapi.enums.UserPage.raw">(UserPage attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetEventCommentLovedRemoval.reason">reason (BeatmapsetEventCommentLovedRemoval attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.enums.ScoreType.RECENT">RECENT (ScoreType attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfilePage.RECENT_ACTIVITY">RECENT_ACTIVITY (ProfilePage attribute)</a>
@@ -3148,8 +3277,12 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.models.ChatChannel.recent_messages">recent_messages (ChatChannel attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.recent_participants">recent_participants (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.recent_participants">recent_participants (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.recent_participants">(Room attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetSearchResult.recommended_difficulty">recommended_difficulty (BeatmapsetSearchResult attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Beatmapset.related_users">related_users (Beatmapset attribute)</a>
@@ -3162,7 +3295,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetEventType.REMOVE_FROM_LOVED">REMOVE_FROM_LOVED (BeatmapsetEventType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.replay">replay (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.replay">replay (_LegacyScore attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.replay.Replay">Replay (class in ossapi.replay)</a>
 </li>
@@ -3228,6 +3361,8 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.RoomCategory">RoomCategory (class in ossapi.enums)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.enums.RoomDifficultyRange">RoomDifficultyRange (class in ossapi.enums)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.RoomLeaderboard">RoomLeaderboard (class in ossapi.models)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.RoomLeaderboardScore">RoomLeaderboardScore (class in ossapi.models)</a>
@@ -3238,20 +3373,24 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.RoomPlaylistItemMod">RoomPlaylistItemMod (class in ossapi.models)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.enums.RoomPlaylistItemStats">RoomPlaylistItemStats (class in ossapi.enums)</a>
+</li>
         <li><a href="rooms.html#ossapi.ossapiv2.Ossapi.rooms">rooms() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.RoomSearchMode">RoomSearchMode (class in ossapi.enums)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.RoomType">RoomType (class in ossapi.enums)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.ruleset_id">ruleset_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.BeatmapPack.ruleset_id">ruleset_id (BeatmapPack attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.BeatmapPack.ruleset_id">(BeatmapPack attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.RoomPlaylistItem.ruleset_id">(RoomPlaylistItem attribute)</a>
 </li>
+          <li><a href="api-reference.html#ossapi.models.Score.ruleset_id">(Score attribute)</a>
+</li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.enums.RoomPlaylistItemStats.ruleset_ids">ruleset_ids (RoomPlaylistItemStats attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.enums.Nomination.rulesets">rulesets (Nomination attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.BeatmapsetSearchLanguage.RUSSIAN">RUSSIAN (BeatmapsetSearchLanguage attribute)</a>
@@ -3270,7 +3409,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.ossapiv2.Scope">Scope (class in ossapi.ossapiv2)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapUserScore.score">score (_NonLegacyBeatmapUserScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.score">score (_LegacyScore attribute)</a>
 
         <ul>
           <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussionVote.score">(BeatmapsetDiscussionVote attribute)</a>
@@ -3283,11 +3422,11 @@
         <li><a href="api-reference.html#ossapi.enums.KudosuVote.score">score (KudosuVote attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.RankingType.SCORE">SCORE (RankingType attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.enums.ScoringType.SCORE">(ScoringType attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Score.score">score (Score attribute)</a>
-</li>
-        <li><a href="api-reference.html#ossapi.enums.ScoringType.SCORE">SCORE (ScoringType attribute)</a>
-</li>
+        </ul></li>
         <li><a href="scores.html#ossapi.ossapiv2.Ossapi.score">score() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
         <li><a href="scores.html#ossapi.ossapiv2.Ossapi.score_mode">score_mode() (in module ossapi.ossapiv2.Ossapi)</a>
@@ -3300,11 +3439,9 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.RankEvent.scoreRank">scoreRank (RankEvent attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapScores.scores">scores (_NonLegacyBeatmapScores attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.BeatmapScores.scores">scores (BeatmapScores attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.BeatmapScores.scores">(BeatmapScores attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.BeatmapUserScores.scores">(BeatmapUserScores attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.MatchGame.scores">(MatchGame attribute)</a>
@@ -3382,8 +3519,12 @@
           <li><a href="api-reference.html#ossapi.models.UserCompact.session_verified">(UserCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models.RoomPlaylistItemMod.settings">settings (RoomPlaylistItemMod attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.NonLegacyMod.settings">settings (NonLegacyMod attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.RoomPlaylistItemMod.settings">(RoomPlaylistItemMod attribute)</a>
 </li>
+        </ul></li>
         <li><a href="api-reference.html#ossapi.enums.Grade.SH">SH (Grade attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.UserGradeCounts.sh">sh (UserGradeCounts attribute)</a>
@@ -3396,7 +3537,7 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.BeatmapDifficultyAttributes.slider_factor">slider_factor (BeatmapDifficultyAttributes attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.slider_tail_hit">slider_tail_hit (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.slider_tail_hit">slider_tail_hit (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Covers.slimcover">slimcover (Covers attribute)</a>
 </li>
@@ -3410,15 +3551,15 @@
           <li><a href="api-reference.html#ossapi.models.NewsPost.slug">(NewsPost attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.enums.NewsPostKey.SLUG">SLUG (NewsPostKey attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.small_bonus">small_bonus (_NonLegacyStatistics attribute)</a>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.small_bonus">small_bonus (Statistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.small_tick_hit">small_tick_hit (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.small_tick_hit">small_tick_hit (Statistics attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyStatistics.small_tick_miss">small_tick_miss (_NonLegacyStatistics attribute)</a>
+        <li><a href="api-reference.html#ossapi.enums.Statistics.small_tick_miss">small_tick_miss (Statistics attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.CommentBundle.sort">sort (CommentBundle attribute)</a>
 
@@ -3494,17 +3635,21 @@
           <li><a href="api-reference.html#ossapi.models.MatchGame.start_time">(MatchGame attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.started_at">started_at (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.ForumPollModel.started_at">started_at (ForumPollModel attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.ForumPollModel.started_at">(ForumPollModel attribute)</a>
+          <li><a href="api-reference.html#ossapi.models.Score.started_at">(Score attribute)</a>
 </li>
         </ul></li>
         <li><a href="api-reference.html#ossapi.models.BeatmapsetDiscussion.starting_post">starting_post (BeatmapsetDiscussion attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models.Room.starts_at">starts_at (Room attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._Room1.starts_at">starts_at (_Room1 attribute)</a>
+
+        <ul>
+          <li><a href="api-reference.html#ossapi.models.Room.starts_at">(Room attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.statistics">statistics (_NonLegacyScore attribute)</a>
+        </ul></li>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.statistics">statistics (_LegacyScore attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Statistics">Statistics (class in ossapi.enums)</a>
 </li>
@@ -3666,6 +3811,10 @@
 </li>
         <li><a href="api-reference.html#ossapi.enums.CommentSort.TOP">TOP (CommentSort attribute)</a>
 </li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.top_10p_placements">top_10p_placements (DailyChallengeUserStats attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.top_50p_placements">top_50p_placements (DailyChallengeUserStats attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.CommentBundle.top_level_count">top_level_count (CommentBundle attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.ProfilePage.TOP_RANKS">TOP_RANKS (ProfilePage attribute)</a>
@@ -3702,18 +3851,20 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapCompact.total_length">(BeatmapCompact attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.total_score">total_score (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.MultiplayerScore.total_score">total_score (MultiplayerScore attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.MultiplayerScore.total_score">(MultiplayerScore attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.RoomLeaderboardScore.total_score">(RoomLeaderboardScore attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.RoomLeaderboardUserScore.total_score">(RoomLeaderboardUserScore attribute)</a>
 </li>
+          <li><a href="api-reference.html#ossapi.models.Score.total_score">(Score attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.UserStatistics.total_score">(UserStatistics attribute)</a>
 </li>
         </ul></li>
+        <li><a href="api-reference.html#ossapi.models.Score.total_score_without_mods">total_score_without_mods (Score attribute)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.ForumPollModel.total_vote_count">total_vote_count (ForumPollModel attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.PlayStyles.TOUCH">TOUCH (PlayStyles attribute)</a>
@@ -3732,9 +3883,11 @@
         </ul></li>
         <li><a href="api-reference.html#ossapi.models.User.twitter">twitter (User attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.type">type (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.type">type (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models._Room1.type">(_Room1 attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.AchievementEvent.type">(AchievementEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapPlaycountEvent.type">(BeatmapPlaycountEvent attribute)</a>
@@ -3860,11 +4013,9 @@
           <li><a href="api-reference.html#ossapi.enums.UserBadge.url">(UserBadge attribute)</a>
 </li>
         </ul></li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.user">user (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.AchievementEvent.user">user (AchievementEvent attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.AchievementEvent.user">(AchievementEvent attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.Beatmap.user">(Beatmap attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapCompact.user">(BeatmapCompact attribute)</a>
@@ -3946,9 +4097,11 @@
 </li>
         <li><a href="api-reference.html#ossapi.models.CommentBundle.user_follow">user_follow (CommentBundle attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.user_id">user_id (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.user_id">user_id (_LegacyScore attribute)</a>
 
         <ul>
+          <li><a href="api-reference.html#ossapi.models._Room1.user_id">(_Room1 attribute)</a>
+</li>
           <li><a href="api-reference.html#ossapi.models.Beatmap.user_id">(Beatmap attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.BeatmapCompact.user_id">(BeatmapCompact attribute)</a>
@@ -3966,6 +4119,8 @@
           <li><a href="api-reference.html#ossapi.models.BeatmapsetEvent.user_id">(BeatmapsetEvent attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.Comment.user_id">(Comment attribute)</a>
+</li>
+          <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.user_id">(DailyChallengeUserStats attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.ForumPost.user_id">(ForumPost attribute)</a>
 </li>
@@ -4008,11 +4163,9 @@
         </ul></li>
         <li><a href="users.html#ossapi.ossapiv2.Ossapi.user_recent_activity">user_recent_activity() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyBeatmapScores.user_score">user_score (_NonLegacyBeatmapScores attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.BeatmapScores.user_score">user_score (BeatmapScores attribute)</a>
 
         <ul>
-          <li><a href="api-reference.html#ossapi.models.BeatmapScores.user_score">(BeatmapScores attribute)</a>
-</li>
           <li><a href="api-reference.html#ossapi.models.MultiplayerScores.user_score">(MultiplayerScores attribute)</a>
 </li>
           <li><a href="api-reference.html#ossapi.models.RoomLeaderboard.user_score">(RoomLeaderboard attribute)</a>
@@ -4118,6 +4271,8 @@
 </li>
         <li><a href="users.html#ossapi.ossapiv2.Ossapi.users">users() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
+        <li><a href="users.html#ossapi.ossapiv2.Ossapi.users_lookup">users_lookup() (in module ossapi.ossapiv2.Ossapi)</a>
+</li>
         <li><a href="api-reference.html#ossapi.models.UserStatistics">UserStatistics (class in ossapi.models)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.UserStatisticsRulesets">UserStatisticsRulesets (class in ossapi.models)</a>
@@ -4188,16 +4343,20 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api-reference.html#ossapi.models.User.website">website (User attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.models._NonLegacyScore.weight">weight (_NonLegacyScore attribute)</a>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.weekly_streak_best">weekly_streak_best (DailyChallengeUserStats attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models.DailyChallengeUserStats.weekly_streak_current">weekly_streak_current (DailyChallengeUserStats attribute)</a>
+</li>
+        <li><a href="api-reference.html#ossapi.models._LegacyScore.weight">weight (_LegacyScore attribute)</a>
 </li>
         <li><a href="api-reference.html#ossapi.enums.Weight">Weight (class in ossapi.enums)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Score.weight">weight (Score attribute)</a>
 </li>
-        <li><a href="api-reference.html#ossapi.enums.SearchMode.WIKI">WIKI (SearchMode attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api-reference.html#ossapi.enums.SearchMode.WIKI">WIKI (SearchMode attribute)</a>
+</li>
         <li><a href="wiki.html#ossapi.ossapiv2.Ossapi.wiki_page">wiki_page() (in module ossapi.ossapiv2.Ossapi)</a>
 </li>
         <li><a href="api-reference.html#ossapi.models.Search.wiki_pages">wiki_pages (Search attribute)</a>
@@ -4265,9 +4424,9 @@
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script src="_static/documentation_options.js?v=35c0298d"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
 </html>

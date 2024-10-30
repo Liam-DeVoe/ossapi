@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>ossapi.enums - ossapi v3.4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>ossapi.enums - ossapi v5.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=781848f9" />
     
     
 
@@ -68,7 +68,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -83,22 +83,63 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
@@ -112,6 +153,8 @@
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
 
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
 
 
 <div class="page">
@@ -123,13 +166,14 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v3.4.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
           <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
@@ -146,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.4.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -156,12 +200,12 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">ossapi</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Quickstart</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pagination.html">Pagination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expandable-models.html">Expandable Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../foreign-keys.html">Foreign Keys</a></li>
@@ -170,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Endpoints</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmapsets.html">Beatmapsets</a></li>
@@ -217,7 +261,8 @@
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
@@ -227,7 +272,7 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <h1>Source code for ossapi.enums</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Any</span>
 
@@ -238,7 +283,9 @@
 <span class="c1"># ================</span>
 
 
-<div class="viewcode-block" id="ProfilePage"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ProfilePage">[docs]</a><span class="k">class</span> <span class="nc">ProfilePage</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="ProfilePage">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ProfilePage">[docs]</a>
+<span class="k">class</span> <span class="nc">ProfilePage</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ME</span> <span class="o">=</span> <span class="s2">&quot;me&quot;</span>
     <span class="n">RECENT_ACTIVITY</span> <span class="o">=</span> <span class="s2">&quot;recent_activity&quot;</span>
     <span class="n">BEATMAPS</span> <span class="o">=</span> <span class="s2">&quot;beatmaps&quot;</span>
@@ -248,14 +295,20 @@
     <span class="n">MEDALS</span> <span class="o">=</span> <span class="s2">&quot;medals&quot;</span></div>
 
 
-<div class="viewcode-block" id="GameMode"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GameMode">[docs]</a><span class="k">class</span> <span class="nc">GameMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="GameMode">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GameMode">[docs]</a>
+<span class="k">class</span> <span class="nc">GameMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">OSU</span> <span class="o">=</span> <span class="s2">&quot;osu&quot;</span>
     <span class="n">TAIKO</span> <span class="o">=</span> <span class="s2">&quot;taiko&quot;</span>
     <span class="n">CATCH</span> <span class="o">=</span> <span class="s2">&quot;fruits&quot;</span>
     <span class="n">MANIA</span> <span class="o">=</span> <span class="s2">&quot;mania&quot;</span></div>
 
 
-<div class="viewcode-block" id="PlayStyles"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.PlayStyles">[docs]</a><span class="k">class</span> <span class="nc">PlayStyles</span><span class="p">(</span><span class="n">IntFlagModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PlayStyles">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.PlayStyles">[docs]</a>
+<span class="k">class</span> <span class="nc">PlayStyles</span><span class="p">(</span><span class="n">IntFlagModel</span><span class="p">):</span>
     <span class="n">MOUSE</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">KEYBOARD</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">TABLET</span> <span class="o">=</span> <span class="mi">4</span>
@@ -285,7 +338,10 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_missing_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="RankStatus"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankStatus">[docs]</a><span class="k">class</span> <span class="nc">RankStatus</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RankStatus">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankStatus">[docs]</a>
+<span class="k">class</span> <span class="nc">RankStatus</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">GRAVEYARD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
     <span class="n">WIP</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="n">PENDING</span> <span class="o">=</span> <span class="mi">0</span>
@@ -318,7 +374,10 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_missing_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="UserAccountHistoryType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAccountHistoryType">[docs]</a><span class="k">class</span> <span class="nc">UserAccountHistoryType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserAccountHistoryType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAccountHistoryType">[docs]</a>
+<span class="k">class</span> <span class="nc">UserAccountHistoryType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NOTE</span> <span class="o">=</span> <span class="s2">&quot;note&quot;</span>
     <span class="n">RESTRICTION</span> <span class="o">=</span> <span class="s2">&quot;restriction&quot;</span>
     <span class="n">SILENCE</span> <span class="o">=</span> <span class="s2">&quot;silence&quot;</span>
@@ -326,7 +385,10 @@
     <span class="n">TOURNAMENT_BAN</span> <span class="o">=</span> <span class="s2">&quot;tournament_ban&quot;</span></div>
 
 
-<div class="viewcode-block" id="MessageType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MessageType">[docs]</a><span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MessageType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MessageType">[docs]</a>
+<span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">HYPE</span> <span class="o">=</span> <span class="s2">&quot;hype&quot;</span>
     <span class="n">MAPPER_NOTE</span> <span class="o">=</span> <span class="s2">&quot;mapper_note&quot;</span>
     <span class="n">PRAISE</span> <span class="o">=</span> <span class="s2">&quot;praise&quot;</span>
@@ -335,7 +397,10 @@
     <span class="n">SUGGESTION</span> <span class="o">=</span> <span class="s2">&quot;suggestion&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetEventType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetEventType">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetEventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetEventType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetEventType">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetEventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">APPROVE</span> <span class="o">=</span> <span class="s2">&quot;approve&quot;</span>
     <span class="n">BEATMAP_OWNER_CHANGE</span> <span class="o">=</span> <span class="s2">&quot;beatmap_owner_change&quot;</span>
     <span class="n">DISCUSSION_DELETE</span> <span class="o">=</span> <span class="s2">&quot;discussion_delete&quot;</span>
@@ -366,37 +431,55 @@
     <span class="n">NSFW_TOGGLE</span> <span class="o">=</span> <span class="s2">&quot;nsfw_toggle&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetDownload"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDownload">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetDownload</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetDownload">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDownload">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetDownload</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">NO_VIDEO</span> <span class="o">=</span> <span class="s2">&quot;no_video&quot;</span>
     <span class="n">DIRECT</span> <span class="o">=</span> <span class="s2">&quot;direct&quot;</span></div>
 
 
-<div class="viewcode-block" id="UserListFilters"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListFilters">[docs]</a><span class="k">class</span> <span class="nc">UserListFilters</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserListFilters">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListFilters">[docs]</a>
+<span class="k">class</span> <span class="nc">UserListFilters</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">ONLINE</span> <span class="o">=</span> <span class="s2">&quot;online&quot;</span>
     <span class="n">OFFLINE</span> <span class="o">=</span> <span class="s2">&quot;offline&quot;</span></div>
 
 
-<div class="viewcode-block" id="UserListSorts"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListSorts">[docs]</a><span class="k">class</span> <span class="nc">UserListSorts</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserListSorts">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListSorts">[docs]</a>
+<span class="k">class</span> <span class="nc">UserListSorts</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">LAST_VISIT</span> <span class="o">=</span> <span class="s2">&quot;last_visit&quot;</span>
     <span class="n">RANK</span> <span class="o">=</span> <span class="s2">&quot;rank&quot;</span>
     <span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span></div>
 
 
-<div class="viewcode-block" id="UserListViews"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListViews">[docs]</a><span class="k">class</span> <span class="nc">UserListViews</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserListViews">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserListViews">[docs]</a>
+<span class="k">class</span> <span class="nc">UserListViews</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">CARD</span> <span class="o">=</span> <span class="s2">&quot;card&quot;</span>
     <span class="n">LIST</span> <span class="o">=</span> <span class="s2">&quot;list&quot;</span>
     <span class="n">BRICK</span> <span class="o">=</span> <span class="s2">&quot;brick&quot;</span></div>
 
 
-<div class="viewcode-block" id="KudosuAction"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuAction">[docs]</a><span class="k">class</span> <span class="nc">KudosuAction</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="KudosuAction">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuAction">[docs]</a>
+<span class="k">class</span> <span class="nc">KudosuAction</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">GIVE</span> <span class="o">=</span> <span class="s2">&quot;vote.give&quot;</span>
     <span class="n">RESET</span> <span class="o">=</span> <span class="s2">&quot;vote.reset&quot;</span>
     <span class="n">REVOKE</span> <span class="o">=</span> <span class="s2">&quot;vote.revoke&quot;</span></div>
 
 
-<div class="viewcode-block" id="EventType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventType">[docs]</a><span class="k">class</span> <span class="nc">EventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventType">[docs]</a>
+<span class="k">class</span> <span class="nc">EventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ACHIEVEMENT</span> <span class="o">=</span> <span class="s2">&quot;achievement&quot;</span>
     <span class="n">BEATMAP_PLAYCOUNT</span> <span class="o">=</span> <span class="s2">&quot;beatmapPlaycount&quot;</span>
     <span class="n">BEATMAPSET_APPROVE</span> <span class="o">=</span> <span class="s2">&quot;beatmapsetApprove&quot;</span>
@@ -412,23 +495,33 @@
     <span class="n">USERNAME_CHANGE</span> <span class="o">=</span> <span class="s2">&quot;usernameChange&quot;</span></div>
 
 
+
 <span class="c1"># used for `EventType.BEATMAPSET_APPROVE`</span>
-<div class="viewcode-block" id="BeatmapsetApproval"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetApproval">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetApproval</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="BeatmapsetApproval">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetApproval">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetApproval</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">RANKED</span> <span class="o">=</span> <span class="s2">&quot;ranked&quot;</span>
     <span class="n">APPROVED</span> <span class="o">=</span> <span class="s2">&quot;approved&quot;</span>
     <span class="n">QUALIFIED</span> <span class="o">=</span> <span class="s2">&quot;qualified&quot;</span>
     <span class="n">LOVED</span> <span class="o">=</span> <span class="s2">&quot;loved&quot;</span></div>
 
 
-<div class="viewcode-block" id="ForumTopicType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumTopicType">[docs]</a><span class="k">class</span> <span class="nc">ForumTopicType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ForumTopicType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumTopicType">[docs]</a>
+<span class="k">class</span> <span class="nc">ForumTopicType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
     <span class="n">STICKY</span> <span class="o">=</span> <span class="s2">&quot;sticky&quot;</span>
     <span class="n">ANNOUNCEMENT</span> <span class="o">=</span> <span class="s2">&quot;announcement&quot;</span></div>
 
 
-<div class="viewcode-block" id="ChangelogMessageFormat"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChangelogMessageFormat">[docs]</a><span class="k">class</span> <span class="nc">ChangelogMessageFormat</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ChangelogMessageFormat">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChangelogMessageFormat">[docs]</a>
+<span class="k">class</span> <span class="nc">ChangelogMessageFormat</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">HTML</span> <span class="o">=</span> <span class="s2">&quot;html&quot;</span>
     <span class="n">MARKDOWN</span> <span class="o">=</span> <span class="s2">&quot;markdown&quot;</span></div>
+
 
 
 <span class="c1"># ==================</span>
@@ -436,7 +529,9 @@
 <span class="c1"># ==================</span>
 
 
-<div class="viewcode-block" id="UserRelationType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserRelationType">[docs]</a><span class="k">class</span> <span class="nc">UserRelationType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="UserRelationType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserRelationType">[docs]</a>
+<span class="k">class</span> <span class="nc">UserRelationType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/</span>
     <span class="c1"># UserRelationTransformer.php#L20</span>
@@ -444,7 +539,10 @@
     <span class="n">BLOCK</span> <span class="o">=</span> <span class="s2">&quot;block&quot;</span></div>
 
 
-<div class="viewcode-block" id="Grade"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Grade">[docs]</a><span class="k">class</span> <span class="nc">Grade</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Grade">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Grade">[docs]</a>
+<span class="k">class</span> <span class="nc">Grade</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">SSH</span> <span class="o">=</span> <span class="s2">&quot;XH&quot;</span>
     <span class="n">SS</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
     <span class="n">SH</span> <span class="o">=</span> <span class="s2">&quot;SH&quot;</span>
@@ -456,7 +554,10 @@
     <span class="n">F</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span></div>
 
 
-<div class="viewcode-block" id="RoomType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomType">[docs]</a><span class="k">class</span> <span class="nc">RoomType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RoomType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomType">[docs]</a>
+<span class="k">class</span> <span class="nc">RoomType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d43</span>
     <span class="c1"># 0a2/resources/js/interfaces/room-json.ts#L10</span>
     <span class="n">PLAYLISTS</span> <span class="o">=</span> <span class="s2">&quot;playlists&quot;</span>
@@ -464,15 +565,22 @@
     <span class="n">TEAM_VERSUS</span> <span class="o">=</span> <span class="s2">&quot;team_versus&quot;</span></div>
 
 
-<div class="viewcode-block" id="RoomCategory"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomCategory">[docs]</a><span class="k">class</span> <span class="nc">RoomCategory</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RoomCategory">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomCategory">[docs]</a>
+<span class="k">class</span> <span class="nc">RoomCategory</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d</span>
     <span class="c1"># 430a2/resources/js/interfaces/room-json.ts#L7</span>
     <span class="n">NORMAL</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
     <span class="n">SPOTLIGHT</span> <span class="o">=</span> <span class="s2">&quot;spotlight&quot;</span>
-    <span class="n">FEATURED_ARTIST</span> <span class="o">=</span> <span class="s2">&quot;featured_artist&quot;</span></div>
+    <span class="n">FEATURED_ARTIST</span> <span class="o">=</span> <span class="s2">&quot;featured_artist&quot;</span>
+    <span class="n">DAILY_CHALLENGE</span> <span class="o">=</span> <span class="s2">&quot;daily_challenge&quot;</span></div>
 
 
-<div class="viewcode-block" id="MatchEventType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MatchEventType">[docs]</a><span class="k">class</span> <span class="nc">MatchEventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MatchEventType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MatchEventType">[docs]</a>
+<span class="k">class</span> <span class="nc">MatchEventType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.dev/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2</span>
     <span class="c1"># d430a2/app/Models/LegacyMatch/Event.php#L30</span>
     <span class="n">PLAYER_LEFT</span> <span class="o">=</span> <span class="s2">&quot;player-left&quot;</span>
@@ -484,7 +592,10 @@
     <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span></div>
 
 
-<div class="viewcode-block" id="ScoringType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ScoringType">[docs]</a><span class="k">class</span> <span class="nc">ScoringType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ScoringType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ScoringType">[docs]</a>
+<span class="k">class</span> <span class="nc">ScoringType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d4</span>
     <span class="c1"># 30a2/app/Models/LegacyMatch/Game.php#L40</span>
     <span class="n">SCORE</span> <span class="o">=</span> <span class="s2">&quot;score&quot;</span>
@@ -493,7 +604,10 @@
     <span class="n">SCORE_V2</span> <span class="o">=</span> <span class="s2">&quot;scorev2&quot;</span></div>
 
 
-<div class="viewcode-block" id="TeamType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.TeamType">[docs]</a><span class="k">class</span> <span class="nc">TeamType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TeamType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.TeamType">[docs]</a>
+<span class="k">class</span> <span class="nc">TeamType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/3d1586392102b05f2a3b264905c4dbb7b2d43</span>
     <span class="c1"># 0a2/app/Models/LegacyMatch/Game.php#L47</span>
     <span class="n">HEAD_TO_HEAD</span> <span class="o">=</span> <span class="s2">&quot;head-to-head&quot;</span>
@@ -502,10 +616,14 @@
     <span class="n">TAG_TEAM_VS</span> <span class="o">=</span> <span class="s2">&quot;tag-team-vs&quot;</span></div>
 
 
-<div class="viewcode-block" id="Variant"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Variant">[docs]</a><span class="k">class</span> <span class="nc">Variant</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Variant">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Variant">[docs]</a>
+<span class="k">class</span> <span class="nc">Variant</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># can&#39;t start a python identifier with an integer</span>
     <span class="n">KEY_4</span> <span class="o">=</span> <span class="s2">&quot;4k&quot;</span>
     <span class="n">KEY_7</span> <span class="o">=</span> <span class="s2">&quot;7k&quot;</span></div>
+
 
 
 <span class="c1"># ===============</span>
@@ -513,30 +631,44 @@
 <span class="c1"># ===============</span>
 
 
-<div class="viewcode-block" id="ScoreType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ScoreType">[docs]</a><span class="k">class</span> <span class="nc">ScoreType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="ScoreType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ScoreType">[docs]</a>
+<span class="k">class</span> <span class="nc">ScoreType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">BEST</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span>
     <span class="n">FIRSTS</span> <span class="o">=</span> <span class="s2">&quot;firsts&quot;</span>
     <span class="n">RECENT</span> <span class="o">=</span> <span class="s2">&quot;recent&quot;</span></div>
 
 
-<div class="viewcode-block" id="RankingFilter"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankingFilter">[docs]</a><span class="k">class</span> <span class="nc">RankingFilter</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RankingFilter">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankingFilter">[docs]</a>
+<span class="k">class</span> <span class="nc">RankingFilter</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">FRIENDS</span> <span class="o">=</span> <span class="s2">&quot;friends&quot;</span></div>
 
 
-<div class="viewcode-block" id="RankingType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankingType">[docs]</a><span class="k">class</span> <span class="nc">RankingType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RankingType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankingType">[docs]</a>
+<span class="k">class</span> <span class="nc">RankingType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">CHARTS</span> <span class="o">=</span> <span class="s2">&quot;charts&quot;</span>
     <span class="n">COUNTRY</span> <span class="o">=</span> <span class="s2">&quot;country&quot;</span>
     <span class="n">PERFORMANCE</span> <span class="o">=</span> <span class="s2">&quot;performance&quot;</span>
     <span class="n">SCORE</span> <span class="o">=</span> <span class="s2">&quot;score&quot;</span></div>
 
 
-<div class="viewcode-block" id="UserLookupKey"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserLookupKey">[docs]</a><span class="k">class</span> <span class="nc">UserLookupKey</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserLookupKey">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserLookupKey">[docs]</a>
+<span class="k">class</span> <span class="nc">UserLookupKey</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ID</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span>
     <span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span></div>
 
 
-<div class="viewcode-block" id="UserBeatmapType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserBeatmapType">[docs]</a><span class="k">class</span> <span class="nc">UserBeatmapType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserBeatmapType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserBeatmapType">[docs]</a>
+<span class="k">class</span> <span class="nc">UserBeatmapType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">FAVOURITE</span> <span class="o">=</span> <span class="s2">&quot;favourite&quot;</span>
     <span class="n">GRAVEYARD</span> <span class="o">=</span> <span class="s2">&quot;graveyard&quot;</span>
     <span class="n">LOVED</span> <span class="o">=</span> <span class="s2">&quot;loved&quot;</span>
@@ -547,12 +679,18 @@
     <span class="n">NOMINATED</span> <span class="o">=</span> <span class="s2">&quot;nominated&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapDiscussionPostSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapDiscussionPostSort">[docs]</a><span class="k">class</span> <span class="nc">BeatmapDiscussionPostSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapDiscussionPostSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapDiscussionPostSort">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapDiscussionPostSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetStatus"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetStatus">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetStatus</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetStatus">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetStatus">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetStatus</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">RANKED</span> <span class="o">=</span> <span class="s2">&quot;ranked&quot;</span>
     <span class="n">QUALIFIED</span> <span class="o">=</span> <span class="s2">&quot;qualified&quot;</span>
@@ -560,7 +698,10 @@
     <span class="n">NEVER_QUALIFIED</span> <span class="o">=</span> <span class="s2">&quot;never_qualified&quot;</span></div>
 
 
-<div class="viewcode-block" id="ChannelType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChannelType">[docs]</a><span class="k">class</span> <span class="nc">ChannelType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ChannelType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChannelType">[docs]</a>
+<span class="k">class</span> <span class="nc">ChannelType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;PUBLIC&quot;</span>
     <span class="n">PRIVATE</span> <span class="o">=</span> <span class="s2">&quot;PRIVATE&quot;</span>
     <span class="n">MULTIPLAYER</span> <span class="o">=</span> <span class="s2">&quot;MULTIPLAYER&quot;</span>
@@ -571,45 +712,69 @@
     <span class="n">ANNOUNCE</span> <span class="o">=</span> <span class="s2">&quot;ANNOUNCE&quot;</span></div>
 
 
-<div class="viewcode-block" id="CommentableType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.CommentableType">[docs]</a><span class="k">class</span> <span class="nc">CommentableType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CommentableType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.CommentableType">[docs]</a>
+<span class="k">class</span> <span class="nc">CommentableType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEWS_POST</span> <span class="o">=</span> <span class="s2">&quot;news_post&quot;</span>
     <span class="n">CHANGELOG</span> <span class="o">=</span> <span class="s2">&quot;build&quot;</span>
     <span class="n">BEATMAPSET</span> <span class="o">=</span> <span class="s2">&quot;beatmapset&quot;</span></div>
 
 
-<div class="viewcode-block" id="CommentSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.CommentSort">[docs]</a><span class="k">class</span> <span class="nc">CommentSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CommentSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.CommentSort">[docs]</a>
+<span class="k">class</span> <span class="nc">CommentSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;new&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;old&quot;</span>
     <span class="n">TOP</span> <span class="o">=</span> <span class="s2">&quot;top&quot;</span></div>
 
 
-<div class="viewcode-block" id="ForumTopicSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumTopicSort">[docs]</a><span class="k">class</span> <span class="nc">ForumTopicSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ForumTopicSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumTopicSort">[docs]</a>
+<span class="k">class</span> <span class="nc">ForumTopicSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="SearchMode"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.SearchMode">[docs]</a><span class="k">class</span> <span class="nc">SearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SearchMode">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.SearchMode">[docs]</a>
+<span class="k">class</span> <span class="nc">SearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">USERS</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span>
     <span class="n">WIKI</span> <span class="o">=</span> <span class="s2">&quot;wiki_page&quot;</span></div>
 
 
-<div class="viewcode-block" id="MultiplayerScoresSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MultiplayerScoresSort">[docs]</a><span class="k">class</span> <span class="nc">MultiplayerScoresSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MultiplayerScoresSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.MultiplayerScoresSort">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiplayerScoresSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;score_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;score_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetDiscussionVote"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDiscussionVote">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetDiscussionVote</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetDiscussionVote">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDiscussionVote">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetDiscussionVote</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">UPVOTE</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">DOWNVOTE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetDiscussionVoteSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDiscussionVoteSort">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetDiscussionVoteSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetDiscussionVoteSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetDiscussionVoteSort">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetDiscussionVoteSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchCategory"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchCategory">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchCategory</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchCategory">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchCategory">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchCategory</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ANY</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span>
     <span class="n">HAS_LEADERBOARD</span> <span class="o">=</span> <span class="s2">&quot;leaderboard&quot;</span>
     <span class="n">RANKED</span> <span class="o">=</span> <span class="s2">&quot;ranked&quot;</span>
@@ -622,7 +787,10 @@
     <span class="n">MY_MAPS</span> <span class="o">=</span> <span class="s2">&quot;mine&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchMode"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchMode">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchMode">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchMode">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># made up value. this is the default option and doesn&#39;t cause a value to</span>
     <span class="c1"># appear in the query string.</span>
     <span class="n">ANY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -632,12 +800,18 @@
     <span class="n">MANIA</span> <span class="o">=</span> <span class="mi">3</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchExplicitContent"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchExplicitContent">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchExplicitContent</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchExplicitContent">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchExplicitContent">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchExplicitContent</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">HIDE</span> <span class="o">=</span> <span class="s2">&quot;hide&quot;</span>
     <span class="n">SHOW</span> <span class="o">=</span> <span class="s2">&quot;show&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchGenre"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchGenre">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchGenre</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchGenre">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchGenre">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchGenre</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># default option, made up value</span>
     <span class="n">ANY</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">UNSPECIFIED</span> <span class="o">=</span> <span class="mi">1</span>
@@ -655,7 +829,10 @@
     <span class="n">JAZZ</span> <span class="o">=</span> <span class="mi">14</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchLanguage"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchLanguage">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchLanguage</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchLanguage">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchLanguage">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchLanguage</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="c1"># default option, made up value</span>
     <span class="n">ANY</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">UNSPECIFIED</span> <span class="o">=</span> <span class="mi">1</span>
@@ -674,7 +851,10 @@
     <span class="n">OTHER</span> <span class="o">=</span> <span class="mi">14</span></div>
 
 
-<div class="viewcode-block" id="BeatmapsetSearchSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchSort">[docs]</a><span class="k">class</span> <span class="nc">BeatmapsetSearchSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapsetSearchSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapsetSearchSort">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapsetSearchSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">TITLE_DESCENDING</span> <span class="o">=</span> <span class="s2">&quot;title_desc&quot;</span>
     <span class="n">TITLE_ASCENDING</span> <span class="o">=</span> <span class="s2">&quot;title_asc&quot;</span>
 
@@ -697,13 +877,19 @@
     <span class="n">FAVORITES_ASCENDING</span> <span class="o">=</span> <span class="s2">&quot;favourites_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="NewsPostKey"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NewsPostKey">[docs]</a><span class="k">class</span> <span class="nc">NewsPostKey</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NewsPostKey">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NewsPostKey">[docs]</a>
+<span class="k">class</span> <span class="nc">NewsPostKey</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">SLUG</span> <span class="o">=</span> <span class="s2">&quot;slug&quot;</span>
     <span class="n">ID</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span></div>
 
 
+
 <span class="c1"># `RoomType` is already taken as a model name (and more appropriate elsewhere)</span>
-<div class="viewcode-block" id="RoomSearchMode"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomSearchMode">[docs]</a><span class="k">class</span> <span class="nc">RoomSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+<div class="viewcode-block" id="RoomSearchMode">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomSearchMode">[docs]</a>
+<span class="k">class</span> <span class="nc">RoomSearchMode</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">ACTIVE</span> <span class="o">=</span> <span class="s2">&quot;active&quot;</span>
     <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
     <span class="n">ENDED</span> <span class="o">=</span> <span class="s2">&quot;ended&quot;</span>
@@ -711,12 +897,18 @@
     <span class="n">OWNED</span> <span class="o">=</span> <span class="s2">&quot;owned&quot;</span></div>
 
 
-<div class="viewcode-block" id="EventsSort"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventsSort">[docs]</a><span class="k">class</span> <span class="nc">EventsSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventsSort">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventsSort">[docs]</a>
+<span class="k">class</span> <span class="nc">EventsSort</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">NEW</span> <span class="o">=</span> <span class="s2">&quot;id_desc&quot;</span>
     <span class="n">OLD</span> <span class="o">=</span> <span class="s2">&quot;id_asc&quot;</span></div>
 
 
-<div class="viewcode-block" id="BeatmapPackType"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapPackType">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPackType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapPackType">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapPackType">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapPackType</span><span class="p">(</span><span class="n">EnumModel</span><span class="p">):</span>
     <span class="n">STANDARD</span> <span class="o">=</span> <span class="s2">&quot;standard&quot;</span>
     <span class="n">FEATURED</span> <span class="o">=</span> <span class="s2">&quot;featured&quot;</span>
     <span class="n">TOURNAMENT</span> <span class="o">=</span> <span class="s2">&quot;tournament&quot;</span>
@@ -726,17 +918,23 @@
     <span class="n">ARTIST</span> <span class="o">=</span> <span class="s2">&quot;artist&quot;</span></div>
 
 
+
 <span class="c1"># =================</span>
 <span class="c1"># Documented Models</span>
 <span class="c1"># =================</span>
 
 
-<div class="viewcode-block" id="Failtimes"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Failtimes">[docs]</a><span class="k">class</span> <span class="nc">Failtimes</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="Failtimes">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Failtimes">[docs]</a>
+<span class="k">class</span> <span class="nc">Failtimes</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">exit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
     <span class="n">fail</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span></div>
 
 
-<div class="viewcode-block" id="Ranking"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Ranking">[docs]</a><span class="k">class</span> <span class="nc">Ranking</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Ranking">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Ranking">[docs]</a>
+<span class="k">class</span> <span class="nc">Ranking</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/CountryTransformer.php#L30</span>
     <span class="n">active_users</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">play_count</span><span class="p">:</span> <span class="nb">int</span>
@@ -744,7 +942,10 @@
     <span class="n">performance</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="Country"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Country">[docs]</a><span class="k">class</span> <span class="nc">Country</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Country">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Country">[docs]</a>
+<span class="k">class</span> <span class="nc">Country</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/CountryTransformer.php#L10</span>
     <span class="n">code</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
@@ -755,7 +956,10 @@
     <span class="n">ranking</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Ranking</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="Cover"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Cover">[docs]</a><span class="k">class</span> <span class="nc">Cover</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Cover">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Cover">[docs]</a>
+<span class="k">class</span> <span class="nc">Cover</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserCompactTransformer.php#L158</span>
     <span class="n">custom_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
@@ -763,14 +967,20 @@
     <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="ProfileBanner"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ProfileBanner">[docs]</a><span class="k">class</span> <span class="nc">ProfileBanner</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ProfileBanner">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ProfileBanner">[docs]</a>
+<span class="k">class</span> <span class="nc">ProfileBanner</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">tournament_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">image</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">image_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x&quot;</span><span class="p">)</span></div>
+    <span class="n">image_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="UserAccountHistory"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAccountHistory">[docs]</a><span class="k">class</span> <span class="nc">UserAccountHistory</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserAccountHistory">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAccountHistory">[docs]</a>
+<span class="k">class</span> <span class="nc">UserAccountHistory</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">length</span><span class="p">:</span> <span class="nb">int</span>
@@ -779,20 +989,29 @@
     <span class="nb">type</span><span class="p">:</span> <span class="n">UserAccountHistoryType</span></div>
 
 
-<div class="viewcode-block" id="UserBadge"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserBadge">[docs]</a><span class="k">class</span> <span class="nc">UserBadge</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserBadge">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserBadge">[docs]</a>
+<span class="k">class</span> <span class="nc">UserBadge</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">awarded_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">image_2x_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x_url&quot;</span><span class="p">)</span>
+    <span class="n">image_2x_url</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;image@2x_url&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="GroupDescription"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GroupDescription">[docs]</a><span class="k">class</span> <span class="nc">GroupDescription</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="GroupDescription">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GroupDescription">[docs]</a>
+<span class="k">class</span> <span class="nc">GroupDescription</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">markdown</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="UserGroup"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserGroup">[docs]</a><span class="k">class</span> <span class="nc">UserGroup</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserGroup">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserGroup">[docs]</a>
+<span class="k">class</span> <span class="nc">UserGroup</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserGroupTransformer.php#L10</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span>
@@ -806,22 +1025,28 @@
     <span class="n">has_playmodes</span><span class="p">:</span> <span class="nb">bool</span></div>
 
 
-<div class="viewcode-block" id="Covers"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Covers">[docs]</a><span class="k">class</span> <span class="nc">Covers</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Covers">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Covers">[docs]</a>
+<span class="k">class</span> <span class="nc">Covers</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    https://osu.ppy.sh/docs/index.html#beatmapsetcompact-covers</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">cover</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">cover_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;cover@2x&quot;</span><span class="p">)</span>
+    <span class="n">cover_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;cover@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">card</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">card_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;card@2x&quot;</span><span class="p">)</span>
+    <span class="n">card_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;card@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="nb">list</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">list_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;list@2x&quot;</span><span class="p">)</span>
+    <span class="n">list_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;list@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">slimcover</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">slimcover_2x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;slimcover@2x&quot;</span><span class="p">)</span></div>
+    <span class="n">slimcover_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;slimcover@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Statistics"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Statistics">[docs]</a><span class="k">class</span> <span class="nc">Statistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="_LegacyStatistics">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums._LegacyStatistics">[docs]</a>
+<span class="k">class</span> <span class="nc">_LegacyStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># I think any of these attributes can be null if the corresponding gamemode</span>
     <span class="c1"># doesn&#39;t have the judgment as a possible judgement. eg taiko doesn&#39;t have 50s</span>
     <span class="c1"># and catch doesn&#39;t have geki.</span>
@@ -833,76 +1058,161 @@
     <span class="n">count_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="Availability"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Availability">[docs]</a><span class="k">class</span> <span class="nc">Availability</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Statistics">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Statistics">[docs]</a>
+<span class="k">class</span> <span class="nc">Statistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># these values simply aren&#39;t present if they are 0. oversight?</span>
+    <span class="n">miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">meh</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ok</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">good</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">great</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+    <span class="c1"># TODO: are these weird values returned by the api anywhere?</span>
+    <span class="c1"># e.g. legacy_combo_increase in particular.</span>
+    <span class="n">perfect</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_tick_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_tick_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_tick_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_tick_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">small_bonus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">large_bonus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ignore_miss</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">ignore_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">combo_break</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">slider_tail_hit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">legacy_combo_increase</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">override_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">api</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">api</span><span class="o">.</span><span class="n">api_version</span> <span class="o">&lt;</span> <span class="mi">20220705</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_LegacyStatistics</span>
+
+        <span class="c1"># see note in Score.override_attributes for when this exception of legacy</span>
+        <span class="c1"># statistics even on new api versions can occur.</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">any</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;count_</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;50&quot;</span><span class="p">,</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="s2">&quot;300&quot;</span><span class="p">,</span> <span class="s2">&quot;geki&quot;</span><span class="p">,</span> <span class="s2">&quot;katu&quot;</span><span class="p">,</span> <span class="s2">&quot;miss&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="ow">and</span> <span class="s2">&quot;great&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">_LegacyStatistics</span></div>
+
+
+
+<div class="viewcode-block" id="Availability">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Availability">[docs]</a>
+<span class="k">class</span> <span class="nc">Availability</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">download_disabled</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">more_information</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="Hype"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Hype">[docs]</a><span class="k">class</span> <span class="nc">Hype</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Hype">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Hype">[docs]</a>
+<span class="k">class</span> <span class="nc">Hype</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">current</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">required</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="NominationsRequired"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NominationsRequired">[docs]</a><span class="k">class</span> <span class="nc">NominationsRequired</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NominationsRequired">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NominationsRequired">[docs]</a>
+<span class="k">class</span> <span class="nc">NominationsRequired</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">main_ruleset</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">non_main_ruleset</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="Nominations"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nominations">[docs]</a><span class="k">class</span> <span class="nc">Nominations</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Nominations">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nominations">[docs]</a>
+<span class="k">class</span> <span class="nc">Nominations</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">current</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">required_meta</span><span class="p">:</span> <span class="n">NominationsRequired</span>
     <span class="n">eligible_main_rulesets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">GameMode</span><span class="p">]]</span></div>
 
 
-<div class="viewcode-block" id="Nomination"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nomination">[docs]</a><span class="k">class</span> <span class="nc">Nomination</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Nomination">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Nomination">[docs]</a>
+<span class="k">class</span> <span class="nc">Nomination</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmapset_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">rulesets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GameMode</span><span class="p">]</span>
     <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="Kudosu"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Kudosu">[docs]</a><span class="k">class</span> <span class="nc">Kudosu</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Kudosu">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Kudosu">[docs]</a>
+<span class="k">class</span> <span class="nc">Kudosu</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">available</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="KudosuGiver"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuGiver">[docs]</a><span class="k">class</span> <span class="nc">KudosuGiver</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="KudosuGiver">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuGiver">[docs]</a>
+<span class="k">class</span> <span class="nc">KudosuGiver</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="KudosuPost"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuPost">[docs]</a><span class="k">class</span> <span class="nc">KudosuPost</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="KudosuPost">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuPost">[docs]</a>
+<span class="k">class</span> <span class="nc">KudosuPost</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="c1"># will be &quot;[deleted beatmap]&quot; for deleted beatmaps. See</span>
     <span class="c1"># https://osu.ppy.sh/docs/index.html#kudosuhistory</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="KudosuVote"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuVote">[docs]</a><span class="k">class</span> <span class="nc">KudosuVote</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="KudosuVote">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuVote">[docs]</a>
+<span class="k">class</span> <span class="nc">KudosuVote</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">score</span><span class="p">:</span> <span class="nb">int</span>
 
-<div class="viewcode-block" id="KudosuVote.user"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuVote.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="KudosuVote.user">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.KudosuVote.user">[docs]</a>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="EventUser"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventUser">[docs]</a><span class="k">class</span> <span class="nc">EventUser</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventUser">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventUser">[docs]</a>
+<span class="k">class</span> <span class="nc">EventUser</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">previousUsername</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="EventBeatmap"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventBeatmap">[docs]</a><span class="k">class</span> <span class="nc">EventBeatmap</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventBeatmap">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventBeatmap">[docs]</a>
+<span class="k">class</span> <span class="nc">EventBeatmap</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="EventBeatmapset"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventBeatmapset">[docs]</a><span class="k">class</span> <span class="nc">EventBeatmapset</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventBeatmapset">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventBeatmapset">[docs]</a>
+<span class="k">class</span> <span class="nc">EventBeatmapset</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="EventAchivement"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventAchivement">[docs]</a><span class="k">class</span> <span class="nc">EventAchivement</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventAchivement">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.EventAchivement">[docs]</a>
+<span class="k">class</span> <span class="nc">EventAchivement</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">icon_url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
@@ -916,7 +1226,10 @@
     <span class="n">instructions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="GithubUser"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GithubUser">[docs]</a><span class="k">class</span> <span class="nc">GithubUser</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="GithubUser">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GithubUser">[docs]</a>
+<span class="k">class</span> <span class="nc">GithubUser</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">github_username</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">github_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -925,52 +1238,80 @@
     <span class="n">user_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
-<div class="viewcode-block" id="GithubUser.user"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GithubUser.user">[docs]</a>    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="GithubUser.user">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.GithubUser.user">[docs]</a>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="ChangelogSearch"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChangelogSearch">[docs]</a><span class="k">class</span> <span class="nc">ChangelogSearch</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">from_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;from&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ChangelogSearch">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ChangelogSearch">[docs]</a>
+<span class="k">class</span> <span class="nc">ChangelogSearch</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">from_</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;from&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span>
     <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">max_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">stream</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">to</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="NewsSearch"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NewsSearch">[docs]</a><span class="k">class</span> <span class="nc">NewsSearch</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NewsSearch">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.NewsSearch">[docs]</a>
+<span class="k">class</span> <span class="nc">NewsSearch</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">sort</span><span class="p">:</span> <span class="nb">str</span>
     <span class="c1"># undocumented</span>
     <span class="n">year</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="ForumPostBody"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPostBody">[docs]</a><span class="k">class</span> <span class="nc">ForumPostBody</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ForumPostBody">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPostBody">[docs]</a>
+<span class="k">class</span> <span class="nc">ForumPostBody</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="ForumPollText"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPollText">[docs]</a><span class="k">class</span> <span class="nc">ForumPollText</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ForumPollText">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPollText">[docs]</a>
+<span class="k">class</span> <span class="nc">ForumPollText</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">bbcode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="ForumPollTitle"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPollTitle">[docs]</a><span class="k">class</span> <span class="nc">ForumPollTitle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ForumPollTitle">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ForumPollTitle">[docs]</a>
+<span class="k">class</span> <span class="nc">ForumPollTitle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">bbcode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="ReviewsConfig"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ReviewsConfig">[docs]</a><span class="k">class</span> <span class="nc">ReviewsConfig</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ReviewsConfig">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.ReviewsConfig">[docs]</a>
+<span class="k">class</span> <span class="nc">ReviewsConfig</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">max_blocks</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="RankHighest"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankHighest">[docs]</a><span class="k">class</span> <span class="nc">RankHighest</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RankHighest">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankHighest">[docs]</a>
+<span class="k">class</span> <span class="nc">RankHighest</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span></div>
 
 
-<div class="viewcode-block" id="BeatmapPackUserCompletionData"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapPackUserCompletionData">[docs]</a><span class="k">class</span> <span class="nc">BeatmapPackUserCompletionData</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BeatmapPackUserCompletionData">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.BeatmapPackUserCompletionData">[docs]</a>
+<span class="k">class</span> <span class="nc">BeatmapPackUserCompletionData</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmapset_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">completed</span><span class="p">:</span> <span class="nb">bool</span></div>
+
 
 
 <span class="c1"># ===================</span>
@@ -978,28 +1319,39 @@
 <span class="c1"># ===================</span>
 
 
-<div class="viewcode-block" id="UserMonthlyPlaycount"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserMonthlyPlaycount">[docs]</a><span class="k">class</span> <span class="nc">UserMonthlyPlaycount</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="UserMonthlyPlaycount">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserMonthlyPlaycount">[docs]</a>
+<span class="k">class</span> <span class="nc">UserMonthlyPlaycount</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserMonthlyPlaycountTransformer.php</span>
     <span class="n">start_date</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">count</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="UserPage"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserPage">[docs]</a><span class="k">class</span> <span class="nc">UserPage</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserPage">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserPage">[docs]</a>
+<span class="k">class</span> <span class="nc">UserPage</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented (and not a class on osu-web)</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserCompactTransformer.php#L270</span>
     <span class="n">html</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">raw</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
-<div class="viewcode-block" id="UserLevel"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserLevel">[docs]</a><span class="k">class</span> <span class="nc">UserLevel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserLevel">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserLevel">[docs]</a>
+<span class="k">class</span> <span class="nc">UserLevel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented (and not a class on osu-web)</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserStatisticsTransformer.php#L27</span>
     <span class="n">current</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">progress</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="UserGradeCounts"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserGradeCounts">[docs]</a><span class="k">class</span> <span class="nc">UserGradeCounts</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserGradeCounts">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserGradeCounts">[docs]</a>
+<span class="k">class</span> <span class="nc">UserGradeCounts</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented (and not a class on osu-web)</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserStatisticsTransformer.php#L43</span>
     <span class="n">ss</span><span class="p">:</span> <span class="nb">int</span>
@@ -1009,21 +1361,30 @@
     <span class="n">a</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="UserReplaysWatchedCount"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserReplaysWatchedCount">[docs]</a><span class="k">class</span> <span class="nc">UserReplaysWatchedCount</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserReplaysWatchedCount">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserReplaysWatchedCount">[docs]</a>
+<span class="k">class</span> <span class="nc">UserReplaysWatchedCount</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserReplaysWatchedCountTransformer.php</span>
     <span class="n">start_date</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">count</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="UserAchievement"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAchievement">[docs]</a><span class="k">class</span> <span class="nc">UserAchievement</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserAchievement">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserAchievement">[docs]</a>
+<span class="k">class</span> <span class="nc">UserAchievement</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserAchievementTransformer.php#L10</span>
     <span class="n">achieved_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">achievement_id</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
-<div class="viewcode-block" id="UserProfileCustomization"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserProfileCustomization">[docs]</a><span class="k">class</span> <span class="nc">UserProfileCustomization</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UserProfileCustomization">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.UserProfileCustomization">[docs]</a>
+<span class="k">class</span> <span class="nc">UserProfileCustomization</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/UserCompactTransformer.php#L363</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Models/UserProfileCustomization.php</span>
@@ -1041,16 +1402,40 @@
     <span class="n">user_list_view</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserListViews</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="RankHistory"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankHistory">[docs]</a><span class="k">class</span> <span class="nc">RankHistory</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RankHistory">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RankHistory">[docs]</a>
+<span class="k">class</span> <span class="nc">RankHistory</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># undocumented</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Transformers/RankHistoryTransformer.php</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">GameMode</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="Weight"><a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Weight">[docs]</a><span class="k">class</span> <span class="nc">Weight</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Weight">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.Weight">[docs]</a>
+<span class="k">class</span> <span class="nc">Weight</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">pp</span><span class="p">:</span> <span class="nb">float</span></div>
+
+
+
+<div class="viewcode-block" id="RoomPlaylistItemStats">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomPlaylistItemStats">[docs]</a>
+<span class="k">class</span> <span class="nc">RoomPlaylistItemStats</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">count_active</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">count_total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ruleset_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="RoomDifficultyRange">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.enums.RoomDifficultyRange">[docs]</a>
+<span class="k">class</span> <span class="nc">RoomDifficultyRange</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">min</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="nb">max</span><span class="p">:</span> <span class="nb">float</span></div>
+
 </pre></div>
         </article>
       </div>
@@ -1086,9 +1471,9 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/scripts/furo.js"></script>
+</div><script src="../../_static/documentation_options.js?v=35c0298d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
 </html>

@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>ossapi.ossapiv2 - ossapi v3.4.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>ossapi.ossapiv2 - ossapi v5.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=781848f9" />
     
     
 
@@ -68,7 +68,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -83,22 +83,63 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
@@ -112,6 +153,8 @@
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
 
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
 
 
 <div class="page">
@@ -123,13 +166,14 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v3.4.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
           <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
@@ -146,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v3.4.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -156,12 +200,12 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">ossapi</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart.html">Quickstart</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Quickstart</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../creating-a-client.html">Creating a Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pagination.html">Pagination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expandable-models.html">Expandable Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../foreign-keys.html">Foreign Keys</a></li>
@@ -170,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Endpoints</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../beatmapsets.html">Beatmapsets</a></li>
@@ -217,7 +261,8 @@
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
@@ -227,7 +272,7 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <h1>Source code for ossapi.ossapiv2</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">_GenericAlias</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -308,7 +353,6 @@
     <span class="n">Events</span><span class="p">,</span>
     <span class="n">BeatmapPack</span><span class="p">,</span>
     <span class="n">BeatmapPacks</span><span class="p">,</span>
-    <span class="n">_NonLegacyBeatmapScores</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">GameMode</span><span class="p">,</span>
@@ -348,6 +392,7 @@
     <span class="n">is_high_model_type</span><span class="p">,</span>
     <span class="n">Field</span><span class="p">,</span>
     <span class="n">convert_primitive_type</span><span class="p">,</span>
+    <span class="n">_Model</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
 <span class="kn">from</span> <span class="nn">ossapi.replay</span> <span class="kn">import</span> <span class="n">Replay</span>
@@ -545,7 +590,9 @@
     <span class="k">pass</span>
 
 
-<div class="viewcode-block" id="Grant"><a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Grant">[docs]</a><span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="Grant">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Grant">[docs]</a>
+<span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The grant types used by the api.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -554,7 +601,10 @@
     <span class="n">AUTHORIZATION_CODE</span> <span class="o">=</span> <span class="s2">&quot;authorization&quot;</span></div>
 
 
-<div class="viewcode-block" id="Scope"><a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Scope">[docs]</a><span class="k">class</span> <span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Scope">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Scope">[docs]</a>
+<span class="k">class</span> <span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The OAuth scopes used by the api.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -569,7 +619,10 @@
     <span class="n">PUBLIC</span> <span class="o">=</span> <span class="s2">&quot;public&quot;</span></div>
 
 
-<div class="viewcode-block" id="Domain"><a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Domain">[docs]</a><span class="k">class</span> <span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Domain">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Domain">[docs]</a>
+<span class="k">class</span> <span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Different possible api domains. These correspond to different deployments of</span>
 <span class="sd">    the osu server, such as osu.ppy.sh or dev.ppy.sh.</span>
@@ -583,15 +636,21 @@
     <span class="n">DEV</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span></div>
 
 
+
 <span class="k">class</span> <span class="nc">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">OAuth2Session</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">api_version</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;ossapi (v</span><span class="si">{</span><span class="n">ossapi</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">}</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;ossapi (v</span><span class="si">{</span><span class="n">ossapi</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;x-api-version&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">api_version</span><span class="p">),</span>
+        <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Ossapi"><a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Ossapi">[docs]</a><span class="k">class</span> <span class="nc">Ossapi</span><span class="p">:</span>
+<div class="viewcode-block" id="Ossapi">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Ossapi">[docs]</a>
+<span class="k">class</span> <span class="nc">Ossapi</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper around osu! api v2. The main entry point for ossapi.</span>
 
@@ -684,13 +743,13 @@
         <span class="n">access_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">refresh_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">domain</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Domain</span><span class="p">]</span> <span class="o">=</span> <span class="n">Domain</span><span class="o">.</span><span class="n">OSU</span><span class="p">,</span>
+        <span class="n">api_version</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="mi">20241024</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">grant</span><span class="p">:</span>
             <span class="n">grant</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="n">Grant</span><span class="o">.</span><span class="n">AUTHORIZATION_CODE</span> <span class="k">if</span> <span class="n">redirect_uri</span> <span class="k">else</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span>
             <span class="p">)</span>
         <span class="n">grant</span> <span class="o">=</span> <span class="n">Grant</span><span class="p">(</span><span class="n">grant</span><span class="p">)</span>
-
         <span class="n">domain</span> <span class="o">=</span> <span class="n">Domain</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">token_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_URL</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -704,6 +763,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">strict</span> <span class="o">=</span> <span class="n">strict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token_key</span> <span class="o">=</span> <span class="n">token_key</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_token_key</span><span class="p">(</span>
@@ -815,7 +875,9 @@
                     <span class="n">token</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">Oauth2SessionOssapi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">Oauth2SessionOssapi</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span>
+                <span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">AUTHORIZATION_CODE</span><span class="p">:</span>
                 <span class="n">auto_refresh_kwargs</span> <span class="o">=</span> <span class="p">{</span>
@@ -830,6 +892,7 @@
                     <span class="n">auto_refresh_kwargs</span><span class="o">=</span><span class="n">auto_refresh_kwargs</span><span class="p">,</span>
                     <span class="n">token_updater</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">,</span>
                     <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">],</span>
+                    <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span><span class="p">,</span>
                 <span class="p">)</span>
 
         <span class="c1"># otherwise, authorize from scratch</span>
@@ -849,7 +912,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;initializing client credentials grant&quot;</span><span class="p">)</span>
         <span class="n">client</span> <span class="o">=</span> <span class="n">BackendApplicationClient</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;public&quot;</span><span class="p">])</span>
-        <span class="n">session</span> <span class="o">=</span> <span class="n">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span><span class="p">)</span>
         <span class="n">token</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">fetch_token</span><span class="p">(</span>
             <span class="n">token_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token_url</span><span class="p">,</span> <span class="n">client_id</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="o">=</span><span class="n">client_secret</span>
         <span class="p">)</span>
@@ -1087,17 +1150,14 @@
         <span class="c1"># why we pass `type(obj)` instead of just `obj`, which would only</span>
         <span class="c1"># return annotations for attributes defined in `obj` and not its</span>
         <span class="c1"># inherited attributes.</span>
-        <span class="n">annotations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
-        <span class="n">override_annotations</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">override_types</span><span class="p">()</span>
-        <span class="n">annotations</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">annotations</span><span class="p">,</span> <span class="o">**</span><span class="n">override_annotations</span><span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolving annotations for type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="c1"># we use this attribute later if we encounter an attribute which</span>
-            <span class="c1"># has been instantiated generically, but we don&#39;t need to do</span>
-            <span class="c1"># anything with it now.</span>
-            <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;__orig_class__&quot;</span><span class="p">:</span>
+        <span class="n">_kwargs</span><span class="p">,</span> <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processed_type_hints</span><span class="p">(</span>
+            <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">_ossapi_data</span><span class="p">,</span> <span class="n">use_field_types</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolving type hints for type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">_ossapi_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;_api&quot;</span><span class="p">,</span> <span class="s2">&quot;__orig_class__&quot;</span><span class="p">}:</span>
                 <span class="k">continue</span>
-            <span class="n">type_</span> <span class="o">=</span> <span class="n">annotations</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="n">type_hints</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
             <span class="c1"># when we instantiate types, we explicitly fill in optional</span>
             <span class="c1"># attributes with `None`. We want to skip these, but only if the</span>
             <span class="c1"># attribute is actually annotated as optional, otherwise we would be</span>
@@ -1105,12 +1165,12 @@
             <span class="c1"># prevent that error from being caught.</span>
             <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">is_optional</span><span class="p">(</span><span class="n">type_</span><span class="p">):</span>
                 <span class="k">continue</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolving attribute </span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolving attribute </span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2"> (with type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_type</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="o">=</span><span class="n">attr</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">_ossapi_data</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolved annotations for type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span>
 
@@ -1228,60 +1288,60 @@
         <span class="c1"># eventually.</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_annotations</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_processed_type_hints</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_field_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_field_types</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">type_</span><span class="o">.</span><span class="n">preprocess_data</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">override</span> <span class="o">=</span> <span class="n">type_</span><span class="o">.</span><span class="n">override_attributes</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">override</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">override</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+            <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">override</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># we need a special case to handle when `type_` is a</span>
+            <span class="c1"># `_GenericAlias`. I don&#39;t fully understand why this exception is</span>
+            <span class="c1"># necessary, and it&#39;s likely the result of some error on my part in our</span>
+            <span class="c1"># type handling code. Nevertheless, until I dig more deeply into it,</span>
+            <span class="c1"># we need to extract the type to use for the init signature and the type</span>
+            <span class="c1"># hints from a `_GenericAlias` if we see one, as standard methods</span>
+            <span class="c1"># won&#39;t work.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span> <span class="ow">is</span> <span class="n">_GenericAlias</span>
+                <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">get_origin</span><span class="p">(</span><span class="n">type_</span><span class="p">))</span>
+
+            <span class="n">type_hints</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">type_hints</span><span class="p">,</span> <span class="o">**</span><span class="n">override</span><span class="p">}</span>
+
+        <span class="c1"># name : Field</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">(</span><span class="n">type_hints</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_field_names</span><span class="p">:</span>
+            <span class="n">field_names</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">name</span>
+                <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">}</span>
+            <span class="c1"># make a copy so we can modify while iterating</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">field_names</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">field_names</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="n">use_field_types</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">type_hints</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">type</span>
+
+        <span class="k">return</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">type_hints</span>
+
+    <span class="k">def</span> <span class="nf">_instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="n">_Model</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;instantiating type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">type_</span><span class="o">.</span><span class="n">preprocess_data</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">override_type</span> <span class="o">=</span> <span class="n">type_</span><span class="o">.</span><span class="n">override_class</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="n">type_</span> <span class="o">=</span> <span class="n">override_type</span> <span class="ow">or</span> <span class="n">type_</span>
-        <span class="n">signature_type</span> <span class="o">=</span> <span class="n">type_</span>
-
-        <span class="c1"># we need a special case to handle when `type_` is a</span>
-        <span class="c1"># `_GenericAlias`. I don&#39;t fully understand why this exception is</span>
-        <span class="c1"># necessary, and it&#39;s likely the result of some error on my part in our</span>
-        <span class="c1"># type handling code. Nevertheless, until I dig more deeply into it,</span>
-        <span class="c1"># we need to extract the type to use for the init signature and the type</span>
-        <span class="c1"># hints from a `_GenericAlias` if we see one, as standard methods</span>
-        <span class="c1"># won&#39;t work.</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span> <span class="ow">is</span> <span class="n">_GenericAlias</span>
-
-            <span class="n">signature_type</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
-            <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_type_hints</span><span class="p">(</span><span class="n">signature_type</span><span class="p">)</span>
-
-        <span class="c1"># field override name to existing attribute name</span>
-        <span class="n">field_names</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># existing attribute name to field deserialize type</span>
-        <span class="n">field_deserialize_types</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># process Field attributes.</span>
-        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
-            <span class="c1"># any inherited attributes will be present in the annotations</span>
-            <span class="c1"># (type_hints) but not actually an attribute of the type. Just skip</span>
-            <span class="c1"># them for now. TODO I&#39;m pretty sure this is going to cause issues</span>
-            <span class="c1"># if we ever have a field on a model and then another model</span>
-            <span class="c1"># inheriting from it; the inheriting model won&#39;t have the field</span>
-            <span class="c1"># picked up here and the override name won&#39;t come into play.</span>
-            <span class="c1"># probably just traverse the mro?</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-                <span class="k">continue</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
-                <span class="k">continue</span>
-
-            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">field_names</span><span class="p">[</span><span class="n">value</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">deserialize_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">field_deserialize_types</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">deserialize_type</span>
-
-        <span class="c1"># make a copy so we can modify while iterating</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">field_names</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="n">field_names</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">kwargs</span><span class="p">,</span> <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processed_type_hints</span><span class="p">(</span>
+            <span class="n">type_</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">use_field_names</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
 
         <span class="c1"># if we&#39;ve annotated a class with `Optional[X]`, and the api response</span>
         <span class="c1"># didn&#39;t return a value for that attribute, pass `None` for that</span>
@@ -1306,15 +1366,14 @@
         <span class="c1"># going the route of PRAW, which returns dynamic results for all api</span>
         <span class="c1"># queries. I think a statically typed solution is better for the osu!</span>
         <span class="c1"># api, which promises at least some level of stability in its api.</span>
-        <span class="n">parameters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">signature_type</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
         <span class="n">kwargs_</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
                 <span class="n">kwargs_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` for type &quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` for type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="c1"># this is an INFO log in spirit, but can be spammy with Union</span>
                 <span class="c1"># type resolution where the first union case hits nonfatal</span>
                 <span class="c1"># errors like this before a fatal error causes it to backtrack.</span>
@@ -1332,30 +1391,32 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">val</span> <span class="o">=</span> <span class="n">type_</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs_</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;type error while instantiating class </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">: &quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">deserialize_type</span> <span class="ow">in</span> <span class="n">field_deserialize_types</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">val</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">deserialize_type</span>
-
-        <span class="c1"># modifying the type hints of an object dynamically invalidates its</span>
-        <span class="c1"># cache. Avoid looking up stale type hints if we had looked up its</span>
-        <span class="c1"># previous value before modifying it here.</span>
-        <span class="k">if</span> <span class="n">field_deserialize_types</span><span class="p">:</span>
-            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)]</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;type error while instantiating class </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
         <span class="k">return</span> <span class="n">val</span>
 
     <span class="k">def</span> <span class="nf">_get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="c1"># type hints are expensive to compute. Our models should never change</span>
         <span class="c1"># their type hints, so cache them.</span>
-        <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span>
+
+        <span class="c1"># TODO I&#39;m unconvinced this is sound anymore after I changed how we do</span>
+        <span class="c1"># type hinting, especially with fields. double check this and what the</span>
+        <span class="c1"># performance hit actually is after my changes.</span>
+
+        <span class="c1"># if obj in self._type_hints_cache:</span>
+        <span class="c1">#     return self._type_hints_cache[obj]</span>
 
         <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="n">type_hints</span>
         <span class="k">return</span> <span class="n">type_hints</span>
+
+    <span class="k">def</span> <span class="nf">_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_hints</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="n">fields</span>
 
     <span class="k">def</span> <span class="nf">_clear_type_hints_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1542,33 +1603,6 @@
             <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_beatmap_scores_non_legacy</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">BeatmapIdT</span><span class="p">,</span>
-        <span class="o">*</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankingTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_NonLegacyBeatmapScores</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        This is a provisional method. It may change or disappear in the future.</span>
-<span class="sd">        Feel free to use it, but don&#39;t expect ossapi to maintain backwards</span>
-<span class="sd">        compatability here.</span>
-
-<span class="sd">        I&#39;ll decide what to do about these provisional methods once the lazer</span>
-<span class="sd">        migration settles down.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
-            <span class="s2">&quot;mods&quot;</span><span class="p">:</span> <span class="n">mods</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
-            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
-            <span class="n">_NonLegacyBeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/solo-scores&quot;</span><span class="p">,</span> <span class="n">params</span>
-        <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">beatmap</span><span class="p">(</span>
@@ -3113,6 +3147,23 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">users_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Batch get users by id or username. If you only want to retrieve a single</span>
+<span class="sd">        user, or want to retrieve users by username instead of id, see :meth:`user`.</span>
+
+<span class="sd">        If you want to batch retrieve users by id (instead of username), use :meth:`users`,</span>
+<span class="sd">        which returns more data than :meth:`users_lookup`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ---------</span>
+<span class="sd">        users</span>
+<span class="sd">            The user ids or usernames to get.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ids&quot;</span><span class="p">:</span> <span class="n">users</span><span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Users</span><span class="p">,</span> <span class="s2">&quot;/users/lookup&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">users</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get users by id. If you only want to retrieve a single user, or</span>
@@ -3152,6 +3203,7 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-wiki-page&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">WikiPage</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/wiki/</span><span class="si">{</span><span class="n">locale</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
 </pre></div>
         </article>
       </div>
@@ -3187,9 +3239,9 @@
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/scripts/furo.js"></script>
+</div><script src="../../_static/documentation_options.js?v=35c0298d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
 </html>

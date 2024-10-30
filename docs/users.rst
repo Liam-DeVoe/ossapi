@@ -18,3 +18,5 @@ Users
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.users
 
+.. autofunction:: ossapi.ossapiv2.Ossapi.users_lookup
+
