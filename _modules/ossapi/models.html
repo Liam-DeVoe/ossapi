@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>ossapi.models - ossapi v5.0.0 documentation</title>
+        <title>ossapi.models - ossapi v5.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v5.2.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.2.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -234,6 +234,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../scores.html">Scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../spotlights.html">Spotlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tags.html">Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../wiki.html">Wiki</a></li>
 </ul>
@@ -278,7 +279,7 @@
 <span class="c1"># https://docs.python.org/3.7/whatsnew/3.7.html#pep-563-postponed-evaluation-</span>
 <span class="c1"># of-annotations</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
@@ -344,6 +345,9 @@
     <span class="n">BeatmapPackUserCompletionData</span><span class="p">,</span>
     <span class="n">RoomPlaylistItemStats</span><span class="p">,</span>
     <span class="n">RoomDifficultyRange</span><span class="p">,</span>
+    <span class="n">BeatmapOwner</span><span class="p">,</span>
+    <span class="n">BeatmapTag</span><span class="p">,</span>
+    <span class="n">Team</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="n">Datetime</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
@@ -437,38 +441,38 @@
 
     <span class="c1"># optional fields</span>
     <span class="c1"># ---------------</span>
-    <span class="n">account_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserAccountHistory</span><span class="p">]]</span>
+    <span class="n">account_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserAccountHistory</span><span class="p">]]</span>
     <span class="n">active_tournament_banner</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProfileBanner</span><span class="p">]</span>
-    <span class="n">active_tournament_banners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ProfileBanner</span><span class="p">]]</span>
-    <span class="n">badges</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserBadge</span><span class="p">]]</span>
+    <span class="n">active_tournament_banners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ProfileBanner</span><span class="p">]]</span>
+    <span class="n">badges</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserBadge</span><span class="p">]]</span>
     <span class="n">beatmap_playcounts_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">blocks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]</span>
     <span class="n">country</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Country</span><span class="p">]</span>
     <span class="n">cover</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Cover</span><span class="p">]</span>
     <span class="n">default_group</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">favourite_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">follow_user_mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
+    <span class="n">follow_user_mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
     <span class="n">follower_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">friends</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]]</span>
+    <span class="n">friends</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]]</span>
     <span class="n">graveyard_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">groups</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserGroup</span><span class="p">]]</span>
+    <span class="n">groups</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserGroup</span><span class="p">]]</span>
     <span class="n">guest_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">is_restricted</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">is_silenced</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">loved_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="c1"># undocumented</span>
     <span class="n">mapping_follower_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">monthly_playcounts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserMonthlyPlaycount</span><span class="p">]]</span>
+    <span class="n">monthly_playcounts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserMonthlyPlaycount</span><span class="p">]]</span>
     <span class="n">page</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserPage</span><span class="p">]</span>
     <span class="n">pending_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">previous_usernames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="n">previous_usernames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="c1"># deprecated, replaced by rank_history</span>
     <span class="n">rankHistory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
     <span class="n">rank_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHistory</span><span class="p">]</span>
     <span class="c1"># deprecated, replaced by ranked_beatmapset_count</span>
     <span class="n">ranked_and_approved_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">ranked_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">replays_watched_counts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserReplaysWatchedCount</span><span class="p">]]</span>
+    <span class="n">replays_watched_counts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserReplaysWatchedCount</span><span class="p">]]</span>
     <span class="n">scores_best_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">scores_first_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">scores_recent_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
@@ -478,9 +482,10 @@
     <span class="c1"># deprecated, replaced by pending_beatmapset_count</span>
     <span class="n">unranked_beatmapset_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">unread_pm_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">user_achievements</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserAchievement</span><span class="p">]]</span>
+    <span class="n">user_achievements</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserAchievement</span><span class="p">]]</span>
     <span class="n">user_preferences</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserProfileCustomization</span><span class="p">]</span>
     <span class="n">session_verified</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
+    <span class="n">team</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Team</span><span class="p">]</span>
 
 <div class="viewcode-block" id="UserCompact.expand">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.UserCompact.expand">[docs]</a>
@@ -507,7 +512,7 @@
     <span class="n">playmode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">playstyle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PlayStyles</span><span class="p">]</span>
     <span class="n">post_count</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">profile_order</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ProfilePage</span><span class="p">]</span>
+    <span class="n">profile_order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ProfilePage</span><span class="p">]</span>
     <span class="n">profile_hue</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">daily_challenge_user_stats</span><span class="p">:</span> <span class="n">DailyChallengeUserStats</span>
     <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -517,6 +522,7 @@
     <span class="n">scores_pinned_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">nominated_beatmapset_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">rank_highest</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RankHighest</span><span class="p">]</span>
+    <span class="n">current_season_stats</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SeasonStatistics</span><span class="p">]</span>
 
 <div class="viewcode-block" id="User.expand">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.User.expand">[docs]</a>
@@ -576,6 +582,10 @@
     <span class="n">accuracy</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">ar</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">bpm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">current_user_tag_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="c1"># this might be non-optional? should test with client credentials grant.</span>
+    <span class="n">current_user_playcount</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">top_tag_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">convert</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">count_circles</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">count_sliders</span><span class="p">:</span> <span class="nb">int</span>
@@ -587,6 +597,7 @@
     <span class="n">is_scoreable</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">last_updated</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">mode_int</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rating</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">passcount</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">playcount</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">ranked</span><span class="p">:</span> <span class="n">RankStatus</span>
@@ -597,6 +608,9 @@
     <span class="c1"># This is optional as a workaround until</span>
     <span class="c1"># https://github.com/ppy/osu-web/issues/9784 is resolved.</span>
     <span class="n">owner</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">])</span>
+    <span class="c1"># TODO does the new addition of this owners attribute deprecate the owner</span>
+    <span class="c1"># attribute?</span>
+    <span class="n">owners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">BeatmapOwner</span><span class="p">]]</span>
 
     <span class="c1"># overridden fields</span>
     <span class="c1"># -----------------</span>
@@ -628,6 +642,7 @@
     <span class="n">artist</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">artist_unicode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">covers</span><span class="p">:</span> <span class="n">Covers</span>
+    <span class="n">current_user_playcount</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">creator</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">favourite_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
@@ -648,9 +663,9 @@
 
     <span class="c1"># optional fields</span>
     <span class="c1"># ---------------</span>
-    <span class="n">beatmaps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]]</span>
+    <span class="n">beatmaps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]]</span>
     <span class="n">converts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
-    <span class="n">current_nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Nomination</span><span class="p">]]</span>
+    <span class="n">current_nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Nomination</span><span class="p">]]</span>
     <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">discussions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
@@ -659,7 +674,7 @@
     <span class="n">has_favourited</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
     <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">nominations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
-    <span class="n">pack_tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="n">pack_tags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="n">ratings</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">recent_favourites</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
     <span class="n">related_users</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
@@ -695,9 +710,11 @@
     <span class="n">nominations_summary</span><span class="p">:</span> <span class="n">Nominations</span>
     <span class="n">ranked</span><span class="p">:</span> <span class="n">RankStatus</span>
     <span class="n">ranked_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">rating</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">storyboard</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">submitted_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">tags</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">related_tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapTag</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Beatmapset.expand">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Beatmapset.expand">[docs]</a>
@@ -771,11 +788,11 @@
     <span class="n">classic_total_score</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">processed</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">replay</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">maximum_statistics</span><span class="p">:</span> <span class="n">Any</span>  <span class="c1"># TODO property typing</span>
-    <span class="n">mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NonLegacyMod</span><span class="p">]</span>
+    <span class="n">maximum_statistics</span><span class="p">:</span> <span class="n">Statistics</span>
+    <span class="n">mods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NonLegacyMod</span><span class="p">]</span>
     <span class="n">ruleset_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">started_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
-    <span class="n">ended_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">ended_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">ranked</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">preserve</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
@@ -827,7 +844,11 @@
 <div class="viewcode-block" id="Score.download">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Score.download">[docs]</a>
     <span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">download_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span><span class="p">):</span>
+            <span class="c1"># _LegacyScore</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">download_score_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">download_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
 </div>
 
 
@@ -843,14 +864,15 @@
 <div class="viewcode-block" id="BeatmapUserScores">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapUserScores">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapUserScores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
+    <span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="BeatmapScores">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapScores">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapScores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span>
+    <span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span>
+    <span class="n">score_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">user_score</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;userScore&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapUserScore</span><span class="p">])</span></div>
 
 
@@ -916,20 +938,20 @@
 <div class="viewcode-block" id="CommentBundle">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.CommentBundle">[docs]</a>
 <span class="k">class</span> <span class="nc">CommentBundle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">commentable_meta</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CommentableMeta</span><span class="p">]</span>
-    <span class="n">comments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
+    <span class="n">commentable_meta</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CommentableMeta</span><span class="p">]</span>
+    <span class="n">comments</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">has_more</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">has_more_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">included_comments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
-    <span class="n">pinned_comments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Comment</span><span class="p">]]</span>
+    <span class="n">included_comments</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Comment</span><span class="p">]</span>
+    <span class="n">pinned_comments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Comment</span><span class="p">]]</span>
     <span class="c1"># TODO this should be type CommentSort</span>
     <span class="n">sort</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">top_level_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_follow</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">user_votes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
+    <span class="n">user_votes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
 
 
 
@@ -993,7 +1015,7 @@
     <span class="n">hide_incomplete_results</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">last_vote_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">max_votes</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ForumPollOption</span><span class="p">]</span>
+    <span class="n">options</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ForumPollOption</span><span class="p">]</span>
     <span class="n">started_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">title</span><span class="p">:</span> <span class="n">ForumPollTitle</span>
     <span class="n">total_vote_count</span><span class="p">:</span> <span class="nb">int</span></div>
@@ -1014,7 +1036,7 @@
 <span class="k">class</span> <span class="nc">ForumTopicAndPosts</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">search</span><span class="p">:</span> <span class="n">ForumTopicSearch</span>
-    <span class="n">posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ForumPost</span><span class="p">]</span>
+    <span class="n">posts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ForumPost</span><span class="p">]</span>
     <span class="n">topic</span><span class="p">:</span> <span class="n">ForumTopic</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span></div>
 
@@ -1041,7 +1063,7 @@
 <div class="viewcode-block" id="SearchResult">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.SearchResult">[docs]</a>
 <span class="k">class</span> <span class="nc">SearchResult</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">Model</span><span class="p">):</span>
-    <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
@@ -1054,9 +1076,9 @@
     <span class="n">markdown</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">subtitle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">available_locales</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
+    <span class="n">available_locales</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
 
@@ -1084,7 +1106,38 @@
 <div class="viewcode-block" id="Spotlights">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Spotlights">[docs]</a>
 <span class="k">class</span> <span class="nc">Spotlights</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">spotlights</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]</span></div>
+    <span class="n">spotlights</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="SeasonDivision">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.SeasonDivision">[docs]</a>
+<span class="k">class</span> <span class="nc">SeasonDivision</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">colour_tier</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span></div>
+
+
+
+<div class="viewcode-block" id="Season">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.Season">[docs]</a>
+<span class="k">class</span> <span class="nc">Season</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">start_date</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">end_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">room_count</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
+
+<div class="viewcode-block" id="SeasonStatistics">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.SeasonStatistics">[docs]</a>
+<span class="k">class</span> <span class="nc">SeasonStatistics</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">division</span><span class="p">:</span> <span class="n">SeasonDivision</span>
+    <span class="n">season</span><span class="p">:</span> <span class="n">Season</span>
+    <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span></div>
 
 
 
@@ -1092,7 +1145,7 @@
 <div class="viewcode-block" id="Users">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Users">[docs]</a>
 <span class="k">class</span> <span class="nc">Users</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
 
 
 
@@ -1100,7 +1153,7 @@
 <div class="viewcode-block" id="Beatmaps">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Beatmaps">[docs]</a>
 <span class="k">class</span> <span class="nc">Beatmaps</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmaps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]</span></div>
+    <span class="n">beatmaps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]</span></div>
 
 
 
@@ -1109,16 +1162,17 @@
 <span class="k">class</span> <span class="nc">BeatmapPacks</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
-    <span class="n">beatmap_packs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPack</span><span class="p">]</span></div>
+    <span class="n">beatmap_packs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapPack</span><span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="Rankings">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Rankings">[docs]</a>
 <span class="k">class</span> <span class="nc">Rankings</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
+    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">ranking</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">UserStatistics</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">CountryStatistics</span><span class="p">]]</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">ranking</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UserStatistics</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">CountryStatistics</span><span class="p">]]</span>
     <span class="n">spotlight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
@@ -1177,10 +1231,14 @@
     <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">updated_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">deleted_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
-    <span class="n">last_post_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="c1"># marked as required in the docs, but null in</span>
+    <span class="c1">#   api.beatmapset_events(beatmapset_id=1112418)</span>
+    <span class="c1"># due to this post</span>
+    <span class="c1"># https://osu.ppy.sh/beatmapsets/1112418/discussion/-/generalAll#/1633002</span>
+    <span class="n">last_post_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">kudosu_denied</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">starting_post</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]</span>
-    <span class="n">posts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]]</span>
+    <span class="n">posts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]]</span>
     <span class="n">_beatmap</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;beatmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapCompact</span><span class="p">])</span>
     <span class="n">_beatmapset</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;beatmapset&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetCompact</span><span class="p">])</span>
 
@@ -1411,7 +1469,7 @@
     <span class="n">update_stream</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UpdateStream</span><span class="p">]</span>
     <span class="n">users</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="n">changelog_entries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ChangelogEntry</span><span class="p">]]</span>
+    <span class="n">changelog_entries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChangelogEntry</span><span class="p">]]</span>
     <span class="n">versions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Versions</span><span class="p">]</span>
     <span class="n">youtube_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
@@ -1459,18 +1517,19 @@
 <div class="viewcode-block" id="ChangelogListing">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.ChangelogListing">[docs]</a>
 <span class="k">class</span> <span class="nc">ChangelogListing</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">builds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Build</span><span class="p">]</span>
+    <span class="n">builds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Build</span><span class="p">]</span>
     <span class="n">search</span><span class="p">:</span> <span class="n">ChangelogSearch</span>
-    <span class="n">streams</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UpdateStream</span><span class="p">]</span></div>
+    <span class="n">streams</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UpdateStream</span><span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="MultiplayerScores">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.MultiplayerScores">[docs]</a>
 <span class="k">class</span> <span class="nc">MultiplayerScores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
-    <span class="n">params</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span>
     <span class="n">total</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">user_score</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span></div>
 
@@ -1484,15 +1543,37 @@
     <span class="n">room_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">playlist_item_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rank</span><span class="p">:</span> <span class="n">Grade</span>
     <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">max_combo</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
+    <span class="n">mods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
     <span class="n">statistics</span><span class="p">:</span> <span class="n">Statistics</span>
     <span class="n">passed</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">scores_around</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MultiplayerScoresAround</span><span class="p">]</span>
     <span class="n">user</span><span class="p">:</span> <span class="n">User</span>
+    <span class="n">solo_score_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">classic_total_score</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">preserve</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">processed</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">ranked</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">maximum_statistics</span><span class="p">:</span> <span class="n">Statistics</span>
+    <span class="n">total_score_without_mods</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">best_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">accuracy</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">build_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">ended_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">is_perfect_combo</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">replay</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">pp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">started_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">ruleset_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">current_user_attributes</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">has_replay</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">legacy_perfect</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">legacy_score_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">legacy_total_score</span><span class="p">:</span> <span class="nb">int</span>
 
 <div class="viewcode-block" id="MultiplayerScore.beatmap">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.MultiplayerScore.beatmap">[docs]</a>
@@ -1505,8 +1586,8 @@
 <div class="viewcode-block" id="MultiplayerScoresAround">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.MultiplayerScoresAround">[docs]</a>
 <span class="k">class</span> <span class="nc">MultiplayerScoresAround</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">higher</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span>
-    <span class="n">lower</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span></div>
+    <span class="n">higher</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span>
+    <span class="n">lower</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MultiplayerScore</span><span class="p">]</span></div>
 
 
 
@@ -1515,7 +1596,7 @@
 <span class="k">class</span> <span class="nc">NewsListing</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
-    <span class="n">news_posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NewsPost</span><span class="p">]</span>
+    <span class="n">news_posts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NewsPost</span><span class="p">]</span>
     <span class="n">news_sidebar</span><span class="p">:</span> <span class="n">NewsSidebar</span>
     <span class="n">search</span><span class="p">:</span> <span class="n">NewsSearch</span></div>
 
@@ -1527,6 +1608,7 @@
     <span class="n">author</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">edit_url</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">first_image</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">first_image_2x</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;first_image@2x&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">published_at</span><span class="p">:</span> <span class="n">Datetime</span>
     <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span>
@@ -1550,8 +1632,8 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.NewsSidebar">[docs]</a>
 <span class="k">class</span> <span class="nc">NewsSidebar</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">current_year</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">news_posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">NewsPost</span><span class="p">]</span>
-    <span class="n">years</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+    <span class="n">news_posts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NewsPost</span><span class="p">]</span>
+    <span class="n">years</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
 
@@ -1559,7 +1641,7 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.SeasonalBackgrounds">[docs]</a>
 <span class="k">class</span> <span class="nc">SeasonalBackgrounds</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">ends_at</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">backgrounds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">SeasonalBackground</span><span class="p">]</span></div>
+    <span class="n">backgrounds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SeasonalBackground</span><span class="p">]</span></div>
 
 
 
@@ -1592,6 +1674,9 @@
     <span class="n">slider_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">speed_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">speed_note_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">aim_difficult_slider_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">aim_difficult_strain_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+    <span class="n">speed_difficult_strain_count</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
 
     <span class="c1"># taiko attributes</span>
     <span class="n">stamina_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
@@ -1614,7 +1699,7 @@
 <span class="k">class</span> <span class="nc">Events</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
-    <span class="n">events</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">_Event</span><span class="p">])</span></div>
+    <span class="n">events</span><span class="p">:</span> <span class="n">Field</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="n">_Event</span><span class="p">])</span></div>
 
 
 
@@ -1631,8 +1716,17 @@
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
 
     <span class="c1"># optional attributes</span>
-    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
+    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]]</span>
     <span class="n">user_completion_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackUserCompletionData</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="Scores">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.Scores">[docs]</a>
+<span class="k">class</span> <span class="nc">Scores</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
+    <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span>
+    <span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
 
 
 
@@ -1647,7 +1741,7 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.ForumPoll">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">ForumPoll</span><span class="p">:</span>
-    <span class="n">options</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">options</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
 
     <span class="c1"># default values taken from https://osu.ppy.sh/docs/index.html#create-topic</span>
@@ -1666,7 +1760,7 @@
 <div class="viewcode-block" id="BeatmapsetSearchResult">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetSearchResult">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetSearchResult</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span>
+    <span class="n">beatmapsets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">recommended_difficulty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
     <span class="n">error</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -1679,14 +1773,14 @@
 <div class="viewcode-block" id="BeatmapsetDiscussions">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetDiscussions">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetDiscussions</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmaps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]</span>
+    <span class="n">beatmaps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">discussions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
-    <span class="n">included_discussions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
+    <span class="n">discussions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
+    <span class="n">included_discussions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
     <span class="n">reviews_config</span><span class="p">:</span> <span class="n">ReviewsConfig</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span></div>
+    <span class="n">beatmapsets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span></div>
 
 
 
@@ -1702,11 +1796,11 @@
 <div class="viewcode-block" id="BeatmapsetDiscussionPosts">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetDiscussionPosts">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetDiscussionPosts</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmapsets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetCompact</span><span class="p">]</span>
-    <span class="n">discussions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
+    <span class="n">beatmapsets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetCompact</span><span class="p">]</span>
+    <span class="n">discussions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">posts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">posts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussionPost</span><span class="p">]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
@@ -1715,9 +1809,9 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetDiscussionVotes">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetDiscussionVotes</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
-    <span class="n">discussions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
-    <span class="n">votes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetDiscussionVote</span><span class="p">]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">discussions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussion</span><span class="p">]</span>
+    <span class="n">votes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetDiscussionVote</span><span class="p">]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></div>
 
 
@@ -1734,15 +1828,15 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetEventCommentNoPost">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetEventCommentNoPost</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">beatmap_discussion_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">beatmap_discussion_post_id</span><span class="p">:</span> <span class="kc">None</span></div>
+    <span class="n">beatmap_discussion_post_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="BeatmapsetEventCommentNone">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetEventCommentNone">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetEventCommentNone</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">beatmap_discussion_id</span><span class="p">:</span> <span class="kc">None</span>
-    <span class="n">beatmap_discussion_post_id</span><span class="p">:</span> <span class="kc">None</span></div>
+    <span class="n">beatmap_discussion_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">beatmap_discussion_post_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
 
@@ -1765,7 +1859,7 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetEventCommentKudosuChange">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetEventCommentKudosuChange</span><span class="p">(</span><span class="n">BeatmapsetEventCommentNoPost</span><span class="p">):</span>
     <span class="n">new_vote</span><span class="p">:</span> <span class="n">KudosuVote</span>
-    <span class="n">votes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KudosuVote</span><span class="p">]</span></div>
+    <span class="n">votes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">KudosuVote</span><span class="p">]</span></div>
 
 
 
@@ -1782,7 +1876,8 @@
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">beatmap_version</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">new_user_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">new_user_username</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="n">new_user_username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">new_users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
 
 
 
@@ -1792,15 +1887,15 @@
     <span class="c1"># for some reason this comment type doesn&#39;t have the normal</span>
     <span class="c1"># beatmap_discussion_id and beatmap_discussion_post_id attributes (they&#39;re</span>
     <span class="c1"># not even null, just missing).</span>
-    <span class="n">modes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GameMode</span><span class="p">]</span></div>
+    <span class="n">modes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">GameMode</span><span class="p">]</span></div>
 
 
 
 <div class="viewcode-block" id="BeatmapsetEventCommentWithNominators">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetEventCommentWithNominators">[docs]</a>
 <span class="k">class</span> <span class="nc">BeatmapsetEventCommentWithNominators</span><span class="p">(</span><span class="n">BeatmapsetEventCommentNoPost</span><span class="p">):</span>
-    <span class="n">beatmap_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
-    <span class="n">nominator_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span></div>
+    <span class="n">beatmap_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
+    <span class="n">nominator_ids</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span></div>
 
 
 
@@ -1843,7 +1938,14 @@
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">DISCUSSION_RESTORE</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentNoPost</span><span class="p">,</span>
             <span class="c1"># same here</span>
             <span class="c1"># BeatmapsetEventType.DISCUSSION_UNLOCK: BeatmapsetEventComment,</span>
-            <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">DISQUALIFY</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentWithNominators</span><span class="p">,</span>
+            <span class="c1"># Some events have a comment that is *just a string*.</span>
+            <span class="c1">#   api.beatmapset_events(beatmapset_id=724033)</span>
+            <span class="c1"># I&#39;ve only seen this for &quot;type&quot;: &quot;disqualify&quot;, but who knows where</span>
+            <span class="c1"># else it could happen. I&#39;ve preemptively marked NOMINATION_RESET as</span>
+            <span class="c1"># taking a string also.</span>
+            <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">DISQUALIFY</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+                <span class="n">BeatmapsetEventCommentWithNominators</span><span class="p">,</span> <span class="nb">str</span>
+            <span class="p">],</span>
             <span class="c1"># same here</span>
             <span class="c1"># BeatmapsetEventType.DISQUALIFY_LEGACY: BeatmapsetEventComment</span>
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">GENRE_EDIT</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentChange</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -1859,7 +1961,9 @@
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">NOMINATE</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentNominate</span><span class="p">,</span>
             <span class="c1"># same here</span>
             <span class="c1"># BeatmapsetEventType.NOMINATE_MODES: BeatmapsetEventComment,</span>
-            <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">NOMINATION_RESET</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentWithNominators</span><span class="p">,</span>
+            <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">NOMINATION_RESET</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+                <span class="n">BeatmapsetEventCommentWithNominators</span><span class="p">,</span> <span class="nb">str</span>
+            <span class="p">],</span>
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">NOMINATION_RESET_RECEIVED</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentWithSourceUser</span><span class="p">,</span>
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">QUALIFY</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">RANK</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
@@ -1867,7 +1971,11 @@
             <span class="n">BeatmapsetEventType</span><span class="o">.</span><span class="n">NSFW_TOGGLE</span><span class="p">:</span> <span class="n">BeatmapsetEventCommentChange</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span>
         <span class="p">}</span>
         <span class="n">type_</span> <span class="o">=</span> <span class="n">BeatmapsetEventType</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">mapping</span><span class="p">[</span><span class="n">type_</span><span class="p">]}</span>
+        <span class="c1"># some events don&#39;t seem to have an associate comment, eg</span>
+        <span class="c1">#   api.beatmapset_events(beatmapset_id=692322)</span>
+        <span class="c1"># I don&#39;t know under what circumstances this does or does not happen, so</span>
+        <span class="c1"># I am marking all comments as optional.</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">mapping</span><span class="p">[</span><span class="n">type_</span><span class="p">]]}</span>
 
 <div class="viewcode-block" id="BeatmapsetEvent.user">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.BeatmapsetEvent.user">[docs]</a>
@@ -1893,8 +2001,8 @@
     <span class="c1"># ---------------</span>
     <span class="n">last_message_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">last_read_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="n">recent_messages</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span></div>
+    <span class="n">recent_messages</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span></div>
 
 
 
@@ -1935,7 +2043,7 @@
     <span class="n">channel</span><span class="p">:</span> <span class="n">ChatChannel</span>
 
     <span class="c1"># documented but not present in response</span>
-    <span class="n">presence</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ChatChannel</span><span class="p">]]</span></div>
+    <span class="n">presence</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ChatChannel</span><span class="p">]]</span></div>
 
 
 
@@ -1944,9 +2052,9 @@
 <span class="k">class</span> <span class="nc">ModdingHistoryEventsBundle</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># https://github.com/ppy/osu-web/blob/master/app/Libraries/ModdingHistor</span>
     <span class="c1"># yEventsBundle.php#L84</span>
-    <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetEvent</span><span class="p">]</span>
+    <span class="n">events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetEvent</span><span class="p">]</span>
     <span class="n">reviewsConfig</span><span class="p">:</span> <span class="n">BeatmapsetDiscussionReview</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
 
 
 
@@ -2007,7 +2115,7 @@
     <span class="n">total_hits</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">total_score</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">user</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
-    <span class="n">variants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">StatisticsVariant</span><span class="p">]]</span></div>
+    <span class="n">variants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">StatisticsVariant</span><span class="p">]]</span></div>
 
 
 
@@ -2028,7 +2136,7 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.RoomPlaylistItemMod">[docs]</a>
 <span class="k">class</span> <span class="nc">RoomPlaylistItemMod</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">acronym</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></div>
+    <span class="n">settings</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></div>
 
 
 
@@ -2039,8 +2147,8 @@
     <span class="n">room_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">ruleset_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">allowed_mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RoomPlaylistItemMod</span><span class="p">]</span>
-    <span class="n">required_mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RoomPlaylistItemMod</span><span class="p">]</span>
+    <span class="n">allowed_mods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RoomPlaylistItemMod</span><span class="p">]</span>
+    <span class="n">required_mods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RoomPlaylistItemMod</span><span class="p">]</span>
     <span class="n">expired</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">owner_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="c1"># null for playlist items which haven&#39;t finished yet, I think</span>
@@ -2060,7 +2168,7 @@
     <span class="nb">type</span><span class="p">:</span> <span class="n">RoomType</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">starts_at</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">ends_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">ends_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">max_attempts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">participant_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">channel_id</span><span class="p">:</span> <span class="nb">int</span>
@@ -2069,8 +2177,8 @@
     <span class="n">queue_mode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">auto_skip</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">host</span><span class="p">:</span> <span class="n">UserCompact</span>
-    <span class="n">playlist</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RoomPlaylistItem</span><span class="p">]</span>
-    <span class="n">recent_participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
+    <span class="n">playlist</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RoomPlaylistItem</span><span class="p">]</span>
+    <span class="n">recent_participants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span></div>
 
 
 
@@ -2083,7 +2191,7 @@
     <span class="nb">type</span><span class="p">:</span> <span class="n">RoomType</span>
     <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">starts_at</span><span class="p">:</span> <span class="n">Datetime</span>
-    <span class="n">ends_at</span><span class="p">:</span> <span class="n">Datetime</span>
+    <span class="n">ends_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Datetime</span><span class="p">]</span>
     <span class="n">max_attempts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
     <span class="n">participant_count</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">channel_id</span><span class="p">:</span> <span class="nb">int</span>
@@ -2092,13 +2200,13 @@
     <span class="n">queue_mode</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">auto_skip</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">host</span><span class="p">:</span> <span class="n">UserCompact</span>
-    <span class="n">playlist</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RoomPlaylistItem</span><span class="p">]</span>
+    <span class="n">playlist</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RoomPlaylistItem</span><span class="p">]</span>
 
     <span class="c1"># new from _Room1</span>
     <span class="n">playlist_item_stats</span><span class="p">:</span> <span class="n">RoomPlaylistItemStats</span>
     <span class="n">current_playlist_item</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RoomPlaylistItem</span><span class="p">]</span>
     <span class="n">difficulty_range</span><span class="p">:</span> <span class="n">RoomDifficultyRange</span>
-    <span class="n">recent_participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">recent_participants</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">override_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">api</span><span class="p">):</span>
@@ -2131,8 +2239,8 @@
 <div class="viewcode-block" id="RoomLeaderboard">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.RoomLeaderboard">[docs]</a>
 <span class="k">class</span> <span class="nc">RoomLeaderboard</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">leaderboard</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RoomLeaderboardScore</span><span class="p">]</span>
-    <span class="n">user_score</span><span class="p">:</span> <span class="n">RoomLeaderboardUserScore</span></div>
+    <span class="n">leaderboard</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RoomLeaderboardScore</span><span class="p">]</span>
+    <span class="n">user_score</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RoomLeaderboardUserScore</span><span class="p">]</span></div>
 
 
 
@@ -2150,7 +2258,7 @@
 <div class="viewcode-block" id="Matches">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.Matches">[docs]</a>
 <span class="k">class</span> <span class="nc">Matches</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">matches</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Match</span><span class="p">]</span>
+    <span class="n">matches</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Match</span><span class="p">]</span>
     <span class="n">cursor</span><span class="p">:</span> <span class="n">CursorT</span>
     <span class="n">params</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">cursor_string</span><span class="p">:</span> <span class="n">CursorStringT</span></div>
@@ -2168,13 +2276,13 @@
     <span class="n">mode_int</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">scoring_type</span><span class="p">:</span> <span class="n">ScoringType</span>
     <span class="n">team_type</span><span class="p">:</span> <span class="n">TeamType</span>
-    <span class="n">mods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
+    <span class="n">mods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Mod</span><span class="p">]</span>
     <span class="c1"># null for deleted beatmaps,</span>
     <span class="c1"># e.g. https://osu.ppy.sh/community/matches/103721175.</span>
     <span class="c1"># TODO doesn&#39;t match docs</span>
     <span class="n">beatmap</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapCompact</span><span class="p">]</span>
     <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
+    <span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]</span></div>
 
 
 
@@ -2203,8 +2311,8 @@
 <a class="viewcode-back" href="../../api-reference.html#ossapi.models.MatchResponse">[docs]</a>
 <span class="k">class</span> <span class="nc">MatchResponse</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">match</span><span class="p">:</span> <span class="n">Match</span>
-    <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MatchEvent</span><span class="p">]</span>
-    <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
+    <span class="n">events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MatchEvent</span><span class="p">]</span>
+    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]</span>
     <span class="n">first_event_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">latest_event_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">current_game_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
@@ -2232,6 +2340,23 @@
 <span class="k">class</span> <span class="nc">NonLegacyMod</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">acronym</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">settings</span><span class="p">:</span> <span class="n">Any</span></div>
+
+
+
+<div class="viewcode-block" id="Tag">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.Tag">[docs]</a>
+<span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">ruleset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="Tags">
+<a class="viewcode-back" href="../../api-reference.html#ossapi.models.Tags">[docs]</a>
+<span class="k">class</span> <span class="nc">Tags</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tag</span><span class="p">]</span></div>
 
 </pre></div>
         </article>
@@ -2268,7 +2393,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=35c0298d"></script>
+</div><script src="../../_static/documentation_options.js?v=72123926"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>

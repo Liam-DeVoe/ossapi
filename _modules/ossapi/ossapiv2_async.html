@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>ossapi.ossapiv2_async - ossapi v5.0.0 documentation</title>
+        <title>ossapi.ossapiv2_async - ossapi v5.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v5.2.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.2.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -234,6 +234,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../scores.html">Scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../spotlights.html">Spotlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tags.html">Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../wiki.html">Wiki</a></li>
 </ul>
@@ -326,6 +327,8 @@
     <span class="n">Score</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchResult</span><span class="p">,</span>
     <span class="n">ModdingHistoryEventsBundle</span><span class="p">,</span>
+    <span class="n">Tag</span><span class="p">,</span>
+    <span class="n">Tags</span><span class="p">,</span>
     <span class="n">User</span><span class="p">,</span>
     <span class="n">Rankings</span><span class="p">,</span>
     <span class="n">BeatmapScores</span><span class="p">,</span>
@@ -366,6 +369,7 @@
     <span class="n">Events</span><span class="p">,</span>
     <span class="n">BeatmapPack</span><span class="p">,</span>
     <span class="n">BeatmapPacks</span><span class="p">,</span>
+    <span class="n">Scores</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">GameMode</span><span class="p">,</span>
@@ -415,14 +419,13 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">api_version</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;ossapi (v</span><span class="si">{</span><span class="n">ossapi</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
             <span class="s2">&quot;x-api-version&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">api_version</span><span class="p">),</span>
         <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
 
     <span class="c1"># this method is shamelessly copied from `OAuth2Session.request`, modified</span>
-    <span class="c1"># to call `self.session.request` instead of `super().request`.</span>
+    <span class="c1"># to call the passed `session.request` instead of `super().request`.</span>
     <span class="c1"># Any OAuth2Session code which calls `request` will remain sync, but we have</span>
     <span class="c1"># control over the vast majority of code which interacts with the session</span>
     <span class="c1"># object and can switch to calling this async function instead.</span>
@@ -471,6 +474,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span>
 
+        <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">|</span> <span class="n">headers</span>
         <span class="k">return</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
@@ -486,7 +490,7 @@
 <span class="n">ScoreTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">ScoreType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="c1"># XXX this cannot be recursively typed without breaking our runtime type hint</span>
 <span class="c1"># inspection.</span>
-<span class="n">ModT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span>
+<span class="n">ModT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Mod</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span>
 <span class="n">RankingFilterT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RankingFilter</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">RankingTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">RankingType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
 <span class="n">UserBeatmapTypeT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">UserBeatmapType</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
@@ -725,7 +729,7 @@
 <span class="sd">        authentication from this redirect uri, it must be a port on localhost,</span>
 <span class="sd">        e.g. &quot;http://localhost:3914/&quot;. You can change your client&#39;s redirect uri</span>
 <span class="sd">        from its settings page.</span>
-<span class="sd">    scopes: List[str]</span>
+<span class="sd">    scopes: list[str]</span>
 <span class="sd">        What scopes to request when authenticating.</span>
 <span class="sd">    grant: Grant or str</span>
 <span class="sd">        Which oauth grant (aka flow) to use when authenticating with the api.</span>
@@ -792,7 +796,7 @@
         <span class="n">client_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">client_secret</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">redirect_uri</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">scopes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Scope</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">],</span>
+        <span class="n">scopes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Scope</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">],</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">grant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Grant</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -992,6 +996,7 @@
             <span class="n">auto_refresh_kwargs</span><span class="o">=</span><span class="n">auto_refresh_kwargs</span><span class="p">,</span>
             <span class="n">token_updater</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">,</span>
             <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="n">scope</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scopes</span><span class="p">],</span>
+            <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_version</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="n">authorization_url</span><span class="p">,</span> <span class="n">_state</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">authorization_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">auth_code_url</span><span class="p">)</span>
@@ -1182,6 +1187,9 @@
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mod</span><span class="p">):</span>
                 <span class="n">params</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">[]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
                 <span class="k">del</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># requests does this for us, but not aiohttp for whatever reason.</span>
+                <span class="k">del</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">params</span>
@@ -1343,6 +1351,7 @@
             <span class="c1"># deserialize any of them.</span>
             <span class="n">fail_reasons</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying type </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2"> for union </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="kn">import</span> <span class="nn">copy</span>
 
@@ -1352,8 +1361,13 @@
                     <span class="c1"># fix it here, as we may reuse `value`.</span>
                     <span class="n">new_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_type</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;failed to satisfy type </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2"> when instantiating &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;union </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">, trying next type in the union. (reason: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
                     <span class="n">fail_reasons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
                     <span class="k">continue</span>
+                <span class="k">break</span>
 
             <span class="k">if</span> <span class="n">new_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -1460,7 +1474,9 @@
                 <span class="n">kwargs_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` for type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;unexpected parameter `</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">` for type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">. value: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
                 <span class="c1"># this is an INFO log in spirit, but can be spammy with Union</span>
                 <span class="c1"># type resolution where the first union case hits nonfatal</span>
                 <span class="c1"># errors like this before a fatal error causes it to backtrack.</span>
@@ -1614,7 +1630,7 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get all of a user&#39;s scores on a beatmap. If you only want the top user</span>
 <span class="sd">        score, see :meth:`beatmap_user_score`.</span>
@@ -1726,7 +1742,7 @@
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Beatmap</span><span class="p">,</span> <span class="s2">&quot;/beatmaps/lookup&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">beatmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beatmap_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">beatmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beatmap_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get beatmaps by id. If you only want to retrieve a single beatmap,</span>
 <span class="sd">        or want to retrieve beatmaps by something other than id (eg checksum),</span>
@@ -1895,7 +1911,7 @@
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">beatmapset_status</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetStatusT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">message_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">MessageTypeT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">MessageTypeT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">only_unresolved</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">page</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapDiscussionPostSortT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2109,7 +2125,7 @@
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">page</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">BeatmapsetEventTypeT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetEventTypeT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">min_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">max_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">beatmapset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2184,7 +2200,7 @@
         <span class="n">to</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">max_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">stream</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">message_formats</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChangelogMessageFormat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">message_formats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChangelogMessageFormat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">ChangelogMessageFormat</span><span class="o">.</span><span class="n">HTML</span><span class="p">,</span>
             <span class="n">ChangelogMessageFormat</span><span class="o">.</span><span class="n">MARKDOWN</span><span class="p">,</span>
         <span class="p">],</span>
@@ -2227,7 +2243,7 @@
         <span class="n">changelog</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">message_formats</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChangelogMessageFormat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">message_formats</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChangelogMessageFormat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">ChangelogMessageFormat</span><span class="o">.</span><span class="n">HTML</span><span class="p">,</span>
             <span class="n">ChangelogMessageFormat</span><span class="o">.</span><span class="n">MARKDOWN</span><span class="p">,</span>
         <span class="p">],</span>
@@ -2290,7 +2306,7 @@
         <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="c1"># TODO need to add support to automatic conversion for lists of id types</span>
         <span class="c1"># instead of just bare types (: UserIdT)</span>
-        <span class="n">target_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">],</span>
+        <span class="n">target_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChatChannel</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Send an announcement message. You must be in the announce usergroup to</span>
@@ -2559,7 +2575,7 @@
     <span class="c1"># --------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FRIENDS_READ</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;friends&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">friends</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">friends</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the friends of the authenticated user.</span>
 
@@ -2568,7 +2584,7 @@
 <span class="sd">        Implements the `Get Friends</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#friends&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">],</span> <span class="s2">&quot;/friends&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">],</span> <span class="s2">&quot;/friends&quot;</span><span class="p">)</span>
 
     <span class="c1"># / (&quot;home&quot;)</span>
     <span class="c1"># ----------</span>
@@ -2881,7 +2897,7 @@
         <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="c1"># TODO enumify</span>
         <span class="n">type_group</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Room</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the list of current rooms.</span>
 
@@ -2910,13 +2926,13 @@
             <span class="s2">&quot;sort&quot;</span><span class="p">:</span> <span class="n">sort</span><span class="p">,</span>
             <span class="s2">&quot;type_group&quot;</span><span class="p">:</span> <span class="n">type_group</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Room</span><span class="p">],</span> <span class="s2">&quot;/rooms&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Room</span><span class="p">],</span> <span class="s2">&quot;/rooms&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
     <span class="c1"># /scores</span>
     <span class="c1"># -------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a score. This corresponds to urls of the form https://osu.ppy.sh/scores/1312718771</span>
 <span class="sd">        (&quot;new id format&quot;).</span>
@@ -2933,10 +2949,32 @@
 <span class="sd">        Implements the `Get Score</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescore&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">scores</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns most recent 1000 passed scores across all users.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mode</span>
+<span class="sd">            The mode to get scores for.</span>
+<span class="sd">        cursor_string</span>
+<span class="sd">            Cursor for pagination.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Get Scores</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-scores94&gt;`__ endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">}</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Scores</span><span class="p">,</span> <span class="s2">&quot;/scores&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a score, where the score id is specific to the gamemode. This</span>
 <span class="sd">        corresponds to urls of the form https://osu.ppy.sh/scores/osu/4459998279</span>
@@ -2956,7 +2994,7 @@
 <span class="sd">        Implements the `Get Score</span>
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#scoresmodescore&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">aiohttp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">ContentTypeError</span>
@@ -3060,7 +3098,7 @@
     <span class="c1"># -----------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;spotlights&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">spotlights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">spotlights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get active spotlights.</span>
 
@@ -3072,6 +3110,22 @@
         <span class="n">spotlights</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Spotlights</span><span class="p">,</span> <span class="s2">&quot;/spotlights&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">spotlights</span><span class="o">.</span><span class="n">spotlights</span>
 
+    <span class="c1"># /tags</span>
+    <span class="c1"># -----</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">tags</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tag</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get beatmap tags.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Get Tags</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-apiv2tags&gt;`__ endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Tags</span><span class="p">,</span> <span class="s2">&quot;/tags&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tags</span><span class="o">.</span><span class="n">tags</span>
+
     <span class="c1"># /users</span>
     <span class="c1"># ------</span>
 
@@ -3082,7 +3136,7 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">KudosuHistory</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">KudosuHistory</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get user kudosu history.</span>
 
@@ -3101,7 +3155,7 @@
 <span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-user-kudosu&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">}</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">KudosuHistory</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/kudosu&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">KudosuHistory</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/kudosu&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">user_scores</span><span class="p">(</span>
@@ -3114,7 +3168,7 @@
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">legacy_only</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get scores of a user.</span>
 
@@ -3147,7 +3201,7 @@
             <span class="s2">&quot;legacy_only&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">legacy_only</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">legacy_only</span><span class="p">),</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
-            <span class="n">List</span><span class="p">[</span><span class="n">Score</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span>
+            <span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span>
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
@@ -3158,7 +3212,7 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPlaycount</span><span class="p">]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapPlaycount</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get beatmaps of a user.</span>
 
@@ -3185,9 +3239,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">}</span>
 
-        <span class="n">return_type</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span>
+        <span class="n">return_type</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmapset</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="n">UserBeatmapType</span><span class="o">.</span><span class="n">MOST_PLAYED</span><span class="p">:</span>
-            <span class="n">return_type</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="n">BeatmapPlaycount</span><span class="p">]</span>
+            <span class="n">return_type</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapPlaycount</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
             <span class="n">return_type</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/beatmapsets/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span>
@@ -3200,7 +3254,7 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get recent activity of a user.</span>
 
@@ -3221,7 +3275,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="n">offset</span><span class="p">}</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
-            <span class="n">List</span><span class="p">[</span><span class="n">_Event</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/recent_activity/&quot;</span><span class="p">,</span> <span class="n">params</span>
+            <span class="nb">list</span><span class="p">[</span><span class="n">_Event</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/recent_activity/&quot;</span><span class="p">,</span> <span class="n">params</span>
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
@@ -3255,7 +3309,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">users_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">users</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">users_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get users by id or username. If you only want to retrieve a single</span>
 <span class="sd">        user, or want to retrieve users by username instead of id, see :meth:`user`.</span>
@@ -3273,7 +3327,7 @@
         <span class="k">return</span> <span class="n">users</span><span class="o">.</span><span class="n">users</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get users by id. If you only want to retrieve a single user, or</span>
 <span class="sd">        want to retrieve users by username instead of id, see :meth:`user`.</span>
@@ -3349,7 +3403,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=35c0298d"></script>
+</div><script src="../../_static/documentation_options.js?v=72123926"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>

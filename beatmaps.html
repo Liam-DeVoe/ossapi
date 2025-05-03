@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Beatmapsets" href="beatmapsets.html" /><link rel="prev" title="Beatmap Packs" href="beatmap%20packs.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>Beatmaps - ossapi v5.0.0 documentation</title>
+        <title>Beatmaps - ossapi v5.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ossapi v5.0.0 documentation</div></a>
+      <a href="index.html"><div class="brand">ossapi v5.2.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -191,7 +191,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v5.0.0 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.2.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -235,6 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spotlights.html">Spotlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wiki.html">Wiki</a></li>
 </ul>
@@ -313,7 +314,7 @@ endpoints.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The beatmap to get the difficulty attributes of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods to calculate difficulty attributes with.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods to calculate difficulty attributes with.</p></li>
 <li><p><strong>ruleset</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – The ruleset (gamemode) to calculate difficulty attributes of.</p></li>
 <li><p><strong>ruleset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – Alternative parameter to ruleset which takes an integer (ruleset id)
 instead of a string (ruleset name).</p></li>
@@ -336,7 +337,7 @@ instead of a string (ruleset name).</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap to get scores of.</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – The mode to get scores of.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – Get the top scores set with exactly these mods, if passed.</p></li>
 <li><p><strong>type</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.RankingType" title="ossapi.enums.RankingType"><em>RankingType</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – How to order the scores. Defaults to ordering by score.</p></li>
 <li><p><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – How many results to return. Defaults to 50. Must be between 1 and
 100.</p></li>
@@ -362,7 +363,7 @@ scores, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_
 <li><p><strong>beatmap_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>) – The beatmap the score was set on.</p></li>
 <li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The user who set the score.</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="api-reference.html#ossapi.enums.GameMode" title="ossapi.enums.GameMode"><em>GameMode</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><em>None</em>) – The mode the scores were set on.</p></li>
-<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods the score was set with.</p></li>
+<li><p><strong>mods</strong> (<a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference internal" href="api-reference.html#ossapi.models.Mod" title="ossapi.mod.Mod"><em>Mod</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – The mods the score was set with.</p></li>
 <li><p><strong>legacy_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to exclude lazer scores. Defaults to False.</p></li>
 </ul>
 </dd>
@@ -390,7 +391,7 @@ score, see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap_u
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a>[<a class="reference internal" href="api-reference.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="api-reference.html#ossapi.models.Score" title="ossapi.models.Score"><em>Score</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -406,10 +407,10 @@ or want to retrieve beatmaps by something other than id (eg checksum),
 see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="ossapi.ossapiv2.Ossapi.beatmap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">beatmap()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
+<dd class="field-odd"><p><strong>beatmap_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em>]</em>) – The beatmaps to get.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><em>List</em></a>[<a class="reference internal" href="api-reference.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="api-reference.html#ossapi.models.Beatmap" title="ossapi.models.Beatmap"><em>Beatmap</em></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -494,7 +495,7 @@ see <a class="reference internal" href="#ossapi.ossapiv2.Ossapi.beatmap" title="
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=35c0298d"></script>
+</div><script src="_static/documentation_options.js?v=72123926"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

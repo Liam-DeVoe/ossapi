@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Expandable Models" href="expandable-models.html" /><link rel="prev" title="Advanced" href="advanced.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Users" href="users.html" /><link rel="prev" title="Spotlights" href="spotlights.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>Pagination - ossapi v5.2.1 documentation</title>
+        <title>Tags - ossapi v5.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -206,8 +206,8 @@
 <li class="toctree-l2"><a class="reference internal" href="grants.html">Grant Types</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="advanced.html">Advanced</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Pagination</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="advanced.html">Advanced</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Advanced</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expandable-models.html">Expandable Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="foreign-keys.html">Foreign Keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serializing-models.html">Serializing Models</a></li>
@@ -215,7 +215,7 @@
 <li class="toctree-l2"><a class="reference internal" href="domains.html">Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Endpoints</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="endpoints.html">Endpoints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Endpoints</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="beatmap%20packs.html">Beatmap Packs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmaps.html">Beatmaps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beatmapsets.html">Beatmapsets</a></li>
@@ -235,7 +235,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seasonal%20backgrounds.html">Seasonal Backgrounds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spotlights.html">Spotlights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tags.html">Tags</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wiki.html">Wiki</a></li>
 </ul>
@@ -261,7 +261,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/pagination.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/tags.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -281,39 +281,21 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="pagination">
-<h1>Pagination<a class="headerlink" href="#pagination" title="Link to this heading">¶</a></h1>
-<p>Some endpoints in the osu! api are paginated. These endpoints return models with either a <code class="docutils literal notranslate"><span class="pre">cursor</span></code> or <code class="docutils literal notranslate"><span class="pre">cursor_string</span></code> attribute, depending on the endpoint. To access the next page, pass along this attribute to the api call:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">)</span>
-<span class="n">cursor</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">cursor</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 50</span>
+          <section id="tags">
+<h1>Tags<a class="headerlink" href="#tags" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.tags" title="Link to this definition">¶</a></dt>
+<dd><p>Get beatmap tags.</p>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#get-apiv2tags">Get Tags</a> endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="api-reference.html#ossapi.models.Tag" title="ossapi.models.Tag"><em>Tag</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 100</span>
-</pre></div>
-</div>
-<section id="skipping-pages">
-<h2>Skipping Pages<a class="headerlink" href="#skipping-pages" title="Link to this heading">¶</a></h2>
-<p>If you know exactly what page you want, you can skip to it by constructing your own <code class="docutils literal notranslate"><span class="pre">Cursor</span></code> with the <code class="docutils literal notranslate"><span class="pre">page</span></code> attribute:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">19</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ranking</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">global_rank</span><span class="p">)</span> <span class="c1"># 950</span>
-</pre></div>
-</div>
-</section>
-<section id="checking-for-the-last-page">
-<h2>Checking for the Last Page<a class="headerlink" href="#checking-for-the-last-page" title="Link to this heading">¶</a></h2>
-<p>If there are no more pages, the <code class="docutils literal notranslate"><span class="pre">cursor</span></code> (or <code class="docutils literal notranslate"><span class="pre">cursor_string</span></code>) object of the response will be <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">199</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">cursor</span><span class="p">)</span> <span class="c1"># Cursor(page=200)</span>
-
-<span class="n">cursor</span> <span class="o">=</span> <span class="n">Cursor</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> <span class="c1"># there are only 200 rankings pages</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ranking</span><span class="p">(</span><span class="s2">&quot;osu&quot;</span><span class="p">,</span> <span class="n">RankingType</span><span class="o">.</span><span class="n">PERFORMANCE</span><span class="p">,</span> <span class="n">cursor</span><span class="o">=</span><span class="n">cursor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">cursor</span><span class="p">)</span> <span class="c1"># None</span>
-</pre></div>
-</div>
-</section>
 </section>
 
         </article>
@@ -321,23 +303,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="expandable-models.html">
+          <a class="next-page" href="users.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Expandable Models</div>
+                <div class="title">Users</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="advanced.html">
+          <a class="prev-page" href="spotlights.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Advanced</div>
+                <div class="title">Spotlights</div>
                 
               </div>
             </a>
@@ -374,9 +356,8 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Pagination</a><ul>
-<li><a class="reference internal" href="#skipping-pages">Skipping Pages</a></li>
-<li><a class="reference internal" href="#checking-for-the-last-page">Checking for the Last Page</a></li>
+<li><a class="reference internal" href="#">Tags</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.tags"><code class="docutils literal notranslate"><span class="pre">tags()</span></code></a></li>
 </ul>
 </li>
 </ul>

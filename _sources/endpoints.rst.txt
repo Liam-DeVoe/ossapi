@@ -27,5 +27,6 @@ Endpoints
     scores
     seasonal backgrounds
     spotlights
+    tags
     users
     wiki
