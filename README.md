@@ -163,6 +163,7 @@ All endpoints for api v2.
   * [`api.rooms`](https://tybug.github.io/ossapi/rooms.html#ossapi.ossapiv2.Ossapi.rooms)
 * Scores<a name="endpoints-scores"></a>
   * [`api.download_score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.download_score)
+  * [`api.download_score_mode`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.download_score_mode)
   * [`api.score`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.score)
   * [`api.score_mode`](https://tybug.github.io/ossapi/scores.html#ossapi.ossapiv2.Ossapi.score_mode)
 * Seasonal Backgrounds<a name="endpoints-seasonal-backgrounds"></a>
@@ -176,6 +177,7 @@ All endpoints for api v2.
   * [`api.user_recent_activity`](https://tybug.github.io/ossapi/users.html#ossapi.ossapiv2.Ossapi.user_recent_activity)
   * [`api.user_scores`](https://tybug.github.io/ossapi/users.html#ossapi.ossapiv2.Ossapi.user_scores)
   * [`api.users`](https://tybug.github.io/ossapi/users.html#ossapi.ossapiv2.Ossapi.users)
+  * [`api.users_lookup`](https://tybug.github.io/ossapi/users.html#ossapi.ossapiv2.Ossapi.users_lookup)
 * Wiki<a name="endpoints-wiki"></a>
   * [`api.wiki_page`](https://tybug.github.io/ossapi/wiki.html#ossapi.ossapiv2.Ossapi.wiki_page)
 

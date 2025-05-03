@@ -1,7 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ossapi"
-version = "5.0.0"
-description = "Complete python wrapper for osu! api v2 and v1."
+# see [tool.setuptools.dynamic]
+dynamic = ["version"]
+description = "The definitive python wrapper for the osu! api"
 readme = "README.md"
 keywords = ["osu!", "wrapper", "api", "python"]
 authors = [
@@ -24,3 +29,6 @@ async = ["aiohttp"]
 
 [project.urls]
 "Homepage" = "https://github.com/tybug/ossapi"
+
+[tool.setuptools.dynamic]
+version = {attr = "ossapi.__version__"}

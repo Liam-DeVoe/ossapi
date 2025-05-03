@@ -136,7 +136,7 @@ class OssapiV1:
         beatmap_hash=None,
         limit=None,
         mods=None,
-    ) -> List["Beatmap"]:
+    ) -> list["Beatmap"]:
         params = {
             "since": since,
             "s": beatmapset_id,
@@ -157,7 +157,7 @@ class OssapiV1:
 
     def get_scores(
         self, beatmap_id, user=None, mode=None, mods=None, user_type=None, limit=None
-    ) -> List["Score"]:
+    ) -> list["Score"]:
         params = {
             "b": beatmap_id,
             "u": user,
@@ -199,13 +199,13 @@ class OssapiV1:
 
     def get_user_best(
         self, user, mode=None, limit=None, user_type=None
-    ) -> List["Score"]:
+    ) -> list["Score"]:
         params = {"u": user, "m": mode, "limit": limit, "type": user_type}
         return self._get("get_user_best", params, Score, list_=True)
 
     def get_user_recent(
         self, user, mode=None, limit=None, user_type=None
-    ) -> List["Score"]:
+    ) -> list["Score"]:
         params = {"u": user, "m": mode, "limit": limit, "type": user_type}
         return self._get("get_user_recent", params, Score, list_=True)
 

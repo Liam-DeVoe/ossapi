@@ -3,7 +3,6 @@ import logging
 # we need to explicitly set a handler for the logging module to be happy
 handler = logging.StreamHandler()
 logging.getLogger("ossapi").addHandler(handler)
-from importlib import metadata
 
 from ossapi.ossapi import (
     OssapiV1,
@@ -145,7 +144,7 @@ from ossapi.ossapiv2_async import OssapiAsync
 from oauthlib.oauth2 import AccessDeniedError, TokenExpiredError
 from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
 
-__version__ = metadata.version(__package__)
+__version__ = "5.2.1"
 
 __all__ = [
     # OssapiV1

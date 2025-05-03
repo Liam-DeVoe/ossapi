@@ -56,8 +56,13 @@ class TestBeatmapScores(TestCase):
 class TestBeatmap(TestCase):
     def test_deserialize(self):
         api.beatmap(beatmap_id=221777)
+        # beatmap with multiple owners (.owners)
+        bm = api.beatmap(beatmap_id=4060023)
+        # see https://discord.com/channels/188630481301012481/
+        # 188630616286167041/1315396179655262239
+        assert bm.owner is None
 
-        # beatmap with a diff owner
+        # beatmap with a diff owner (.owner)
         bm = api.beatmap(beatmap_id=1604098)
         # might need to be updated when
         # https://github.com/ppy/osu-web/issues/9784 is addressed.
@@ -72,6 +77,10 @@ class TestBeatmapset(TestCase):
 class TestBeatmapsetEvents(TestCase):
     def test_deserialize(self):
         api.beatmapset_events()
+        api.beatmapset_events(beatmapset_id=1339615)
+        api.beatmapset_events(beatmapset_id=692322)
+        api.beatmapset_events(beatmapset_id=724033)
+        api.beatmapset_events(beatmapset_id=1112418)
 
     def test_all_types(self):
         # beatmapset_events is a really complicated endpoint in terms of return
@@ -310,6 +319,23 @@ class TestBeatmapPack(TestCase):
         api.beatmap_pack("A1")
 
 
+class TestMultiplayerScores(TestCase):
+    def test_deserialize(self):
+        api.multiplayer_scores(1057998, 11773230)
+
+
+class TestScores(TestCase):
+    def test_deserialize(self):
+        api.scores()
+        scores = api.scores("osu")
+        api.scores("osu", cursor_string=scores.cursor_string)
+
+
+class TestTags(TestCase):
+    def test_deserialize(self):
+        api.tags()
+
+
 # ======================
 # api_full test cases
 # ======================
@@ -335,6 +361,8 @@ class TestRoomLeaderboard(TestCaseAuthorizationCode):
     def test_deserialize(self):
         # https://osu.ppy.sh/multiplayer/rooms/232594
         api_full.room_leaderboard(232594)
+        # https://osu.ppy.sh/multiplayer/rooms/1222586 (daily challenge)
+        api_full.room_leaderboard(1222586, page=10)
 
 
 class TestRooms(TestCaseAuthorizationCode):
@@ -346,6 +374,7 @@ class TestRooms(TestCaseAuthorizationCode):
 class TestDownloadScore(TestCaseAuthorizationCode):
     def test_deserialize(self):
         api_full.download_score(429915881)
+        api_full.score(429915881).download()
 
 
 class TestDownloadScoreMode(TestCaseAuthorizationCode):

@@ -75,6 +75,9 @@ def type_to_string(type_):
         arg_strs.append("None")
         return " | ".join(arg_strs)
 
+    if isinstance(type_, Field):
+        return type_to_string(type_.type)
+
     return str(type_)
 
 
@@ -172,7 +175,6 @@ class Generator:
                 type_ = type(value.value)
                 doc_value = value.value
             else:
-
                 if callable(value):
                     # will (almost?) always be "function"
                     type_ = type(value).__name__
@@ -195,9 +197,9 @@ class Generator:
                 self.write(f"      :value: {doc_value}\n")
 
             # leave a special note for when our naming deviates from the api
-            if isinstance(value, Field) and value.name is not None:
+            if isinstance(type_, Field) and type_.name is not None:
                 note_text = (
-                    f"``{name}`` is returned in the osu! api as " f"``{value.name}``."
+                    f"``{name}`` is returned in the osu! api as ``{type_.name}``."
                 )
                 self.write("\n")
                 self.write(f"   .. note::\n      {note_text}\n")

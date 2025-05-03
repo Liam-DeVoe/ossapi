@@ -1,4 +1,4 @@
-from typing import Union, TypeVar, Optional, List, _GenericAlias
+from typing import Union, TypeVar, Optional, _GenericAlias
 import logging
 import webbrowser
 import socket
@@ -37,6 +37,8 @@ from ossapi.models import (
     Score,
     BeatmapsetSearchResult,
     ModdingHistoryEventsBundle,
+    Tag,
+    Tags,
     User,
     Rankings,
     BeatmapScores,
@@ -77,6 +79,8 @@ from ossapi.models import (
     Events,
     BeatmapPack,
     BeatmapPacks,
+    Scores,
+    UserRelation,
 )
 from ossapi.enums import (
     GameMode,
@@ -133,7 +137,7 @@ GameModeT = Union[GameMode, str]
 ScoreTypeT = Union[ScoreType, str]
 # XXX this cannot be recursively typed without breaking our runtime type hint
 # inspection.
-ModT = Union[Mod, str, int, List[Union[Mod, str, int]]]
+ModT = Union[Mod, str, int, list[Union[Mod, str, int]]]
 RankingFilterT = Union[RankingFilter, str]
 RankingTypeT = Union[RankingType, str]
 UserBeatmapTypeT = Union[UserBeatmapType, str]
@@ -380,7 +384,7 @@ class Ossapi:
         authentication from this redirect uri, it must be a port on localhost,
         e.g. "http://localhost:3914/". You can change your client's redirect uri
         from its settings page.
-    scopes: List[str]
+    scopes: list[str]
         What scopes to request when authenticating.
     grant: Grant or str
         Which oauth grant (aka flow) to use when authenticating with the api.
@@ -447,7 +451,7 @@ class Ossapi:
         client_id: int,
         client_secret: str,
         redirect_uri: Optional[str] = None,
-        scopes: List[Union[str, Scope]] = [Scope.PUBLIC],
+        scopes: list[Union[str, Scope]] = [Scope.PUBLIC],
         *,
         grant: Optional[Union[Grant, str]] = None,
         strict: bool = False,
@@ -898,12 +902,21 @@ class Ossapi:
         # because if we got here that means we were passed a value for this
         # attribute, so we know it's defined and not optional.
         if is_optional(type_):
-            # leaving these assertions in to help me catch errors in my
-            # reasoning until I better understand python's typing.
-            assert len(args) == 2
-            type_ = args[0]
-            origin = get_origin(type_)
-            args = get_args(type_)
+            assert len(args) >= 2
+            # two args is the standard, for Optional[T] = Union[T, None].
+            # but we could also have Union[T, None, V] which passes is_optional
+            # but we want to unwrap differently to preserve the Union[T, V].
+            if len(args) == 2:
+                type_ = args[0]
+                origin = get_origin(type_)
+                args = get_args(type_)
+            else:
+                # should we be changing type_ here? it's not technically correct
+                # anymore, we'd have to remove None from the union. But I don't
+                # know if we rely on type_ instead of args anywhere, and I don't
+                # know how to create a new type instance.
+                origin = get_origin(type_)
+                args = tuple(t for t in get_args(type_) if t is not type(None))
 
         # validate that the values we're receiving are the types we expect them
         # to be
@@ -969,6 +982,7 @@ class Ossapi:
             # deserialize any of them.
             fail_reasons = []
             for arg in args:
+                self.log.debug(f"trying type {arg} for union {type_}")
                 try:
                     import copy
 
@@ -978,8 +992,13 @@ class Ossapi:
                     # fix it here, as we may reuse `value`.
                     new_value = self._instantiate_type(arg, v, obj, attr_name)
                 except Exception as e:
+                    self.log.debug(
+                        f"failed to satisfy type {arg} when instantiating "
+                        f"union {type_}, trying next type in the union. (reason: {e})"
+                    )
                     fail_reasons.append(str(e))
                     continue
+                break
 
             if new_value is None:
                 raise ValueError(
@@ -1086,7 +1105,9 @@ class Ossapi:
                 kwargs_[k] = v
             else:
                 if self.strict:
-                    raise TypeError(f"unexpected parameter `{k}` for type {type_}")
+                    raise TypeError(
+                        f"unexpected parameter `{k}` for type {type_}. value: {v}"
+                    )
                 # this is an INFO log in spirit, but can be spammy with Union
                 # type resolution where the first union case hits nonfatal
                 # errors like this before a fatal error causes it to backtrack.
@@ -1240,7 +1261,7 @@ class Ossapi:
         *,
         mode: Optional[GameModeT] = None,
         legacy_only: Optional[bool] = None,
-    ) -> List[Score]:
+    ) -> list[Score]:
         """
         Get all of a user's scores on a beatmap. If you only want the top user
         score, see :meth:`beatmap_user_score`.
@@ -1352,7 +1373,7 @@ class Ossapi:
         return self._get(Beatmap, "/beatmaps/lookup", params)
 
     @request(Scope.PUBLIC, category="beatmaps")
-    def beatmaps(self, beatmap_ids: List[BeatmapIdT]) -> List[Beatmap]:
+    def beatmaps(self, beatmap_ids: list[BeatmapIdT]) -> list[Beatmap]:
         """
         Batch get beatmaps by id. If you only want to retrieve a single beatmap,
         or want to retrieve beatmaps by something other than id (eg checksum),
@@ -1520,7 +1541,7 @@ class Ossapi:
         beatmap_id: Optional[BeatmapIdT] = None,
         beatmapset_status: Optional[BeatmapsetStatusT] = None,
         limit: Optional[int] = None,
-        message_types: Optional[List[MessageTypeT]] = None,
+        message_types: Optional[list[MessageTypeT]] = None,
         only_unresolved: Optional[bool] = None,
         page: Optional[int] = None,
         sort: Optional[BeatmapDiscussionPostSortT] = None,
@@ -1732,7 +1753,7 @@ class Ossapi:
         limit: Optional[int] = None,
         page: Optional[int] = None,
         user_id: Optional[UserIdT] = None,
-        types: Optional[List[BeatmapsetEventTypeT]] = None,
+        types: Optional[list[BeatmapsetEventTypeT]] = None,
         min_date: Optional[datetime] = None,
         max_date: Optional[datetime] = None,
         beatmapset_id: Optional[BeatmapsetIdT] = None,
@@ -1805,7 +1826,7 @@ class Ossapi:
         to: Optional[str] = None,
         max_id: Optional[int] = None,
         stream: Optional[str] = None,
-        message_formats: List[ChangelogMessageFormat] = [
+        message_formats: list[ChangelogMessageFormat] = [
             ChangelogMessageFormat.HTML,
             ChangelogMessageFormat.MARKDOWN,
         ],
@@ -1848,7 +1869,7 @@ class Ossapi:
         changelog: str,
         *,
         key: Optional[str] = None,
-        message_formats: List[ChangelogMessageFormat] = [
+        message_formats: list[ChangelogMessageFormat] = [
             ChangelogMessageFormat.HTML,
             ChangelogMessageFormat.MARKDOWN,
         ],
@@ -1911,7 +1932,7 @@ class Ossapi:
         message: str,
         # TODO need to add support to automatic conversion for lists of id types
         # instead of just bare types (: UserIdT)
-        target_ids: List[UserIdT],
+        target_ids: list[UserIdT],
     ) -> ChatChannel:
         """
         Send an announcement message. You must be in the announce usergroup to
@@ -2180,7 +2201,7 @@ class Ossapi:
     # --------
 
     @request(Scope.FRIENDS_READ, category="friends")
-    def friends(self) -> List[UserCompact]:
+    def friends(self) -> list[UserRelation]:
         """
         Get the friends of the authenticated user.
 
@@ -2189,7 +2210,10 @@ class Ossapi:
         Implements the `Get Friends
         <https://osu.ppy.sh/docs/index.html#friends>`__ endpoint.
         """
-        return self._get(List[UserCompact], "/friends")
+        return self._get(
+            list[UserRelation] if self.api_version >= 20241022 else list[UserCompact],
+            "/friends",
+        )
 
     # / ("home")
     # ----------
@@ -2417,8 +2441,6 @@ class Ossapi:
     # /rooms
     # ------
 
-    # TODO add test for this once I figure out values for room_id and
-    # playlist_id that actually produce a response lol
     @request(Scope.PUBLIC, category="rooms")
     def multiplayer_scores(
         self,
@@ -2475,7 +2497,9 @@ class Ossapi:
         return self._get(Room, f"/rooms/{room_id}")
 
     @request(Scope.PUBLIC, requires_user=True, category="rooms")
-    def room_leaderboard(self, room_id: RoomIdT) -> RoomLeaderboard:
+    def room_leaderboard(
+        self, room_id: RoomIdT, limit: Optional[int] = None, page: Optional[int] = None
+    ) -> RoomLeaderboard:
         """
         Get the leaderboard of a room.
 
@@ -2483,13 +2507,20 @@ class Ossapi:
         ----------
         room_id
             The room to get the leaderboard of.
+        limit
+            Maximum number of room scores to return.
+        offset
+            Offset for pagination.
 
         Notes
         -----
         Implements the `Get Room Leaderboard
         <https://osu.ppy.sh/docs/index.html#roomsroomleaderboard>`__ endpoint.
         """
-        return self._get(RoomLeaderboard, f"/rooms/{room_id}/leaderboard")
+        params = {"limit": limit, "page": page}
+        return self._get(
+            RoomLeaderboard, f"/rooms/{room_id}/leaderboard", params=params
+        )
 
     @request(Scope.PUBLIC, requires_user=True, category="rooms")
     def rooms(
@@ -2502,7 +2533,7 @@ class Ossapi:
         sort: Optional[str] = None,
         # TODO enumify
         type_group: Optional[str] = None,
-    ) -> List[Room]:
+    ) -> list[Room]:
         """
         Get the list of current rooms.
 
@@ -2531,7 +2562,7 @@ class Ossapi:
             "sort": sort,
             "type_group": type_group,
         }
-        return self._get(List[Room], "/rooms", params=params)
+        return self._get(list[Room], "/rooms", params=params)
 
     # /scores
     # -------
@@ -2555,6 +2586,28 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#scoresmodescore>`__ endpoint.
         """
         return self._get(Score, f"/scores/{score_id}")
+
+    @request(Scope.PUBLIC, category="scores")
+    def scores(
+        self, mode: Optional[GameModeT] = None, *, cursor_string: Optional[str] = None
+    ) -> Scores:
+        """
+        Returns most recent 1000 passed scores across all users.
+
+        Parameters
+        ----------
+        mode
+            The mode to get scores for.
+        cursor_string
+            Cursor for pagination.
+
+        Notes
+        -----
+        Implements the `Get Scores
+        <https://osu.ppy.sh/docs/index.html#get-scores94>`__ endpoint.
+        """
+        params = {"mode": mode, "cursor_string": cursor_string}
+        return self._get(Scores, "/scores", params)
 
     @request(Scope.PUBLIC, category="scores")
     def score_mode(self, mode: GameModeT, score_id: int) -> Score:
@@ -2671,7 +2724,7 @@ class Ossapi:
     # -----------
 
     @request(Scope.PUBLIC, category="spotlights")
-    def spotlights(self) -> List[Spotlight]:
+    def spotlights(self) -> list[Spotlight]:
         """
         Get active spotlights.
 
@@ -2683,6 +2736,22 @@ class Ossapi:
         spotlights = self._get(Spotlights, "/spotlights")
         return spotlights.spotlights
 
+    # /tags
+    # -----
+
+    @request(Scope.PUBLIC, category="tags")
+    def tags(self) -> list[Tag]:
+        """
+        Get beatmap tags.
+
+        Notes
+        -----
+        Implements the `Get Tags
+        <https://osu.ppy.sh/docs/index.html#get-apiv2tags>`__ endpoint.
+        """
+        tags = self._get(Tags, "/tags")
+        return tags.tags
+
     # /users
     # ------
 
@@ -2693,7 +2762,7 @@ class Ossapi:
         *,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-    ) -> List[KudosuHistory]:
+    ) -> list[KudosuHistory]:
         """
         Get user kudosu history.
 
@@ -2712,7 +2781,7 @@ class Ossapi:
         <https://osu.ppy.sh/docs/index.html#get-user-kudosu>`__ endpoint.
         """
         params = {"limit": limit, "offset": offset}
-        return self._get(List[KudosuHistory], f"/users/{user_id}/kudosu", params)
+        return self._get(list[KudosuHistory], f"/users/{user_id}/kudosu", params)
 
     @request(Scope.PUBLIC, category="users")
     def user_scores(
@@ -2725,7 +2794,7 @@ class Ossapi:
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         legacy_only: Optional[bool] = None,
-    ) -> List[Score]:
+    ) -> list[Score]:
         """
         Get scores of a user.
 
@@ -2757,7 +2826,7 @@ class Ossapi:
             "offset": offset,
             "legacy_only": None if legacy_only is None else int(legacy_only),
         }
-        return self._get(List[Score], f"/users/{user_id}/scores/{type.value}", params)
+        return self._get(list[Score], f"/users/{user_id}/scores/{type.value}", params)
 
     @request(Scope.PUBLIC, category="users")
     def user_beatmaps(
@@ -2767,7 +2836,7 @@ class Ossapi:
         *,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-    ) -> Union[List[Beatmapset], List[BeatmapPlaycount]]:
+    ) -> Union[list[Beatmapset], list[BeatmapPlaycount]]:
         """
         Get beatmaps of a user.
 
@@ -2794,9 +2863,9 @@ class Ossapi:
         """
         params = {"limit": limit, "offset": offset}
 
-        return_type = List[Beatmapset]
+        return_type = list[Beatmapset]
         if type is UserBeatmapType.MOST_PLAYED:
-            return_type = List[BeatmapPlaycount]
+            return_type = list[BeatmapPlaycount]
 
         return self._get(
             return_type, f"/users/{user_id}/beatmapsets/{type.value}", params
@@ -2809,7 +2878,7 @@ class Ossapi:
         *,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-    ) -> List[Event]:
+    ) -> list[Event]:
         """
         Get recent activity of a user.
 
@@ -2829,7 +2898,7 @@ class Ossapi:
         endpoint.
         """
         params = {"limit": limit, "offset": offset}
-        return self._get(List[_Event], f"/users/{user_id}/recent_activity/", params)
+        return self._get(list[_Event], f"/users/{user_id}/recent_activity/", params)
 
     @request(Scope.PUBLIC, category="users")
     def user(
@@ -2860,7 +2929,7 @@ class Ossapi:
         return self._get(User, f"/users/{user}/{mode.value if mode else ''}", params)
 
     @request(Scope.PUBLIC, category="users")
-    def users_lookup(self, users: List[Union[UserIdT, str]]):
+    def users_lookup(self, users: list[Union[UserIdT, str]]):
         """
         Batch get users by id or username. If you only want to retrieve a single
         user, or want to retrieve users by username instead of id, see :meth:`user`.
@@ -2877,7 +2946,7 @@ class Ossapi:
         return self._get(Users, "/users/lookup", params).users
 
     @request(Scope.PUBLIC, category="users")
-    def users(self, user_ids: List[int]) -> List[UserCompact]:
+    def users(self, user_ids: list[int]) -> list[UserCompact]:
         """
         Batch get users by id. If you only want to retrieve a single user, or
         want to retrieve users by username instead of id, see :meth:`user`.
