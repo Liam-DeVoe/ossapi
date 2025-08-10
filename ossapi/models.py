@@ -738,7 +738,7 @@ class Rankings(Model):
     beatmapsets: Optional[list[Beatmapset]]
     cursor: CursorT
     cursor_string: Optional[str]
-    ranking: Union[list[UserStatistics], list[CountryStatistics]]
+    ranking: Union[list[CountryStatistics], list[UserStatistics]]
     spotlight: Optional[Spotlight]
     total: Optional[int]
 
