@@ -5,9 +5,9 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Wiki" href="wiki.html" /><link rel="prev" title="Tags" href="tags.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>Users - ossapi v5.2.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Users - ossapi v5.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=781848f9" />
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">ossapi v5.2.1 documentation</div></a>
+      <a href="index.html"><div class="brand">ossapi v5.3.2 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -191,7 +191,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v5.2.1 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.3.2 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -284,8 +284,32 @@
           <section id="users">
 <h1>Users<a class="headerlink" href="#users" title="Link to this heading">¶</a></h1>
 <dl class="py function">
+<dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.search_beatmaps_passed">
+<span class="sig-name descname"><span class="pre">search_beatmaps_passed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beatmapset_ids</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_converts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_legacy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_diff_reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ruleset_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.search_beatmaps_passed" title="Link to this definition">¶</a></dt>
+<dd><p>Searches for the beatmaps a user has passed, by beatmapset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.UserCompact" title="ossapi.models.UserCompact"><em>UserCompact</em></a>) – The id of the user.</p></li>
+<li><p><strong>beatmapset_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a><em> | </em><a class="reference internal" href="api-reference.html#ossapi.models.BeatmapsetCompact" title="ossapi.models.BeatmapsetCompact"><em>BeatmapsetCompact</em></a><em>]</em>) – The list of beatmapsets to search.</p></li>
+<li><p><strong>exclude_converts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to exclude converts.</p></li>
+<li><p><strong>is_legacy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> | </em><em>None</em>) – Whether to consider legacy scores. Defaults to returning all scores.</p></li>
+<li><p><strong>no_diff_reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to exclude diff reduction mods. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>ruleset_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>None</em>) – The ruleset to seach. Defaults to searching all rulesets.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="api-reference.html#ossapi.models.BeatmapCompact" title="ossapi.models.BeatmapCompact"><em>BeatmapCompact</em></a>]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Implements the <a class="reference external" href="https://osu.ppy.sh/docs/index.html#search-beatmaps-passed">Search Beatmaps Passed</a>
+endpoint.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user">
-<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user" title="Link to this definition">¶</a></dt>
 <dd><p>Get a user by id or username.</p>
 <dl class="simple">
 <dt>user</dt><dd><p>The user id or username of the user to get.</p>
@@ -315,7 +339,7 @@ if not passed.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_beatmaps">
-<span class="sig-name descname"><span class="pre">user_beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_beatmaps" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">user_beatmaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_beatmaps" title="Link to this definition">¶</a></dt>
 <dd><p>Get beatmaps of a user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -339,7 +363,7 @@ otherwise.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_kudosu">
-<span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_kudosu" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">user_kudosu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_kudosu" title="Link to this definition">¶</a></dt>
 <dd><p>Get user kudosu history.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -359,7 +383,7 @@ otherwise.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_recent_activity">
-<span class="sig-name descname"><span class="pre">user_recent_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_recent_activity" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">user_recent_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_recent_activity" title="Link to this definition">¶</a></dt>
 <dd><p>Get recent activity of a user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -380,7 +404,7 @@ endpoint.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ossapi.ossapiv2.Ossapi.user_scores">
-<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legacy_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">user_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legacy_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ossapi.ossapiv2.Ossapi.user_scores" title="Link to this definition">¶</a></dt>
 <dd><p>Get scores of a user.</p>
 <dl class="simple">
 <dt>user_id</dt><dd><p>The user to get scores of.</p>
@@ -485,7 +509,7 @@ which returns more data than <a class="reference internal" href="#ossapi.ossapiv
           </div>
           <div class="right-details">
             <div class="icons">
-              <a class="muted-link " href="https://github.com/tybug/ossapi" aria-label="GitHub">
+              <a class="muted-link " href="https://github.com/liam-devoe/ossapi" aria-label="GitHub">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                 </svg>
@@ -510,6 +534,7 @@ which returns more data than <a class="reference internal" href="#ossapi.ossapiv
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Users</a><ul>
+<li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.search_beatmaps_passed"><code class="docutils literal notranslate"><span class="pre">search_beatmaps_passed()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user"><code class="docutils literal notranslate"><span class="pre">user()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_beatmaps"><code class="docutils literal notranslate"><span class="pre">user_beatmaps()</span></code></a></li>
 <li><a class="reference internal" href="#ossapi.ossapiv2.Ossapi.user_kudosu"><code class="docutils literal notranslate"><span class="pre">user_kudosu()</span></code></a></li>
@@ -528,7 +553,7 @@ which returns more data than <a class="reference internal" href="#ossapi.ossapiv
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=72123926"></script>
+</div><script src="_static/documentation_options.js?v=343ff915"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

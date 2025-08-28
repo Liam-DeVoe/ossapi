@@ -1026,6 +1026,14 @@ Enums
       :type: str
       :value: "artist_desc"
 
+   .. py:attribute:: CREATOR_ASCENDING
+      :type: str
+      :value: "creator_asc"
+
+   .. py:attribute:: CREATOR_DESCENDING
+      :type: str
+      :value: "creator_desc"
+
    .. py:attribute:: DIFFICULTY_ASCENDING
       :type: str
       :value: "difficulty_asc"
@@ -1041,6 +1049,14 @@ Enums
    .. py:attribute:: FAVORITES_DESCENDING
       :type: str
       :value: "favourites_desc"
+
+   .. py:attribute:: NOMINATIONS_ASCENDING
+      :type: str
+      :value: "nominations_asc"
+
+   .. py:attribute:: NOMINATIONS_DESCENDING
+      :type: str
+      :value: "nominations_desc"
 
    .. py:attribute:: PLAYS_ASCENDING
       :type: str
@@ -1066,6 +1082,14 @@ Enums
       :type: str
       :value: "rating_desc"
 
+   .. py:attribute:: RELEVANCE_ASCENDING
+      :type: str
+      :value: "relevance_asc"
+
+   .. py:attribute:: RELEVANCE_DESCENDING
+      :type: str
+      :value: "relevance_desc"
+
    .. py:attribute:: TITLE_ASCENDING
       :type: str
       :value: "title_asc"
@@ -1073,6 +1097,14 @@ Enums
    .. py:attribute:: TITLE_DESCENDING
       :type: str
       :value: "title_desc"
+
+   .. py:attribute:: UPDATED_ASCENDING
+      :type: str
+      :value: "updated_asc"
+
+   .. py:attribute:: UPDATED_DESCENDING
+      :type: str
+      :value: "updated_desc"
 
 .. py:class:: NewsPostKey
 
@@ -3293,7 +3325,7 @@ Models
       :type: Season
 
    .. py:attribute:: total_score
-      :type: int
+      :type: float
 
 .. py:class:: Users
 
@@ -5117,6 +5149,11 @@ Models
    .. py:attribute:: tags
       :type: list[Tag]
 
+.. py:class:: BeatmapsPassed
+
+   .. py:attribute:: beatmaps_passed
+      :type: list[BeatmapCompact]
+
 
 Ossapi
 ------
@@ -5140,6 +5177,7 @@ Scope
 .. autoclass:: Scope
    :members:
    :undoc-members:
+
 Domain
 ------
 
@@ -5148,6 +5186,7 @@ Domain
 .. autoclass:: Domain
    :members:
    :undoc-members:
+
 Grant
 -----
 
@@ -5156,6 +5195,7 @@ Grant
 .. autoclass:: Grant
    :members:
    :undoc-members:
+
 Replay
 ------
 

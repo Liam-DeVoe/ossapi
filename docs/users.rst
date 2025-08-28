@@ -6,6 +6,8 @@
 Users
 -----
 
+.. autofunction:: ossapi.ossapiv2.Ossapi.search_beatmaps_passed
+
 .. autofunction:: ossapi.ossapiv2.Ossapi.user
 
 .. autofunction:: ossapi.ossapiv2.Ossapi.user_beatmaps

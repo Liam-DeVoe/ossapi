@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>ossapi.ossapiv2 - ossapi v5.2.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>ossapi.ossapiv2 - ossapi v5.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=781848f9" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">ossapi v5.2.1 documentation</div></a>
+      <a href="../../index.html"><div class="brand">ossapi v5.3.2 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">ossapi v5.2.1 documentation</span>
+  <span class="sidebar-brand-text">ossapi v5.3.2 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -275,132 +275,133 @@
         </div>
         <article role="main" id="furo-main-content">
           <h1>Source code for ossapi.ossapiv2</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">_GenericAlias</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">webbrowser</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote</span>
-<span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">_GenericAlias</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">unquote</span>
 
-<span class="kn">from</span> <span class="nn">requests_oauthlib</span> <span class="kn">import</span> <span class="n">OAuth2Session</span>
-<span class="kn">from</span> <span class="nn">oauthlib.oauth2</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">BackendApplicationClient</span><span class="p">,</span>
-    <span class="n">TokenExpiredError</span><span class="p">,</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">osrparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">oauthlib.oauth2</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">AccessDeniedError</span><span class="p">,</span>
+    <span class="n">BackendApplicationClient</span><span class="p">,</span>
     <span class="n">OAuth2Error</span><span class="p">,</span>
+    <span class="n">TokenExpiredError</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.errors</span> <span class="kn">import</span> <span class="n">InsufficientScopeError</span>
-<span class="kn">from</span> <span class="nn">oauthlib.oauth2.rfc6749.tokens</span> <span class="kn">import</span> <span class="n">OAuth2Token</span>
-<span class="kn">import</span> <span class="nn">osrparse</span>
-<span class="kn">from</span> <span class="nn">typing_utils</span> <span class="kn">import</span> <span class="n">issubtype</span><span class="p">,</span> <span class="n">get_type_hints</span><span class="p">,</span> <span class="n">get_origin</span><span class="p">,</span> <span class="n">get_args</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">oauthlib.oauth2.rfc6749.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">InsufficientScopeError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">oauthlib.oauth2.rfc6749.tokens</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth2Token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">requests_oauthlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth2Session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_args</span><span class="p">,</span> <span class="n">get_origin</span><span class="p">,</span> <span class="n">get_type_hints</span><span class="p">,</span> <span class="n">issubtype</span>
 
-<span class="kn">import</span> <span class="nn">ossapi</span>
-<span class="kn">from</span> <span class="nn">ossapi.models</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Beatmap</span><span class="p">,</span>
-    <span class="n">BeatmapCompact</span><span class="p">,</span>
-    <span class="n">BeatmapUserScore</span><span class="p">,</span>
-    <span class="n">ForumTopicAndPosts</span><span class="p">,</span>
-    <span class="n">Search</span><span class="p">,</span>
-    <span class="n">CommentBundle</span><span class="p">,</span>
-    <span class="n">Cursor</span><span class="p">,</span>
-    <span class="n">Score</span><span class="p">,</span>
-    <span class="n">BeatmapsetSearchResult</span><span class="p">,</span>
-    <span class="n">ModdingHistoryEventsBundle</span><span class="p">,</span>
-    <span class="n">Tag</span><span class="p">,</span>
-    <span class="n">Tags</span><span class="p">,</span>
-    <span class="n">User</span><span class="p">,</span>
-    <span class="n">Rankings</span><span class="p">,</span>
-    <span class="n">BeatmapScores</span><span class="p">,</span>
-    <span class="n">KudosuHistory</span><span class="p">,</span>
-    <span class="n">Beatmapset</span><span class="p">,</span>
-    <span class="n">BeatmapPlaycount</span><span class="p">,</span>
-    <span class="n">Spotlight</span><span class="p">,</span>
-    <span class="n">Spotlights</span><span class="p">,</span>
-    <span class="n">WikiPage</span><span class="p">,</span>
-    <span class="n">_Event</span><span class="p">,</span>
-    <span class="n">Event</span><span class="p">,</span>
-    <span class="n">BeatmapsetDiscussionPosts</span><span class="p">,</span>
-    <span class="n">Build</span><span class="p">,</span>
-    <span class="n">ChangelogListing</span><span class="p">,</span>
-    <span class="n">MultiplayerScores</span><span class="p">,</span>
-    <span class="n">BeatmapsetDiscussionVotes</span><span class="p">,</span>
-    <span class="n">CreatePMResponse</span><span class="p">,</span>
-    <span class="n">BeatmapsetDiscussions</span><span class="p">,</span>
-    <span class="n">UserCompact</span><span class="p">,</span>
-    <span class="n">NewsListing</span><span class="p">,</span>
-    <span class="n">NewsPost</span><span class="p">,</span>
-    <span class="n">SeasonalBackgrounds</span><span class="p">,</span>
-    <span class="n">BeatmapsetCompact</span><span class="p">,</span>
-    <span class="n">BeatmapUserScores</span><span class="p">,</span>
-    <span class="n">DifficultyAttributes</span><span class="p">,</span>
-    <span class="n">Users</span><span class="p">,</span>
-    <span class="n">Beatmaps</span><span class="p">,</span>
-    <span class="n">CreateForumTopicResponse</span><span class="p">,</span>
-    <span class="n">ForumPoll</span><span class="p">,</span>
-    <span class="n">ForumPost</span><span class="p">,</span>
-    <span class="n">ForumTopic</span><span class="p">,</span>
-    <span class="n">Room</span><span class="p">,</span>
-    <span class="n">RoomLeaderboard</span><span class="p">,</span>
-    <span class="n">Matches</span><span class="p">,</span>
-    <span class="n">Match</span><span class="p">,</span>
-    <span class="n">MatchResponse</span><span class="p">,</span>
-    <span class="n">ChatChannel</span><span class="p">,</span>
-    <span class="n">Events</span><span class="p">,</span>
-    <span class="n">BeatmapPack</span><span class="p">,</span>
-    <span class="n">BeatmapPacks</span><span class="p">,</span>
-    <span class="n">Scores</span><span class="p">,</span>
-    <span class="n">UserRelation</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">ossapi.enums</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">GameMode</span><span class="p">,</span>
-    <span class="n">ScoreType</span><span class="p">,</span>
-    <span class="n">RankingFilter</span><span class="p">,</span>
-    <span class="n">RankingType</span><span class="p">,</span>
-    <span class="n">UserBeatmapType</span><span class="p">,</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ossapi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ossapi.enums</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">BeatmapDiscussionPostSort</span><span class="p">,</span>
-    <span class="n">UserLookupKey</span><span class="p">,</span>
-    <span class="n">BeatmapsetEventType</span><span class="p">,</span>
-    <span class="n">CommentableType</span><span class="p">,</span>
-    <span class="n">CommentSort</span><span class="p">,</span>
-    <span class="n">ForumTopicSort</span><span class="p">,</span>
-    <span class="n">SearchMode</span><span class="p">,</span>
-    <span class="n">MultiplayerScoresSort</span><span class="p">,</span>
+    <span class="n">BeatmapPackType</span><span class="p">,</span>
     <span class="n">BeatmapsetDiscussionVote</span><span class="p">,</span>
     <span class="n">BeatmapsetDiscussionVoteSort</span><span class="p">,</span>
-    <span class="n">BeatmapsetStatus</span><span class="p">,</span>
-    <span class="n">MessageType</span><span class="p">,</span>
+    <span class="n">BeatmapsetEventType</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchCategory</span><span class="p">,</span>
-    <span class="n">BeatmapsetSearchMode</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchExplicitContent</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchGenre</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchLanguage</span><span class="p">,</span>
-    <span class="n">NewsPostKey</span><span class="p">,</span>
+    <span class="n">BeatmapsetSearchMode</span><span class="p">,</span>
     <span class="n">BeatmapsetSearchSort</span><span class="p">,</span>
-    <span class="n">RoomSearchMode</span><span class="p">,</span>
+    <span class="n">BeatmapsetStatus</span><span class="p">,</span>
     <span class="n">ChangelogMessageFormat</span><span class="p">,</span>
+    <span class="n">CommentableType</span><span class="p">,</span>
+    <span class="n">CommentSort</span><span class="p">,</span>
     <span class="n">EventsSort</span><span class="p">,</span>
-    <span class="n">BeatmapPackType</span><span class="p">,</span>
+    <span class="n">ForumTopicSort</span><span class="p">,</span>
+    <span class="n">GameMode</span><span class="p">,</span>
+    <span class="n">MessageType</span><span class="p">,</span>
+    <span class="n">MultiplayerScoresSort</span><span class="p">,</span>
+    <span class="n">NewsPostKey</span><span class="p">,</span>
+    <span class="n">RankingFilter</span><span class="p">,</span>
+    <span class="n">RankingType</span><span class="p">,</span>
+    <span class="n">RoomSearchMode</span><span class="p">,</span>
+    <span class="n">ScoreType</span><span class="p">,</span>
+    <span class="n">SearchMode</span><span class="p">,</span>
+    <span class="n">UserBeatmapType</span><span class="p">,</span>
+    <span class="n">UserLookupKey</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">ossapi.utils</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">is_primitive_type</span><span class="p">,</span>
-    <span class="n">is_optional</span><span class="p">,</span>
-    <span class="n">is_base_model_type</span><span class="p">,</span>
-    <span class="n">is_model_type</span><span class="p">,</span>
-    <span class="n">is_high_model_type</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ossapi.mod</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ossapi.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Beatmap</span><span class="p">,</span>
+    <span class="n">BeatmapCompact</span><span class="p">,</span>
+    <span class="n">BeatmapPack</span><span class="p">,</span>
+    <span class="n">BeatmapPacks</span><span class="p">,</span>
+    <span class="n">BeatmapPlaycount</span><span class="p">,</span>
+    <span class="n">Beatmaps</span><span class="p">,</span>
+    <span class="n">BeatmapScores</span><span class="p">,</span>
+    <span class="n">Beatmapset</span><span class="p">,</span>
+    <span class="n">BeatmapsetCompact</span><span class="p">,</span>
+    <span class="n">BeatmapsetDiscussionPosts</span><span class="p">,</span>
+    <span class="n">BeatmapsetDiscussions</span><span class="p">,</span>
+    <span class="n">BeatmapsetDiscussionVotes</span><span class="p">,</span>
+    <span class="n">BeatmapsetSearchResult</span><span class="p">,</span>
+    <span class="n">BeatmapsPassed</span><span class="p">,</span>
+    <span class="n">BeatmapUserScore</span><span class="p">,</span>
+    <span class="n">BeatmapUserScores</span><span class="p">,</span>
+    <span class="n">Build</span><span class="p">,</span>
+    <span class="n">ChangelogListing</span><span class="p">,</span>
+    <span class="n">ChatChannel</span><span class="p">,</span>
+    <span class="n">CommentBundle</span><span class="p">,</span>
+    <span class="n">CreateForumTopicResponse</span><span class="p">,</span>
+    <span class="n">CreatePMResponse</span><span class="p">,</span>
+    <span class="n">Cursor</span><span class="p">,</span>
+    <span class="n">DifficultyAttributes</span><span class="p">,</span>
+    <span class="n">Event</span><span class="p">,</span>
+    <span class="n">Events</span><span class="p">,</span>
+    <span class="n">ForumPoll</span><span class="p">,</span>
+    <span class="n">ForumPost</span><span class="p">,</span>
+    <span class="n">ForumTopic</span><span class="p">,</span>
+    <span class="n">ForumTopicAndPosts</span><span class="p">,</span>
+    <span class="n">KudosuHistory</span><span class="p">,</span>
+    <span class="n">Match</span><span class="p">,</span>
+    <span class="n">Matches</span><span class="p">,</span>
+    <span class="n">MatchResponse</span><span class="p">,</span>
+    <span class="n">ModdingHistoryEventsBundle</span><span class="p">,</span>
+    <span class="n">MultiplayerScores</span><span class="p">,</span>
+    <span class="n">NewsListing</span><span class="p">,</span>
+    <span class="n">NewsPost</span><span class="p">,</span>
+    <span class="n">Rankings</span><span class="p">,</span>
+    <span class="n">Room</span><span class="p">,</span>
+    <span class="n">RoomLeaderboard</span><span class="p">,</span>
+    <span class="n">Score</span><span class="p">,</span>
+    <span class="n">Scores</span><span class="p">,</span>
+    <span class="n">Search</span><span class="p">,</span>
+    <span class="n">SeasonalBackgrounds</span><span class="p">,</span>
+    <span class="n">Spotlight</span><span class="p">,</span>
+    <span class="n">Spotlights</span><span class="p">,</span>
+    <span class="n">Tag</span><span class="p">,</span>
+    <span class="n">Tags</span><span class="p">,</span>
+    <span class="n">User</span><span class="p">,</span>
+    <span class="n">UserCompact</span><span class="p">,</span>
+    <span class="n">UserRelation</span><span class="p">,</span>
+    <span class="n">Users</span><span class="p">,</span>
+    <span class="n">WikiPage</span><span class="p">,</span>
+    <span class="n">_Event</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ossapi.replay</span><span class="w"> </span><span class="kn">import</span> <span class="n">Replay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ossapi.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Field</span><span class="p">,</span>
-    <span class="n">convert_primitive_type</span><span class="p">,</span>
     <span class="n">_Model</span><span class="p">,</span>
+    <span class="n">convert_primitive_type</span><span class="p">,</span>
+    <span class="n">is_base_model_type</span><span class="p">,</span>
+    <span class="n">is_high_model_type</span><span class="p">,</span>
+    <span class="n">is_model_type</span><span class="p">,</span>
+    <span class="n">is_optional</span><span class="p">,</span>
+    <span class="n">is_primitive_type</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">ossapi.mod</span> <span class="kn">import</span> <span class="n">Mod</span>
-<span class="kn">from</span> <span class="nn">ossapi.replay</span> <span class="kn">import</span> <span class="n">Replay</span>
 
 <span class="c1"># our `request` function below relies on the ordering of these types. The</span>
 <span class="c1"># base type must come first, with any auxiliary types that the base type accepts</span>
@@ -448,7 +449,7 @@
 <span class="n">MatchIdT</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Match</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handles various validation and preparation tasks for any endpoint request</span>
 <span class="sd">    method.</span>
@@ -481,7 +482,7 @@
 <span class="sd">        in the docs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
         <span class="n">instantiate</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">type_</span> <span class="ow">in</span> <span class="n">function</span><span class="o">.</span><span class="vm">__annotations__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">origin</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
@@ -492,7 +493,7 @@
         <span class="n">arg_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">function</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
 
         <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="bp">self</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">scope</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">InsufficientScopeError</span><span class="p">(</span>
@@ -508,13 +509,13 @@
                     <span class="s2">&quot;currently authorized with the client credentials grant.&quot;</span>
                     <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                     <span class="s2">&quot;For more details, see &quot;</span>
-                    <span class="s2">&quot;https://tybug.github.io/ossapi/grants.html.&quot;</span>
+                    <span class="s2">&quot;https://liam-devoe.github.io/ossapi/grants.html.&quot;</span>
                 <span class="p">)</span>
 
             <span class="c1"># we may need to edit this later so convert from tuple</span>
             <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 
-            <span class="k">def</span> <span class="nf">id_from_id_type</span><span class="p">(</span><span class="n">arg_name</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">id_from_id_type</span><span class="p">(</span><span class="n">arg_name</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
                 <span class="n">annotations</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="vm">__annotations__</span>
                 <span class="k">if</span> <span class="n">arg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">None</span>
@@ -579,7 +580,7 @@
     <span class="k">return</span> <span class="n">decorator</span>
 
 
-<span class="k">class</span> <span class="nc">ReauthenticationRequired</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReauthenticationRequired</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Indicates that either the user has revoked this application from their</span>
 <span class="sd">    account, or osu-web itself has invalidated the refresh token associated with</span>
@@ -597,7 +598,7 @@
 
 <div class="viewcode-block" id="Grant">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Grant">[docs]</a>
-<span class="k">class</span> <span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Grant</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The grant types used by the api.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -609,7 +610,7 @@
 
 <div class="viewcode-block" id="Scope">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Scope">[docs]</a>
-<span class="k">class</span> <span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The OAuth scopes used by the api.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -627,7 +628,7 @@
 
 <div class="viewcode-block" id="Domain">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Domain">[docs]</a>
-<span class="k">class</span> <span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Domain</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Different possible api domains. These correspond to different deployments of</span>
 <span class="sd">    the osu server, such as osu.ppy.sh or dev.ppy.sh.</span>
@@ -642,8 +643,8 @@
 
 
 
-<span class="k">class</span> <span class="nc">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">OAuth2Session</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">api_version</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Oauth2SessionOssapi</span><span class="p">(</span><span class="n">OAuth2Session</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">api_version</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -655,7 +656,7 @@
 
 <div class="viewcode-block" id="Ossapi">
 <a class="viewcode-back" href="../../api-reference.html#ossapi.ossapiv2.Ossapi">[docs]</a>
-<span class="k">class</span> <span class="nc">Ossapi</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Ossapi</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper around osu! api v2. The main entry point for ossapi.</span>
 
@@ -734,7 +735,7 @@
     <span class="n">AUTH_CODE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{domain}</span><span class="s2">.ppy.sh/oauth/authorize&quot;</span>
     <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{domain}</span><span class="s2">.ppy.sh/api/v2&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">client_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">client_secret</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -820,7 +821,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">gen_token_key</span><span class="p">(</span><span class="n">grant</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">OSU</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gen_token_key</span><span class="p">(</span><span class="n">grant</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">scopes</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="o">.</span><span class="n">OSU</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The unique key / hash for the given set of parameters. This is intended</span>
 <span class="sd">        to provide a way to allow multiple OssapiV2&#39;s to live at the same time,</span>
@@ -851,7 +852,7 @@
         <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">remove_token</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">token_directory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_token</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">token_directory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes the token file associated with the given key. If</span>
 <span class="sd">        ``token_directory`` is passed, looks there for the token file instead of</span>
@@ -866,7 +867,7 @@
         <span class="n">token_file</span> <span class="o">=</span> <span class="n">token_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">.pickle&quot;</span>
         <span class="n">token_file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a valid OAuth2Session, either from a saved token file associated</span>
 <span class="sd">        with this OssapiV2&#39;s parameters, or from a fresh authentication if no</span>
@@ -903,7 +904,7 @@
         <span class="c1"># otherwise, authorize from scratch</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_grant</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_new_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_new_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grant</span> <span class="ow">is</span> <span class="n">Grant</span><span class="o">.</span><span class="n">CLIENT_CREDENTIALS</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">)</span>
 
@@ -911,7 +912,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_uri</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_new_client_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Authenticates with the api from scratch on the client grant.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -925,7 +926,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_save_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">session</span>
 
-    <span class="k">def</span> <span class="nf">_new_authorization_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">redirect_uri</span><span class="p">,</span> <span class="n">scopes</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_new_authorization_grant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">redirect_uri</span><span class="p">,</span> <span class="n">scopes</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Authenticates with the api from scratch on the authorization code grant.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -974,7 +975,7 @@
 
         <span class="k">return</span> <span class="n">session</span>
 
-    <span class="k">def</span> <span class="nf">_save_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves the token to this OssapiV2&#39;s associated token file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -982,7 +983,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_file</span><span class="p">,</span> <span class="s2">&quot;wb+&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{},</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{},</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
         <span class="c1"># I don&#39;t *think* type hints should change over the lifetime of a</span>
         <span class="c1"># program, but clear them every request out of an abundance of caution.</span>
         <span class="c1"># This costs us almost nothing and may avoid bugs when eg a consumer</span>
@@ -994,12 +995,12 @@
         <span class="c1"># also format data for post requests</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_params</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">make_request</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">make_request</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
                 <span class="n">method</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span>
             <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">reauthenticate_and_retry</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">reauthenticate_and_retry</span><span class="p">():</span>
             <span class="c1"># don&#39;t automatically re-authenticate if the user passed an access</span>
             <span class="c1"># token. They should handle re-authentication with the user</span>
             <span class="c1"># manually (since they may have a bespoke system, like a website).</span>
@@ -1054,7 +1055,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_type</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="n">json_</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_check_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
         <span class="c1"># TODO this should just be `if &quot;error&quot; in json`, but for some reason</span>
         <span class="c1"># `self.search_beatmaps` always returns an error in the response...</span>
         <span class="c1"># open an issue on osu-web?</span>
@@ -1074,16 +1075,16 @@
                 <span class="s2">&quot;Grant.AUTHORIZATION_CODE.&quot;</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">type_</span><span class="p">,</span> <span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_format_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="c1"># we need to pass multiple values for this key, so make its</span>
@@ -1098,13 +1099,15 @@
                     <span class="n">params</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;cursor[</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
                 <span class="k">del</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mod</span><span class="p">):</span>
-                <span class="n">params</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">[]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+                <span class="c1"># Mod.NM decomposes into [], not [&quot;NM&quot;]. special case this.</span>
+                <span class="n">mods</span> <span class="o">=</span> <span class="p">[</span><span class="n">Mod</span><span class="o">.</span><span class="n">NM</span><span class="p">]</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">Mod</span><span class="o">.</span><span class="n">NM</span> <span class="k">else</span> <span class="n">value</span><span class="o">.</span><span class="n">decompose</span><span class="p">(</span><span class="n">clean</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">params</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">[]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mod</span><span class="o">.</span><span class="n">short_name</span><span class="p">()</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">mods</span><span class="p">]</span>
                 <span class="k">del</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">params</span>
 
-    <span class="k">def</span> <span class="nf">_format_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
             <span class="k">return</span> <span class="mi">1000</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
@@ -1113,7 +1116,7 @@
             <span class="k">return</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="nb">bool</span> <span class="ow">is</span> <span class="kc">True</span> <span class="k">else</span> <span class="s2">&quot;false&quot;</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is where the magic happens. Since python lacks a good</span>
 <span class="sd">        deserialization library, I&#39;ve opted to use type annotations and type</span>
@@ -1179,7 +1182,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resolved annotations for type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span>
 
-    <span class="k">def</span> <span class="nf">_instantiate_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_instantiate_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># `attr_name` is purely for debugging, it&#39;s the name of the attribute</span>
         <span class="c1"># being instantiated</span>
         <span class="n">origin</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">type_</span><span class="p">)</span>
@@ -1208,7 +1211,7 @@
 
         <span class="c1"># validate that the values we&#39;re receiving are the types we expect them</span>
         <span class="c1"># to be</span>
-        <span class="k">def</span> <span class="nf">_check_primitive_type</span><span class="p">():</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_check_primitive_type</span><span class="p">():</span>
             <span class="c1"># The osu api occasionally makes attributes optional, so allow null</span>
             <span class="c1"># values even for non-optional fields if we&#39;re not in</span>
             <span class="c1"># strict mode.</span>
@@ -1272,7 +1275,7 @@
             <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying type </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2"> for union </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="kn">import</span> <span class="nn">copy</span>
+                    <span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
 
                     <span class="n">v</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                     <span class="c1"># _instantiate_type implicitly mutates the passed value.</span>
@@ -1308,7 +1311,7 @@
         <span class="c1"># eventually.</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_annotations</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_processed_type_hints</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_processed_type_hints</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_field_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_field_types</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="n">type_</span><span class="o">.</span><span class="n">preprocess_data</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -1357,7 +1360,7 @@
 
         <span class="k">return</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">type_hints</span>
 
-    <span class="k">def</span> <span class="nf">_instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="n">_Model</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_</span><span class="p">:</span> <span class="n">_Model</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;instantiating type </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="p">,</span> <span class="n">type_hints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processed_type_hints</span><span class="p">(</span>
             <span class="n">type_</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">use_field_names</span><span class="o">=</span><span class="kc">True</span>
@@ -1413,11 +1416,11 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">val</span> <span class="o">=</span> <span class="n">type_</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs_</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;type error while instantiating class </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;type error while instantiating class </span><span class="si">{</span><span class="n">type_</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 
         <span class="k">return</span> <span class="n">val</span>
 
-    <span class="k">def</span> <span class="nf">_get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_type_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="c1"># type hints are expensive to compute. Our models should never change</span>
         <span class="c1"># their type hints, so cache them.</span>
 
@@ -1432,7 +1435,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="n">type_hints</span>
         <span class="k">return</span> <span class="n">type_hints</span>
 
-    <span class="k">def</span> <span class="nf">_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_hints</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_hints</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]:</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
@@ -1440,7 +1443,7 @@
             <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
         <span class="k">return</span> <span class="n">fields</span>
 
-    <span class="k">def</span> <span class="nf">_clear_type_hints_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_clear_type_hints_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_type_hints_cache</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># =========</span>
@@ -1451,7 +1454,7 @@
     <span class="c1"># ---------------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmap packs&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_packs</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_packs</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapPackTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1483,7 +1486,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapPacks</span><span class="p">,</span> <span class="s2">&quot;/beatmaps/packs&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmap packs&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_pack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pack</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapPack</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_pack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pack</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BeatmapPack</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a beatmap pack. If you want to retrieve a list of beatmap packs, see</span>
 <span class="sd">        see :meth:`beatmap_packs`.</span>
@@ -1500,7 +1503,7 @@
     <span class="c1"># ---------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_user_score</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_user_score</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">BeatmapIdT</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
@@ -1542,7 +1545,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_user_scores</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_user_scores</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">BeatmapIdT</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
@@ -1583,7 +1586,7 @@
         <span class="k">return</span> <span class="n">scores</span><span class="o">.</span><span class="n">scores</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_scores</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_scores</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">BeatmapIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1627,7 +1630,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapScores</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmaps/</span><span class="si">{</span><span class="n">beatmap_id</span><span class="si">}</span><span class="s2">/scores&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1661,7 +1664,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Beatmap</span><span class="p">,</span> <span class="s2">&quot;/beatmaps/lookup&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beatmap_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beatmap_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapIdT</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Beatmap</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get beatmaps by id. If you only want to retrieve a single beatmap,</span>
 <span class="sd">        or want to retrieve beatmaps by something other than id (eg checksum),</span>
@@ -1681,7 +1684,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Beatmaps</span><span class="p">,</span> <span class="s2">&quot;/beatmaps&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">beatmaps</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmaps&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmap_attributes</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmap_attributes</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmap_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1718,7 +1721,7 @@
     <span class="c1"># ------------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmapset_discussion_posts</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmapset_discussion_posts</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmapset_discussion_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1766,7 +1769,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmapset_discussion_votes</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmapset_discussion_votes</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">beatmapset_discussion_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1822,7 +1825,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmapset_discussions</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmapset_discussions</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">beatmapset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1884,7 +1887,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapsetDiscussions</span><span class="p">,</span> <span class="s2">&quot;/beatmapsets/discussions&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">search_beatmapsets</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_beatmapsets</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">query</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2002,7 +2005,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">BeatmapsetSearchResult</span><span class="p">,</span> <span class="s2">&quot;/beatmapsets/search/&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmapset</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmapset</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">beatmapset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BeatmapsetIdT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2035,7 +2038,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Beatmapset</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/beatmapsets/</span><span class="si">{</span><span class="n">beatmapset_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;beatmapsets&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">beatmapset_events</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beatmapset_events</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2088,7 +2091,7 @@
     <span class="c1"># ----------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;changelog&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">changelog_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">build</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Build</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">changelog_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">build</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Build</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get changelog build details.</span>
 
@@ -2107,7 +2110,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Build</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/changelog/</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">build</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;changelog&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">changelog_listing</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">changelog_listing</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">from_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2152,7 +2155,7 @@
     <span class="c1"># TODO can almost certainly be combined with changelog_build endpoint, in</span>
     <span class="c1"># line with other get/lookup endpoint combinations (beatmap, beatmapset)</span>
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;changelog&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">changelog_build_lookup</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">changelog_build_lookup</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">changelog</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2188,7 +2191,7 @@
     <span class="c1"># -----</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">CHAT_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">send_pm</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">send_pm</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">is_action</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CreatePMResponse</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2213,7 +2216,7 @@
     <span class="c1"># this method requires a user in the announce group, so I&#39;ve never tested</span>
     <span class="c1"># it.</span>
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">CHAT_WRITE_MANAGE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">send_announcement</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">send_announcement</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">channel_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">channel_description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2264,7 +2267,7 @@
     <span class="c1"># ---------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;comments&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">comments</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">comments</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">commentable_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CommentableTypeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2306,7 +2309,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">CommentBundle</span><span class="p">,</span> <span class="s2">&quot;/comments&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;comments&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comment_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CommentBundle</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comment_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CommentBundle</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a comment and its replies (up to 2 levels deep).</span>
 
@@ -2326,7 +2329,7 @@
     <span class="c1"># -------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">events</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">events</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sort</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EventsSortT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Events</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2351,7 +2354,7 @@
     <span class="c1"># -------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FORUM_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;forums&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">forum_create_topic</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forum_create_topic</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">forum_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -2379,7 +2382,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">CreateForumTopicResponse</span><span class="p">,</span> <span class="s2">&quot;/forums/topics&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FORUM_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;forums&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">forum_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumPost</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forum_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumPost</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reply to a forum topic.</span>
 
@@ -2399,7 +2402,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">ForumPost</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/forums/topics/</span><span class="si">{</span><span class="n">topic_id</span><span class="si">}</span><span class="s2">/reply&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FORUM_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;forums&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">forum_edit_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumTopic</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forum_edit_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumTopic</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Edit a forum topic.</span>
 
@@ -2419,7 +2422,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_put</span><span class="p">(</span><span class="n">ForumTopic</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/forums/topics/</span><span class="si">{</span><span class="n">topic_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FORUM_WRITE</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;forums&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">forum_edit_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumPost</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forum_edit_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForumPost</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Edit a forum post.</span>
 
@@ -2439,7 +2442,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_put</span><span class="p">(</span><span class="n">ForumPost</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/forums/posts/</span><span class="si">{</span><span class="n">post_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;forums&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">forum_topic</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forum_topic</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">topic_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2489,7 +2492,7 @@
     <span class="c1"># --------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">FRIENDS_READ</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;friends&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">friends</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">friends</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserRelation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the friends of the authenticated user.</span>
 
@@ -2507,7 +2510,7 @@
     <span class="c1"># ----------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;home&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2539,7 +2542,7 @@
     <span class="c1"># --------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;matches&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Matches</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">matches</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Matches</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get current matches. If you want to get a specific match, see</span>
 <span class="sd">        :meth:`match`.</span>
@@ -2552,7 +2555,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Matches</span><span class="p">,</span> <span class="s2">&quot;/matches&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;matches&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">match</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">match_id</span><span class="p">:</span> <span class="n">MatchIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -2580,7 +2583,7 @@
     <span class="c1"># ---</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">IDENTIFY</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;me&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">get_me</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_me</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get data about the authenticated user.</span>
 
@@ -2601,7 +2604,7 @@
     <span class="c1"># -----</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;news&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">news_listing</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">news_listing</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2629,7 +2632,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">NewsListing</span><span class="p">,</span> <span class="s2">&quot;/news&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;news&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">news_post</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">news_post</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">news</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NewsPostKeyT</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewsPostKey</span><span class="o">.</span><span class="n">SLUG</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NewsPost</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2657,7 +2660,7 @@
     <span class="c1"># ------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;oauth&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">revoke_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">revoke_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Revoke the current token. This will remove any authentication and leave</span>
 <span class="sd">        you unable to make any more api calls until you re-authenticate.</span>
@@ -2674,7 +2677,7 @@
     <span class="c1"># ---------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rankings&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">ranking</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ranking</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">RankingTypeT</span><span class="p">,</span>
@@ -2730,7 +2733,7 @@
     <span class="c1"># ------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">multiplayer_scores</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiplayer_scores</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">room_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">playlist_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -2768,7 +2771,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room_id</span><span class="p">:</span> <span class="n">RoomIdT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Room</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">room_id</span><span class="p">:</span> <span class="n">RoomIdT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Room</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a room.</span>
 
@@ -2784,8 +2787,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Room</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/rooms/</span><span class="si">{</span><span class="n">room_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">room_leaderboard</span><span class="p">(</span>
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">room_leaderboard</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">room_id</span><span class="p">:</span> <span class="n">RoomIdT</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RoomLeaderboard</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2797,13 +2800,13 @@
 <span class="sd">            The room to get the leaderboard of.</span>
 <span class="sd">        limit</span>
 <span class="sd">            Maximum number of room scores to return.</span>
-<span class="sd">        offset</span>
-<span class="sd">            Offset for pagination.</span>
+<span class="sd">        page</span>
+<span class="sd">            Pagination for results.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get Room Leaderboard</span>
-<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#roomsroomleaderboard&gt;`__ endpoint.</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-apiv2roomsroomleaderboard&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
@@ -2811,7 +2814,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;rooms&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rooms</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2856,7 +2859,7 @@
     <span class="c1"># -------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a score. This corresponds to urls of the form https://osu.ppy.sh/scores/1312718771</span>
 <span class="sd">        (&quot;new id format&quot;).</span>
@@ -2876,7 +2879,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">scores</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scores</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GameModeT</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cursor_string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2892,13 +2895,13 @@
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Implements the `Get Scores</span>
-<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-scores94&gt;`__ endpoint.</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#get-scores97&gt;`__ endpoint.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ruleset&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;cursor_string&quot;</span><span class="p">:</span> <span class="n">cursor_string</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Scores</span><span class="p">,</span> <span class="s2">&quot;/scores&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">score_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Score</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a score, where the score id is specific to the gamemode. This</span>
 <span class="sd">        corresponds to urls of the form https://osu.ppy.sh/scores/osu/4459998279</span>
@@ -2920,7 +2923,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Score</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/scores/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="c1"># if the response above succeeded, it will return a raw string</span>
         <span class="c1"># instead of json. If it didn&#39;t succeed, it will return json with an</span>
@@ -2939,8 +2942,8 @@
         <span class="n">replay</span> <span class="o">=</span> <span class="n">osrparse</span><span class="o">.</span><span class="n">Replay</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Replay</span><span class="p">(</span><span class="n">replay</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 
-    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Replay</span><span class="p">:</span>
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">download_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Replay</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Download the replay data of a score.</span>
 
@@ -2964,8 +2967,8 @@
         <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="n">score_id</span><span class="si">}</span><span class="s2">/download&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_score</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">)</span>
 
-    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">requires_user</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">download_score_mode</span><span class="p">(</span>
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;scores&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">download_score_mode</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">GameModeT</span><span class="p">,</span> <span class="n">score_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">raw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Replay</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2997,7 +3000,7 @@
     <span class="c1"># --------------------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;seasonal backgrounds&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">seasonal_backgrounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeasonalBackgrounds</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">seasonal_backgrounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeasonalBackgrounds</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get current seasonal backgrounds.</span>
 
@@ -3012,7 +3015,7 @@
     <span class="c1"># -----------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;spotlights&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">spotlights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spotlights</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Spotlight</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get active spotlights.</span>
 
@@ -3028,7 +3031,7 @@
     <span class="c1"># -----</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">tags</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tag</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tags</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tag</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get beatmap tags.</span>
 
@@ -3044,7 +3047,7 @@
     <span class="c1"># ------</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">user_kudosu</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user_kudosu</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -3072,7 +3075,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">KudosuHistory</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/kudosu&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">user_scores</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user_scores</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">ScoreTypeT</span><span class="p">,</span>
@@ -3117,7 +3120,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">Score</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/scores/</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">user_beatmaps</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user_beatmaps</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="nb">type</span><span class="p">:</span> <span class="n">UserBeatmapTypeT</span><span class="p">,</span>
@@ -3160,7 +3163,7 @@
         <span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">user_recent_activity</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user_recent_activity</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -3189,7 +3192,56 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">_Event</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/recent_activity/&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_beatmaps_passed</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="n">UserIdT</span><span class="p">,</span>
+        <span class="n">beatmapset_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapsetIdT</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">exclude_converts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">is_legacy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">no_diff_reduction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">ruleset_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">BeatmapCompact</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Searches for the beatmaps a user has passed, by beatmapset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        user_id</span>
+<span class="sd">            The id of the user.</span>
+<span class="sd">        beatmapset_ids</span>
+<span class="sd">            The list of beatmapsets to search.</span>
+<span class="sd">        exclude_converts</span>
+<span class="sd">            Whether to exclude converts.</span>
+<span class="sd">        is_legacy</span>
+<span class="sd">            Whether to consider legacy scores. Defaults to returning all scores.</span>
+<span class="sd">        no_diff_reduction</span>
+<span class="sd">            Whether to exclude diff reduction mods. Defaults to ``True``.</span>
+<span class="sd">        ruleset_id</span>
+<span class="sd">            The ruleset to seach. Defaults to searching all rulesets.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Implements the `Search Beatmaps Passed</span>
+<span class="sd">        &lt;https://osu.ppy.sh/docs/index.html#search-beatmaps-passed&gt;`__</span>
+<span class="sd">        endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;beatmapset_ids&quot;</span><span class="p">:</span> <span class="n">beatmapset_ids</span><span class="p">,</span>
+            <span class="s2">&quot;exclude_converts&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="kc">None</span> <span class="k">if</span> <span class="n">exclude_converts</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">exclude_converts</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;is_legacy&quot;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">is_legacy</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">is_legacy</span><span class="p">),</span>
+            <span class="s2">&quot;no_diff_reduction&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">no_diff_reduction</span><span class="p">),</span>
+            <span class="s2">&quot;ruleset_id&quot;</span><span class="p">:</span> <span class="n">ruleset_id</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span>
+            <span class="n">BeatmapsPassed</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/beatmaps-passed&quot;</span><span class="p">,</span> <span class="n">params</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">beatmaps_passed</span>
+
+    <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">user</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">user</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
         <span class="o">*</span><span class="p">,</span>
@@ -3217,7 +3269,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">users_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">users_lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">UserIdT</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get users by id or username. If you only want to retrieve a single</span>
 <span class="sd">        user, or want to retrieve users by username instead of id, see :meth:`user`.</span>
@@ -3234,7 +3286,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">Users</span><span class="p">,</span> <span class="s2">&quot;/users/lookup&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">users</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">Scope</span><span class="o">.</span><span class="n">PUBLIC</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">users</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserCompact</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Batch get users by id. If you only want to retrieve a single user, or</span>
 <span class="sd">        want to retrieve users by username instead of id, see :meth:`user`.</span>
@@ -3256,7 +3308,7 @@
     <span class="c1"># -----</span>
 
     <span class="nd">@request</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;wiki&quot;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wiki_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locale</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WikiPage</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wiki_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">locale</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WikiPage</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a wiki page.</span>
 
@@ -3291,7 +3343,7 @@
           </div>
           <div class="right-details">
             <div class="icons">
-              <a class="muted-link " href="https://github.com/tybug/ossapi" aria-label="GitHub">
+              <a class="muted-link " href="https://github.com/liam-devoe/ossapi" aria-label="GitHub">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
                 </svg>
@@ -3309,7 +3361,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=72123926"></script>
+</div><script src="../../_static/documentation_options.js?v=343ff915"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
