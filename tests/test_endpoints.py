@@ -2,24 +2,23 @@ from datetime import datetime
 from unittest import TestCase
 
 from ossapi import (
-    RankingType,
     BeatmapsetEventType,
+    EventsSort,
+    ForumPoll,
+    GameMode,
     InsufficientScopeError,
     Mod,
-    GameMode,
-    ForumPoll,
+    RankingType,
     RoomSearchMode,
-    EventsSort,
 )
-
 from tests import (
+    UNIT_TEST_MESSAGE,
     TestCaseAuthorizationCode,
     TestCaseDevServer,
-    UNIT_TEST_MESSAGE,
     api_v2 as api,
+    api_v2_dev as api_dev,
     api_v2_full as api_full,
     api_v2_old as api_old,
-    api_v2_dev as api_dev,
 )
 
 
@@ -51,6 +50,11 @@ class TestUserKudosu(TestCase):
 class TestBeatmapScores(TestCase):
     def test_deserialize(self):
         api.beatmap_scores(beatmap_id=1981090)
+
+    def test_nm(self):
+        for score in api.beatmap_scores(221777, mods=Mod.NM):
+            # TODO: or CL/PF/SD
+            assert score.mods == Mod.NM
 
 
 class TestBeatmap(TestCase):
@@ -334,6 +338,11 @@ class TestScores(TestCase):
 class TestTags(TestCase):
     def test_deserialize(self):
         api.tags()
+
+
+class TestUserBeatmapsPassed(TestCase):
+    def test_deserialize(self):
+        api.search_beatmaps_passed(12092800, beatmapset_ids=[765778])
 
 
 # ======================

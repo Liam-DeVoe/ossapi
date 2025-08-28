@@ -1,8 +1,8 @@
 from osrparse import GameMode as OsrparseGameMode, Replay as OsrparseReplay
 
-from ossapi.models import GameMode, User, Beatmap
-from ossapi.mod import Mod
 from ossapi.enums import UserLookupKey
+from ossapi.mod import Mod
+from ossapi.models import Beatmap, GameMode, User
 
 game_mode_map = {
     OsrparseGameMode.STD: GameMode.OSU,

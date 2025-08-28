@@ -1,7 +1,6 @@
 from unittest import TestCase
 
-from ossapi import RankingType, Cursor
-
+from ossapi import Cursor, RankingType
 from tests import api_v2 as api
 
 

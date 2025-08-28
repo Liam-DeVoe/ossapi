@@ -5,7 +5,7 @@ It is possible to use ossapi to interact with the api of other deployments of th
 
 .. code-block:: python
 
-    from ossapi import Ossapi, Domain
+    from ossapi import Domain, Ossapi
 
     api_dev = Ossapi(client_id, client_secret, domain="dev")
     # or

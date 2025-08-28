@@ -1,10 +1,10 @@
 import json
-from json import JSONEncoder
 from datetime import datetime
 from enum import Enum
+from json import JSONEncoder
 
-from ossapi.models import Model
 from ossapi.mod import Mod
+from ossapi.models import Model
 
 
 class ModelEncoder(JSONEncoder):

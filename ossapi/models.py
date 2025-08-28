@@ -2,77 +2,78 @@
 # https://docs.python.org/3.7/whatsnew/3.7.html#pep-563-postponed-evaluation-
 # of-annotations
 from __future__ import annotations
-from typing import Optional, TypeVar, Generic, Any, Union
-from dataclasses import dataclass
 
-from ossapi.mod import Mod
+from dataclasses import dataclass
+from typing import Any, Generic, Optional, TypeVar, Union
+
 from ossapi.enums import (
-    UserAccountHistory,
-    ProfileBanner,
-    UserBadge,
+    Availability,
+    BeatmapOwner,
+    BeatmapPackUserCompletionData,
+    BeatmapsetApproval,
+    BeatmapsetEventType,
+    BeatmapTag,
+    ChangelogSearch,
+    ChannelType,
     Country,
     Cover,
-    UserGroup,
-    UserMonthlyPlaycount,
-    UserPage,
-    UserReplaysWatchedCount,
-    UserAchievement,
-    UserProfileCustomization,
-    RankHistory,
-    Kudosu,
-    PlayStyles,
-    ProfilePage,
-    GameMode,
-    RankStatus,
-    Failtimes,
     Covers,
-    Hype,
-    Availability,
-    Nominations,
-    Statistics,
+    EventAchivement,
+    EventBeatmap,
+    EventBeatmapset,
+    EventType,
+    EventUser,
+    Failtimes,
+    ForumPollText,
+    ForumPollTitle,
+    ForumPostBody,
+    ForumTopicSort,
+    ForumTopicType,
+    GameMode,
+    GithubUser,
     Grade,
-    Weight,
-    MessageType,
+    Hype,
+    Kudosu,
     KudosuAction,
     KudosuGiver,
     KudosuPost,
-    EventType,
-    EventAchivement,
-    EventUser,
-    EventBeatmap,
-    BeatmapsetApproval,
-    EventBeatmapset,
     KudosuVote,
-    BeatmapsetEventType,
-    UserRelationType,
-    UserLevel,
-    UserGradeCounts,
-    GithubUser,
-    ChangelogSearch,
-    ForumTopicType,
-    ForumPostBody,
-    ForumTopicSort,
-    ChannelType,
-    ReviewsConfig,
+    MatchEventType,
+    MessageType,
     NewsSearch,
     Nomination,
+    Nominations,
+    PlayStyles,
+    ProfileBanner,
+    ProfilePage,
     RankHighest,
-    RoomType,
+    RankHistory,
+    RankStatus,
+    ReviewsConfig,
     RoomCategory,
-    MatchEventType,
-    ScoringType,
-    TeamType,
-    Variant,
-    ForumPollText,
-    ForumPollTitle,
-    BeatmapPackUserCompletionData,
-    RoomPlaylistItemStats,
     RoomDifficultyRange,
-    BeatmapOwner,
-    BeatmapTag,
+    RoomPlaylistItemStats,
+    RoomType,
+    ScoringType,
+    Statistics,
     Team,
+    TeamType,
+    UserAccountHistory,
+    UserAchievement,
+    UserBadge,
+    UserGradeCounts,
+    UserGroup,
+    UserLevel,
+    UserMonthlyPlaycount,
+    UserPage,
+    UserProfileCustomization,
+    UserRelationType,
+    UserReplaysWatchedCount,
+    Variant,
+    Weight,
 )
-from ossapi.utils import Datetime, Model, BaseModel, Field
+from ossapi.mod import Mod
+from ossapi.utils import BaseModel, Datetime, Field, Model
 
 T = TypeVar("T")
 S = TypeVar("S")
@@ -714,7 +715,7 @@ class SeasonStatistics(Model):
     division: SeasonDivision
     season: Season
     rank: int
-    total_score: int
+    total_score: float
 
 
 # return-value wrapper for https://osu.ppy.sh/docs/index.html#get-users.
@@ -1643,3 +1644,7 @@ class Tag(Model):
 
 class Tags(Model):
     tags: list[Tag]
+
+
+class BeatmapsPassed(Model):
+    beatmaps_passed: list[BeatmapCompact]

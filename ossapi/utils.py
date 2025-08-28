@@ -1,9 +1,8 @@
-from enum import Enum, IntFlag
 from datetime import datetime, timezone
+from enum import Enum, IntFlag
 from typing import Any, Union
-from dataclasses import dataclass
 
-from typing_utils import issubtype, get_origin, get_args
+from typing_utils import get_args, get_origin, issubtype
 
 
 def is_high_model_type(type_):
@@ -35,7 +34,7 @@ def is_base_model_type(type_):
 
 
 class Field:
-    def __init__(self, *, name=None, type=None):
+    def __init__(self, *, name=None, type):
         self.name = name
 
         # We use annotations for two distinct purposes: deserialization, and

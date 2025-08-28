@@ -28,7 +28,7 @@ dependencies = [
 async = ["aiohttp"]
 
 [project.urls]
-"Homepage" = "https://github.com/tybug/ossapi"
+"Homepage" = "https://github.com/liam-devoe/ossapi"
 
 [tool.setuptools.dynamic]
 version = {attr = "ossapi.__version__"}

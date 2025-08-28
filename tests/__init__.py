@@ -1,8 +1,7 @@
 import os
 from unittest import TestCase
 
-from ossapi import Ossapi, OssapiV1, Grant, Scope
-
+from ossapi import Grant, Ossapi, OssapiV1, Scope
 
 # technically all scopes except Scope.DELEGATE, since I don't own a bot account
 ALL_SCOPES = [

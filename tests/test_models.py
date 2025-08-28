@@ -1,7 +1,6 @@
 from unittest import TestCase
 
-from ossapi import User, BeatmapsetCompact, UserCompact, GameMode, BeatmapCompact
-
+from ossapi import BeatmapCompact, BeatmapsetCompact, GameMode, User, UserCompact
 from tests import api_v2 as api
 
 

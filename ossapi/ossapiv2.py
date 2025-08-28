@@ -1,129 +1,130 @@
-from typing import Union, TypeVar, Optional, _GenericAlias
-import logging
-import webbrowser
-import socket
-import pickle
-from pathlib import Path
-from datetime import datetime
-from enum import Enum
-from urllib.parse import unquote
+import functools
+import hashlib
 import inspect
 import json
-import hashlib
-import functools
+import logging
+import pickle
+import socket
 import sys
+import webbrowser
+from datetime import datetime
+from enum import Enum
+from pathlib import Path
+from typing import Optional, TypeVar, Union, _GenericAlias
+from urllib.parse import unquote
 
-from requests_oauthlib import OAuth2Session
+import osrparse
 from oauthlib.oauth2 import (
-    BackendApplicationClient,
-    TokenExpiredError,
     AccessDeniedError,
+    BackendApplicationClient,
     OAuth2Error,
+    TokenExpiredError,
 )
 from oauthlib.oauth2.rfc6749.errors import InsufficientScopeError
 from oauthlib.oauth2.rfc6749.tokens import OAuth2Token
-import osrparse
-from typing_utils import issubtype, get_type_hints, get_origin, get_args
+from requests_oauthlib import OAuth2Session
+from typing_utils import get_args, get_origin, get_type_hints, issubtype
 
 import ossapi
-from ossapi.models import (
-    Beatmap,
-    BeatmapCompact,
-    BeatmapUserScore,
-    ForumTopicAndPosts,
-    Search,
-    CommentBundle,
-    Cursor,
-    Score,
-    BeatmapsetSearchResult,
-    ModdingHistoryEventsBundle,
-    Tag,
-    Tags,
-    User,
-    Rankings,
-    BeatmapScores,
-    KudosuHistory,
-    Beatmapset,
-    BeatmapPlaycount,
-    Spotlight,
-    Spotlights,
-    WikiPage,
-    _Event,
-    Event,
-    BeatmapsetDiscussionPosts,
-    Build,
-    ChangelogListing,
-    MultiplayerScores,
-    BeatmapsetDiscussionVotes,
-    CreatePMResponse,
-    BeatmapsetDiscussions,
-    UserCompact,
-    NewsListing,
-    NewsPost,
-    SeasonalBackgrounds,
-    BeatmapsetCompact,
-    BeatmapUserScores,
-    DifficultyAttributes,
-    Users,
-    Beatmaps,
-    CreateForumTopicResponse,
-    ForumPoll,
-    ForumPost,
-    ForumTopic,
-    Room,
-    RoomLeaderboard,
-    Matches,
-    Match,
-    MatchResponse,
-    ChatChannel,
-    Events,
-    BeatmapPack,
-    BeatmapPacks,
-    Scores,
-    UserRelation,
-)
 from ossapi.enums import (
-    GameMode,
-    ScoreType,
-    RankingFilter,
-    RankingType,
-    UserBeatmapType,
     BeatmapDiscussionPostSort,
-    UserLookupKey,
-    BeatmapsetEventType,
-    CommentableType,
-    CommentSort,
-    ForumTopicSort,
-    SearchMode,
-    MultiplayerScoresSort,
+    BeatmapPackType,
     BeatmapsetDiscussionVote,
     BeatmapsetDiscussionVoteSort,
-    BeatmapsetStatus,
-    MessageType,
+    BeatmapsetEventType,
     BeatmapsetSearchCategory,
-    BeatmapsetSearchMode,
     BeatmapsetSearchExplicitContent,
     BeatmapsetSearchGenre,
     BeatmapsetSearchLanguage,
-    NewsPostKey,
+    BeatmapsetSearchMode,
     BeatmapsetSearchSort,
-    RoomSearchMode,
+    BeatmapsetStatus,
     ChangelogMessageFormat,
+    CommentableType,
+    CommentSort,
     EventsSort,
-    BeatmapPackType,
-)
-from ossapi.utils import (
-    is_primitive_type,
-    is_optional,
-    is_base_model_type,
-    is_model_type,
-    is_high_model_type,
-    Field,
-    convert_primitive_type,
-    _Model,
+    ForumTopicSort,
+    GameMode,
+    MessageType,
+    MultiplayerScoresSort,
+    NewsPostKey,
+    RankingFilter,
+    RankingType,
+    RoomSearchMode,
+    ScoreType,
+    SearchMode,
+    UserBeatmapType,
+    UserLookupKey,
 )
 from ossapi.mod import Mod
+from ossapi.models import (
+    Beatmap,
+    BeatmapCompact,
+    BeatmapPack,
+    BeatmapPacks,
+    BeatmapPlaycount,
+    Beatmaps,
+    BeatmapScores,
+    Beatmapset,
+    BeatmapsetCompact,
+    BeatmapsetDiscussionPosts,
+    BeatmapsetDiscussions,
+    BeatmapsetDiscussionVotes,
+    BeatmapsetSearchResult,
+    BeatmapsPassed,
+    BeatmapUserScore,
+    BeatmapUserScores,
+    Build,
+    ChangelogListing,
+    ChatChannel,
+    CommentBundle,
+    CreateForumTopicResponse,
+    CreatePMResponse,
+    Cursor,
+    DifficultyAttributes,
+    Event,
+    Events,
+    ForumPoll,
+    ForumPost,
+    ForumTopic,
+    ForumTopicAndPosts,
+    KudosuHistory,
+    Match,
+    Matches,
+    MatchResponse,
+    ModdingHistoryEventsBundle,
+    MultiplayerScores,
+    NewsListing,
+    NewsPost,
+    Rankings,
+    Room,
+    RoomLeaderboard,
+    Score,
+    Scores,
+    Search,
+    SeasonalBackgrounds,
+    Spotlight,
+    Spotlights,
+    Tag,
+    Tags,
+    User,
+    UserCompact,
+    UserRelation,
+    Users,
+    WikiPage,
+    _Event,
+)
 from ossapi.replay import Replay
+from ossapi.utils import (
+    Field,
+    _Model,
+    convert_primitive_type,
+    is_base_model_type,
+    is_high_model_type,
+    is_model_type,
+    is_optional,
+    is_primitive_type,
+)
 
 # our `request` function below relies on the ordering of these types. The
 # base type must come first, with any auxiliary types that the base type accepts
@@ -231,7 +232,7 @@ def request(scope, *, requires_user=False, category):
                     "currently authorized with the client credentials grant."
                     "\n\n"
                     "For more details, see "
-                    "https://tybug.github.io/ossapi/grants.html."
+                    "https://liam-devoe.github.io/ossapi/grants.html."
                 )
 
             # we may need to edit this later so convert from tuple
@@ -810,7 +811,9 @@ class Ossapi:
                     params[f"cursor[{k}]"] = v
                 del params[key]
             elif isinstance(value, Mod):
-                params[f"{key}[]"] = value.decompose()
+                # Mod.NM decomposes into [], not ["NM"]. special case this.
+                mods = [Mod.NM] if value == Mod.NM else value.decompose(clean=True)
+                params[f"{key}[]"] = [mod.short_name() for mod in mods]
                 del params[key]
             else:
                 params[key] = self._format_value(value)
@@ -2496,7 +2499,7 @@ class Ossapi:
         """
         return self._get(Room, f"/rooms/{room_id}")
 
-    @request(Scope.PUBLIC, requires_user=True, category="rooms")
+    @request(Scope.PUBLIC, category="rooms")
     def room_leaderboard(
         self, room_id: RoomIdT, limit: Optional[int] = None, page: Optional[int] = None
     ) -> RoomLeaderboard:
@@ -2509,13 +2512,13 @@ class Ossapi:
             The room to get the leaderboard of.
         limit
             Maximum number of room scores to return.
-        offset
-            Offset for pagination.
+        page
+            Pagination for results.
 
         Notes
         -----
         Implements the `Get Room Leaderboard
-        <https://osu.ppy.sh/docs/index.html#roomsroomleaderboard>`__ endpoint.
+        <https://osu.ppy.sh/docs/index.html#get-apiv2roomsroomleaderboard>`__ endpoint.
         """
         params = {"limit": limit, "page": page}
         return self._get(
@@ -2604,9 +2607,9 @@ class Ossapi:
         Notes
         -----
         Implements the `Get Scores
-        <https://osu.ppy.sh/docs/index.html#get-scores94>`__ endpoint.
+        <https://osu.ppy.sh/docs/index.html#get-scores97>`__ endpoint.
         """
-        params = {"mode": mode, "cursor_string": cursor_string}
+        params = {"ruleset": mode, "cursor_string": cursor_string}
         return self._get(Scores, "/scores", params)
 
     @request(Scope.PUBLIC, category="scores")
@@ -2651,7 +2654,7 @@ class Ossapi:
         replay = osrparse.Replay.from_string(r.content)
         return Replay(replay, self)
 
-    @request(Scope.PUBLIC, requires_user=True, category="scores")
+    @request(Scope.PUBLIC, category="scores")
     def download_score(self, score_id: int, *, raw: bool = False) -> Replay:
         """
         Download the replay data of a score.
@@ -2676,7 +2679,7 @@ class Ossapi:
         url = f"{self.base_url}/scores/{score_id}/download"
         return self._download_score(url=url, raw=raw)
 
-    @request(Scope.PUBLIC, requires_user=True, category="scores")
+    @request(Scope.PUBLIC, category="scores")
     def download_score_mode(
         self, mode: GameModeT, score_id: int, *, raw: bool = False
     ) -> Replay:
@@ -2899,6 +2902,55 @@ class Ossapi:
         """
         params = {"limit": limit, "offset": offset}
         return self._get(list[_Event], f"/users/{user_id}/recent_activity/", params)
+
+    @request(Scope.PUBLIC, category="users")
+    def search_beatmaps_passed(
+        self,
+        user_id: UserIdT,
+        beatmapset_ids: list[BeatmapsetIdT],
+        *,
+        exclude_converts: bool = False,
+        is_legacy: Optional[bool] = None,
+        no_diff_reduction: bool = True,
+        ruleset_id: Optional[int] = None,
+    ) -> list[BeatmapCompact]:
+        """
+        Searches for the beatmaps a user has passed, by beatmapset.
+
+        Parameters
+        ----------
+        user_id
+            The id of the user.
+        beatmapset_ids
+            The list of beatmapsets to search.
+        exclude_converts
+            Whether to exclude converts.
+        is_legacy
+            Whether to consider legacy scores. Defaults to returning all scores.
+        no_diff_reduction
+            Whether to exclude diff reduction mods. Defaults to ``True``.
+        ruleset_id
+            The ruleset to seach. Defaults to searching all rulesets.
+
+        Notes
+        -----
+        Implements the `Search Beatmaps Passed
+        <https://osu.ppy.sh/docs/index.html#search-beatmaps-passed>`__
+        endpoint.
+        """
+
+        params = {
+            "beatmapset_ids": beatmapset_ids,
+            "exclude_converts": (
+                None if exclude_converts is None else int(exclude_converts)
+            ),
+            "is_legacy": None if is_legacy is None else int(is_legacy),
+            "no_diff_reduction": int(no_diff_reduction),
+            "ruleset_id": ruleset_id,
+        }
+        return self._get(
+            BeatmapsPassed, f"/users/{user_id}/beatmaps-passed", params
+        ).beatmaps_passed
 
     @request(Scope.PUBLIC, category="users")
     def user(

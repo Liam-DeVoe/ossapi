@@ -1,8 +1,7 @@
-from json.decoder import JSONDecodeError
 import logging
-from datetime import datetime, timezone
-from typing import List
 import time
+from datetime import datetime, timezone
+from json.decoder import JSONDecodeError
 
 import requests
 from requests import RequestException

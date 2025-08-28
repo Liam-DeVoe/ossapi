@@ -1,31 +1,29 @@
-from enum import EnumMeta
 import inspect
-from pathlib import Path
-from collections import defaultdict
 import string
-from typing import List, Union
-from datetime import datetime
-from dataclasses import is_dataclass
 import textwrap
-from enum import IntFlag
+from collections import defaultdict
+from dataclasses import is_dataclass
+from datetime import datetime
+from enum import EnumMeta, IntFlag
+from pathlib import Path
+from typing import List, Union
 
-from typing_utils import get_type_hints, get_args, get_origin
+from typing_utils import get_args, get_origin, get_type_hints
 
-from ossapi.utils import (
-    EnumModel,
-    Model,
-    BaseModel,
-    IntFlagModel,
-    Datetime,
-    is_base_model_type,
-    is_model_type,
-    Field,
-)
+import ossapi
+from ossapi import Mod, Scope
 from ossapi.models import _Event
 from ossapi.ossapiv2 import ModT
-from ossapi import Scope, Mod
-import ossapi
-
+from ossapi.utils import (
+    BaseModel,
+    Datetime,
+    EnumModel,
+    Field,
+    IntFlagModel,
+    Model,
+    is_base_model_type,
+    is_model_type,
+)
 
 # sentinel value
 unset = object()

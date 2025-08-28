@@ -1,6 +1,6 @@
-from typing import Optional, List, Any
+from typing import Any, Optional
 
-from ossapi.utils import EnumModel, Datetime, Model, Field, IntFlagModel
+from ossapi.utils import Datetime, EnumModel, Field, IntFlagModel, Model
 
 # ================
 # Documented Enums
@@ -465,6 +465,24 @@ class BeatmapsetSearchSort(EnumModel):
 
     FAVORITES_DESCENDING = "favourites_desc"
     FAVORITES_ASCENDING = "favourites_asc"
+
+    # only present on https://osu.ppy.sh/beatmapsets for the "any" category,
+    # for some reason
+    UPDATED_DESCENDING = "updated_desc"
+    UPDATED_ASCENDING = "updated_asc"
+
+    # everything below here is private / undocumented?
+
+    RELEVANCE_DESCENDING = "relevance_desc"
+    RELEVANCE_ASCENDING = "relevance_asc"
+
+    NOMINATIONS_DESCENDING = "nominations_desc"
+    NOMINATIONS_ASCENDING = "nominations_asc"
+
+    CREATOR_DESCENDING = "creator_desc"
+    CREATOR_ASCENDING = "creator_asc"
+
+
 
 
 class NewsPostKey(EnumModel):
