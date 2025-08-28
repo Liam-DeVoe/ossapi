@@ -530,6 +530,7 @@ class BeatmapTag(Model):
     description: str
     id: int
     name: str
+    ruleset_id: Optional[int]
 
 
 class Failtimes(Model):
