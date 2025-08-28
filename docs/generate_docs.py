@@ -6,7 +6,7 @@ from dataclasses import is_dataclass
 from datetime import datetime
 from enum import EnumMeta, IntFlag
 from pathlib import Path
-from typing import List, Union
+from typing import Union
 
 from typing_utils import get_args, get_origin, get_type_hints
 
@@ -58,7 +58,7 @@ def type_to_string(type_):
 
     origin = get_origin(type_)
     args = get_args(type_)
-    if origin in [list, List]:
+    if origin is list:
         assert len(args) == 1
 
         arg = args[0]
