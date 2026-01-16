@@ -1,3 +1,4 @@
+import types
 from datetime import datetime, timezone
 from enum import Enum, IntFlag
 from types import UnionType
@@ -286,6 +287,10 @@ def is_primitive_type(type_):
     if not isinstance(type_, type):
         return False
     return type_ in [int, float, str, bool]
+
+
+def is_union(type_):
+    return type_ in [Union, types.UnionType]
 
 
 def convert_primitive_type(value, type_):

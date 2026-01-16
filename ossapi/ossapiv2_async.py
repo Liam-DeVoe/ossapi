@@ -139,6 +139,7 @@ from ossapi.utils import (
     is_model_type,
     is_optional,
     is_primitive_type,
+    is_union,
 )
 
 
@@ -289,7 +290,7 @@ def request(scope, *, requires_user=False, category):
         for name, type_ in function.__annotations__.items():
             origin = get_origin(type_)
             args = get_args(type_)
-            if origin is Union and is_base_model_type(args[0]):
+            if is_union(origin) and is_base_model_type(args[0]):
                 instantiate[name] = type_
 
         arg_names = list(inspect.signature(function).parameters)
@@ -1066,7 +1067,7 @@ class OssapiAsync:
                 new_value.append(entry)
             return new_value
 
-        if origin is Union:
+        if is_union(origin):
             # try each type in the union sequentially, taking the first which
             # successfully deserializes the json.
             new_value = None
