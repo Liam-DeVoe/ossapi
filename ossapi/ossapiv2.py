@@ -3018,11 +3018,11 @@ class Ossapi:
 
     @request(Scope.PUBLIC, category="users")
     def users_lookup(
-            self,
-            users: list[Union[UserIdT, str]],
-            *,
-            exclude_bots: Optional[bool] = None,
-            ruleset_id: Optional[int] = None,
+        self,
+        users: list[Union[UserIdT, str]],
+        *,
+        exclude_bots: Optional[bool] = None,
+        ruleset_id: Optional[int] = None,
     ) -> list[UserCompact]:
         """
         Batch get users by id or username. If you only want to retrieve a single
