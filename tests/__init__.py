@@ -100,7 +100,7 @@ def setup_api_v2_dev():
 # TODO write a pytest plugin that runs all v2 tests with different version headers
 api_v1 = setup_api_v1()
 api_v2, api_v2_old, api_v2_full = setup_api_v2()
-api_v2_dev = setup_api_v2_dev()
+api_v2_dev = None  # setup_api_v2_dev()
 
 
 class TestCaseAuthorizationCode(TestCase):

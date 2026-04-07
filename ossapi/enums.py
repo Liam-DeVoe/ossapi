@@ -231,6 +231,7 @@ class RoomType(EnumModel):
     PLAYLISTS = "playlists"
     HEAD_TO_HEAD = "head_to_head"
     TEAM_VERSUS = "team_versus"
+    MATCHMAKING = "matchmaking"
 
 
 class RoomCategory(EnumModel):
@@ -528,6 +529,9 @@ class BeatmapTag(Model):
     description: str
     id: int
     name: str
+    ruleset_id: int
+    created_at: Optional[Datetime]
+    updated_at: Optional[Datetime]
 
 
 class Failtimes(Model):
@@ -741,7 +745,7 @@ class EventBeatmapset(Model):
     url: str
 
 
-class EventAchivement(Model):
+class EventAchievement(Model):
     icon_url: str
     id: int
     name: str
@@ -751,6 +755,8 @@ class EventAchivement(Model):
     ordering: int
     slug: str
     description: str
+    achieved_count: int
+    achieved_percent: float
     mode: Optional[GameMode]
     instructions: Optional[Any]
 

@@ -292,8 +292,9 @@ class TestFriends(TestCase):
 
 class TestRoom(TestCase):
     def test_deserialize(self):
-        # https://osu.ppy.sh/multiplayer/rooms/257524
+        # url format: https://osu.ppy.sh/multiplayer/rooms/257524
         api.room(257524)
+        api.room(2437866)
 
 
 class TestMatches(TestCase):

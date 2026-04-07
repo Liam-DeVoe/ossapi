@@ -18,7 +18,7 @@ from ossapi.enums import (
     Country,
     Cover,
     Covers,
-    EventAchivement,
+    EventAchievement,
     EventBeatmap,
     EventBeatmapset,
     EventType,
@@ -360,8 +360,10 @@ class BeatmapsetCompact(Model):
     discussions: Any | None
     events: Any | None
     genre: Any | None
+    genre_id: int | None
     has_favourited: bool | None
     language: Any | None
+    language_id: int | None
     nominations: Any | None
     pack_tags: list[str] | None
     ratings: Any | None
@@ -395,6 +397,7 @@ class Beatmapset(BeatmapsetCompact):
     submitted_date: Datetime | None
     tags: str
     related_tags: list[BeatmapTag]
+    version_count: int
 
     def expand(self) -> Beatmapset:
         return self
@@ -537,6 +540,7 @@ class CommentableMeta(Model):
     url: str | None
     owner_id: int | None
     owner_title: str | None
+    locked: bool | None
     current_user_attributes: CommentableMetaCurrentUserAttributes | None
 
 
@@ -898,7 +902,7 @@ class Event(Model):
 
 
 class AchievementEvent(Event):
-    achievement: EventAchivement
+    achievement: EventAchievement
     user: EventUser
 
 
@@ -1460,6 +1464,7 @@ class UserStatistics(Model):
     country_rank: int | None
     grade_counts: UserGradeCounts
     hit_accuracy: float
+    accuracy: float
     is_ranked: bool
     level: UserLevel
     maximum_combo: int
@@ -1478,6 +1483,7 @@ class UserStatistics(Model):
     total_score: int
     user: UserCompact | None
     variants: list[StatisticsVariant] | None
+    global_rank_percent: float | None
 
 
 class UserStatisticsRulesets(Model):
@@ -1509,6 +1515,8 @@ class RoomPlaylistItem(Model):
     # null for playlist items which haven't finished yet, I think
     played_at: Datetime | None
     beatmap: BeatmapCompact
+    created_at: Datetime | None
+    freestyle: bool
 
 
 class _Room1(Model):
@@ -1548,6 +1556,9 @@ class Room(Model):
     auto_skip: bool
     host: UserCompact
     playlist: list[RoomPlaylistItem]
+    description: str | None
+    status: str
+    pinned: bool
 
     # new from _Room1
     playlist_item_stats: RoomPlaylistItemStats
@@ -1611,6 +1622,7 @@ class MatchGame(Model):
     # TODO doesn't match docs
     beatmap: BeatmapCompact | None
     beatmap_id: int
+    match_id: int
     scores: list[Score]
 
 
