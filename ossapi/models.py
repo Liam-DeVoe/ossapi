@@ -1052,7 +1052,7 @@ class MultiplayerScore(Model):
     ended_at: Datetime
     is_perfect_combo: bool
     replay: bool
-    pp: float
+    pp: float | None
     started_at: Datetime
     ruleset_id: int
     current_user_attributes: Any
