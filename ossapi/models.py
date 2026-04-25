@@ -1032,7 +1032,7 @@ class MultiplayerScore(Model):
     rank: Grade
     total_score: int
     max_combo: int
-    mods: list[Mod]
+    mods: list[NonLegacyMod]
     statistics: Statistics
     passed: bool
     position: int | None
