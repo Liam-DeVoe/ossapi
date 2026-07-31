@@ -874,7 +874,7 @@ class UserProfileCustomization(Model):
     # https://github.com/ppy/osu-web/blob/master/app/Models/UserProfileCustomization.php
     audio_autoplay: Optional[bool]
     audio_muted: Optional[bool]
-    audio_volume: Optional[int]
+    audio_volume: Optional[float]
     beatmapset_download: Optional[BeatmapsetDownload]
     beatmapset_show_nsfw: Optional[bool]
     beatmapset_title_show_original: Optional[bool]

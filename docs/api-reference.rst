@@ -1641,7 +1641,7 @@ Enums
       :type: bool | None
 
    .. py:attribute:: audio_volume
-      :type: int | None
+      :type: float | None
 
    .. py:attribute:: beatmapset_download
       :type: BeatmapsetDownload | None
